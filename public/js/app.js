@@ -3799,6 +3799,8 @@ __webpack_require__(/*! boxicons/css/boxicons.css */ "./node_modules/boxicons/cs
 
 var feather = __webpack_require__(/*! feather-icons */ "./node_modules/feather-icons/dist/feather.js");
 
+__webpack_require__(/*! ./main */ "./resources/dist/js/main.js");
+
 feather.replace();
 
 /***/ }),
@@ -3831,6 +3833,29 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/dist/js/main.js":
+/*!***********************************!*\
+  !*** ./resources/dist/js/main.js ***!
+  \***********************************/
+/***/ (() => {
+
+var tabsButton = document.querySelectorAll('.button');
+window.addEventListener('scroll', function (e) {
+  var nav = document.querySelector('.navigation'),
+      Y = window.pageYOffset;
+  Y >= 210 ? nav.classList.add('scrolled') : nav.classList.remove('scrolled');
+});
+tabsButton.forEach(function (v, i) {
+  tabsButton[i].addEventListener('click', function () {
+    tabsButton.forEach(function (v) {
+      v.classList.remove('active');
+    });
+    tabsButton[i].classList.add('active');
+  });
+});
 
 /***/ }),
 

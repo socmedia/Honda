@@ -3,7 +3,7 @@
 @font-face {
   font-family: "icomoon";
   src: url(/fonts/icomoon.eot?98d566b6388f4a298cf5e418cdec2c3c);
-  src: url(/fonts/icomoon.eot?98d566b6388f4a298cf5e418cdec2c3c) format("embedded-opentype"), url(/fonts/icomoon.ttf?7771d7aaeb13b03a90be2fd5f62ad2b8) format("truetype"), url(/fonts/icomoon.woff?57276c9bee6c2de47dfe03a59cabfcc8) format("woff"), url(/images/icomoon.svg?ab32d0e1ee1708918e98526294d0937b) format("svg");
+  src: url(/fonts/icomoon.eot?98d566b6388f4a298cf5e418cdec2c3c) format("embedded-opentype"), url(/fonts/icomoon.ttf?7771d7aaeb13b03a90be2fd5f62ad2b8) format("truetype"), url(/fonts/icomoon.woff?57276c9bee6c2de47dfe03a59cabfcc8) format("woff"), url(/images/icomoon.svg?62445821252209ef62bfcb3054d62ca7) format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -47,9 +47,43 @@
   content: "";
 }
 
+@-webkit-keyframes fadeDown {
+  from {
+    top: -50%;
+  }
+  to {
+    top: 0;
+  }
+}
+
+@keyframes fadeDown {
+  from {
+    top: -50%;
+  }
+  to {
+    top: 0;
+  }
+}
+@-webkit-keyframes fadeTop {
+  from {
+    bottom: -50%;
+  }
+  to {
+    bottom: 0;
+  }
+}
+@keyframes fadeTop {
+  from {
+    bottom: -50%;
+  }
+  to {
+    bottom: 0;
+  }
+}
 html,
 body {
   font-family: "Open Sans", sans-serif;
+  color: #2B2B2B;
 }
 
 .header {
@@ -87,7 +121,6 @@ body {
   align-items: center;
   font-weight: 700;
   margin: 0.5rem 0;
-  color: #2B2B2B;
   transition: 0.3s all;
 }
 .navigation .menus .menu a span {
@@ -101,6 +134,24 @@ body {
 .navigation .menus .menu a:hover {
   color: #E61B33;
 }
+.navigation.scrolled {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  box-shadow: 0 5px 20px #00000023;
+  -webkit-animation: fadeDown 0.5s forwards;
+          animation: fadeDown 0.5s forwards;
+  z-index: 9999;
+}
+
+.banner {
+  transition: 0.3s all;
+}
+.banner img {
+  width: 100%;
+}
 
 .footer {
   height: 685px;
@@ -111,4 +162,107 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+main {
+  padding: 2rem 0;
+}
+
+h1.header__text {
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-weight: 300;
+  font-size: 2.5rem;
+  color: #E61B33;
+  text-align: center;
+}
+
+.label {
+  padding: 0.5rem 1rem;
+  background: #E61B33;
+  color: #FFF;
+  border-radius: 5px;
+}
+
+.card {
+  padding: 1.875rem;
+  border-radius: 8px;
+}
+.card.product__card {
+  display: block;
+  position: relative;
+  border-radius: 0;
+}
+.card.product__card .label {
+  position: absolute;
+  left: 1rem;
+  top: 0.875rem;
+}
+.card.product__card .product__image {
+  margin-bottom: 0.2rem;
+}
+.card.product__card .product__image img {
+  width: 80%;
+  transition: 0.3s all;
+  margin: auto;
+}
+.card.product__card .product__name {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin-bottom: 1.375rem;
+}
+.card.product__card .product__price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  opacity: 0.8;
+}
+.card.product__card.odd {
+  background-color: #F6F6F6;
+}
+.card.product__card.even {
+  background-color: #F0F0F0;
+}
+.card.product__card:hover .product__image img {
+  transform: scale(1.1);
+}
+
+.product__wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+  grid-auto-rows: auto;
+}
+
+.text-half-opacity {
+  opacity: 0.5;
+}
+
+.navigation__tabs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.navigation__tabs .button {
+  position: relative;
+  display: block;
+  opacity: 0.8;
+  padding: 0 0.875rem;
+  transition: 0.3s all;
+  cursor: pointer;
+}
+.navigation__tabs .button.active {
+  opacity: 1;
+}
+.navigation__tabs .button.active a {
+  font-weight: 700;
+}
+.navigation__tabs .button.active:after {
+  content: "";
+  position: absolute;
+  left: 0.875rem;
+  bottom: 0rem;
+  height: 3px;
+  width: 30%;
+  background-color: #2B2B2B;
 }
