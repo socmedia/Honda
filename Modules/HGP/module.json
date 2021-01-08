@@ -1,0 +1,13 @@
+{
+    "name": "HGP",
+    "alias": "hgp",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\HGP\\Providers\\HGPServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

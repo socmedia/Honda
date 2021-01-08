@@ -1,3 +1,11 @@
 {
-    "Banner": true
+    "Banner": true,
+    "Contacts": true,
+    "SEO": true,
+    "Promo": true,
+    "News": true,
+    "Product": true,
+    "Apparel": true,
+    "Accessories": true,
+    "HGP": true
 }
