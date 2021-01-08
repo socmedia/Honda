@@ -1,6 +1,114 @@
+@import url(https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap);
+@charset "UTF-8";
+@font-face {
+  font-family: "icomoon";
+  src: url(/fonts/icomoon.eot?98d566b6388f4a298cf5e418cdec2c3c);
+  src: url(/fonts/icomoon.eot?98d566b6388f4a298cf5e418cdec2c3c) format("embedded-opentype"), url(/fonts/icomoon.ttf?7771d7aaeb13b03a90be2fd5f62ad2b8) format("truetype"), url(/fonts/icomoon.woff?57276c9bee6c2de47dfe03a59cabfcc8) format("woff"), url(/images/icomoon.svg?ab32d0e1ee1708918e98526294d0937b) format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+[class^=honda__icon-],
+[class*=" honda__icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: "icomoon" !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.honda__icon-community:before {
+  content: "";
+}
+
+.honda__icon-gunungan:before {
+  content: "";
+}
+
+.honda__icon-home:before {
+  content: "";
+}
+
+.honda__icon-news:before {
+  content: "";
+}
+
+.honda__icon-product:before {
+  content: "";
+}
+
+.honda__icon-service:before {
+  content: "";
+}
+
 html,
 body {
-  padding: 0;
-  margin: 0;
+  font-family: "Open Sans", sans-serif;
+}
+
+.header {
+  height: 150px;
   width: 100%;
+  display: block;
+  overflow: hidden;
+  position: relative;
+  background-image: url(/images/header_bg.jpg?08f83315ac480958ee66670c93b84376);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 0 10%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navigation {
+  height: 80px;
+  width: 100%;
+  display: block;
+  padding: 1rem 7%;
+  box-sizing: border-box;
+}
+.navigation .menus {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+}
+.navigation .menus .menu a {
+  display: inline-flex;
+  align-items: center;
+  font-weight: 700;
+  margin: 0.5rem 0;
+  color: #2B2B2B;
+  transition: 0.3s all;
+}
+.navigation .menus .menu a span {
+  margin-right: 0.875rem;
+  font-size: 2rem;
+}
+.navigation .menus .menu a .feather {
+  margin-left: 1rem;
+  width: 1.2rem;
+}
+.navigation .menus .menu a:hover {
+  color: #E61B33;
+}
+
+.footer {
+  height: 685px;
+  width: 100%;
+  position: relative;
+  display: block;
+  background-image: url(/images/footer_bg.jpg?684e3f14fa6db2bacdc8a2feffc5f02a);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }

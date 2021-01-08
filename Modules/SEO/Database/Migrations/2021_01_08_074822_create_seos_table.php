@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateContactsTable extends Migration
+class CreateSeosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateContactsTable extends Migration
      */
     public function up()
     {
-        Schema::create('contacts', function (Blueprint $table) {
+        Schema::create('seos', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('url')->nullable();
-            $table->unsignedBigInteger('phone')->nullable();
-            $table->unsignedBigInteger('fax')->nullable();
-            $table->text('description')->nullable();
+            $table->string('title');
+            $table->string('pages_target');
+            $table->string('image');
+            $table->string('keywords');
+            $table->string('description');
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreateContactsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contacts');
+        Schema::dropIfExists('seos');
     }
 }

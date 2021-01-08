@@ -3785,22 +3785,28 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./resources/js/app.js":
-/*!*****************************!*\
-  !*** ./resources/js/app.js ***!
-  \*****************************/
+/***/ "./resources/dist/js/app.js":
+/*!**********************************!*\
+  !*** ./resources/dist/js/app.js ***!
+  \**********************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+__webpack_require__(/*! ./bootstrap */ "./resources/dist/js/bootstrap.js");
 
 __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/alpine.js");
 
+__webpack_require__(/*! boxicons/css/boxicons.css */ "./node_modules/boxicons/css/boxicons.css");
+
+var feather = __webpack_require__(/*! feather-icons */ "./node_modules/feather-icons/dist/feather.js");
+
+feather.replace();
+
 /***/ }),
 
-/***/ "./resources/js/bootstrap.js":
-/*!***********************************!*\
-  !*** ./resources/js/bootstrap.js ***!
-  \***********************************/
+/***/ "./resources/dist/js/bootstrap.js":
+/*!****************************************!*\
+  !*** ./resources/dist/js/bootstrap.js ***!
+  \****************************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
@@ -3825,6 +3831,2660 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/boxicons/css/boxicons.css":
+/*!**********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/boxicons/css/boxicons.css ***!
+  \**********************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../css-loader/dist/runtime/getUrl.js */ "./node_modules/css-loader/dist/runtime/getUrl.js");
+/* harmony import */ var _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _fonts_boxicons_eot__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../fonts/boxicons.eot */ "./node_modules/boxicons/fonts/boxicons.eot");
+/* harmony import */ var _fonts_boxicons_woff2__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../fonts/boxicons.woff2 */ "./node_modules/boxicons/fonts/boxicons.woff2");
+/* harmony import */ var _fonts_boxicons_woff__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../fonts/boxicons.woff */ "./node_modules/boxicons/fonts/boxicons.woff");
+/* harmony import */ var _fonts_boxicons_ttf__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../fonts/boxicons.ttf */ "./node_modules/boxicons/fonts/boxicons.ttf");
+/* harmony import */ var _fonts_boxicons_svg__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../fonts/boxicons.svg */ "./node_modules/boxicons/fonts/boxicons.svg");
+// Imports
+
+
+
+
+
+
+
+var ___CSS_LOADER_EXPORT___ = _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+var ___CSS_LOADER_URL_REPLACEMENT_0___ = _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_fonts_boxicons_eot__WEBPACK_IMPORTED_MODULE_2__.default);
+var ___CSS_LOADER_URL_REPLACEMENT_1___ = _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_fonts_boxicons_woff2__WEBPACK_IMPORTED_MODULE_3__.default);
+var ___CSS_LOADER_URL_REPLACEMENT_2___ = _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_fonts_boxicons_woff__WEBPACK_IMPORTED_MODULE_4__.default);
+var ___CSS_LOADER_URL_REPLACEMENT_3___ = _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_fonts_boxicons_ttf__WEBPACK_IMPORTED_MODULE_5__.default);
+var ___CSS_LOADER_URL_REPLACEMENT_4___ = _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_fonts_boxicons_svg__WEBPACK_IMPORTED_MODULE_6__.default, { hash: "?#boxicons" });
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "@font-face\n{\n    font-family: 'boxicons';\n    font-weight: normal;\n    font-style: normal;\n\n    src: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n    src: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ") format('embedded-opentype'),\n    url(" + ___CSS_LOADER_URL_REPLACEMENT_1___ + ") format('woff2'),\n    url(" + ___CSS_LOADER_URL_REPLACEMENT_2___ + ") format('woff'),\n    url(" + ___CSS_LOADER_URL_REPLACEMENT_3___ + ") format('truetype'),\n    url(" + ___CSS_LOADER_URL_REPLACEMENT_4___ + ") format('svg');\n}\n.bx\n{\n    font-family: 'boxicons' !important;\n    font-weight: normal;\n    font-style: normal;\n    font-variant: normal;\n    line-height: 1;\n\n    display: inline-block;\n\n    text-transform: none;\n\n    speak: none;\n    -webkit-font-smoothing: antialiased;\n    -moz-osx-font-smoothing: grayscale;\n}\n.bx-ul\n{\n    margin-left: 2em;\n    padding-left: 0;\n\n    list-style: none;\n}\n.bx-ul > li\n{\n    position: relative;\n}\n.bx-ul .bx\n{\n    font-size: inherit;\n    line-height: inherit;\n\n    position: absolute;\n    left: -2em;\n\n    width: 2em;\n\n    text-align: center;\n}\n@-webkit-keyframes spin\n{\n    0%\n    {\n        transform: rotate(0);\n    }\n    100%\n    {\n        transform: rotate(359deg);\n    }\n}\n@keyframes spin\n{\n    0%\n    {\n        transform: rotate(0);\n    }\n    100%\n    {\n        transform: rotate(359deg);\n    }\n}\n@-webkit-keyframes burst\n{\n    0%\n    {\n        transform: scale(1);\n\n        opacity: 1;\n    }\n    90%\n    {\n        transform: scale(1.5);\n\n        opacity: 0;\n    }\n}\n@keyframes burst\n{\n    0%\n    {\n        transform: scale(1);\n\n        opacity: 1;\n    }\n    90%\n    {\n        transform: scale(1.5);\n\n        opacity: 0;\n    }\n}\n@-webkit-keyframes flashing\n{\n    0%\n    {\n        opacity: 1;\n    }\n    45%\n    {\n        opacity: 0;\n    }\n    90%\n    {\n        opacity: 1;\n    }\n}\n@keyframes flashing\n{\n    0%\n    {\n        opacity: 1;\n    }\n    45%\n    {\n        opacity: 0;\n    }\n    90%\n    {\n        opacity: 1;\n    }\n}\n@-webkit-keyframes fade-left\n{\n    0%\n    {\n        transform: translateX(0);\n\n        opacity: 1;\n    }\n    75%\n    {\n        transform: translateX(-20px);\n\n        opacity: 0;\n    }\n}\n@keyframes fade-left\n{\n    0%\n    {\n        transform: translateX(0);\n\n        opacity: 1;\n    }\n    75%\n    {\n        transform: translateX(-20px);\n\n        opacity: 0;\n    }\n}\n@-webkit-keyframes fade-right\n{\n    0%\n    {\n        transform: translateX(0);\n\n        opacity: 1;\n    }\n    75%\n    {\n        transform: translateX(20px);\n\n        opacity: 0;\n    }\n}\n@keyframes fade-right\n{\n    0%\n    {\n        transform: translateX(0);\n\n        opacity: 1;\n    }\n    75%\n    {\n        transform: translateX(20px);\n\n        opacity: 0;\n    }\n}\n@-webkit-keyframes fade-up\n{\n    0%\n    {\n        transform: translateY(0);\n\n        opacity: 1;\n    }\n    75%\n    {\n        transform: translateY(-20px);\n\n        opacity: 0;\n    }\n}\n@keyframes fade-up\n{\n    0%\n    {\n        transform: translateY(0);\n\n        opacity: 1;\n    }\n    75%\n    {\n        transform: translateY(-20px);\n\n        opacity: 0;\n    }\n}\n@-webkit-keyframes fade-down\n{\n    0%\n    {\n        transform: translateY(0);\n\n        opacity: 1;\n    }\n    75%\n    {\n        transform: translateY(20px);\n\n        opacity: 0;\n    }\n}\n@keyframes fade-down\n{\n    0%\n    {\n        transform: translateY(0);\n\n        opacity: 1;\n    }\n    75%\n    {\n        transform: translateY(20px);\n\n        opacity: 0;\n    }\n}\n@-webkit-keyframes tada\n{\n    from\n    {\n        transform: scale3d(1, 1, 1);\n    }\n\n    10%,\n    20%\n    {\n        transform: scale3d(.95, .95, .95) rotate3d(0, 0, 1, -10deg);\n    }\n\n    30%,\n    50%,\n    70%,\n    90%\n    {\n        transform: scale3d(1, 1, 1) rotate3d(0, 0, 1, 10deg);\n    }\n\n    40%,\n    60%,\n    80%\n    {\n        transform: scale3d(1, 1, 1) rotate3d(0, 0, 1, -10deg);\n    }\n\n    to\n    {\n        transform: scale3d(1, 1, 1);\n    }\n}\n\n@keyframes tada\n{\n    from\n    {\n        transform: scale3d(1, 1, 1);\n    }\n\n    10%,\n    20%\n    {\n        transform: scale3d(.95, .95, .95) rotate3d(0, 0, 1, -10deg);\n    }\n\n    30%,\n    50%,\n    70%,\n    90%\n    {\n        transform: scale3d(1, 1, 1) rotate3d(0, 0, 1, 10deg);\n    }\n\n    40%,\n    60%,\n    80%\n    {\n        transform: rotate3d(0, 0, 1, -10deg);\n    }\n\n    to\n    {\n        transform: scale3d(1, 1, 1);\n    }\n}\n.bx-spin\n{\n    -webkit-animation: spin 2s linear infinite;\n            animation: spin 2s linear infinite;\n}\n.bx-spin-hover:hover\n{\n    -webkit-animation: spin 2s linear infinite;\n            animation: spin 2s linear infinite;\n}\n\n.bx-tada\n{\n    -webkit-animation: tada 1.5s ease infinite;\n            animation: tada 1.5s ease infinite;\n}\n.bx-tada-hover:hover\n{\n    -webkit-animation: tada 1.5s ease infinite;\n            animation: tada 1.5s ease infinite;\n}\n\n.bx-flashing\n{\n    -webkit-animation: flashing 1.5s infinite linear;\n            animation: flashing 1.5s infinite linear;\n}\n.bx-flashing-hover:hover\n{\n    -webkit-animation: flashing 1.5s infinite linear;\n            animation: flashing 1.5s infinite linear;\n}\n\n.bx-burst\n{\n    -webkit-animation: burst 1.5s infinite linear;\n            animation: burst 1.5s infinite linear;\n}\n.bx-burst-hover:hover\n{\n    -webkit-animation: burst 1.5s infinite linear;\n            animation: burst 1.5s infinite linear;\n}\n.bx-fade-up\n{\n    -webkit-animation: fade-up 1.5s infinite linear;\n            animation: fade-up 1.5s infinite linear;\n}\n.bx-fade-up-hover:hover\n{\n    -webkit-animation: fade-up 1.5s infinite linear;\n            animation: fade-up 1.5s infinite linear;\n}\n.bx-fade-down\n{\n    -webkit-animation: fade-down 1.5s infinite linear;\n            animation: fade-down 1.5s infinite linear;\n}\n.bx-fade-down-hover:hover\n{\n    -webkit-animation: fade-down 1.5s infinite linear;\n            animation: fade-down 1.5s infinite linear;\n}\n.bx-fade-left\n{\n    -webkit-animation: fade-left 1.5s infinite linear;\n            animation: fade-left 1.5s infinite linear;\n}\n.bx-fade-left-hover:hover\n{\n    -webkit-animation: fade-left 1.5s infinite linear;\n            animation: fade-left 1.5s infinite linear;\n}\n.bx-fade-right\n{\n    -webkit-animation: fade-right 1.5s infinite linear;\n            animation: fade-right 1.5s infinite linear;\n}\n.bx-fade-right-hover:hover\n{\n    -webkit-animation: fade-right 1.5s infinite linear;\n            animation: fade-right 1.5s infinite linear;\n}\n.bx-xs\n{\n    font-size: 1rem!important;\n}\n.bx-sm\n{\n    font-size: 1.55rem!important;\n}\n.bx-md\n{\n    font-size: 2.25rem!important;\n}\n.bx-fw\n{\n    font-size: 1.2857142857em;\n    line-height: .8em;\n\n    width: 1.2857142857em;\n    height: .8em;\n    margin-top: -.2em!important;\n\n    vertical-align: middle;\n}\n\n.bx-lg\n{\n    font-size: 3.0rem!important;\n}\n.bx-pull-left\n{\n    float: left;\n\n    margin-right: .3em!important;\n}\n\n.bx-pull-right\n{\n    float: right;\n\n    margin-left: .3em!important;\n}\n.bx-rotate-90\n{\n    transform: rotate(90deg);\n\n    -ms-filter: 'progid:DXImageTransform.Microsoft.BasicImage(rotation=1)';\n}\n.bx-rotate-180\n{\n    transform: rotate(180deg);\n\n    -ms-filter: 'progid:DXImageTransform.Microsoft.BasicImage(rotation=2)';\n}\n.bx-rotate-270\n{\n    transform: rotate(270deg);\n\n    -ms-filter: 'progid:DXImageTransform.Microsoft.BasicImage(rotation=3)';\n}\n.bx-flip-horizontal\n{\n    transform: scaleX(-1);\n\n    -ms-filter: 'progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1)';\n}\n.bx-flip-vertical\n{\n    transform: scaleY(-1);\n\n    -ms-filter: 'progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)';\n}\n.bx-border\n{\n    padding: .25em;\n\n    border: .07em solid rgba(0,0,0,.1);\n    border-radius: .25em;\n}\n.bx-border-circle\n{\n    padding: .25em;\n\n    border: .07em solid rgba(0,0,0,.1);\n    border-radius: 50%;\n}\n\n  .bx-abacus:before {\n    content: \"\\e900\";\n  }\n  .bx-accessibility:before {\n    content: \"\\e901\";\n  }\n  .bx-add-to-queue:before {\n    content: \"\\e902\";\n  }\n  .bx-adjust:before {\n    content: \"\\e903\";\n  }\n  .bx-alarm:before {\n    content: \"\\e904\";\n  }\n  .bx-alarm-add:before {\n    content: \"\\e905\";\n  }\n  .bx-alarm-exclamation:before {\n    content: \"\\e906\";\n  }\n  .bx-alarm-off:before {\n    content: \"\\e907\";\n  }\n  .bx-alarm-snooze:before {\n    content: \"\\e908\";\n  }\n  .bx-album:before {\n    content: \"\\e909\";\n  }\n  .bx-align-justify:before {\n    content: \"\\e90a\";\n  }\n  .bx-align-left:before {\n    content: \"\\e90b\";\n  }\n  .bx-align-middle:before {\n    content: \"\\e90c\";\n  }\n  .bx-align-right:before {\n    content: \"\\e90d\";\n  }\n  .bx-analyse:before {\n    content: \"\\e90e\";\n  }\n  .bx-anchor:before {\n    content: \"\\e90f\";\n  }\n  .bx-angry:before {\n    content: \"\\e910\";\n  }\n  .bx-aperture:before {\n    content: \"\\e911\";\n  }\n  .bx-arch:before {\n    content: \"\\e912\";\n  }\n  .bx-archive:before {\n    content: \"\\e913\";\n  }\n  .bx-archive-in:before {\n    content: \"\\e914\";\n  }\n  .bx-archive-out:before {\n    content: \"\\e915\";\n  }\n  .bx-area:before {\n    content: \"\\e916\";\n  }\n  .bx-arrow-back:before {\n    content: \"\\e917\";\n  }\n  .bx-arrow-from-bottom:before {\n    content: \"\\e918\";\n  }\n  .bx-arrow-from-left:before {\n    content: \"\\e919\";\n  }\n  .bx-arrow-from-right:before {\n    content: \"\\e91a\";\n  }\n  .bx-arrow-from-top:before {\n    content: \"\\e91b\";\n  }\n  .bx-arrow-to-bottom:before {\n    content: \"\\e91c\";\n  }\n  .bx-arrow-to-left:before {\n    content: \"\\e91d\";\n  }\n  .bx-arrow-to-right:before {\n    content: \"\\e91e\";\n  }\n  .bx-arrow-to-top:before {\n    content: \"\\e91f\";\n  }\n  .bx-at:before {\n    content: \"\\e920\";\n  }\n  .bx-atom:before {\n    content: \"\\e921\";\n  }\n  .bx-award:before {\n    content: \"\\e922\";\n  }\n  .bx-badge:before {\n    content: \"\\e923\";\n  }\n  .bx-badge-check:before {\n    content: \"\\e924\";\n  }\n  .bx-ball:before {\n    content: \"\\e925\";\n  }\n  .bx-band-aid:before {\n    content: \"\\e926\";\n  }\n  .bx-bar-chart:before {\n    content: \"\\e927\";\n  }\n  .bx-bar-chart-alt:before {\n    content: \"\\e928\";\n  }\n  .bx-bar-chart-alt-2:before {\n    content: \"\\e929\";\n  }\n  .bx-bar-chart-square:before {\n    content: \"\\e92a\";\n  }\n  .bx-barcode:before {\n    content: \"\\e92b\";\n  }\n  .bx-barcode-reader:before {\n    content: \"\\e92c\";\n  }\n  .bx-baseball:before {\n    content: \"\\e92d\";\n  }\n  .bx-basket:before {\n    content: \"\\e92e\";\n  }\n  .bx-basketball:before {\n    content: \"\\e92f\";\n  }\n  .bx-bath:before {\n    content: \"\\e930\";\n  }\n  .bx-battery:before {\n    content: \"\\e931\";\n  }\n  .bx-bed:before {\n    content: \"\\e932\";\n  }\n  .bx-been-here:before {\n    content: \"\\e933\";\n  }\n  .bx-beer:before {\n    content: \"\\e934\";\n  }\n  .bx-bell:before {\n    content: \"\\e935\";\n  }\n  .bx-bell-minus:before {\n    content: \"\\e936\";\n  }\n  .bx-bell-off:before {\n    content: \"\\e937\";\n  }\n  .bx-bell-plus:before {\n    content: \"\\e938\";\n  }\n  .bx-bible:before {\n    content: \"\\e939\";\n  }\n  .bx-bitcoin:before {\n    content: \"\\e93a\";\n  }\n  .bx-blanket:before {\n    content: \"\\e93b\";\n  }\n  .bx-block:before {\n    content: \"\\e93c\";\n  }\n  .bx-bluetooth:before {\n    content: \"\\e93d\";\n  }\n  .bx-body:before {\n    content: \"\\e93e\";\n  }\n  .bx-bold:before {\n    content: \"\\e93f\";\n  }\n  .bx-bolt-circle:before {\n    content: \"\\e940\";\n  }\n  .bx-bomb:before {\n    content: \"\\e941\";\n  }\n  .bx-bone:before {\n    content: \"\\e942\";\n  }\n  .bx-bong:before {\n    content: \"\\e943\";\n  }\n  .bx-book:before {\n    content: \"\\e944\";\n  }\n  .bx-book-add:before {\n    content: \"\\e945\";\n  }\n  .bx-book-alt:before {\n    content: \"\\e946\";\n  }\n  .bx-book-bookmark:before {\n    content: \"\\e947\";\n  }\n  .bx-book-content:before {\n    content: \"\\e948\";\n  }\n  .bx-book-heart:before {\n    content: \"\\e949\";\n  }\n  .bx-bookmark:before {\n    content: \"\\e94a\";\n  }\n  .bx-bookmark-alt:before {\n    content: \"\\e94b\";\n  }\n  .bx-bookmark-alt-minus:before {\n    content: \"\\e94c\";\n  }\n  .bx-bookmark-alt-plus:before {\n    content: \"\\e94d\";\n  }\n  .bx-bookmark-heart:before {\n    content: \"\\e94e\";\n  }\n  .bx-bookmark-minus:before {\n    content: \"\\e94f\";\n  }\n  .bx-bookmark-plus:before {\n    content: \"\\e950\";\n  }\n  .bx-bookmarks:before {\n    content: \"\\e951\";\n  }\n  .bx-book-open:before {\n    content: \"\\e952\";\n  }\n  .bx-book-reader:before {\n    content: \"\\e953\";\n  }\n  .bx-border-all:before {\n    content: \"\\e954\";\n  }\n  .bx-border-bottom:before {\n    content: \"\\e955\";\n  }\n  .bx-border-inner:before {\n    content: \"\\e956\";\n  }\n  .bx-border-left:before {\n    content: \"\\e957\";\n  }\n  .bx-border-none:before {\n    content: \"\\e958\";\n  }\n  .bx-border-outer:before {\n    content: \"\\e959\";\n  }\n  .bx-border-radius:before {\n    content: \"\\e95a\";\n  }\n  .bx-border-right:before {\n    content: \"\\e95b\";\n  }\n  .bx-border-top:before {\n    content: \"\\e95c\";\n  }\n  .bx-bot:before {\n    content: \"\\e95d\";\n  }\n  .bx-bowling-ball:before {\n    content: \"\\e95e\";\n  }\n  .bx-box:before {\n    content: \"\\e95f\";\n  }\n  .bx-bracket:before {\n    content: \"\\e960\";\n  }\n  .bx-braille:before {\n    content: \"\\e961\";\n  }\n  .bx-brain:before {\n    content: \"\\e962\";\n  }\n  .bx-briefcase:before {\n    content: \"\\e963\";\n  }\n  .bx-briefcase-alt:before {\n    content: \"\\e964\";\n  }\n  .bx-briefcase-alt-2:before {\n    content: \"\\e965\";\n  }\n  .bx-brightness:before {\n    content: \"\\e966\";\n  }\n  .bx-brightness-half:before {\n    content: \"\\e967\";\n  }\n  .bx-broadcast:before {\n    content: \"\\e968\";\n  }\n  .bx-brush:before {\n    content: \"\\e969\";\n  }\n  .bx-brush-alt:before {\n    content: \"\\e96a\";\n  }\n  .bx-bug:before {\n    content: \"\\e96b\";\n  }\n  .bx-bug-alt:before {\n    content: \"\\e96c\";\n  }\n  .bx-building:before {\n    content: \"\\e96d\";\n  }\n  .bx-building-house:before {\n    content: \"\\e96e\";\n  }\n  .bx-buildings:before {\n    content: \"\\e96f\";\n  }\n  .bx-bulb:before {\n    content: \"\\e970\";\n  }\n  .bx-bullseye:before {\n    content: \"\\e971\";\n  }\n  .bx-buoy:before {\n    content: \"\\e972\";\n  }\n  .bx-bus:before {\n    content: \"\\e973\";\n  }\n  .bx-bus-school:before {\n    content: \"\\e974\";\n  }\n  .bx-cabinet:before {\n    content: \"\\e975\";\n  }\n  .bx-cake:before {\n    content: \"\\e976\";\n  }\n  .bx-calculator:before {\n    content: \"\\e977\";\n  }\n  .bx-calendar:before {\n    content: \"\\e978\";\n  }\n  .bx-calendar-alt:before {\n    content: \"\\e979\";\n  }\n  .bx-calendar-check:before {\n    content: \"\\e97a\";\n  }\n  .bx-calendar-edit:before {\n    content: \"\\e97b\";\n  }\n  .bx-calendar-event:before {\n    content: \"\\e97c\";\n  }\n  .bx-calendar-exclamation:before {\n    content: \"\\e97d\";\n  }\n  .bx-calendar-heart:before {\n    content: \"\\e97e\";\n  }\n  .bx-calendar-minus:before {\n    content: \"\\e97f\";\n  }\n  .bx-calendar-plus:before {\n    content: \"\\e980\";\n  }\n  .bx-calendar-star:before {\n    content: \"\\e981\";\n  }\n  .bx-calendar-week:before {\n    content: \"\\e982\";\n  }\n  .bx-calendar-x:before {\n    content: \"\\e983\";\n  }\n  .bx-camera:before {\n    content: \"\\e984\";\n  }\n  .bx-camera-home:before {\n    content: \"\\e985\";\n  }\n  .bx-camera-movie:before {\n    content: \"\\e986\";\n  }\n  .bx-camera-off:before {\n    content: \"\\e987\";\n  }\n  .bx-capsule:before {\n    content: \"\\e988\";\n  }\n  .bx-captions:before {\n    content: \"\\e989\";\n  }\n  .bx-car:before {\n    content: \"\\e98a\";\n  }\n  .bx-card:before {\n    content: \"\\e98b\";\n  }\n  .bx-caret-down:before {\n    content: \"\\e98c\";\n  }\n  .bx-caret-down-circle:before {\n    content: \"\\e98d\";\n  }\n  .bx-caret-down-square:before {\n    content: \"\\e98e\";\n  }\n  .bx-caret-left:before {\n    content: \"\\e98f\";\n  }\n  .bx-caret-left-circle:before {\n    content: \"\\e990\";\n  }\n  .bx-caret-left-square:before {\n    content: \"\\e991\";\n  }\n  .bx-caret-right:before {\n    content: \"\\e992\";\n  }\n  .bx-caret-right-circle:before {\n    content: \"\\e993\";\n  }\n  .bx-caret-right-square:before {\n    content: \"\\e994\";\n  }\n  .bx-caret-up:before {\n    content: \"\\e995\";\n  }\n  .bx-caret-up-circle:before {\n    content: \"\\e996\";\n  }\n  .bx-caret-up-square:before {\n    content: \"\\e997\";\n  }\n  .bx-carousel:before {\n    content: \"\\e998\";\n  }\n  .bx-cart:before {\n    content: \"\\e999\";\n  }\n  .bx-cart-alt:before {\n    content: \"\\e99a\";\n  }\n  .bx-cast:before {\n    content: \"\\e99b\";\n  }\n  .bx-category:before {\n    content: \"\\e99c\";\n  }\n  .bx-category-alt:before {\n    content: \"\\e99d\";\n  }\n  .bx-cctv:before {\n    content: \"\\e99e\";\n  }\n  .bx-certification:before {\n    content: \"\\e99f\";\n  }\n  .bx-chair:before {\n    content: \"\\e9a0\";\n  }\n  .bx-chalkboard:before {\n    content: \"\\e9a1\";\n  }\n  .bx-chart:before {\n    content: \"\\e9a2\";\n  }\n  .bx-chat:before {\n    content: \"\\e9a3\";\n  }\n  .bx-check:before {\n    content: \"\\e9a4\";\n  }\n  .bx-checkbox:before {\n    content: \"\\e9a5\";\n  }\n  .bx-checkbox-checked:before {\n    content: \"\\e9a6\";\n  }\n  .bx-checkbox-square:before {\n    content: \"\\e9a7\";\n  }\n  .bx-check-circle:before {\n    content: \"\\e9a8\";\n  }\n  .bx-check-double:before {\n    content: \"\\e9a9\";\n  }\n  .bx-check-shield:before {\n    content: \"\\e9aa\";\n  }\n  .bx-check-square:before {\n    content: \"\\e9ab\";\n  }\n  .bx-chevron-down:before {\n    content: \"\\e9ac\";\n  }\n  .bx-chevron-down-circle:before {\n    content: \"\\e9ad\";\n  }\n  .bx-chevron-down-square:before {\n    content: \"\\e9ae\";\n  }\n  .bx-chevron-left:before {\n    content: \"\\e9af\";\n  }\n  .bx-chevron-left-circle:before {\n    content: \"\\e9b0\";\n  }\n  .bx-chevron-left-square:before {\n    content: \"\\e9b1\";\n  }\n  .bx-chevron-right:before {\n    content: \"\\e9b2\";\n  }\n  .bx-chevron-right-circle:before {\n    content: \"\\e9b3\";\n  }\n  .bx-chevron-right-square:before {\n    content: \"\\e9b4\";\n  }\n  .bx-chevrons-down:before {\n    content: \"\\e9b5\";\n  }\n  .bx-chevrons-left:before {\n    content: \"\\e9b6\";\n  }\n  .bx-chevrons-right:before {\n    content: \"\\e9b7\";\n  }\n  .bx-chevrons-up:before {\n    content: \"\\e9b8\";\n  }\n  .bx-chevron-up:before {\n    content: \"\\e9b9\";\n  }\n  .bx-chevron-up-circle:before {\n    content: \"\\e9ba\";\n  }\n  .bx-chevron-up-square:before {\n    content: \"\\e9bb\";\n  }\n  .bx-chip:before {\n    content: \"\\e9bc\";\n  }\n  .bx-church:before {\n    content: \"\\e9bd\";\n  }\n  .bx-circle:before {\n    content: \"\\e9be\";\n  }\n  .bx-clinic:before {\n    content: \"\\e9bf\";\n  }\n  .bx-clipboard:before {\n    content: \"\\e9c0\";\n  }\n  .bx-closet:before {\n    content: \"\\e9c1\";\n  }\n  .bx-cloud:before {\n    content: \"\\e9c2\";\n  }\n  .bx-cloud-download:before {\n    content: \"\\e9c3\";\n  }\n  .bx-cloud-drizzle:before {\n    content: \"\\e9c4\";\n  }\n  .bx-cloud-lightning:before {\n    content: \"\\e9c5\";\n  }\n  .bx-cloud-light-rain:before {\n    content: \"\\e9c6\";\n  }\n  .bx-cloud-rain:before {\n    content: \"\\e9c7\";\n  }\n  .bx-cloud-snow:before {\n    content: \"\\e9c8\";\n  }\n  .bx-cloud-upload:before {\n    content: \"\\e9c9\";\n  }\n  .bx-code:before {\n    content: \"\\e9ca\";\n  }\n  .bx-code-alt:before {\n    content: \"\\e9cb\";\n  }\n  .bx-code-block:before {\n    content: \"\\e9cc\";\n  }\n  .bx-code-curly:before {\n    content: \"\\e9cd\";\n  }\n  .bx-coffee:before {\n    content: \"\\e9ce\";\n  }\n  .bx-coffee-togo:before {\n    content: \"\\e9cf\";\n  }\n  .bx-cog:before {\n    content: \"\\e9d0\";\n  }\n  .bx-coin:before {\n    content: \"\\e9d1\";\n  }\n  .bx-coin-stack:before {\n    content: \"\\e9d2\";\n  }\n  .bx-collapse:before {\n    content: \"\\e9d3\";\n  }\n  .bx-collection:before {\n    content: \"\\e9d4\";\n  }\n  .bx-color-fill:before {\n    content: \"\\e9d5\";\n  }\n  .bx-columns:before {\n    content: \"\\e9d6\";\n  }\n  .bx-command:before {\n    content: \"\\e9d7\";\n  }\n  .bx-comment:before {\n    content: \"\\e9d8\";\n  }\n  .bx-comment-add:before {\n    content: \"\\e9d9\";\n  }\n  .bx-comment-check:before {\n    content: \"\\e9da\";\n  }\n  .bx-comment-detail:before {\n    content: \"\\e9db\";\n  }\n  .bx-comment-dots:before {\n    content: \"\\e9dc\";\n  }\n  .bx-comment-edit:before {\n    content: \"\\e9dd\";\n  }\n  .bx-comment-error:before {\n    content: \"\\e9de\";\n  }\n  .bx-comment-minus:before {\n    content: \"\\e9df\";\n  }\n  .bx-comment-x:before {\n    content: \"\\e9e0\";\n  }\n  .bx-compass:before {\n    content: \"\\e9e1\";\n  }\n  .bx-confused:before {\n    content: \"\\e9e2\";\n  }\n  .bx-conversation:before {\n    content: \"\\e9e3\";\n  }\n  .bx-cookie:before {\n    content: \"\\e9e4\";\n  }\n  .bx-cool:before {\n    content: \"\\e9e5\";\n  }\n  .bx-copy:before {\n    content: \"\\e9e6\";\n  }\n  .bx-copy-alt:before {\n    content: \"\\e9e7\";\n  }\n  .bx-copyright:before {\n    content: \"\\e9e8\";\n  }\n  .bx-credit-card:before {\n    content: \"\\e9e9\";\n  }\n  .bx-credit-card-alt:before {\n    content: \"\\e9ea\";\n  }\n  .bx-credit-card-front:before {\n    content: \"\\e9eb\";\n  }\n  .bx-crop:before {\n    content: \"\\e9ec\";\n  }\n  .bx-crosshair:before {\n    content: \"\\e9ed\";\n  }\n  .bx-crown:before {\n    content: \"\\e9ee\";\n  }\n  .bx-cube:before {\n    content: \"\\e9ef\";\n  }\n  .bx-cube-alt:before {\n    content: \"\\e9f0\";\n  }\n  .bx-cuboid:before {\n    content: \"\\e9f1\";\n  }\n  .bx-current-location:before {\n    content: \"\\e9f2\";\n  }\n  .bx-customize:before {\n    content: \"\\e9f3\";\n  }\n  .bx-cut:before {\n    content: \"\\e9f4\";\n  }\n  .bx-cycling:before {\n    content: \"\\e9f5\";\n  }\n  .bx-cylinder:before {\n    content: \"\\e9f6\";\n  }\n  .bx-data:before {\n    content: \"\\e9f7\";\n  }\n  .bx-desktop:before {\n    content: \"\\e9f8\";\n  }\n  .bx-detail:before {\n    content: \"\\e9f9\";\n  }\n  .bx-devices:before {\n    content: \"\\e9fa\";\n  }\n  .bx-dialpad:before {\n    content: \"\\e9fb\";\n  }\n  .bx-dialpad-alt:before {\n    content: \"\\e9fc\";\n  }\n  .bx-diamond:before {\n    content: \"\\e9fd\";\n  }\n  .bx-dice-1:before {\n    content: \"\\e9fe\";\n  }\n  .bx-dice-2:before {\n    content: \"\\e9ff\";\n  }\n  .bx-dice-3:before {\n    content: \"\\ea00\";\n  }\n  .bx-dice-4:before {\n    content: \"\\ea01\";\n  }\n  .bx-dice-5:before {\n    content: \"\\ea02\";\n  }\n  .bx-dice-6:before {\n    content: \"\\ea03\";\n  }\n  .bx-directions:before {\n    content: \"\\ea04\";\n  }\n  .bx-disc:before {\n    content: \"\\ea05\";\n  }\n  .bx-dish:before {\n    content: \"\\ea06\";\n  }\n  .bx-dislike:before {\n    content: \"\\ea07\";\n  }\n  .bx-dizzy:before {\n    content: \"\\ea08\";\n  }\n  .bx-dna:before {\n    content: \"\\ea09\";\n  }\n  .bx-dock-bottom:before {\n    content: \"\\ea0a\";\n  }\n  .bx-dock-left:before {\n    content: \"\\ea0b\";\n  }\n  .bx-dock-right:before {\n    content: \"\\ea0c\";\n  }\n  .bx-dock-top:before {\n    content: \"\\ea0d\";\n  }\n  .bx-dollar:before {\n    content: \"\\ea0e\";\n  }\n  .bx-dollar-circle:before {\n    content: \"\\ea0f\";\n  }\n  .bx-donate-blood:before {\n    content: \"\\ea10\";\n  }\n  .bx-donate-heart:before {\n    content: \"\\ea11\";\n  }\n  .bx-door-open:before {\n    content: \"\\ea12\";\n  }\n  .bx-dots-horizontal:before {\n    content: \"\\ea13\";\n  }\n  .bx-dots-horizontal-rounded:before {\n    content: \"\\ea14\";\n  }\n  .bx-dots-vertical:before {\n    content: \"\\ea15\";\n  }\n  .bx-dots-vertical-rounded:before {\n    content: \"\\ea16\";\n  }\n  .bx-doughnut-chart:before {\n    content: \"\\ea17\";\n  }\n  .bx-down-arrow:before {\n    content: \"\\ea18\";\n  }\n  .bx-down-arrow-alt:before {\n    content: \"\\ea19\";\n  }\n  .bx-down-arrow-circle:before {\n    content: \"\\ea1a\";\n  }\n  .bx-download:before {\n    content: \"\\ea1b\";\n  }\n  .bx-downvote:before {\n    content: \"\\ea1c\";\n  }\n  .bx-drink:before {\n    content: \"\\ea1d\";\n  }\n  .bx-droplet:before {\n    content: \"\\ea1e\";\n  }\n  .bx-dumbbell:before {\n    content: \"\\ea1f\";\n  }\n  .bx-duplicate:before {\n    content: \"\\ea20\";\n  }\n  .bx-edit:before {\n    content: \"\\ea21\";\n  }\n  .bx-edit-alt:before {\n    content: \"\\ea22\";\n  }\n  .bx-envelope:before {\n    content: \"\\ea23\";\n  }\n  .bx-envelope-open:before {\n    content: \"\\ea24\";\n  }\n  .bx-equalizer:before {\n    content: \"\\ea25\";\n  }\n  .bx-eraser:before {\n    content: \"\\ea26\";\n  }\n  .bx-error:before {\n    content: \"\\ea27\";\n  }\n  .bx-error-alt:before {\n    content: \"\\ea28\";\n  }\n  .bx-error-circle:before {\n    content: \"\\ea29\";\n  }\n  .bx-euro:before {\n    content: \"\\ea2a\";\n  }\n  .bx-exclude:before {\n    content: \"\\ea2b\";\n  }\n  .bx-exit:before {\n    content: \"\\ea2c\";\n  }\n  .bx-exit-fullscreen:before {\n    content: \"\\ea2d\";\n  }\n  .bx-expand:before {\n    content: \"\\ea2e\";\n  }\n  .bx-expand-alt:before {\n    content: \"\\ea2f\";\n  }\n  .bx-export:before {\n    content: \"\\ea30\";\n  }\n  .bx-extension:before {\n    content: \"\\ea31\";\n  }\n  .bx-face:before {\n    content: \"\\ea32\";\n  }\n  .bx-fast-forward:before {\n    content: \"\\ea33\";\n  }\n  .bx-fast-forward-circle:before {\n    content: \"\\ea34\";\n  }\n  .bx-female:before {\n    content: \"\\ea35\";\n  }\n  .bx-female-sign:before {\n    content: \"\\ea36\";\n  }\n  .bx-file:before {\n    content: \"\\ea37\";\n  }\n  .bx-file-blank:before {\n    content: \"\\ea38\";\n  }\n  .bx-file-find:before {\n    content: \"\\ea39\";\n  }\n  .bx-film:before {\n    content: \"\\ea3a\";\n  }\n  .bx-filter:before {\n    content: \"\\ea3b\";\n  }\n  .bx-filter-alt:before {\n    content: \"\\ea3c\";\n  }\n  .bx-fingerprint:before {\n    content: \"\\ea3d\";\n  }\n  .bx-first-aid:before {\n    content: \"\\ea3e\";\n  }\n  .bx-first-page:before {\n    content: \"\\ea3f\";\n  }\n  .bx-flag:before {\n    content: \"\\ea40\";\n  }\n  .bx-folder:before {\n    content: \"\\ea41\";\n  }\n  .bx-folder-minus:before {\n    content: \"\\ea42\";\n  }\n  .bx-folder-open:before {\n    content: \"\\ea43\";\n  }\n  .bx-folder-plus:before {\n    content: \"\\ea44\";\n  }\n  .bx-font:before {\n    content: \"\\ea45\";\n  }\n  .bx-font-color:before {\n    content: \"\\ea46\";\n  }\n  .bx-font-family:before {\n    content: \"\\ea47\";\n  }\n  .bx-font-size:before {\n    content: \"\\ea48\";\n  }\n  .bx-food-menu:before {\n    content: \"\\ea49\";\n  }\n  .bx-food-tag:before {\n    content: \"\\ea4a\";\n  }\n  .bx-football:before {\n    content: \"\\ea4b\";\n  }\n  .bx-fridge:before {\n    content: \"\\ea4c\";\n  }\n  .bx-fullscreen:before {\n    content: \"\\ea4d\";\n  }\n  .bx-game:before {\n    content: \"\\ea4e\";\n  }\n  .bx-gas-pump:before {\n    content: \"\\ea4f\";\n  }\n  .bx-ghost:before {\n    content: \"\\ea50\";\n  }\n  .bx-gift:before {\n    content: \"\\ea51\";\n  }\n  .bx-git-branch:before {\n    content: \"\\ea52\";\n  }\n  .bx-git-commit:before {\n    content: \"\\ea53\";\n  }\n  .bx-git-compare:before {\n    content: \"\\ea54\";\n  }\n  .bx-git-merge:before {\n    content: \"\\ea55\";\n  }\n  .bx-git-pull-request:before {\n    content: \"\\ea56\";\n  }\n  .bx-git-repo-forked:before {\n    content: \"\\ea57\";\n  }\n  .bx-glasses:before {\n    content: \"\\ea58\";\n  }\n  .bx-glasses-alt:before {\n    content: \"\\ea59\";\n  }\n  .bx-globe:before {\n    content: \"\\ea5a\";\n  }\n  .bx-globe-alt:before {\n    content: \"\\ea5b\";\n  }\n  .bx-grid:before {\n    content: \"\\ea5c\";\n  }\n  .bx-grid-alt:before {\n    content: \"\\ea5d\";\n  }\n  .bx-grid-horizontal:before {\n    content: \"\\ea5e\";\n  }\n  .bx-grid-small:before {\n    content: \"\\ea5f\";\n  }\n  .bx-grid-vertical:before {\n    content: \"\\ea60\";\n  }\n  .bx-group:before {\n    content: \"\\ea61\";\n  }\n  .bx-handicap:before {\n    content: \"\\ea62\";\n  }\n  .bx-happy:before {\n    content: \"\\ea63\";\n  }\n  .bx-happy-alt:before {\n    content: \"\\ea64\";\n  }\n  .bx-happy-beaming:before {\n    content: \"\\ea65\";\n  }\n  .bx-happy-heart-eyes:before {\n    content: \"\\ea66\";\n  }\n  .bx-hash:before {\n    content: \"\\ea67\";\n  }\n  .bx-hdd:before {\n    content: \"\\ea68\";\n  }\n  .bx-heading:before {\n    content: \"\\ea69\";\n  }\n  .bx-headphone:before {\n    content: \"\\ea6a\";\n  }\n  .bx-health:before {\n    content: \"\\ea6b\";\n  }\n  .bx-heart:before {\n    content: \"\\ea6c\";\n  }\n  .bx-heart-circle:before {\n    content: \"\\ea6d\";\n  }\n  .bx-heart-square:before {\n    content: \"\\ea6e\";\n  }\n  .bx-help-circle:before {\n    content: \"\\ea6f\";\n  }\n  .bx-hide:before {\n    content: \"\\ea70\";\n  }\n  .bx-highlight:before {\n    content: \"\\ea71\";\n  }\n  .bx-history:before {\n    content: \"\\ea72\";\n  }\n  .bx-hive:before {\n    content: \"\\ea73\";\n  }\n  .bx-home:before {\n    content: \"\\ea74\";\n  }\n  .bx-home-alt:before {\n    content: \"\\ea75\";\n  }\n  .bx-home-circle:before {\n    content: \"\\ea76\";\n  }\n  .bx-home-heart:before {\n    content: \"\\ea77\";\n  }\n  .bx-home-smile:before {\n    content: \"\\ea78\";\n  }\n  .bx-horizontal-center:before {\n    content: \"\\ea79\";\n  }\n  .bx-hotel:before {\n    content: \"\\ea7a\";\n  }\n  .bx-hourglass:before {\n    content: \"\\ea7b\";\n  }\n  .bx-id-card:before {\n    content: \"\\ea7c\";\n  }\n  .bx-image:before {\n    content: \"\\ea7d\";\n  }\n  .bx-image-add:before {\n    content: \"\\ea7e\";\n  }\n  .bx-image-alt:before {\n    content: \"\\ea7f\";\n  }\n  .bx-images:before {\n    content: \"\\ea80\";\n  }\n  .bx-import:before {\n    content: \"\\ea81\";\n  }\n  .bx-infinite:before {\n    content: \"\\ea82\";\n  }\n  .bx-info-circle:before {\n    content: \"\\ea83\";\n  }\n  .bx-info-square:before {\n    content: \"\\ea84\";\n  }\n  .bx-intersect:before {\n    content: \"\\ea85\";\n  }\n  .bx-italic:before {\n    content: \"\\ea86\";\n  }\n  .bx-joystick:before {\n    content: \"\\ea87\";\n  }\n  .bx-joystick-alt:before {\n    content: \"\\ea88\";\n  }\n  .bx-joystick-button:before {\n    content: \"\\ea89\";\n  }\n  .bx-key:before {\n    content: \"\\ea8a\";\n  }\n  .bx-label:before {\n    content: \"\\ea8b\";\n  }\n  .bx-landscape:before {\n    content: \"\\ea8c\";\n  }\n  .bx-laptop:before {\n    content: \"\\ea8d\";\n  }\n  .bx-last-page:before {\n    content: \"\\ea8e\";\n  }\n  .bx-laugh:before {\n    content: \"\\ea8f\";\n  }\n  .bx-layer:before {\n    content: \"\\ea90\";\n  }\n  .bx-layer-minus:before {\n    content: \"\\ea91\";\n  }\n  .bx-layer-plus:before {\n    content: \"\\ea92\";\n  }\n  .bx-layout:before {\n    content: \"\\ea93\";\n  }\n  .bx-left-arrow:before {\n    content: \"\\ea94\";\n  }\n  .bx-left-arrow-alt:before {\n    content: \"\\ea95\";\n  }\n  .bx-left-arrow-circle:before {\n    content: \"\\ea96\";\n  }\n  .bx-left-down-arrow-circle:before {\n    content: \"\\ea97\";\n  }\n  .bx-left-indent:before {\n    content: \"\\ea98\";\n  }\n  .bx-left-top-arrow-circle:before {\n    content: \"\\ea99\";\n  }\n  .bx-library:before {\n    content: \"\\ea9a\";\n  }\n  .bx-like:before {\n    content: \"\\ea9b\";\n  }\n  .bx-line-chart:before {\n    content: \"\\ea9c\";\n  }\n  .bx-line-chart-down:before {\n    content: \"\\ea9d\";\n  }\n  .bx-link:before {\n    content: \"\\ea9e\";\n  }\n  .bx-link-alt:before {\n    content: \"\\ea9f\";\n  }\n  .bx-link-external:before {\n    content: \"\\eaa0\";\n  }\n  .bx-lira:before {\n    content: \"\\eaa1\";\n  }\n  .bx-list-check:before {\n    content: \"\\eaa2\";\n  }\n  .bx-list-minus:before {\n    content: \"\\eaa3\";\n  }\n  .bx-list-ol:before {\n    content: \"\\eaa4\";\n  }\n  .bx-list-plus:before {\n    content: \"\\eaa5\";\n  }\n  .bx-list-ul:before {\n    content: \"\\eaa6\";\n  }\n  .bx-loader:before {\n    content: \"\\eaa7\";\n  }\n  .bx-loader-alt:before {\n    content: \"\\eaa8\";\n  }\n  .bx-loader-circle:before {\n    content: \"\\eaa9\";\n  }\n  .bx-location-plus:before {\n    content: \"\\eaaa\";\n  }\n  .bx-lock:before {\n    content: \"\\eaab\";\n  }\n  .bx-lock-alt:before {\n    content: \"\\eaac\";\n  }\n  .bx-lock-open:before {\n    content: \"\\eaad\";\n  }\n  .bx-lock-open-alt:before {\n    content: \"\\eaae\";\n  }\n  .bx-log-in:before {\n    content: \"\\eaaf\";\n  }\n  .bx-log-in-circle:before {\n    content: \"\\eab0\";\n  }\n  .bx-log-out:before {\n    content: \"\\eab1\";\n  }\n  .bx-log-out-circle:before {\n    content: \"\\eab2\";\n  }\n  .bx-low-vision:before {\n    content: \"\\eab3\";\n  }\n  .bx-magnet:before {\n    content: \"\\eab4\";\n  }\n  .bx-mail-send:before {\n    content: \"\\eab5\";\n  }\n  .bx-male:before {\n    content: \"\\eab6\";\n  }\n  .bx-male-sign:before {\n    content: \"\\eab7\";\n  }\n  .bx-map:before {\n    content: \"\\eab8\";\n  }\n  .bx-map-alt:before {\n    content: \"\\eab9\";\n  }\n  .bx-map-pin:before {\n    content: \"\\eaba\";\n  }\n  .bx-mask:before {\n    content: \"\\eabb\";\n  }\n  .bx-medal:before {\n    content: \"\\eabc\";\n  }\n  .bx-meh:before {\n    content: \"\\eabd\";\n  }\n  .bx-meh-alt:before {\n    content: \"\\eabe\";\n  }\n  .bx-meh-blank:before {\n    content: \"\\eabf\";\n  }\n  .bx-memory-card:before {\n    content: \"\\eac0\";\n  }\n  .bx-menu:before {\n    content: \"\\eac1\";\n  }\n  .bx-menu-alt-left:before {\n    content: \"\\eac2\";\n  }\n  .bx-menu-alt-right:before {\n    content: \"\\eac3\";\n  }\n  .bx-merge:before {\n    content: \"\\eac4\";\n  }\n  .bx-message:before {\n    content: \"\\eac5\";\n  }\n  .bx-message-add:before {\n    content: \"\\eac6\";\n  }\n  .bx-message-alt:before {\n    content: \"\\eac7\";\n  }\n  .bx-message-alt-add:before {\n    content: \"\\eac8\";\n  }\n  .bx-message-alt-check:before {\n    content: \"\\eac9\";\n  }\n  .bx-message-alt-detail:before {\n    content: \"\\eaca\";\n  }\n  .bx-message-alt-dots:before {\n    content: \"\\eacb\";\n  }\n  .bx-message-alt-edit:before {\n    content: \"\\eacc\";\n  }\n  .bx-message-alt-error:before {\n    content: \"\\eacd\";\n  }\n  .bx-message-alt-minus:before {\n    content: \"\\eace\";\n  }\n  .bx-message-alt-x:before {\n    content: \"\\eacf\";\n  }\n  .bx-message-check:before {\n    content: \"\\ead0\";\n  }\n  .bx-message-detail:before {\n    content: \"\\ead1\";\n  }\n  .bx-message-dots:before {\n    content: \"\\ead2\";\n  }\n  .bx-message-edit:before {\n    content: \"\\ead3\";\n  }\n  .bx-message-error:before {\n    content: \"\\ead4\";\n  }\n  .bx-message-minus:before {\n    content: \"\\ead5\";\n  }\n  .bx-message-rounded:before {\n    content: \"\\ead6\";\n  }\n  .bx-message-rounded-add:before {\n    content: \"\\ead7\";\n  }\n  .bx-message-rounded-check:before {\n    content: \"\\ead8\";\n  }\n  .bx-message-rounded-detail:before {\n    content: \"\\ead9\";\n  }\n  .bx-message-rounded-dots:before {\n    content: \"\\eada\";\n  }\n  .bx-message-rounded-edit:before {\n    content: \"\\eadb\";\n  }\n  .bx-message-rounded-error:before {\n    content: \"\\eadc\";\n  }\n  .bx-message-rounded-minus:before {\n    content: \"\\eadd\";\n  }\n  .bx-message-rounded-x:before {\n    content: \"\\eade\";\n  }\n  .bx-message-square:before {\n    content: \"\\eadf\";\n  }\n  .bx-message-square-add:before {\n    content: \"\\eae0\";\n  }\n  .bx-message-square-check:before {\n    content: \"\\eae1\";\n  }\n  .bx-message-square-detail:before {\n    content: \"\\eae2\";\n  }\n  .bx-message-square-dots:before {\n    content: \"\\eae3\";\n  }\n  .bx-message-square-edit:before {\n    content: \"\\eae4\";\n  }\n  .bx-message-square-error:before {\n    content: \"\\eae5\";\n  }\n  .bx-message-square-minus:before {\n    content: \"\\eae6\";\n  }\n  .bx-message-square-x:before {\n    content: \"\\eae7\";\n  }\n  .bx-message-x:before {\n    content: \"\\eae8\";\n  }\n  .bx-meteor:before {\n    content: \"\\eae9\";\n  }\n  .bx-microchip:before {\n    content: \"\\eaea\";\n  }\n  .bx-microphone:before {\n    content: \"\\eaeb\";\n  }\n  .bx-microphone-off:before {\n    content: \"\\eaec\";\n  }\n  .bx-minus:before {\n    content: \"\\eaed\";\n  }\n  .bx-minus-back:before {\n    content: \"\\eaee\";\n  }\n  .bx-minus-circle:before {\n    content: \"\\eaef\";\n  }\n  .bx-minus-front:before {\n    content: \"\\eaf0\";\n  }\n  .bx-mobile:before {\n    content: \"\\eaf1\";\n  }\n  .bx-mobile-alt:before {\n    content: \"\\eaf2\";\n  }\n  .bx-mobile-landscape:before {\n    content: \"\\eaf3\";\n  }\n  .bx-mobile-vibration:before {\n    content: \"\\eaf4\";\n  }\n  .bx-money:before {\n    content: \"\\eaf5\";\n  }\n  .bx-moon:before {\n    content: \"\\eaf6\";\n  }\n  .bx-mouse:before {\n    content: \"\\eaf7\";\n  }\n  .bx-mouse-alt:before {\n    content: \"\\eaf8\";\n  }\n  .bx-move:before {\n    content: \"\\eaf9\";\n  }\n  .bx-move-horizontal:before {\n    content: \"\\eafa\";\n  }\n  .bx-move-vertical:before {\n    content: \"\\eafb\";\n  }\n  .bx-movie:before {\n    content: \"\\eafc\";\n  }\n  .bx-movie-play:before {\n    content: \"\\eafd\";\n  }\n  .bx-music:before {\n    content: \"\\eafe\";\n  }\n  .bx-navigation:before {\n    content: \"\\eaff\";\n  }\n  .bx-network-chart:before {\n    content: \"\\eb00\";\n  }\n  .bx-news:before {\n    content: \"\\eb01\";\n  }\n  .bx-no-entry:before {\n    content: \"\\eb02\";\n  }\n  .bx-note:before {\n    content: \"\\eb03\";\n  }\n  .bx-notepad:before {\n    content: \"\\eb04\";\n  }\n  .bx-notification:before {\n    content: \"\\eb05\";\n  }\n  .bx-notification-off:before {\n    content: \"\\eb06\";\n  }\n  .bx-outline:before {\n    content: \"\\eb07\";\n  }\n  .bx-package:before {\n    content: \"\\eb08\";\n  }\n  .bx-paint:before {\n    content: \"\\eb09\";\n  }\n  .bx-paint-roll:before {\n    content: \"\\eb0a\";\n  }\n  .bx-palette:before {\n    content: \"\\eb0b\";\n  }\n  .bx-paperclip:before {\n    content: \"\\eb0c\";\n  }\n  .bx-paper-plane:before {\n    content: \"\\eb0d\";\n  }\n  .bx-paragraph:before {\n    content: \"\\eb0e\";\n  }\n  .bx-paste:before {\n    content: \"\\eb0f\";\n  }\n  .bx-pause:before {\n    content: \"\\eb10\";\n  }\n  .bx-pause-circle:before {\n    content: \"\\eb11\";\n  }\n  .bx-pen:before {\n    content: \"\\eb12\";\n  }\n  .bx-pencil:before {\n    content: \"\\eb13\";\n  }\n  .bx-phone:before {\n    content: \"\\eb14\";\n  }\n  .bx-phone-call:before {\n    content: \"\\eb15\";\n  }\n  .bx-phone-incoming:before {\n    content: \"\\eb16\";\n  }\n  .bx-phone-outgoing:before {\n    content: \"\\eb17\";\n  }\n  .bx-photo-album:before {\n    content: \"\\eb18\";\n  }\n  .bx-pie-chart:before {\n    content: \"\\eb19\";\n  }\n  .bx-pie-chart-alt:before {\n    content: \"\\eb1a\";\n  }\n  .bx-pie-chart-alt-2:before {\n    content: \"\\eb1b\";\n  }\n  .bx-pin:before {\n    content: \"\\eb1c\";\n  }\n  .bx-planet:before {\n    content: \"\\eb1d\";\n  }\n  .bx-play:before {\n    content: \"\\eb1e\";\n  }\n  .bx-play-circle:before {\n    content: \"\\eb1f\";\n  }\n  .bx-plug:before {\n    content: \"\\eb20\";\n  }\n  .bx-plus:before {\n    content: \"\\eb21\";\n  }\n  .bx-plus-circle:before {\n    content: \"\\eb22\";\n  }\n  .bx-plus-medical:before {\n    content: \"\\eb23\";\n  }\n  .bx-pointer:before {\n    content: \"\\eb24\";\n  }\n  .bx-poll:before {\n    content: \"\\eb25\";\n  }\n  .bx-polygon:before {\n    content: \"\\eb26\";\n  }\n  .bx-pound:before {\n    content: \"\\eb27\";\n  }\n  .bx-power-off:before {\n    content: \"\\eb28\";\n  }\n  .bx-printer:before {\n    content: \"\\eb29\";\n  }\n  .bx-pulse:before {\n    content: \"\\eb2a\";\n  }\n  .bx-purchase-tag:before {\n    content: \"\\eb2b\";\n  }\n  .bx-purchase-tag-alt:before {\n    content: \"\\eb2c\";\n  }\n  .bx-pyramid:before {\n    content: \"\\eb2d\";\n  }\n  .bx-question-mark:before {\n    content: \"\\eb2e\";\n  }\n  .bx-radar:before {\n    content: \"\\eb2f\";\n  }\n  .bx-radio:before {\n    content: \"\\eb30\";\n  }\n  .bx-radio-circle:before {\n    content: \"\\eb31\";\n  }\n  .bx-radio-circle-marked:before {\n    content: \"\\eb32\";\n  }\n  .bx-receipt:before {\n    content: \"\\eb33\";\n  }\n  .bx-rectangle:before {\n    content: \"\\eb34\";\n  }\n  .bx-recycle:before {\n    content: \"\\eb35\";\n  }\n  .bx-redo:before {\n    content: \"\\eb36\";\n  }\n  .bx-refresh:before {\n    content: \"\\eb37\";\n  }\n  .bx-rename:before {\n    content: \"\\eb38\";\n  }\n  .bx-repeat:before {\n    content: \"\\eb39\";\n  }\n  .bx-reply:before {\n    content: \"\\eb3a\";\n  }\n  .bx-reply-all:before {\n    content: \"\\eb3b\";\n  }\n  .bx-repost:before {\n    content: \"\\eb3c\";\n  }\n  .bx-reset:before {\n    content: \"\\eb3d\";\n  }\n  .bx-restaurant:before {\n    content: \"\\eb3e\";\n  }\n  .bx-revision:before {\n    content: \"\\eb3f\";\n  }\n  .bx-rewind:before {\n    content: \"\\eb40\";\n  }\n  .bx-rewind-circle:before {\n    content: \"\\eb41\";\n  }\n  .bx-right-arrow:before {\n    content: \"\\eb42\";\n  }\n  .bx-right-arrow-alt:before {\n    content: \"\\eb43\";\n  }\n  .bx-right-arrow-circle:before {\n    content: \"\\eb44\";\n  }\n  .bx-right-down-arrow-circle:before {\n    content: \"\\eb45\";\n  }\n  .bx-right-indent:before {\n    content: \"\\eb46\";\n  }\n  .bx-right-top-arrow-circle:before {\n    content: \"\\eb47\";\n  }\n  .bx-rocket:before {\n    content: \"\\eb48\";\n  }\n  .bx-rotate-left:before {\n    content: \"\\eb49\";\n  }\n  .bx-rotate-right:before {\n    content: \"\\eb4a\";\n  }\n  .bx-rss:before {\n    content: \"\\eb4b\";\n  }\n  .bx-ruble:before {\n    content: \"\\eb4c\";\n  }\n  .bx-ruler:before {\n    content: \"\\eb4d\";\n  }\n  .bx-run:before {\n    content: \"\\eb4e\";\n  }\n  .bx-rupee:before {\n    content: \"\\eb4f\";\n  }\n  .bx-sad:before {\n    content: \"\\eb50\";\n  }\n  .bx-save:before {\n    content: \"\\eb51\";\n  }\n  .bx-scan:before {\n    content: \"\\eb52\";\n  }\n  .bx-screenshot:before {\n    content: \"\\eb53\";\n  }\n  .bx-search:before {\n    content: \"\\eb54\";\n  }\n  .bx-search-alt:before {\n    content: \"\\eb55\";\n  }\n  .bx-search-alt-2:before {\n    content: \"\\eb56\";\n  }\n  .bx-selection:before {\n    content: \"\\eb57\";\n  }\n  .bx-select-multiple:before {\n    content: \"\\eb58\";\n  }\n  .bx-send:before {\n    content: \"\\eb59\";\n  }\n  .bx-server:before {\n    content: \"\\eb5a\";\n  }\n  .bx-shape-circle:before {\n    content: \"\\eb5b\";\n  }\n  .bx-shape-polygon:before {\n    content: \"\\eb5c\";\n  }\n  .bx-shape-square:before {\n    content: \"\\eb5d\";\n  }\n  .bx-shape-triangle:before {\n    content: \"\\eb5e\";\n  }\n  .bx-share:before {\n    content: \"\\eb5f\";\n  }\n  .bx-share-alt:before {\n    content: \"\\eb60\";\n  }\n  .bx-shekel:before {\n    content: \"\\eb61\";\n  }\n  .bx-shield:before {\n    content: \"\\eb62\";\n  }\n  .bx-shield-alt:before {\n    content: \"\\eb63\";\n  }\n  .bx-shield-alt-2:before {\n    content: \"\\eb64\";\n  }\n  .bx-shield-quarter:before {\n    content: \"\\eb65\";\n  }\n  .bx-shield-x:before {\n    content: \"\\eb66\";\n  }\n  .bx-shocked:before {\n    content: \"\\eb67\";\n  }\n  .bx-shopping-bag:before {\n    content: \"\\eb68\";\n  }\n  .bx-show:before {\n    content: \"\\eb69\";\n  }\n  .bx-show-alt:before {\n    content: \"\\eb6a\";\n  }\n  .bx-shuffle:before {\n    content: \"\\eb6b\";\n  }\n  .bx-sidebar:before {\n    content: \"\\eb6c\";\n  }\n  .bx-sitemap:before {\n    content: \"\\eb6d\";\n  }\n  .bx-skip-next:before {\n    content: \"\\eb6e\";\n  }\n  .bx-skip-next-circle:before {\n    content: \"\\eb6f\";\n  }\n  .bx-skip-previous:before {\n    content: \"\\eb70\";\n  }\n  .bx-skip-previous-circle:before {\n    content: \"\\eb71\";\n  }\n  .bx-sleepy:before {\n    content: \"\\eb72\";\n  }\n  .bx-slider:before {\n    content: \"\\eb73\";\n  }\n  .bx-slider-alt:before {\n    content: \"\\eb74\";\n  }\n  .bx-slideshow:before {\n    content: \"\\eb75\";\n  }\n  .bx-smile:before {\n    content: \"\\eb76\";\n  }\n  .bx-sort:before {\n    content: \"\\eb77\";\n  }\n  .bx-sort-alt-2:before {\n    content: \"\\eb78\";\n  }\n  .bx-sort-a-z:before {\n    content: \"\\eb79\";\n  }\n  .bx-sort-down:before {\n    content: \"\\eb7a\";\n  }\n  .bx-sort-up:before {\n    content: \"\\eb7b\";\n  }\n  .bx-sort-z-a:before {\n    content: \"\\eb7c\";\n  }\n  .bx-spa:before {\n    content: \"\\eb7d\";\n  }\n  .bx-space-bar:before {\n    content: \"\\eb7e\";\n  }\n  .bx-spray-can:before {\n    content: \"\\eb7f\";\n  }\n  .bx-spreadsheet:before {\n    content: \"\\eb80\";\n  }\n  .bx-square:before {\n    content: \"\\eb81\";\n  }\n  .bx-square-rounded:before {\n    content: \"\\eb82\";\n  }\n  .bx-star:before {\n    content: \"\\eb83\";\n  }\n  .bx-station:before {\n    content: \"\\eb84\";\n  }\n  .bx-stats:before {\n    content: \"\\eb85\";\n  }\n  .bx-sticker:before {\n    content: \"\\eb86\";\n  }\n  .bx-stop:before {\n    content: \"\\eb87\";\n  }\n  .bx-stop-circle:before {\n    content: \"\\eb88\";\n  }\n  .bx-stopwatch:before {\n    content: \"\\eb89\";\n  }\n  .bx-store:before {\n    content: \"\\eb8a\";\n  }\n  .bx-store-alt:before {\n    content: \"\\eb8b\";\n  }\n  .bx-street-view:before {\n    content: \"\\eb8c\";\n  }\n  .bx-strikethrough:before {\n    content: \"\\eb8d\";\n  }\n  .bx-subdirectory-left:before {\n    content: \"\\eb8e\";\n  }\n  .bx-subdirectory-right:before {\n    content: \"\\eb8f\";\n  }\n  .bx-sun:before {\n    content: \"\\eb90\";\n  }\n  .bx-support:before {\n    content: \"\\eb91\";\n  }\n  .bx-swim:before {\n    content: \"\\eb92\";\n  }\n  .bx-sync:before {\n    content: \"\\eb93\";\n  }\n  .bx-tab:before {\n    content: \"\\eb94\";\n  }\n  .bx-table:before {\n    content: \"\\eb95\";\n  }\n  .bx-tachometer:before {\n    content: \"\\eb96\";\n  }\n  .bx-tag:before {\n    content: \"\\eb97\";\n  }\n  .bx-tag-alt:before {\n    content: \"\\eb98\";\n  }\n  .bx-target-lock:before {\n    content: \"\\eb99\";\n  }\n  .bx-task:before {\n    content: \"\\eb9a\";\n  }\n  .bx-task-x:before {\n    content: \"\\eb9b\";\n  }\n  .bx-taxi:before {\n    content: \"\\eb9c\";\n  }\n  .bx-tennis-ball:before {\n    content: \"\\eb9d\";\n  }\n  .bx-terminal:before {\n    content: \"\\eb9e\";\n  }\n  .bx-test-tube:before {\n    content: \"\\eb9f\";\n  }\n  .bx-text:before {\n    content: \"\\eba0\";\n  }\n  .bx-time:before {\n    content: \"\\eba1\";\n  }\n  .bx-time-five:before {\n    content: \"\\eba2\";\n  }\n  .bx-timer:before {\n    content: \"\\eba3\";\n  }\n  .bx-tired:before {\n    content: \"\\eba4\";\n  }\n  .bx-toggle-left:before {\n    content: \"\\eba5\";\n  }\n  .bx-toggle-right:before {\n    content: \"\\eba6\";\n  }\n  .bx-tone:before {\n    content: \"\\eba7\";\n  }\n  .bx-traffic-cone:before {\n    content: \"\\eba8\";\n  }\n  .bx-train:before {\n    content: \"\\eba9\";\n  }\n  .bx-transfer:before {\n    content: \"\\ebaa\";\n  }\n  .bx-transfer-alt:before {\n    content: \"\\ebab\";\n  }\n  .bx-trash:before {\n    content: \"\\ebac\";\n  }\n  .bx-trash-alt:before {\n    content: \"\\ebad\";\n  }\n  .bx-trending-down:before {\n    content: \"\\ebae\";\n  }\n  .bx-trending-up:before {\n    content: \"\\ebaf\";\n  }\n  .bx-trim:before {\n    content: \"\\ebb0\";\n  }\n  .bx-trip:before {\n    content: \"\\ebb1\";\n  }\n  .bx-trophy:before {\n    content: \"\\ebb2\";\n  }\n  .bx-tv:before {\n    content: \"\\ebb3\";\n  }\n  .bx-underline:before {\n    content: \"\\ebb4\";\n  }\n  .bx-undo:before {\n    content: \"\\ebb5\";\n  }\n  .bx-unite:before {\n    content: \"\\ebb6\";\n  }\n  .bx-unlink:before {\n    content: \"\\ebb7\";\n  }\n  .bx-up-arrow:before {\n    content: \"\\ebb8\";\n  }\n  .bx-up-arrow-alt:before {\n    content: \"\\ebb9\";\n  }\n  .bx-up-arrow-circle:before {\n    content: \"\\ebba\";\n  }\n  .bx-upload:before {\n    content: \"\\ebbb\";\n  }\n  .bx-upside-down:before {\n    content: \"\\ebbc\";\n  }\n  .bx-upvote:before {\n    content: \"\\ebbd\";\n  }\n  .bx-usb:before {\n    content: \"\\ebbe\";\n  }\n  .bx-user:before {\n    content: \"\\ebbf\";\n  }\n  .bx-user-check:before {\n    content: \"\\ebc0\";\n  }\n  .bx-user-circle:before {\n    content: \"\\ebc1\";\n  }\n  .bx-user-minus:before {\n    content: \"\\ebc2\";\n  }\n  .bx-user-pin:before {\n    content: \"\\ebc3\";\n  }\n  .bx-user-plus:before {\n    content: \"\\ebc4\";\n  }\n  .bx-user-voice:before {\n    content: \"\\ebc5\";\n  }\n  .bx-user-x:before {\n    content: \"\\ebc6\";\n  }\n  .bx-vector:before {\n    content: \"\\ebc7\";\n  }\n  .bx-vertical-center:before {\n    content: \"\\ebc8\";\n  }\n  .bx-vial:before {\n    content: \"\\ebc9\";\n  }\n  .bx-video:before {\n    content: \"\\ebca\";\n  }\n  .bx-video-off:before {\n    content: \"\\ebcb\";\n  }\n  .bx-video-plus:before {\n    content: \"\\ebcc\";\n  }\n  .bx-video-recording:before {\n    content: \"\\ebcd\";\n  }\n  .bx-voicemail:before {\n    content: \"\\ebce\";\n  }\n  .bx-volume:before {\n    content: \"\\ebcf\";\n  }\n  .bx-volume-full:before {\n    content: \"\\ebd0\";\n  }\n  .bx-volume-low:before {\n    content: \"\\ebd1\";\n  }\n  .bx-volume-mute:before {\n    content: \"\\ebd2\";\n  }\n  .bx-walk:before {\n    content: \"\\ebd3\";\n  }\n  .bx-wallet:before {\n    content: \"\\ebd4\";\n  }\n  .bx-wallet-alt:before {\n    content: \"\\ebd5\";\n  }\n  .bx-water:before {\n    content: \"\\ebd6\";\n  }\n  .bx-webcam:before {\n    content: \"\\ebd7\";\n  }\n  .bx-wifi:before {\n    content: \"\\ebd8\";\n  }\n  .bx-wifi-0:before {\n    content: \"\\ebd9\";\n  }\n  .bx-wifi-1:before {\n    content: \"\\ebda\";\n  }\n  .bx-wifi-2:before {\n    content: \"\\ebdb\";\n  }\n  .bx-wifi-off:before {\n    content: \"\\ebdc\";\n  }\n  .bx-wind:before {\n    content: \"\\ebdd\";\n  }\n  .bx-window:before {\n    content: \"\\ebde\";\n  }\n  .bx-window-alt:before {\n    content: \"\\ebdf\";\n  }\n  .bx-window-close:before {\n    content: \"\\ebe0\";\n  }\n  .bx-window-open:before {\n    content: \"\\ebe1\";\n  }\n  .bx-windows:before {\n    content: \"\\ebe2\";\n  }\n  .bx-wine:before {\n    content: \"\\ebe3\";\n  }\n  .bx-wink-smile:before {\n    content: \"\\ebe4\";\n  }\n  .bx-wink-tongue:before {\n    content: \"\\ebe5\";\n  }\n  .bx-won:before {\n    content: \"\\ebe6\";\n  }\n  .bx-world:before {\n    content: \"\\ebe7\";\n  }\n  .bx-wrench:before {\n    content: \"\\ebe8\";\n  }\n  .bx-x:before {\n    content: \"\\ebe9\";\n  }\n  .bx-x-circle:before {\n    content: \"\\ebea\";\n  }\n  .bx-yen:before {\n    content: \"\\ebeb\";\n  }\n  .bx-zoom-in:before {\n    content: \"\\ebec\";\n  }\n  .bx-zoom-out:before {\n    content: \"\\ebed\";\n  }\n  .bxs-add-to-queue:before {\n    content: \"\\ebee\";\n  }\n  .bxs-adjust:before {\n    content: \"\\ebef\";\n  }\n  .bxs-adjust-alt:before {\n    content: \"\\ebf0\";\n  }\n  .bxs-alarm:before {\n    content: \"\\ebf1\";\n  }\n  .bxs-alarm-add:before {\n    content: \"\\ebf2\";\n  }\n  .bxs-alarm-exclamation:before {\n    content: \"\\ebf3\";\n  }\n  .bxs-alarm-off:before {\n    content: \"\\ebf4\";\n  }\n  .bxs-alarm-snooze:before {\n    content: \"\\ebf5\";\n  }\n  .bxs-album:before {\n    content: \"\\ebf6\";\n  }\n  .bxs-ambulance:before {\n    content: \"\\ebf7\";\n  }\n  .bxs-analyse:before {\n    content: \"\\ebf8\";\n  }\n  .bxs-angry:before {\n    content: \"\\ebf9\";\n  }\n  .bxs-arch:before {\n    content: \"\\ebfa\";\n  }\n  .bxs-archive:before {\n    content: \"\\ebfb\";\n  }\n  .bxs-archive-in:before {\n    content: \"\\ebfc\";\n  }\n  .bxs-archive-out:before {\n    content: \"\\ebfd\";\n  }\n  .bxs-area:before {\n    content: \"\\ebfe\";\n  }\n  .bxs-arrow-from-bottom:before {\n    content: \"\\ebff\";\n  }\n  .bxs-arrow-from-left:before {\n    content: \"\\ec00\";\n  }\n  .bxs-arrow-from-right:before {\n    content: \"\\ec01\";\n  }\n  .bxs-arrow-from-top:before {\n    content: \"\\ec02\";\n  }\n  .bxs-arrow-to-bottom:before {\n    content: \"\\ec03\";\n  }\n  .bxs-arrow-to-left:before {\n    content: \"\\ec04\";\n  }\n  .bxs-arrow-to-right:before {\n    content: \"\\ec05\";\n  }\n  .bxs-arrow-to-top:before {\n    content: \"\\ec06\";\n  }\n  .bxs-award:before {\n    content: \"\\ec07\";\n  }\n  .bxs-baby-carriage:before {\n    content: \"\\ec08\";\n  }\n  .bxs-backpack:before {\n    content: \"\\ec09\";\n  }\n  .bxs-badge:before {\n    content: \"\\ec0a\";\n  }\n  .bxs-badge-check:before {\n    content: \"\\ec0b\";\n  }\n  .bxs-badge-dollar:before {\n    content: \"\\ec0c\";\n  }\n  .bxs-ball:before {\n    content: \"\\ec0d\";\n  }\n  .bxs-band-aid:before {\n    content: \"\\ec0e\";\n  }\n  .bxs-bank:before {\n    content: \"\\ec0f\";\n  }\n  .bxs-bar-chart-alt-2:before {\n    content: \"\\ec10\";\n  }\n  .bxs-bar-chart-square:before {\n    content: \"\\ec11\";\n  }\n  .bxs-barcode:before {\n    content: \"\\ec12\";\n  }\n  .bxs-baseball:before {\n    content: \"\\ec13\";\n  }\n  .bxs-basket:before {\n    content: \"\\ec14\";\n  }\n  .bxs-basketball:before {\n    content: \"\\ec15\";\n  }\n  .bxs-bath:before {\n    content: \"\\ec16\";\n  }\n  .bxs-battery:before {\n    content: \"\\ec17\";\n  }\n  .bxs-battery-charging:before {\n    content: \"\\ec18\";\n  }\n  .bxs-battery-full:before {\n    content: \"\\ec19\";\n  }\n  .bxs-battery-low:before {\n    content: \"\\ec1a\";\n  }\n  .bxs-bed:before {\n    content: \"\\ec1b\";\n  }\n  .bxs-been-here:before {\n    content: \"\\ec1c\";\n  }\n  .bxs-beer:before {\n    content: \"\\ec1d\";\n  }\n  .bxs-bell:before {\n    content: \"\\ec1e\";\n  }\n  .bxs-bell-minus:before {\n    content: \"\\ec1f\";\n  }\n  .bxs-bell-off:before {\n    content: \"\\ec20\";\n  }\n  .bxs-bell-plus:before {\n    content: \"\\ec21\";\n  }\n  .bxs-bell-ring:before {\n    content: \"\\ec22\";\n  }\n  .bxs-bible:before {\n    content: \"\\ec23\";\n  }\n  .bxs-binoculars:before {\n    content: \"\\ec24\";\n  }\n  .bxs-blanket:before {\n    content: \"\\ec25\";\n  }\n  .bxs-bolt:before {\n    content: \"\\ec26\";\n  }\n  .bxs-bolt-circle:before {\n    content: \"\\ec27\";\n  }\n  .bxs-bomb:before {\n    content: \"\\ec28\";\n  }\n  .bxs-bone:before {\n    content: \"\\ec29\";\n  }\n  .bxs-bong:before {\n    content: \"\\ec2a\";\n  }\n  .bxs-book:before {\n    content: \"\\ec2b\";\n  }\n  .bxs-book-add:before {\n    content: \"\\ec2c\";\n  }\n  .bxs-book-alt:before {\n    content: \"\\ec2d\";\n  }\n  .bxs-book-bookmark:before {\n    content: \"\\ec2e\";\n  }\n  .bxs-book-content:before {\n    content: \"\\ec2f\";\n  }\n  .bxs-book-heart:before {\n    content: \"\\ec30\";\n  }\n  .bxs-bookmark:before {\n    content: \"\\ec31\";\n  }\n  .bxs-bookmark-alt:before {\n    content: \"\\ec32\";\n  }\n  .bxs-bookmark-alt-minus:before {\n    content: \"\\ec33\";\n  }\n  .bxs-bookmark-alt-plus:before {\n    content: \"\\ec34\";\n  }\n  .bxs-bookmark-heart:before {\n    content: \"\\ec35\";\n  }\n  .bxs-bookmark-minus:before {\n    content: \"\\ec36\";\n  }\n  .bxs-bookmark-plus:before {\n    content: \"\\ec37\";\n  }\n  .bxs-bookmarks:before {\n    content: \"\\ec38\";\n  }\n  .bxs-bookmark-star:before {\n    content: \"\\ec39\";\n  }\n  .bxs-book-open:before {\n    content: \"\\ec3a\";\n  }\n  .bxs-book-reader:before {\n    content: \"\\ec3b\";\n  }\n  .bxs-bot:before {\n    content: \"\\ec3c\";\n  }\n  .bxs-bowling-ball:before {\n    content: \"\\ec3d\";\n  }\n  .bxs-box:before {\n    content: \"\\ec3e\";\n  }\n  .bxs-brain:before {\n    content: \"\\ec3f\";\n  }\n  .bxs-briefcase:before {\n    content: \"\\ec40\";\n  }\n  .bxs-briefcase-alt:before {\n    content: \"\\ec41\";\n  }\n  .bxs-briefcase-alt-2:before {\n    content: \"\\ec42\";\n  }\n  .bxs-brightness:before {\n    content: \"\\ec43\";\n  }\n  .bxs-brightness-half:before {\n    content: \"\\ec44\";\n  }\n  .bxs-brush:before {\n    content: \"\\ec45\";\n  }\n  .bxs-brush-alt:before {\n    content: \"\\ec46\";\n  }\n  .bxs-bug:before {\n    content: \"\\ec47\";\n  }\n  .bxs-bug-alt:before {\n    content: \"\\ec48\";\n  }\n  .bxs-building:before {\n    content: \"\\ec49\";\n  }\n  .bxs-building-house:before {\n    content: \"\\ec4a\";\n  }\n  .bxs-buildings:before {\n    content: \"\\ec4b\";\n  }\n  .bxs-bulb:before {\n    content: \"\\ec4c\";\n  }\n  .bxs-bullseye:before {\n    content: \"\\ec4d\";\n  }\n  .bxs-buoy:before {\n    content: \"\\ec4e\";\n  }\n  .bxs-bus:before {\n    content: \"\\ec4f\";\n  }\n  .bxs-business:before {\n    content: \"\\ec50\";\n  }\n  .bxs-bus-school:before {\n    content: \"\\ec51\";\n  }\n  .bxs-cabinet:before {\n    content: \"\\ec52\";\n  }\n  .bxs-cake:before {\n    content: \"\\ec53\";\n  }\n  .bxs-calculator:before {\n    content: \"\\ec54\";\n  }\n  .bxs-calendar:before {\n    content: \"\\ec55\";\n  }\n  .bxs-calendar-alt:before {\n    content: \"\\ec56\";\n  }\n  .bxs-calendar-check:before {\n    content: \"\\ec57\";\n  }\n  .bxs-calendar-edit:before {\n    content: \"\\ec58\";\n  }\n  .bxs-calendar-event:before {\n    content: \"\\ec59\";\n  }\n  .bxs-calendar-exclamation:before {\n    content: \"\\ec5a\";\n  }\n  .bxs-calendar-heart:before {\n    content: \"\\ec5b\";\n  }\n  .bxs-calendar-minus:before {\n    content: \"\\ec5c\";\n  }\n  .bxs-calendar-plus:before {\n    content: \"\\ec5d\";\n  }\n  .bxs-calendar-star:before {\n    content: \"\\ec5e\";\n  }\n  .bxs-calendar-week:before {\n    content: \"\\ec5f\";\n  }\n  .bxs-calendar-x:before {\n    content: \"\\ec60\";\n  }\n  .bxs-camera:before {\n    content: \"\\ec61\";\n  }\n  .bxs-camera-home:before {\n    content: \"\\ec62\";\n  }\n  .bxs-camera-movie:before {\n    content: \"\\ec63\";\n  }\n  .bxs-camera-off:before {\n    content: \"\\ec64\";\n  }\n  .bxs-camera-plus:before {\n    content: \"\\ec65\";\n  }\n  .bxs-capsule:before {\n    content: \"\\ec66\";\n  }\n  .bxs-captions:before {\n    content: \"\\ec67\";\n  }\n  .bxs-car:before {\n    content: \"\\ec68\";\n  }\n  .bxs-car-battery:before {\n    content: \"\\ec69\";\n  }\n  .bxs-car-crash:before {\n    content: \"\\ec6a\";\n  }\n  .bxs-card:before {\n    content: \"\\ec6b\";\n  }\n  .bxs-caret-down-circle:before {\n    content: \"\\ec6c\";\n  }\n  .bxs-caret-down-square:before {\n    content: \"\\ec6d\";\n  }\n  .bxs-caret-left-circle:before {\n    content: \"\\ec6e\";\n  }\n  .bxs-caret-left-square:before {\n    content: \"\\ec6f\";\n  }\n  .bxs-caret-right-circle:before {\n    content: \"\\ec70\";\n  }\n  .bxs-caret-right-square:before {\n    content: \"\\ec71\";\n  }\n  .bxs-caret-up-circle:before {\n    content: \"\\ec72\";\n  }\n  .bxs-caret-up-square:before {\n    content: \"\\ec73\";\n  }\n  .bxs-car-garage:before {\n    content: \"\\ec74\";\n  }\n  .bxs-car-mechanic:before {\n    content: \"\\ec75\";\n  }\n  .bxs-carousel:before {\n    content: \"\\ec76\";\n  }\n  .bxs-cart:before {\n    content: \"\\ec77\";\n  }\n  .bxs-cart-add:before {\n    content: \"\\ec78\";\n  }\n  .bxs-cart-alt:before {\n    content: \"\\ec79\";\n  }\n  .bxs-cart-download:before {\n    content: \"\\ec7a\";\n  }\n  .bxs-car-wash:before {\n    content: \"\\ec7b\";\n  }\n  .bxs-category:before {\n    content: \"\\ec7c\";\n  }\n  .bxs-category-alt:before {\n    content: \"\\ec7d\";\n  }\n  .bxs-cctv:before {\n    content: \"\\ec7e\";\n  }\n  .bxs-certification:before {\n    content: \"\\ec7f\";\n  }\n  .bxs-chalkboard:before {\n    content: \"\\ec80\";\n  }\n  .bxs-chart:before {\n    content: \"\\ec81\";\n  }\n  .bxs-chat:before {\n    content: \"\\ec82\";\n  }\n  .bxs-checkbox:before {\n    content: \"\\ec83\";\n  }\n  .bxs-checkbox-checked:before {\n    content: \"\\ec84\";\n  }\n  .bxs-check-circle:before {\n    content: \"\\ec85\";\n  }\n  .bxs-check-shield:before {\n    content: \"\\ec86\";\n  }\n  .bxs-check-square:before {\n    content: \"\\ec87\";\n  }\n  .bxs-chess:before {\n    content: \"\\ec88\";\n  }\n  .bxs-chevron-down:before {\n    content: \"\\ec89\";\n  }\n  .bxs-chevron-down-circle:before {\n    content: \"\\ec8a\";\n  }\n  .bxs-chevron-down-square:before {\n    content: \"\\ec8b\";\n  }\n  .bxs-chevron-left:before {\n    content: \"\\ec8c\";\n  }\n  .bxs-chevron-left-circle:before {\n    content: \"\\ec8d\";\n  }\n  .bxs-chevron-left-square:before {\n    content: \"\\ec8e\";\n  }\n  .bxs-chevron-right:before {\n    content: \"\\ec8f\";\n  }\n  .bxs-chevron-right-circle:before {\n    content: \"\\ec90\";\n  }\n  .bxs-chevron-right-square:before {\n    content: \"\\ec91\";\n  }\n  .bxs-chevrons-down:before {\n    content: \"\\ec92\";\n  }\n  .bxs-chevrons-left:before {\n    content: \"\\ec93\";\n  }\n  .bxs-chevrons-right:before {\n    content: \"\\ec94\";\n  }\n  .bxs-chevrons-up:before {\n    content: \"\\ec95\";\n  }\n  .bxs-chevron-up:before {\n    content: \"\\ec96\";\n  }\n  .bxs-chevron-up-circle:before {\n    content: \"\\ec97\";\n  }\n  .bxs-chevron-up-square:before {\n    content: \"\\ec98\";\n  }\n  .bxs-chip:before {\n    content: \"\\ec99\";\n  }\n  .bxs-church:before {\n    content: \"\\ec9a\";\n  }\n  .bxs-circle:before {\n    content: \"\\ec9b\";\n  }\n  .bxs-city:before {\n    content: \"\\ec9c\";\n  }\n  .bxs-clinic:before {\n    content: \"\\ec9d\";\n  }\n  .bxs-cloud:before {\n    content: \"\\ec9e\";\n  }\n  .bxs-cloud-download:before {\n    content: \"\\ec9f\";\n  }\n  .bxs-cloud-lightning:before {\n    content: \"\\eca0\";\n  }\n  .bxs-cloud-rain:before {\n    content: \"\\eca1\";\n  }\n  .bxs-cloud-upload:before {\n    content: \"\\eca2\";\n  }\n  .bxs-coffee:before {\n    content: \"\\eca3\";\n  }\n  .bxs-coffee-alt:before {\n    content: \"\\eca4\";\n  }\n  .bxs-coffee-togo:before {\n    content: \"\\eca5\";\n  }\n  .bxs-cog:before {\n    content: \"\\eca6\";\n  }\n  .bxs-coin:before {\n    content: \"\\eca7\";\n  }\n  .bxs-coin-stack:before {\n    content: \"\\eca8\";\n  }\n  .bxs-collection:before {\n    content: \"\\eca9\";\n  }\n  .bxs-color-fill:before {\n    content: \"\\ecaa\";\n  }\n  .bxs-comment:before {\n    content: \"\\ecab\";\n  }\n  .bxs-comment-add:before {\n    content: \"\\ecac\";\n  }\n  .bxs-comment-check:before {\n    content: \"\\ecad\";\n  }\n  .bxs-comment-detail:before {\n    content: \"\\ecae\";\n  }\n  .bxs-comment-dots:before {\n    content: \"\\ecaf\";\n  }\n  .bxs-comment-edit:before {\n    content: \"\\ecb0\";\n  }\n  .bxs-comment-error:before {\n    content: \"\\ecb1\";\n  }\n  .bxs-comment-minus:before {\n    content: \"\\ecb2\";\n  }\n  .bxs-comment-x:before {\n    content: \"\\ecb3\";\n  }\n  .bxs-compass:before {\n    content: \"\\ecb4\";\n  }\n  .bxs-component:before {\n    content: \"\\ecb5\";\n  }\n  .bxs-confused:before {\n    content: \"\\ecb6\";\n  }\n  .bxs-contact:before {\n    content: \"\\ecb7\";\n  }\n  .bxs-conversation:before {\n    content: \"\\ecb8\";\n  }\n  .bxs-cookie:before {\n    content: \"\\ecb9\";\n  }\n  .bxs-cool:before {\n    content: \"\\ecba\";\n  }\n  .bxs-copy:before {\n    content: \"\\ecbb\";\n  }\n  .bxs-copy-alt:before {\n    content: \"\\ecbc\";\n  }\n  .bxs-copyright:before {\n    content: \"\\ecbd\";\n  }\n  .bxs-coupon:before {\n    content: \"\\ecbe\";\n  }\n  .bxs-credit-card:before {\n    content: \"\\ecbf\";\n  }\n  .bxs-credit-card-alt:before {\n    content: \"\\ecc0\";\n  }\n  .bxs-credit-card-front:before {\n    content: \"\\ecc1\";\n  }\n  .bxs-crop:before {\n    content: \"\\ecc2\";\n  }\n  .bxs-crown:before {\n    content: \"\\ecc3\";\n  }\n  .bxs-cube:before {\n    content: \"\\ecc4\";\n  }\n  .bxs-cube-alt:before {\n    content: \"\\ecc5\";\n  }\n  .bxs-cuboid:before {\n    content: \"\\ecc6\";\n  }\n  .bxs-customize:before {\n    content: \"\\ecc7\";\n  }\n  .bxs-cylinder:before {\n    content: \"\\ecc8\";\n  }\n  .bxs-dashboard:before {\n    content: \"\\ecc9\";\n  }\n  .bxs-data:before {\n    content: \"\\ecca\";\n  }\n  .bxs-detail:before {\n    content: \"\\eccb\";\n  }\n  .bxs-devices:before {\n    content: \"\\eccc\";\n  }\n  .bxs-diamond:before {\n    content: \"\\eccd\";\n  }\n  .bxs-dice-1:before {\n    content: \"\\ecce\";\n  }\n  .bxs-dice-2:before {\n    content: \"\\eccf\";\n  }\n  .bxs-dice-3:before {\n    content: \"\\ecd0\";\n  }\n  .bxs-dice-4:before {\n    content: \"\\ecd1\";\n  }\n  .bxs-dice-5:before {\n    content: \"\\ecd2\";\n  }\n  .bxs-dice-6:before {\n    content: \"\\ecd3\";\n  }\n  .bxs-direction-left:before {\n    content: \"\\ecd4\";\n  }\n  .bxs-direction-right:before {\n    content: \"\\ecd5\";\n  }\n  .bxs-directions:before {\n    content: \"\\ecd6\";\n  }\n  .bxs-disc:before {\n    content: \"\\ecd7\";\n  }\n  .bxs-discount:before {\n    content: \"\\ecd8\";\n  }\n  .bxs-dish:before {\n    content: \"\\ecd9\";\n  }\n  .bxs-dislike:before {\n    content: \"\\ecda\";\n  }\n  .bxs-dizzy:before {\n    content: \"\\ecdb\";\n  }\n  .bxs-dock-bottom:before {\n    content: \"\\ecdc\";\n  }\n  .bxs-dock-left:before {\n    content: \"\\ecdd\";\n  }\n  .bxs-dock-right:before {\n    content: \"\\ecde\";\n  }\n  .bxs-dock-top:before {\n    content: \"\\ecdf\";\n  }\n  .bxs-dollar-circle:before {\n    content: \"\\ece0\";\n  }\n  .bxs-donate-blood:before {\n    content: \"\\ece1\";\n  }\n  .bxs-donate-heart:before {\n    content: \"\\ece2\";\n  }\n  .bxs-door-open:before {\n    content: \"\\ece3\";\n  }\n  .bxs-doughnut-chart:before {\n    content: \"\\ece4\";\n  }\n  .bxs-down-arrow:before {\n    content: \"\\ece5\";\n  }\n  .bxs-down-arrow-alt:before {\n    content: \"\\ece6\";\n  }\n  .bxs-down-arrow-circle:before {\n    content: \"\\ece7\";\n  }\n  .bxs-down-arrow-square:before {\n    content: \"\\ece8\";\n  }\n  .bxs-download:before {\n    content: \"\\ece9\";\n  }\n  .bxs-downvote:before {\n    content: \"\\ecea\";\n  }\n  .bxs-drink:before {\n    content: \"\\eceb\";\n  }\n  .bxs-droplet:before {\n    content: \"\\ecec\";\n  }\n  .bxs-droplet-half:before {\n    content: \"\\eced\";\n  }\n  .bxs-dryer:before {\n    content: \"\\ecee\";\n  }\n  .bxs-duplicate:before {\n    content: \"\\ecef\";\n  }\n  .bxs-edit:before {\n    content: \"\\ecf0\";\n  }\n  .bxs-edit-alt:before {\n    content: \"\\ecf1\";\n  }\n  .bxs-edit-location:before {\n    content: \"\\ecf2\";\n  }\n  .bxs-eject:before {\n    content: \"\\ecf3\";\n  }\n  .bxs-envelope:before {\n    content: \"\\ecf4\";\n  }\n  .bxs-envelope-open:before {\n    content: \"\\ecf5\";\n  }\n  .bxs-eraser:before {\n    content: \"\\ecf6\";\n  }\n  .bxs-error:before {\n    content: \"\\ecf7\";\n  }\n  .bxs-error-alt:before {\n    content: \"\\ecf8\";\n  }\n  .bxs-error-circle:before {\n    content: \"\\ecf9\";\n  }\n  .bxs-ev-station:before {\n    content: \"\\ecfa\";\n  }\n  .bxs-exit:before {\n    content: \"\\ecfb\";\n  }\n  .bxs-extension:before {\n    content: \"\\ecfc\";\n  }\n  .bxs-eyedropper:before {\n    content: \"\\ecfd\";\n  }\n  .bxs-face:before {\n    content: \"\\ecfe\";\n  }\n  .bxs-face-mask:before {\n    content: \"\\ecff\";\n  }\n  .bxs-factory:before {\n    content: \"\\ed00\";\n  }\n  .bxs-fast-forward-circle:before {\n    content: \"\\ed01\";\n  }\n  .bxs-file:before {\n    content: \"\\ed02\";\n  }\n  .bxs-file-archive:before {\n    content: \"\\ed03\";\n  }\n  .bxs-file-blank:before {\n    content: \"\\ed04\";\n  }\n  .bxs-file-css:before {\n    content: \"\\ed05\";\n  }\n  .bxs-file-doc:before {\n    content: \"\\ed06\";\n  }\n  .bxs-file-export:before {\n    content: \"\\ed07\";\n  }\n  .bxs-file-find:before {\n    content: \"\\ed08\";\n  }\n  .bxs-file-gif:before {\n    content: \"\\ed09\";\n  }\n  .bxs-file-html:before {\n    content: \"\\ed0a\";\n  }\n  .bxs-file-image:before {\n    content: \"\\ed0b\";\n  }\n  .bxs-file-import:before {\n    content: \"\\ed0c\";\n  }\n  .bxs-file-jpg:before {\n    content: \"\\ed0d\";\n  }\n  .bxs-file-js:before {\n    content: \"\\ed0e\";\n  }\n  .bxs-file-json:before {\n    content: \"\\ed0f\";\n  }\n  .bxs-file-md:before {\n    content: \"\\ed10\";\n  }\n  .bxs-file-pdf:before {\n    content: \"\\ed11\";\n  }\n  .bxs-file-plus:before {\n    content: \"\\ed12\";\n  }\n  .bxs-file-png:before {\n    content: \"\\ed13\";\n  }\n  .bxs-file-txt:before {\n    content: \"\\ed14\";\n  }\n  .bxs-film:before {\n    content: \"\\ed15\";\n  }\n  .bxs-filter-alt:before {\n    content: \"\\ed16\";\n  }\n  .bxs-first-aid:before {\n    content: \"\\ed17\";\n  }\n  .bxs-flag:before {\n    content: \"\\ed18\";\n  }\n  .bxs-flag-alt:before {\n    content: \"\\ed19\";\n  }\n  .bxs-flag-checkered:before {\n    content: \"\\ed1a\";\n  }\n  .bxs-flame:before {\n    content: \"\\ed1b\";\n  }\n  .bxs-flask:before {\n    content: \"\\ed1c\";\n  }\n  .bxs-florist:before {\n    content: \"\\ed1d\";\n  }\n  .bxs-folder:before {\n    content: \"\\ed1e\";\n  }\n  .bxs-folder-minus:before {\n    content: \"\\ed1f\";\n  }\n  .bxs-folder-open:before {\n    content: \"\\ed20\";\n  }\n  .bxs-folder-plus:before {\n    content: \"\\ed21\";\n  }\n  .bxs-food-menu:before {\n    content: \"\\ed22\";\n  }\n  .bxs-fridge:before {\n    content: \"\\ed23\";\n  }\n  .bxs-game:before {\n    content: \"\\ed24\";\n  }\n  .bxs-gas-pump:before {\n    content: \"\\ed25\";\n  }\n  .bxs-ghost:before {\n    content: \"\\ed26\";\n  }\n  .bxs-gift:before {\n    content: \"\\ed27\";\n  }\n  .bxs-graduation:before {\n    content: \"\\ed28\";\n  }\n  .bxs-grid:before {\n    content: \"\\ed29\";\n  }\n  .bxs-grid-alt:before {\n    content: \"\\ed2a\";\n  }\n  .bxs-group:before {\n    content: \"\\ed2b\";\n  }\n  .bxs-guitar-amp:before {\n    content: \"\\ed2c\";\n  }\n  .bxs-hand-down:before {\n    content: \"\\ed2d\";\n  }\n  .bxs-hand-left:before {\n    content: \"\\ed2e\";\n  }\n  .bxs-hand-right:before {\n    content: \"\\ed2f\";\n  }\n  .bxs-hand-up:before {\n    content: \"\\ed30\";\n  }\n  .bxs-happy:before {\n    content: \"\\ed31\";\n  }\n  .bxs-happy-alt:before {\n    content: \"\\ed32\";\n  }\n  .bxs-happy-beaming:before {\n    content: \"\\ed33\";\n  }\n  .bxs-happy-heart-eyes:before {\n    content: \"\\ed34\";\n  }\n  .bxs-hdd:before {\n    content: \"\\ed35\";\n  }\n  .bxs-heart:before {\n    content: \"\\ed36\";\n  }\n  .bxs-heart-circle:before {\n    content: \"\\ed37\";\n  }\n  .bxs-heart-square:before {\n    content: \"\\ed38\";\n  }\n  .bxs-help-circle:before {\n    content: \"\\ed39\";\n  }\n  .bxs-hide:before {\n    content: \"\\ed3a\";\n  }\n  .bxs-home:before {\n    content: \"\\ed3b\";\n  }\n  .bxs-home-circle:before {\n    content: \"\\ed3c\";\n  }\n  .bxs-home-heart:before {\n    content: \"\\ed3d\";\n  }\n  .bxs-home-smile:before {\n    content: \"\\ed3e\";\n  }\n  .bxs-hot:before {\n    content: \"\\ed3f\";\n  }\n  .bxs-hotel:before {\n    content: \"\\ed40\";\n  }\n  .bxs-hourglass:before {\n    content: \"\\ed41\";\n  }\n  .bxs-hourglass-bottom:before {\n    content: \"\\ed42\";\n  }\n  .bxs-hourglass-top:before {\n    content: \"\\ed43\";\n  }\n  .bxs-id-card:before {\n    content: \"\\ed44\";\n  }\n  .bxs-image:before {\n    content: \"\\ed45\";\n  }\n  .bxs-image-add:before {\n    content: \"\\ed46\";\n  }\n  .bxs-image-alt:before {\n    content: \"\\ed47\";\n  }\n  .bxs-inbox:before {\n    content: \"\\ed48\";\n  }\n  .bxs-info-circle:before {\n    content: \"\\ed49\";\n  }\n  .bxs-info-square:before {\n    content: \"\\ed4a\";\n  }\n  .bxs-institution:before {\n    content: \"\\ed4b\";\n  }\n  .bxs-joystick:before {\n    content: \"\\ed4c\";\n  }\n  .bxs-joystick-alt:before {\n    content: \"\\ed4d\";\n  }\n  .bxs-joystick-button:before {\n    content: \"\\ed4e\";\n  }\n  .bxs-key:before {\n    content: \"\\ed4f\";\n  }\n  .bxs-keyboard:before {\n    content: \"\\ed50\";\n  }\n  .bxs-label:before {\n    content: \"\\ed51\";\n  }\n  .bxs-landmark:before {\n    content: \"\\ed52\";\n  }\n  .bxs-landscape:before {\n    content: \"\\ed53\";\n  }\n  .bxs-laugh:before {\n    content: \"\\ed54\";\n  }\n  .bxs-layer:before {\n    content: \"\\ed55\";\n  }\n  .bxs-layer-minus:before {\n    content: \"\\ed56\";\n  }\n  .bxs-layer-plus:before {\n    content: \"\\ed57\";\n  }\n  .bxs-layout:before {\n    content: \"\\ed58\";\n  }\n  .bxs-left-arrow:before {\n    content: \"\\ed59\";\n  }\n  .bxs-left-arrow-alt:before {\n    content: \"\\ed5a\";\n  }\n  .bxs-left-arrow-circle:before {\n    content: \"\\ed5b\";\n  }\n  .bxs-left-arrow-square:before {\n    content: \"\\ed5c\";\n  }\n  .bxs-left-down-arrow-circle:before {\n    content: \"\\ed5d\";\n  }\n  .bxs-left-top-arrow-circle:before {\n    content: \"\\ed5e\";\n  }\n  .bxs-like:before {\n    content: \"\\ed5f\";\n  }\n  .bxs-location-plus:before {\n    content: \"\\ed60\";\n  }\n  .bxs-lock:before {\n    content: \"\\ed61\";\n  }\n  .bxs-lock-alt:before {\n    content: \"\\ed62\";\n  }\n  .bxs-lock-open:before {\n    content: \"\\ed63\";\n  }\n  .bxs-lock-open-alt:before {\n    content: \"\\ed64\";\n  }\n  .bxs-log-in:before {\n    content: \"\\ed65\";\n  }\n  .bxs-log-in-circle:before {\n    content: \"\\ed66\";\n  }\n  .bxs-log-out:before {\n    content: \"\\ed67\";\n  }\n  .bxs-log-out-circle:before {\n    content: \"\\ed68\";\n  }\n  .bxs-low-vision:before {\n    content: \"\\ed69\";\n  }\n  .bxs-magic-wand:before {\n    content: \"\\ed6a\";\n  }\n  .bxs-magnet:before {\n    content: \"\\ed6b\";\n  }\n  .bxs-map:before {\n    content: \"\\ed6c\";\n  }\n  .bxs-map-alt:before {\n    content: \"\\ed6d\";\n  }\n  .bxs-map-pin:before {\n    content: \"\\ed6e\";\n  }\n  .bxs-mask:before {\n    content: \"\\ed6f\";\n  }\n  .bxs-medal:before {\n    content: \"\\ed70\";\n  }\n  .bxs-megaphone:before {\n    content: \"\\ed71\";\n  }\n  .bxs-meh:before {\n    content: \"\\ed72\";\n  }\n  .bxs-meh-alt:before {\n    content: \"\\ed73\";\n  }\n  .bxs-meh-blank:before {\n    content: \"\\ed74\";\n  }\n  .bxs-memory-card:before {\n    content: \"\\ed75\";\n  }\n  .bxs-message:before {\n    content: \"\\ed76\";\n  }\n  .bxs-message-add:before {\n    content: \"\\ed77\";\n  }\n  .bxs-message-alt:before {\n    content: \"\\ed78\";\n  }\n  .bxs-message-alt-add:before {\n    content: \"\\ed79\";\n  }\n  .bxs-message-alt-check:before {\n    content: \"\\ed7a\";\n  }\n  .bxs-message-alt-detail:before {\n    content: \"\\ed7b\";\n  }\n  .bxs-message-alt-dots:before {\n    content: \"\\ed7c\";\n  }\n  .bxs-message-alt-edit:before {\n    content: \"\\ed7d\";\n  }\n  .bxs-message-alt-error:before {\n    content: \"\\ed7e\";\n  }\n  .bxs-message-alt-minus:before {\n    content: \"\\ed7f\";\n  }\n  .bxs-message-alt-x:before {\n    content: \"\\ed80\";\n  }\n  .bxs-message-check:before {\n    content: \"\\ed81\";\n  }\n  .bxs-message-detail:before {\n    content: \"\\ed82\";\n  }\n  .bxs-message-dots:before {\n    content: \"\\ed83\";\n  }\n  .bxs-message-edit:before {\n    content: \"\\ed84\";\n  }\n  .bxs-message-error:before {\n    content: \"\\ed85\";\n  }\n  .bxs-message-minus:before {\n    content: \"\\ed86\";\n  }\n  .bxs-message-rounded:before {\n    content: \"\\ed87\";\n  }\n  .bxs-message-rounded-add:before {\n    content: \"\\ed88\";\n  }\n  .bxs-message-rounded-check:before {\n    content: \"\\ed89\";\n  }\n  .bxs-message-rounded-detail:before {\n    content: \"\\ed8a\";\n  }\n  .bxs-message-rounded-dots:before {\n    content: \"\\ed8b\";\n  }\n  .bxs-message-rounded-edit:before {\n    content: \"\\ed8c\";\n  }\n  .bxs-message-rounded-error:before {\n    content: \"\\ed8d\";\n  }\n  .bxs-message-rounded-minus:before {\n    content: \"\\ed8e\";\n  }\n  .bxs-message-rounded-x:before {\n    content: \"\\ed8f\";\n  }\n  .bxs-message-square:before {\n    content: \"\\ed90\";\n  }\n  .bxs-message-square-add:before {\n    content: \"\\ed91\";\n  }\n  .bxs-message-square-check:before {\n    content: \"\\ed92\";\n  }\n  .bxs-message-square-detail:before {\n    content: \"\\ed93\";\n  }\n  .bxs-message-square-dots:before {\n    content: \"\\ed94\";\n  }\n  .bxs-message-square-edit:before {\n    content: \"\\ed95\";\n  }\n  .bxs-message-square-error:before {\n    content: \"\\ed96\";\n  }\n  .bxs-message-square-minus:before {\n    content: \"\\ed97\";\n  }\n  .bxs-message-square-x:before {\n    content: \"\\ed98\";\n  }\n  .bxs-message-x:before {\n    content: \"\\ed99\";\n  }\n  .bxs-meteor:before {\n    content: \"\\ed9a\";\n  }\n  .bxs-microchip:before {\n    content: \"\\ed9b\";\n  }\n  .bxs-microphone:before {\n    content: \"\\ed9c\";\n  }\n  .bxs-microphone-alt:before {\n    content: \"\\ed9d\";\n  }\n  .bxs-microphone-off:before {\n    content: \"\\ed9e\";\n  }\n  .bxs-minus-circle:before {\n    content: \"\\ed9f\";\n  }\n  .bxs-minus-square:before {\n    content: \"\\eda0\";\n  }\n  .bxs-mobile:before {\n    content: \"\\eda1\";\n  }\n  .bxs-mobile-vibration:before {\n    content: \"\\eda2\";\n  }\n  .bxs-moon:before {\n    content: \"\\eda3\";\n  }\n  .bxs-mouse:before {\n    content: \"\\eda4\";\n  }\n  .bxs-mouse-alt:before {\n    content: \"\\eda5\";\n  }\n  .bxs-movie:before {\n    content: \"\\eda6\";\n  }\n  .bxs-movie-play:before {\n    content: \"\\eda7\";\n  }\n  .bxs-music:before {\n    content: \"\\eda8\";\n  }\n  .bxs-navigation:before {\n    content: \"\\eda9\";\n  }\n  .bxs-network-chart:before {\n    content: \"\\edaa\";\n  }\n  .bxs-news:before {\n    content: \"\\edab\";\n  }\n  .bxs-no-entry:before {\n    content: \"\\edac\";\n  }\n  .bxs-note:before {\n    content: \"\\edad\";\n  }\n  .bxs-notepad:before {\n    content: \"\\edae\";\n  }\n  .bxs-notification:before {\n    content: \"\\edaf\";\n  }\n  .bxs-notification-off:before {\n    content: \"\\edb0\";\n  }\n  .bxs-offer:before {\n    content: \"\\edb1\";\n  }\n  .bxs-package:before {\n    content: \"\\edb2\";\n  }\n  .bxs-paint:before {\n    content: \"\\edb3\";\n  }\n  .bxs-paint-roll:before {\n    content: \"\\edb4\";\n  }\n  .bxs-palette:before {\n    content: \"\\edb5\";\n  }\n  .bxs-paper-plane:before {\n    content: \"\\edb6\";\n  }\n  .bxs-parking:before {\n    content: \"\\edb7\";\n  }\n  .bxs-paste:before {\n    content: \"\\edb8\";\n  }\n  .bxs-pen:before {\n    content: \"\\edb9\";\n  }\n  .bxs-pencil:before {\n    content: \"\\edba\";\n  }\n  .bxs-phone:before {\n    content: \"\\edbb\";\n  }\n  .bxs-phone-call:before {\n    content: \"\\edbc\";\n  }\n  .bxs-phone-incoming:before {\n    content: \"\\edbd\";\n  }\n  .bxs-phone-outgoing:before {\n    content: \"\\edbe\";\n  }\n  .bxs-photo-album:before {\n    content: \"\\edbf\";\n  }\n  .bxs-piano:before {\n    content: \"\\edc0\";\n  }\n  .bxs-pie-chart:before {\n    content: \"\\edc1\";\n  }\n  .bxs-pie-chart-alt:before {\n    content: \"\\edc2\";\n  }\n  .bxs-pie-chart-alt-2:before {\n    content: \"\\edc3\";\n  }\n  .bxs-pin:before {\n    content: \"\\edc4\";\n  }\n  .bxs-pizza:before {\n    content: \"\\edc5\";\n  }\n  .bxs-plane:before {\n    content: \"\\edc6\";\n  }\n  .bxs-plane-alt:before {\n    content: \"\\edc7\";\n  }\n  .bxs-plane-land:before {\n    content: \"\\edc8\";\n  }\n  .bxs-planet:before {\n    content: \"\\edc9\";\n  }\n  .bxs-plane-take-off:before {\n    content: \"\\edca\";\n  }\n  .bxs-playlist:before {\n    content: \"\\edcb\";\n  }\n  .bxs-plug:before {\n    content: \"\\edcc\";\n  }\n  .bxs-plus-circle:before {\n    content: \"\\edcd\";\n  }\n  .bxs-plus-square:before {\n    content: \"\\edce\";\n  }\n  .bxs-pointer:before {\n    content: \"\\edcf\";\n  }\n  .bxs-polygon:before {\n    content: \"\\edd0\";\n  }\n  .bxs-printer:before {\n    content: \"\\edd1\";\n  }\n  .bxs-purchase-tag:before {\n    content: \"\\edd2\";\n  }\n  .bxs-purchase-tag-alt:before {\n    content: \"\\edd3\";\n  }\n  .bxs-pyramid:before {\n    content: \"\\edd4\";\n  }\n  .bxs-quote-alt-left:before {\n    content: \"\\edd5\";\n  }\n  .bxs-quote-alt-right:before {\n    content: \"\\edd6\";\n  }\n  .bxs-quote-left:before {\n    content: \"\\edd7\";\n  }\n  .bxs-quote-right:before {\n    content: \"\\edd8\";\n  }\n  .bxs-quote-single-left:before {\n    content: \"\\edd9\";\n  }\n  .bxs-quote-single-right:before {\n    content: \"\\edda\";\n  }\n  .bxs-radiation:before {\n    content: \"\\eddb\";\n  }\n  .bxs-radio:before {\n    content: \"\\eddc\";\n  }\n  .bxs-receipt:before {\n    content: \"\\eddd\";\n  }\n  .bxs-rectangle:before {\n    content: \"\\edde\";\n  }\n  .bxs-rename:before {\n    content: \"\\eddf\";\n  }\n  .bxs-report:before {\n    content: \"\\ede0\";\n  }\n  .bxs-rewind-circle:before {\n    content: \"\\ede1\";\n  }\n  .bxs-right-arrow:before {\n    content: \"\\ede2\";\n  }\n  .bxs-right-arrow-alt:before {\n    content: \"\\ede3\";\n  }\n  .bxs-right-arrow-circle:before {\n    content: \"\\ede4\";\n  }\n  .bxs-right-arrow-square:before {\n    content: \"\\ede5\";\n  }\n  .bxs-right-down-arrow-circle:before {\n    content: \"\\ede6\";\n  }\n  .bxs-right-top-arrow-circle:before {\n    content: \"\\ede7\";\n  }\n  .bxs-rocket:before {\n    content: \"\\ede8\";\n  }\n  .bxs-ruler:before {\n    content: \"\\ede9\";\n  }\n  .bxs-sad:before {\n    content: \"\\edea\";\n  }\n  .bxs-save:before {\n    content: \"\\edeb\";\n  }\n  .bxs-school:before {\n    content: \"\\edec\";\n  }\n  .bxs-search:before {\n    content: \"\\eded\";\n  }\n  .bxs-search-alt-2:before {\n    content: \"\\edee\";\n  }\n  .bxs-select-multiple:before {\n    content: \"\\edef\";\n  }\n  .bxs-send:before {\n    content: \"\\edf0\";\n  }\n  .bxs-server:before {\n    content: \"\\edf1\";\n  }\n  .bxs-shapes:before {\n    content: \"\\edf2\";\n  }\n  .bxs-share:before {\n    content: \"\\edf3\";\n  }\n  .bxs-share-alt:before {\n    content: \"\\edf4\";\n  }\n  .bxs-shield:before {\n    content: \"\\edf5\";\n  }\n  .bxs-shield-alt-2:before {\n    content: \"\\edf6\";\n  }\n  .bxs-shield-x:before {\n    content: \"\\edf7\";\n  }\n  .bxs-ship:before {\n    content: \"\\edf8\";\n  }\n  .bxs-shocked:before {\n    content: \"\\edf9\";\n  }\n  .bxs-shopping-bag:before {\n    content: \"\\edfa\";\n  }\n  .bxs-shopping-bag-alt:before {\n    content: \"\\edfb\";\n  }\n  .bxs-shopping-bags:before {\n    content: \"\\edfc\";\n  }\n  .bxs-show:before {\n    content: \"\\edfd\";\n  }\n  .bxs-skip-next-circle:before {\n    content: \"\\edfe\";\n  }\n  .bxs-skip-previous-circle:before {\n    content: \"\\edff\";\n  }\n  .bxs-skull:before {\n    content: \"\\ee00\";\n  }\n  .bxs-sleepy:before {\n    content: \"\\ee01\";\n  }\n  .bxs-slideshow:before {\n    content: \"\\ee02\";\n  }\n  .bxs-smile:before {\n    content: \"\\ee03\";\n  }\n  .bxs-sort-alt:before {\n    content: \"\\ee04\";\n  }\n  .bxs-spa:before {\n    content: \"\\ee05\";\n  }\n  .bxs-spray-can:before {\n    content: \"\\ee06\";\n  }\n  .bxs-spreadsheet:before {\n    content: \"\\ee07\";\n  }\n  .bxs-square:before {\n    content: \"\\ee08\";\n  }\n  .bxs-square-rounded:before {\n    content: \"\\ee09\";\n  }\n  .bxs-star:before {\n    content: \"\\ee0a\";\n  }\n  .bxs-star-half:before {\n    content: \"\\ee0b\";\n  }\n  .bxs-sticker:before {\n    content: \"\\ee0c\";\n  }\n  .bxs-stopwatch:before {\n    content: \"\\ee0d\";\n  }\n  .bxs-store:before {\n    content: \"\\ee0e\";\n  }\n  .bxs-store-alt:before {\n    content: \"\\ee0f\";\n  }\n  .bxs-sun:before {\n    content: \"\\ee10\";\n  }\n  .bxs-tachometer:before {\n    content: \"\\ee11\";\n  }\n  .bxs-tag:before {\n    content: \"\\ee12\";\n  }\n  .bxs-tag-alt:before {\n    content: \"\\ee13\";\n  }\n  .bxs-tag-x:before {\n    content: \"\\ee14\";\n  }\n  .bxs-taxi:before {\n    content: \"\\ee15\";\n  }\n  .bxs-tennis-ball:before {\n    content: \"\\ee16\";\n  }\n  .bxs-terminal:before {\n    content: \"\\ee17\";\n  }\n  .bxs-thermometer:before {\n    content: \"\\ee18\";\n  }\n  .bxs-time:before {\n    content: \"\\ee19\";\n  }\n  .bxs-time-five:before {\n    content: \"\\ee1a\";\n  }\n  .bxs-timer:before {\n    content: \"\\ee1b\";\n  }\n  .bxs-tired:before {\n    content: \"\\ee1c\";\n  }\n  .bxs-toggle-left:before {\n    content: \"\\ee1d\";\n  }\n  .bxs-toggle-right:before {\n    content: \"\\ee1e\";\n  }\n  .bxs-tone:before {\n    content: \"\\ee1f\";\n  }\n  .bxs-torch:before {\n    content: \"\\ee20\";\n  }\n  .bxs-to-top:before {\n    content: \"\\ee21\";\n  }\n  .bxs-traffic:before {\n    content: \"\\ee22\";\n  }\n  .bxs-traffic-barrier:before {\n    content: \"\\ee23\";\n  }\n  .bxs-traffic-cone:before {\n    content: \"\\ee24\";\n  }\n  .bxs-train:before {\n    content: \"\\ee25\";\n  }\n  .bxs-trash:before {\n    content: \"\\ee26\";\n  }\n  .bxs-trash-alt:before {\n    content: \"\\ee27\";\n  }\n  .bxs-tree:before {\n    content: \"\\ee28\";\n  }\n  .bxs-trophy:before {\n    content: \"\\ee29\";\n  }\n  .bxs-truck:before {\n    content: \"\\ee2a\";\n  }\n  .bxs-t-shirt:before {\n    content: \"\\ee2b\";\n  }\n  .bxs-tv:before {\n    content: \"\\ee2c\";\n  }\n  .bxs-up-arrow:before {\n    content: \"\\ee2d\";\n  }\n  .bxs-up-arrow-alt:before {\n    content: \"\\ee2e\";\n  }\n  .bxs-up-arrow-circle:before {\n    content: \"\\ee2f\";\n  }\n  .bxs-up-arrow-square:before {\n    content: \"\\ee30\";\n  }\n  .bxs-upside-down:before {\n    content: \"\\ee31\";\n  }\n  .bxs-upvote:before {\n    content: \"\\ee32\";\n  }\n  .bxs-user:before {\n    content: \"\\ee33\";\n  }\n  .bxs-user-account:before {\n    content: \"\\ee34\";\n  }\n  .bxs-user-badge:before {\n    content: \"\\ee35\";\n  }\n  .bxs-user-check:before {\n    content: \"\\ee36\";\n  }\n  .bxs-user-circle:before {\n    content: \"\\ee37\";\n  }\n  .bxs-user-detail:before {\n    content: \"\\ee38\";\n  }\n  .bxs-user-minus:before {\n    content: \"\\ee39\";\n  }\n  .bxs-user-pin:before {\n    content: \"\\ee3a\";\n  }\n  .bxs-user-plus:before {\n    content: \"\\ee3b\";\n  }\n  .bxs-user-rectangle:before {\n    content: \"\\ee3c\";\n  }\n  .bxs-user-voice:before {\n    content: \"\\ee3d\";\n  }\n  .bxs-user-x:before {\n    content: \"\\ee3e\";\n  }\n  .bxs-vector:before {\n    content: \"\\ee3f\";\n  }\n  .bxs-vial:before {\n    content: \"\\ee40\";\n  }\n  .bxs-video:before {\n    content: \"\\ee41\";\n  }\n  .bxs-video-off:before {\n    content: \"\\ee42\";\n  }\n  .bxs-video-plus:before {\n    content: \"\\ee43\";\n  }\n  .bxs-video-recording:before {\n    content: \"\\ee44\";\n  }\n  .bxs-videos:before {\n    content: \"\\ee45\";\n  }\n  .bxs-virus:before {\n    content: \"\\ee46\";\n  }\n  .bxs-virus-block:before {\n    content: \"\\ee47\";\n  }\n  .bxs-volume:before {\n    content: \"\\ee48\";\n  }\n  .bxs-volume-full:before {\n    content: \"\\ee49\";\n  }\n  .bxs-volume-low:before {\n    content: \"\\ee4a\";\n  }\n  .bxs-volume-mute:before {\n    content: \"\\ee4b\";\n  }\n  .bxs-wallet:before {\n    content: \"\\ee4c\";\n  }\n  .bxs-wallet-alt:before {\n    content: \"\\ee4d\";\n  }\n  .bxs-washer:before {\n    content: \"\\ee4e\";\n  }\n  .bxs-watch:before {\n    content: \"\\ee4f\";\n  }\n  .bxs-watch-alt:before {\n    content: \"\\ee50\";\n  }\n  .bxs-webcam:before {\n    content: \"\\ee51\";\n  }\n  .bxs-widget:before {\n    content: \"\\ee52\";\n  }\n  .bxs-window-alt:before {\n    content: \"\\ee53\";\n  }\n  .bxs-wine:before {\n    content: \"\\ee54\";\n  }\n  .bxs-wink-smile:before {\n    content: \"\\ee55\";\n  }\n  .bxs-wink-tongue:before {\n    content: \"\\ee56\";\n  }\n  .bxs-wrench:before {\n    content: \"\\ee57\";\n  }\n  .bxs-x-circle:before {\n    content: \"\\ee58\";\n  }\n  .bxs-x-square:before {\n    content: \"\\ee59\";\n  }\n  .bxs-yin-yang:before {\n    content: \"\\ee5a\";\n  }\n  .bxs-zap:before {\n    content: \"\\ee5b\";\n  }\n  .bxs-zoom-in:before {\n    content: \"\\ee5c\";\n  }\n  .bxs-zoom-out:before {\n    content: \"\\ee5d\";\n  }\n  .bxl-500px:before {\n    content: \"\\ee5e\";\n  }\n  .bxl-adobe:before {\n    content: \"\\ee5f\";\n  }\n  .bxl-airbnb:before {\n    content: \"\\ee60\";\n  }\n  .bxl-algolia:before {\n    content: \"\\ee61\";\n  }\n  .bxl-amazon:before {\n    content: \"\\ee62\";\n  }\n  .bxl-android:before {\n    content: \"\\ee63\";\n  }\n  .bxl-angular:before {\n    content: \"\\ee64\";\n  }\n  .bxl-apple:before {\n    content: \"\\ee65\";\n  }\n  .bxl-audible:before {\n    content: \"\\ee66\";\n  }\n  .bxl-baidu:before {\n    content: \"\\ee67\";\n  }\n  .bxl-behance:before {\n    content: \"\\ee68\";\n  }\n  .bxl-bing:before {\n    content: \"\\ee69\";\n  }\n  .bxl-bitcoin:before {\n    content: \"\\ee6a\";\n  }\n  .bxl-blender:before {\n    content: \"\\ee6b\";\n  }\n  .bxl-blogger:before {\n    content: \"\\ee6c\";\n  }\n  .bxl-bootstrap:before {\n    content: \"\\ee6d\";\n  }\n  .bxl-chrome:before {\n    content: \"\\ee6e\";\n  }\n  .bxl-codepen:before {\n    content: \"\\ee6f\";\n  }\n  .bxl-c-plus-plus:before {\n    content: \"\\ee70\";\n  }\n  .bxl-creative-commons:before {\n    content: \"\\ee71\";\n  }\n  .bxl-css3:before {\n    content: \"\\ee72\";\n  }\n  .bxl-dailymotion:before {\n    content: \"\\ee73\";\n  }\n  .bxl-deviantart:before {\n    content: \"\\ee74\";\n  }\n  .bxl-dev-to:before {\n    content: \"\\ee75\";\n  }\n  .bxl-digg:before {\n    content: \"\\ee76\";\n  }\n  .bxl-digitalocean:before {\n    content: \"\\ee77\";\n  }\n  .bxl-discord:before {\n    content: \"\\ee78\";\n  }\n  .bxl-discourse:before {\n    content: \"\\ee79\";\n  }\n  .bxl-django:before {\n    content: \"\\ee7a\";\n  }\n  .bxl-dribbble:before {\n    content: \"\\ee7b\";\n  }\n  .bxl-dropbox:before {\n    content: \"\\ee7c\";\n  }\n  .bxl-drupal:before {\n    content: \"\\ee7d\";\n  }\n  .bxl-ebay:before {\n    content: \"\\ee7e\";\n  }\n  .bxl-edge:before {\n    content: \"\\ee7f\";\n  }\n  .bxl-etsy:before {\n    content: \"\\ee80\";\n  }\n  .bxl-facebook:before {\n    content: \"\\ee81\";\n  }\n  .bxl-facebook-circle:before {\n    content: \"\\ee82\";\n  }\n  .bxl-facebook-square:before {\n    content: \"\\ee83\";\n  }\n  .bxl-figma:before {\n    content: \"\\ee84\";\n  }\n  .bxl-firebase:before {\n    content: \"\\ee85\";\n  }\n  .bxl-firefox:before {\n    content: \"\\ee86\";\n  }\n  .bxl-flickr:before {\n    content: \"\\ee87\";\n  }\n  .bxl-flickr-square:before {\n    content: \"\\ee88\";\n  }\n  .bxl-foursquare:before {\n    content: \"\\ee89\";\n  }\n  .bxl-git:before {\n    content: \"\\ee8a\";\n  }\n  .bxl-github:before {\n    content: \"\\ee8b\";\n  }\n  .bxl-gitlab:before {\n    content: \"\\ee8c\";\n  }\n  .bxl-google:before {\n    content: \"\\ee8d\";\n  }\n  .bxl-google-cloud:before {\n    content: \"\\ee8e\";\n  }\n  .bxl-google-plus:before {\n    content: \"\\ee8f\";\n  }\n  .bxl-google-plus-circle:before {\n    content: \"\\ee90\";\n  }\n  .bxl-html5:before {\n    content: \"\\ee91\";\n  }\n  .bxl-imdb:before {\n    content: \"\\ee92\";\n  }\n  .bxl-instagram:before {\n    content: \"\\ee93\";\n  }\n  .bxl-instagram-alt:before {\n    content: \"\\ee94\";\n  }\n  .bxl-internet-explorer:before {\n    content: \"\\ee95\";\n  }\n  .bxl-invision:before {\n    content: \"\\ee96\";\n  }\n  .bxl-javascript:before {\n    content: \"\\ee97\";\n  }\n  .bxl-joomla:before {\n    content: \"\\ee98\";\n  }\n  .bxl-jquery:before {\n    content: \"\\ee99\";\n  }\n  .bxl-jsfiddle:before {\n    content: \"\\ee9a\";\n  }\n  .bxl-kickstarter:before {\n    content: \"\\ee9b\";\n  }\n  .bxl-kubernetes:before {\n    content: \"\\ee9c\";\n  }\n  .bxl-less:before {\n    content: \"\\ee9d\";\n  }\n  .bxl-linkedin:before {\n    content: \"\\ee9e\";\n  }\n  .bxl-linkedin-square:before {\n    content: \"\\ee9f\";\n  }\n  .bxl-magento:before {\n    content: \"\\eea0\";\n  }\n  .bxl-mailchimp:before {\n    content: \"\\eea1\";\n  }\n  .bxl-markdown:before {\n    content: \"\\eea2\";\n  }\n  .bxl-mastercard:before {\n    content: \"\\eea3\";\n  }\n  .bxl-medium:before {\n    content: \"\\eea4\";\n  }\n  .bxl-medium-old:before {\n    content: \"\\eea5\";\n  }\n  .bxl-medium-square:before {\n    content: \"\\eea6\";\n  }\n  .bxl-messenger:before {\n    content: \"\\eea7\";\n  }\n  .bxl-microsoft:before {\n    content: \"\\eea8\";\n  }\n  .bxl-microsoft-teams:before {\n    content: \"\\eea9\";\n  }\n  .bxl-nodejs:before {\n    content: \"\\eeaa\";\n  }\n  .bxl-ok-ru:before {\n    content: \"\\eeab\";\n  }\n  .bxl-opera:before {\n    content: \"\\eeac\";\n  }\n  .bxl-patreon:before {\n    content: \"\\eead\";\n  }\n  .bxl-paypal:before {\n    content: \"\\eeae\";\n  }\n  .bxl-periscope:before {\n    content: \"\\eeaf\";\n  }\n  .bxl-pinterest:before {\n    content: \"\\eeb0\";\n  }\n  .bxl-pinterest-alt:before {\n    content: \"\\eeb1\";\n  }\n  .bxl-play-store:before {\n    content: \"\\eeb2\";\n  }\n  .bxl-pocket:before {\n    content: \"\\eeb3\";\n  }\n  .bxl-product-hunt:before {\n    content: \"\\eeb4\";\n  }\n  .bxl-python:before {\n    content: \"\\eeb5\";\n  }\n  .bxl-quora:before {\n    content: \"\\eeb6\";\n  }\n  .bxl-react:before {\n    content: \"\\eeb7\";\n  }\n  .bxl-redbubble:before {\n    content: \"\\eeb8\";\n  }\n  .bxl-reddit:before {\n    content: \"\\eeb9\";\n  }\n  .bxl-redux:before {\n    content: \"\\eeba\";\n  }\n  .bxl-sass:before {\n    content: \"\\eebb\";\n  }\n  .bxl-shopify:before {\n    content: \"\\eebc\";\n  }\n  .bxl-skype:before {\n    content: \"\\eebd\";\n  }\n  .bxl-slack:before {\n    content: \"\\eebe\";\n  }\n  .bxl-slack-old:before {\n    content: \"\\eebf\";\n  }\n  .bxl-snapchat:before {\n    content: \"\\eec0\";\n  }\n  .bxl-soundcloud:before {\n    content: \"\\eec1\";\n  }\n  .bxl-spotify:before {\n    content: \"\\eec2\";\n  }\n  .bxl-spring-boot:before {\n    content: \"\\eec3\";\n  }\n  .bxl-squarespace:before {\n    content: \"\\eec4\";\n  }\n  .bxl-stack-overflow:before {\n    content: \"\\eec5\";\n  }\n  .bxl-stripe:before {\n    content: \"\\eec6\";\n  }\n  .bxl-telegram:before {\n    content: \"\\eec7\";\n  }\n  .bxl-trello:before {\n    content: \"\\eec8\";\n  }\n  .bxl-tumblr:before {\n    content: \"\\eec9\";\n  }\n  .bxl-tux:before {\n    content: \"\\eeca\";\n  }\n  .bxl-twitch:before {\n    content: \"\\eecb\";\n  }\n  .bxl-twitter:before {\n    content: \"\\eecc\";\n  }\n  .bxl-unsplash:before {\n    content: \"\\eecd\";\n  }\n  .bxl-vimeo:before {\n    content: \"\\eece\";\n  }\n  .bxl-visa:before {\n    content: \"\\eecf\";\n  }\n  .bxl-vk:before {\n    content: \"\\eed0\";\n  }\n  .bxl-vuejs:before {\n    content: \"\\eed1\";\n  }\n  .bxl-whatsapp:before {\n    content: \"\\eed2\";\n  }\n  .bxl-whatsapp-square:before {\n    content: \"\\eed3\";\n  }\n  .bxl-wikipedia:before {\n    content: \"\\eed4\";\n  }\n  .bxl-windows:before {\n    content: \"\\eed5\";\n  }\n  .bxl-wix:before {\n    content: \"\\eed6\";\n  }\n  .bxl-wordpress:before {\n    content: \"\\eed7\";\n  }\n  .bxl-yahoo:before {\n    content: \"\\eed8\";\n  }\n  .bxl-yelp:before {\n    content: \"\\eed9\";\n  }\n  .bxl-youtube:before {\n    content: \"\\eeda\";\n  }\n  .bxl-zoom:before {\n    content: \"\\eedb\";\n  }\n  ", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/runtime/api.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/css-loader/dist/runtime/api.js ***!
+  \*****************************************************/
+/***/ ((module) => {
+
+"use strict";
+
+
+/*
+  MIT License http://www.opensource.org/licenses/mit-license.php
+  Author Tobias Koppers @sokra
+*/
+// css base code, injected by the css-loader
+// eslint-disable-next-line func-names
+module.exports = function (cssWithMappingToString) {
+  var list = []; // return the list of modules as css string
+
+  list.toString = function toString() {
+    return this.map(function (item) {
+      var content = cssWithMappingToString(item);
+
+      if (item[2]) {
+        return "@media ".concat(item[2], " {").concat(content, "}");
+      }
+
+      return content;
+    }).join('');
+  }; // import a list of modules into the list
+  // eslint-disable-next-line func-names
+
+
+  list.i = function (modules, mediaQuery, dedupe) {
+    if (typeof modules === 'string') {
+      // eslint-disable-next-line no-param-reassign
+      modules = [[null, modules, '']];
+    }
+
+    var alreadyImportedModules = {};
+
+    if (dedupe) {
+      for (var i = 0; i < this.length; i++) {
+        // eslint-disable-next-line prefer-destructuring
+        var id = this[i][0];
+
+        if (id != null) {
+          alreadyImportedModules[id] = true;
+        }
+      }
+    }
+
+    for (var _i = 0; _i < modules.length; _i++) {
+      var item = [].concat(modules[_i]);
+
+      if (dedupe && alreadyImportedModules[item[0]]) {
+        // eslint-disable-next-line no-continue
+        continue;
+      }
+
+      if (mediaQuery) {
+        if (!item[2]) {
+          item[2] = mediaQuery;
+        } else {
+          item[2] = "".concat(mediaQuery, " and ").concat(item[2]);
+        }
+      }
+
+      list.push(item);
+    }
+  };
+
+  return list;
+};
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/runtime/getUrl.js":
+/*!********************************************************!*\
+  !*** ./node_modules/css-loader/dist/runtime/getUrl.js ***!
+  \********************************************************/
+/***/ ((module) => {
+
+"use strict";
+
+
+module.exports = function (url, options) {
+  if (!options) {
+    // eslint-disable-next-line no-param-reassign
+    options = {};
+  } // eslint-disable-next-line no-underscore-dangle, no-param-reassign
+
+
+  url = url && url.__esModule ? url.default : url;
+
+  if (typeof url !== 'string') {
+    return url;
+  } // If url is already wrapped in quotes, remove them
+
+
+  if (/^['"].*['"]$/.test(url)) {
+    // eslint-disable-next-line no-param-reassign
+    url = url.slice(1, -1);
+  }
+
+  if (options.hash) {
+    // eslint-disable-next-line no-param-reassign
+    url += options.hash;
+  } // Should url be wrapped?
+  // See https://drafts.csswg.org/css-values-3/#urls
+
+
+  if (/["'() \t\n]/.test(url) || options.needQuotes) {
+    return "\"".concat(url.replace(/"/g, '\\"').replace(/\n/g, '\\n'), "\"");
+  }
+
+  return url;
+};
+
+/***/ }),
+
+/***/ "./node_modules/feather-icons/dist/feather.js":
+/*!****************************************************!*\
+  !*** ./node_modules/feather-icons/dist/feather.js ***!
+  \****************************************************/
+/***/ (function(module) {
+
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(true)
+		module.exports = factory();
+	else {}
+})(typeof self !== 'undefined' ? self : this, function() {
+return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __nested_webpack_require_574__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __nested_webpack_require_574__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__nested_webpack_require_574__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__nested_webpack_require_574__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__nested_webpack_require_574__.d = function(exports, name, getter) {
+/******/ 		if(!__nested_webpack_require_574__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__nested_webpack_require_574__.r = function(exports) {
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__nested_webpack_require_574__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__nested_webpack_require_574__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__nested_webpack_require_574__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__nested_webpack_require_574__.p = "";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __nested_webpack_require_574__(__nested_webpack_require_574__.s = 0);
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "./dist/icons.json":
+/*!*************************!*\
+  !*** ./dist/icons.json ***!
+  \*************************/
+/*! exports provided: activity, airplay, alert-circle, alert-octagon, alert-triangle, align-center, align-justify, align-left, align-right, anchor, aperture, archive, arrow-down-circle, arrow-down-left, arrow-down-right, arrow-down, arrow-left-circle, arrow-left, arrow-right-circle, arrow-right, arrow-up-circle, arrow-up-left, arrow-up-right, arrow-up, at-sign, award, bar-chart-2, bar-chart, battery-charging, battery, bell-off, bell, bluetooth, bold, book-open, book, bookmark, box, briefcase, calendar, camera-off, camera, cast, check-circle, check-square, check, chevron-down, chevron-left, chevron-right, chevron-up, chevrons-down, chevrons-left, chevrons-right, chevrons-up, chrome, circle, clipboard, clock, cloud-drizzle, cloud-lightning, cloud-off, cloud-rain, cloud-snow, cloud, code, codepen, codesandbox, coffee, columns, command, compass, copy, corner-down-left, corner-down-right, corner-left-down, corner-left-up, corner-right-down, corner-right-up, corner-up-left, corner-up-right, cpu, credit-card, crop, crosshair, database, delete, disc, divide-circle, divide-square, divide, dollar-sign, download-cloud, download, dribbble, droplet, edit-2, edit-3, edit, external-link, eye-off, eye, facebook, fast-forward, feather, figma, file-minus, file-plus, file-text, file, film, filter, flag, folder-minus, folder-plus, folder, framer, frown, gift, git-branch, git-commit, git-merge, git-pull-request, github, gitlab, globe, grid, hard-drive, hash, headphones, heart, help-circle, hexagon, home, image, inbox, info, instagram, italic, key, layers, layout, life-buoy, link-2, link, linkedin, list, loader, lock, log-in, log-out, mail, map-pin, map, maximize-2, maximize, meh, menu, message-circle, message-square, mic-off, mic, minimize-2, minimize, minus-circle, minus-square, minus, monitor, moon, more-horizontal, more-vertical, mouse-pointer, move, music, navigation-2, navigation, octagon, package, paperclip, pause-circle, pause, pen-tool, percent, phone-call, phone-forwarded, phone-incoming, phone-missed, phone-off, phone-outgoing, phone, pie-chart, play-circle, play, plus-circle, plus-square, plus, pocket, power, printer, radio, refresh-ccw, refresh-cw, repeat, rewind, rotate-ccw, rotate-cw, rss, save, scissors, search, send, server, settings, share-2, share, shield-off, shield, shopping-bag, shopping-cart, shuffle, sidebar, skip-back, skip-forward, slack, slash, sliders, smartphone, smile, speaker, square, star, stop-circle, sun, sunrise, sunset, tablet, tag, target, terminal, thermometer, thumbs-down, thumbs-up, toggle-left, toggle-right, tool, trash-2, trash, trello, trending-down, trending-up, triangle, truck, tv, twitch, twitter, type, umbrella, underline, unlock, upload-cloud, upload, user-check, user-minus, user-plus, user-x, user, users, video-off, video, voicemail, volume-1, volume-2, volume-x, volume, watch, wifi-off, wifi, wind, x-circle, x-octagon, x-square, x, youtube, zap-off, zap, zoom-in, zoom-out, default */
+/***/ (function(module) {
+
+module.exports = {"activity":"<polyline points=\"22 12 18 12 15 21 9 3 6 12 2 12\"></polyline>","airplay":"<path d=\"M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1\"></path><polygon points=\"12 15 17 21 7 21 12 15\"></polygon>","alert-circle":"<circle cx=\"12\" cy=\"12\" r=\"10\"></circle><line x1=\"12\" y1=\"8\" x2=\"12\" y2=\"12\"></line><line x1=\"12\" y1=\"16\" x2=\"12.01\" y2=\"16\"></line>","alert-octagon":"<polygon points=\"7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2\"></polygon><line x1=\"12\" y1=\"8\" x2=\"12\" y2=\"12\"></line><line x1=\"12\" y1=\"16\" x2=\"12.01\" y2=\"16\"></line>","alert-triangle":"<path d=\"M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z\"></path><line x1=\"12\" y1=\"9\" x2=\"12\" y2=\"13\"></line><line x1=\"12\" y1=\"17\" x2=\"12.01\" y2=\"17\"></line>","align-center":"<line x1=\"18\" y1=\"10\" x2=\"6\" y2=\"10\"></line><line x1=\"21\" y1=\"6\" x2=\"3\" y2=\"6\"></line><line x1=\"21\" y1=\"14\" x2=\"3\" y2=\"14\"></line><line x1=\"18\" y1=\"18\" x2=\"6\" y2=\"18\"></line>","align-justify":"<line x1=\"21\" y1=\"10\" x2=\"3\" y2=\"10\"></line><line x1=\"21\" y1=\"6\" x2=\"3\" y2=\"6\"></line><line x1=\"21\" y1=\"14\" x2=\"3\" y2=\"14\"></line><line x1=\"21\" y1=\"18\" x2=\"3\" y2=\"18\"></line>","align-left":"<line x1=\"17\" y1=\"10\" x2=\"3\" y2=\"10\"></line><line x1=\"21\" y1=\"6\" x2=\"3\" y2=\"6\"></line><line x1=\"21\" y1=\"14\" x2=\"3\" y2=\"14\"></line><line x1=\"17\" y1=\"18\" x2=\"3\" y2=\"18\"></line>","align-right":"<line x1=\"21\" y1=\"10\" x2=\"7\" y2=\"10\"></line><line x1=\"21\" y1=\"6\" x2=\"3\" y2=\"6\"></line><line x1=\"21\" y1=\"14\" x2=\"3\" y2=\"14\"></line><line x1=\"21\" y1=\"18\" x2=\"7\" y2=\"18\"></line>","anchor":"<circle cx=\"12\" cy=\"5\" r=\"3\"></circle><line x1=\"12\" y1=\"22\" x2=\"12\" y2=\"8\"></line><path d=\"M5 12H2a10 10 0 0 0 20 0h-3\"></path>","aperture":"<circle cx=\"12\" cy=\"12\" r=\"10\"></circle><line x1=\"14.31\" y1=\"8\" x2=\"20.05\" y2=\"17.94\"></line><line x1=\"9.69\" y1=\"8\" x2=\"21.17\" y2=\"8\"></line><line x1=\"7.38\" y1=\"12\" x2=\"13.12\" y2=\"2.06\"></line><line x1=\"9.69\" y1=\"16\" x2=\"3.95\" y2=\"6.06\"></line><line x1=\"14.31\" y1=\"16\" x2=\"2.83\" y2=\"16\"></line><line x1=\"16.62\" y1=\"12\" x2=\"10.88\" y2=\"21.94\"></line>","archive":"<polyline points=\"21 8 21 21 3 21 3 8\"></polyline><rect x=\"1\" y=\"3\" width=\"22\" height=\"5\"></rect><line x1=\"10\" y1=\"12\" x2=\"14\" y2=\"12\"></line>","arrow-down-circle":"<circle cx=\"12\" cy=\"12\" r=\"10\"></circle><polyline points=\"8 12 12 16 16 12\"></polyline><line x1=\"12\" y1=\"8\" x2=\"12\" y2=\"16\"></line>","arrow-down-left":"<line x1=\"17\" y1=\"7\" x2=\"7\" y2=\"17\"></line><polyline points=\"17 17 7 17 7 7\"></polyline>","arrow-down-right":"<line x1=\"7\" y1=\"7\" x2=\"17\" y2=\"17\"></line><polyline points=\"17 7 17 17 7 17\"></polyline>","arrow-down":"<line x1=\"12\" y1=\"5\" x2=\"12\" y2=\"19\"></line><polyline points=\"19 12 12 19 5 12\"></polyline>","arrow-left-circle":"<circle cx=\"12\" cy=\"12\" r=\"10\"></circle><polyline points=\"12 8 8 12 12 16\"></polyline><line x1=\"16\" y1=\"12\" x2=\"8\" y2=\"12\"></line>","arrow-left":"<line x1=\"19\" y1=\"12\" x2=\"5\" y2=\"12\"></line><polyline points=\"12 19 5 12 12 5\"></polyline>","arrow-right-circle":"<circle cx=\"12\" cy=\"12\" r=\"10\"></circle><polyline points=\"12 16 16 12 12 8\"></polyline><line x1=\"8\" y1=\"12\" x2=\"16\" y2=\"12\"></line>","arrow-right":"<line x1=\"5\" y1=\"12\" x2=\"19\" y2=\"12\"></line><polyline points=\"12 5 19 12 12 19\"></polyline>","arrow-up-circle":"<circle cx=\"12\" cy=\"12\" r=\"10\"></circle><polyline points=\"16 12 12 8 8 12\"></polyline><line x1=\"12\" y1=\"16\" x2=\"12\" y2=\"8\"></line>","arrow-up-left":"<line x1=\"17\" y1=\"17\" x2=\"7\" y2=\"7\"></line><polyline points=\"7 17 7 7 17 7\"></polyline>","arrow-up-right":"<line x1=\"7\" y1=\"17\" x2=\"17\" y2=\"7\"></line><polyline points=\"7 7 17 7 17 17\"></polyline>","arrow-up":"<line x1=\"12\" y1=\"19\" x2=\"12\" y2=\"5\"></line><polyline points=\"5 12 12 5 19 12\"></polyline>","at-sign":"<circle cx=\"12\" cy=\"12\" r=\"4\"></circle><path d=\"M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-3.92 7.94\"></path>","award":"<circle cx=\"12\" cy=\"8\" r=\"7\"></circle><polyline points=\"8.21 13.89 7 23 12 20 17 23 15.79 13.88\"></polyline>","bar-chart-2":"<line x1=\"18\" y1=\"20\" x2=\"18\" y2=\"10\"></line><line x1=\"12\" y1=\"20\" x2=\"12\" y2=\"4\"></line><line x1=\"6\" y1=\"20\" x2=\"6\" y2=\"14\"></line>","bar-chart":"<line x1=\"12\" y1=\"20\" x2=\"12\" y2=\"10\"></line><line x1=\"18\" y1=\"20\" x2=\"18\" y2=\"4\"></line><line x1=\"6\" y1=\"20\" x2=\"6\" y2=\"16\"></line>","battery-charging":"<path d=\"M5 18H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h3.19M15 6h2a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-3.19\"></path><line x1=\"23\" y1=\"13\" x2=\"23\" y2=\"11\"></line><polyline points=\"11 6 7 12 13 12 9 18\"></polyline>","battery":"<rect x=\"1\" y=\"6\" width=\"18\" height=\"12\" rx=\"2\" ry=\"2\"></rect><line x1=\"23\" y1=\"13\" x2=\"23\" y2=\"11\"></line>","bell-off":"<path d=\"M13.73 21a2 2 0 0 1-3.46 0\"></path><path d=\"M18.63 13A17.89 17.89 0 0 1 18 8\"></path><path d=\"M6.26 6.26A5.86 5.86 0 0 0 6 8c0 7-3 9-3 9h14\"></path><path d=\"M18 8a6 6 0 0 0-9.33-5\"></path><line x1=\"1\" y1=\"1\" x2=\"23\" y2=\"23\"></line>","bell":"<path d=\"M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9\"></path><path d=\"M13.73 21a2 2 0 0 1-3.46 0\"></path>","bluetooth":"<polyline points=\"6.5 6.5 17.5 17.5 12 23 12 1 17.5 6.5 6.5 17.5\"></polyline>","bold":"<path d=\"M6 4h8a4 4 0 0 1 4 4 4 4 0 0 1-4 4H6z\"></path><path d=\"M6 12h9a4 4 0 0 1 4 4 4 4 0 0 1-4 4H6z\"></path>","book-open":"<path d=\"M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z\"></path><path d=\"M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z\"></path>","book":"<path d=\"M4 19.5A2.5 2.5 0 0 1 6.5 17H20\"></path><path d=\"M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z\"></path>","bookmark":"<path d=\"M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z\"></path>","box":"<path d=\"M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z\"></path><polyline points=\"3.27 6.96 12 12.01 20.73 6.96\"></polyline><line x1=\"12\" y1=\"22.08\" x2=\"12\" y2=\"12\"></line>","briefcase":"<rect x=\"2\" y=\"7\" width=\"20\" height=\"14\" rx=\"2\" ry=\"2\"></rect><path d=\"M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16\"></path>","calendar":"<rect x=\"3\" y=\"4\" width=\"18\" height=\"18\" rx=\"2\" ry=\"2\"></rect><line x1=\"16\" y1=\"2\" x2=\"16\" y2=\"6\"></line><line x1=\"8\" y1=\"2\" x2=\"8\" y2=\"6\"></line><line x1=\"3\" y1=\"10\" x2=\"21\" y2=\"10\"></line>","camera-off":"<line x1=\"1\" y1=\"1\" x2=\"23\" y2=\"23\"></line><path d=\"M21 21H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h3m3-3h6l2 3h4a2 2 0 0 1 2 2v9.34m-7.72-2.06a4 4 0 1 1-5.56-5.56\"></path>","camera":"<path d=\"M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z\"></path><circle cx=\"12\" cy=\"13\" r=\"4\"></circle>","cast":"<path d=\"M2 16.1A5 5 0 0 1 5.9 20M2 12.05A9 9 0 0 1 9.95 20M2 8V6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-6\"></path><line x1=\"2\" y1=\"20\" x2=\"2.01\" y2=\"20\"></line>","check-circle":"<path d=\"M22 11.08V12a10 10 0 1 1-5.93-9.14\"></path><polyline points=\"22 4 12 14.01 9 11.01\"></polyline>","check-square":"<polyline points=\"9 11 12 14 22 4\"></polyline><path d=\"M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11\"></path>","check":"<polyline points=\"20 6 9 17 4 12\"></polyline>","chevron-down":"<polyline points=\"6 9 12 15 18 9\"></polyline>","chevron-left":"<polyline points=\"15 18 9 12 15 6\"></polyline>","chevron-right":"<polyline points=\"9 18 15 12 9 6\"></polyline>","chevron-up":"<polyline points=\"18 15 12 9 6 15\"></polyline>","chevrons-down":"<polyline points=\"7 13 12 18 17 13\"></polyline><polyline points=\"7 6 12 11 17 6\"></polyline>","chevrons-left":"<polyline points=\"11 17 6 12 11 7\"></polyline><polyline points=\"18 17 13 12 18 7\"></polyline>","chevrons-right":"<polyline points=\"13 17 18 12 13 7\"></polyline><polyline points=\"6 17 11 12 6 7\"></polyline>","chevrons-up":"<polyline points=\"17 11 12 6 7 11\"></polyline><polyline points=\"17 18 12 13 7 18\"></polyline>","chrome":"<circle cx=\"12\" cy=\"12\" r=\"10\"></circle><circle cx=\"12\" cy=\"12\" r=\"4\"></circle><line x1=\"21.17\" y1=\"8\" x2=\"12\" y2=\"8\"></line><line x1=\"3.95\" y1=\"6.06\" x2=\"8.54\" y2=\"14\"></line><line x1=\"10.88\" y1=\"21.94\" x2=\"15.46\" y2=\"14\"></line>","circle":"<circle cx=\"12\" cy=\"12\" r=\"10\"></circle>","clipboard":"<path d=\"M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2\"></path><rect x=\"8\" y=\"2\" width=\"8\" height=\"4\" rx=\"1\" ry=\"1\"></rect>","clock":"<circle cx=\"12\" cy=\"12\" r=\"10\"></circle><polyline points=\"12 6 12 12 16 14\"></polyline>","cloud-drizzle":"<line x1=\"8\" y1=\"19\" x2=\"8\" y2=\"21\"></line><line x1=\"8\" y1=\"13\" x2=\"8\" y2=\"15\"></line><line x1=\"16\" y1=\"19\" x2=\"16\" y2=\"21\"></line><line x1=\"16\" y1=\"13\" x2=\"16\" y2=\"15\"></line><line x1=\"12\" y1=\"21\" x2=\"12\" y2=\"23\"></line><line x1=\"12\" y1=\"15\" x2=\"12\" y2=\"17\"></line><path d=\"M20 16.58A5 5 0 0 0 18 7h-1.26A8 8 0 1 0 4 15.25\"></path>","cloud-lightning":"<path d=\"M19 16.9A5 5 0 0 0 18 7h-1.26a8 8 0 1 0-11.62 9\"></path><polyline points=\"13 11 9 17 15 17 11 23\"></polyline>","cloud-off":"<path d=\"M22.61 16.95A5 5 0 0 0 18 10h-1.26a8 8 0 0 0-7.05-6M5 5a8 8 0 0 0 4 15h9a5 5 0 0 0 1.7-.3\"></path><line x1=\"1\" y1=\"1\" x2=\"23\" y2=\"23\"></line>","cloud-rain":"<line x1=\"16\" y1=\"13\" x2=\"16\" y2=\"21\"></line><line x1=\"8\" y1=\"13\" x2=\"8\" y2=\"21\"></line><line x1=\"12\" y1=\"15\" x2=\"12\" y2=\"23\"></line><path d=\"M20 16.58A5 5 0 0 0 18 7h-1.26A8 8 0 1 0 4 15.25\"></path>","cloud-snow":"<path d=\"M20 17.58A5 5 0 0 0 18 8h-1.26A8 8 0 1 0 4 16.25\"></path><line x1=\"8\" y1=\"16\" x2=\"8.01\" y2=\"16\"></line><line x1=\"8\" y1=\"20\" x2=\"8.01\" y2=\"20\"></line><line x1=\"12\" y1=\"18\" x2=\"12.01\" y2=\"18\"></line><line x1=\"12\" y1=\"22\" x2=\"12.01\" y2=\"22\"></line><line x1=\"16\" y1=\"16\" x2=\"16.01\" y2=\"16\"></line><line x1=\"16\" y1=\"20\" x2=\"16.01\" y2=\"20\"></line>","cloud":"<path d=\"M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z\"></path>","code":"<polyline points=\"16 18 22 12 16 6\"></polyline><polyline points=\"8 6 2 12 8 18\"></polyline>","codepen":"<polygon points=\"12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2\"></polygon><line x1=\"12\" y1=\"22\" x2=\"12\" y2=\"15.5\"></line><polyline points=\"22 8.5 12 15.5 2 8.5\"></polyline><polyline points=\"2 15.5 12 8.5 22 15.5\"></polyline><line x1=\"12\" y1=\"2\" x2=\"12\" y2=\"8.5\"></line>","codesandbox":"<path d=\"M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z\"></path><polyline points=\"7.5 4.21 12 6.81 16.5 4.21\"></polyline><polyline points=\"7.5 19.79 7.5 14.6 3 12\"></polyline><polyline points=\"21 12 16.5 14.6 16.5 19.79\"></polyline><polyline points=\"3.27 6.96 12 12.01 20.73 6.96\"></polyline><line x1=\"12\" y1=\"22.08\" x2=\"12\" y2=\"12\"></line>","coffee":"<path d=\"M18 8h1a4 4 0 0 1 0 8h-1\"></path><path d=\"M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z\"></path><line x1=\"6\" y1=\"1\" x2=\"6\" y2=\"4\"></line><line x1=\"10\" y1=\"1\" x2=\"10\" y2=\"4\"></line><line x1=\"14\" y1=\"1\" x2=\"14\" y2=\"4\"></line>","columns":"<path d=\"M12 3h7a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-7m0-18H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h7m0-18v18\"></path>","command":"<path d=\"M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z\"></path>","compass":"<circle cx=\"12\" cy=\"12\" r=\"10\"></circle><polygon points=\"16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76\"></polygon>","copy":"<rect x=\"9\" y=\"9\" width=\"13\" height=\"13\" rx=\"2\" ry=\"2\"></rect><path d=\"M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1\"></path>","corner-down-left":"<polyline points=\"9 10 4 15 9 20\"></polyline><path d=\"M20 4v7a4 4 0 0 1-4 4H4\"></path>","corner-down-right":"<polyline points=\"15 10 20 15 15 20\"></polyline><path d=\"M4 4v7a4 4 0 0 0 4 4h12\"></path>","corner-left-down":"<polyline points=\"14 15 9 20 4 15\"></polyline><path d=\"M20 4h-7a4 4 0 0 0-4 4v12\"></path>","corner-left-up":"<polyline points=\"14 9 9 4 4 9\"></polyline><path d=\"M20 20h-7a4 4 0 0 1-4-4V4\"></path>","corner-right-down":"<polyline points=\"10 15 15 20 20 15\"></polyline><path d=\"M4 4h7a4 4 0 0 1 4 4v12\"></path>","corner-right-up":"<polyline points=\"10 9 15 4 20 9\"></polyline><path d=\"M4 20h7a4 4 0 0 0 4-4V4\"></path>","corner-up-left":"<polyline points=\"9 14 4 9 9 4\"></polyline><path d=\"M20 20v-7a4 4 0 0 0-4-4H4\"></path>","corner-up-right":"<polyline points=\"15 14 20 9 15 4\"></polyline><path d=\"M4 20v-7a4 4 0 0 1 4-4h12\"></path>","cpu":"<rect x=\"4\" y=\"4\" width=\"16\" height=\"16\" rx=\"2\" ry=\"2\"></rect><rect x=\"9\" y=\"9\" width=\"6\" height=\"6\"></rect><line x1=\"9\" y1=\"1\" x2=\"9\" y2=\"4\"></line><line x1=\"15\" y1=\"1\" x2=\"15\" y2=\"4\"></line><line x1=\"9\" y1=\"20\" x2=\"9\" y2=\"23\"></line><line x1=\"15\" y1=\"20\" x2=\"15\" y2=\"23\"></line><line x1=\"20\" y1=\"9\" x2=\"23\" y2=\"9\"></line><line x1=\"20\" y1=\"14\" x2=\"23\" y2=\"14\"></line><line x1=\"1\" y1=\"9\" x2=\"4\" y2=\"9\"></line><line x1=\"1\" y1=\"14\" x2=\"4\" y2=\"14\"></line>","credit-card":"<rect x=\"1\" y=\"4\" width=\"22\" height=\"16\" rx=\"2\" ry=\"2\"></rect><line x1=\"1\" y1=\"10\" x2=\"23\" y2=\"10\"></line>","crop":"<path d=\"M6.13 1L6 16a2 2 0 0 0 2 2h15\"></path><path d=\"M1 6.13L16 6a2 2 0 0 1 2 2v15\"></path>","crosshair":"<circle cx=\"12\" cy=\"12\" r=\"10\"></circle><line x1=\"22\" y1=\"12\" x2=\"18\" y2=\"12\"></line><line x1=\"6\" y1=\"12\" x2=\"2\" y2=\"12\"></line><line x1=\"12\" y1=\"6\" x2=\"12\" y2=\"2\"></line><line x1=\"12\" y1=\"22\" x2=\"12\" y2=\"18\"></line>","database":"<ellipse cx=\"12\" cy=\"5\" rx=\"9\" ry=\"3\"></ellipse><path d=\"M21 12c0 1.66-4 3-9 3s-9-1.34-9-3\"></path><path d=\"M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5\"></path>","delete":"<path d=\"M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z\"></path><line x1=\"18\" y1=\"9\" x2=\"12\" y2=\"15\"></line><line x1=\"12\" y1=\"9\" x2=\"18\" y2=\"15\"></line>","disc":"<circle cx=\"12\" cy=\"12\" r=\"10\"></circle><circle cx=\"12\" cy=\"12\" r=\"3\"></circle>","divide-circle":"<line x1=\"8\" y1=\"12\" x2=\"16\" y2=\"12\"></line><line x1=\"12\" y1=\"16\" x2=\"12\" y2=\"16\"></line><line x1=\"12\" y1=\"8\" x2=\"12\" y2=\"8\"></line><circle cx=\"12\" cy=\"12\" r=\"10\"></circle>","divide-square":"<rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\" ry=\"2\"></rect><line x1=\"8\" y1=\"12\" x2=\"16\" y2=\"12\"></line><line x1=\"12\" y1=\"16\" x2=\"12\" y2=\"16\"></line><line x1=\"12\" y1=\"8\" x2=\"12\" y2=\"8\"></line>","divide":"<circle cx=\"12\" cy=\"6\" r=\"2\"></circle><line x1=\"5\" y1=\"12\" x2=\"19\" y2=\"12\"></line><circle cx=\"12\" cy=\"18\" r=\"2\"></circle>","dollar-sign":"<line x1=\"12\" y1=\"1\" x2=\"12\" y2=\"23\"></line><path d=\"M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6\"></path>","download-cloud":"<polyline points=\"8 17 12 21 16 17\"></polyline><line x1=\"12\" y1=\"12\" x2=\"12\" y2=\"21\"></line><path d=\"M20.88 18.09A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.29\"></path>","download":"<path d=\"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4\"></path><polyline points=\"7 10 12 15 17 10\"></polyline><line x1=\"12\" y1=\"15\" x2=\"12\" y2=\"3\"></line>","dribbble":"<circle cx=\"12\" cy=\"12\" r=\"10\"></circle><path d=\"M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32\"></path>","droplet":"<path d=\"M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z\"></path>","edit-2":"<path d=\"M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z\"></path>","edit-3":"<path d=\"M12 20h9\"></path><path d=\"M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z\"></path>","edit":"<path d=\"M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7\"></path><path d=\"M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z\"></path>","external-link":"<path d=\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"></path><polyline points=\"15 3 21 3 21 9\"></polyline><line x1=\"10\" y1=\"14\" x2=\"21\" y2=\"3\"></line>","eye-off":"<path d=\"M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24\"></path><line x1=\"1\" y1=\"1\" x2=\"23\" y2=\"23\"></line>","eye":"<path d=\"M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z\"></path><circle cx=\"12\" cy=\"12\" r=\"3\"></circle>","facebook":"<path d=\"M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z\"></path>","fast-forward":"<polygon points=\"13 19 22 12 13 5 13 19\"></polygon><polygon points=\"2 19 11 12 2 5 2 19\"></polygon>","feather":"<path d=\"M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z\"></path><line x1=\"16\" y1=\"8\" x2=\"2\" y2=\"22\"></line><line x1=\"17.5\" y1=\"15\" x2=\"9\" y2=\"15\"></line>","figma":"<path d=\"M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z\"></path><path d=\"M12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z\"></path><path d=\"M12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 1 1-7 0z\"></path><path d=\"M5 19.5A3.5 3.5 0 0 1 8.5 16H12v3.5a3.5 3.5 0 1 1-7 0z\"></path><path d=\"M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z\"></path>","file-minus":"<path d=\"M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z\"></path><polyline points=\"14 2 14 8 20 8\"></polyline><line x1=\"9\" y1=\"15\" x2=\"15\" y2=\"15\"></line>","file-plus":"<path d=\"M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z\"></path><polyline points=\"14 2 14 8 20 8\"></polyline><line x1=\"12\" y1=\"18\" x2=\"12\" y2=\"12\"></line><line x1=\"9\" y1=\"15\" x2=\"15\" y2=\"15\"></line>","file-text":"<path d=\"M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z\"></path><polyline points=\"14 2 14 8 20 8\"></polyline><line x1=\"16\" y1=\"13\" x2=\"8\" y2=\"13\"></line><line x1=\"16\" y1=\"17\" x2=\"8\" y2=\"17\"></line><polyline points=\"10 9 9 9 8 9\"></polyline>","file":"<path d=\"M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z\"></path><polyline points=\"13 2 13 9 20 9\"></polyline>","film":"<rect x=\"2\" y=\"2\" width=\"20\" height=\"20\" rx=\"2.18\" ry=\"2.18\"></rect><line x1=\"7\" y1=\"2\" x2=\"7\" y2=\"22\"></line><line x1=\"17\" y1=\"2\" x2=\"17\" y2=\"22\"></line><line x1=\"2\" y1=\"12\" x2=\"22\" y2=\"12\"></line><line x1=\"2\" y1=\"7\" x2=\"7\" y2=\"7\"></line><line x1=\"2\" y1=\"17\" x2=\"7\" y2=\"17\"></line><line x1=\"17\" y1=\"17\" x2=\"22\" y2=\"17\"></line><line x1=\"17\" y1=\"7\" x2=\"22\" y2=\"7\"></line>","filter":"<polygon points=\"22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3\"></polygon>","flag":"<path d=\"M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z\"></path><line x1=\"4\" y1=\"22\" x2=\"4\" y2=\"15\"></line>","folder-minus":"<path d=\"M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z\"></path><line x1=\"9\" y1=\"14\" x2=\"15\" y2=\"14\"></line>","folder-plus":"<path d=\"M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z\"></path><line x1=\"12\" y1=\"11\" x2=\"12\" y2=\"17\"></line><line x1=\"9\" y1=\"14\" x2=\"15\" y2=\"14\"></line>","folder":"<path d=\"M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z\"></path>","framer":"<path d=\"M5 16V9h14V2H5l14 14h-7m-7 0l7 7v-7m-7 0h7\"></path>","frown":"<circle cx=\"12\" cy=\"12\" r=\"10\"></circle><path d=\"M16 16s-1.5-2-4-2-4 2-4 2\"></path><line x1=\"9\" y1=\"9\" x2=\"9.01\" y2=\"9\"></line><line x1=\"15\" y1=\"9\" x2=\"15.01\" y2=\"9\"></line>","gift":"<polyline points=\"20 12 20 22 4 22 4 12\"></polyline><rect x=\"2\" y=\"7\" width=\"20\" height=\"5\"></rect><line x1=\"12\" y1=\"22\" x2=\"12\" y2=\"7\"></line><path d=\"M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z\"></path><path d=\"M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z\"></path>","git-branch":"<line x1=\"6\" y1=\"3\" x2=\"6\" y2=\"15\"></line><circle cx=\"18\" cy=\"6\" r=\"3\"></circle><circle cx=\"6\" cy=\"18\" r=\"3\"></circle><path d=\"M18 9a9 9 0 0 1-9 9\"></path>","git-commit":"<circle cx=\"12\" cy=\"12\" r=\"4\"></circle><line x1=\"1.05\" y1=\"12\" x2=\"7\" y2=\"12\"></line><line x1=\"17.01\" y1=\"12\" x2=\"22.96\" y2=\"12\"></line>","git-merge":"<circle cx=\"18\" cy=\"18\" r=\"3\"></circle><circle cx=\"6\" cy=\"6\" r=\"3\"></circle><path d=\"M6 21V9a9 9 0 0 0 9 9\"></path>","git-pull-request":"<circle cx=\"18\" cy=\"18\" r=\"3\"></circle><circle cx=\"6\" cy=\"6\" r=\"3\"></circle><path d=\"M13 6h3a2 2 0 0 1 2 2v7\"></path><line x1=\"6\" y1=\"9\" x2=\"6\" y2=\"21\"></line>","github":"<path d=\"M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22\"></path>","gitlab":"<path d=\"M22.65 14.39L12 22.13 1.35 14.39a.84.84 0 0 1-.3-.94l1.22-3.78 2.44-7.51A.42.42 0 0 1 4.82 2a.43.43 0 0 1 .58 0 .42.42 0 0 1 .11.18l2.44 7.49h8.1l2.44-7.51A.42.42 0 0 1 18.6 2a.43.43 0 0 1 .58 0 .42.42 0 0 1 .11.18l2.44 7.51L23 13.45a.84.84 0 0 1-.35.94z\"></path>","globe":"<circle cx=\"12\" cy=\"12\" r=\"10\"></circle><line x1=\"2\" y1=\"12\" x2=\"22\" y2=\"12\"></line><path d=\"M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z\"></path>","grid":"<rect x=\"3\" y=\"3\" width=\"7\" height=\"7\"></rect><rect x=\"14\" y=\"3\" width=\"7\" height=\"7\"></rect><rect x=\"14\" y=\"14\" width=\"7\" height=\"7\"></rect><rect x=\"3\" y=\"14\" width=\"7\" height=\"7\"></rect>","hard-drive":"<line x1=\"22\" y1=\"12\" x2=\"2\" y2=\"12\"></line><path d=\"M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z\"></path><line x1=\"6\" y1=\"16\" x2=\"6.01\" y2=\"16\"></line><line x1=\"10\" y1=\"16\" x2=\"10.01\" y2=\"16\"></line>","hash":"<line x1=\"4\" y1=\"9\" x2=\"20\" y2=\"9\"></line><line x1=\"4\" y1=\"15\" x2=\"20\" y2=\"15\"></line><line x1=\"10\" y1=\"3\" x2=\"8\" y2=\"21\"></line><line x1=\"16\" y1=\"3\" x2=\"14\" y2=\"21\"></line>","headphones":"<path d=\"M3 18v-6a9 9 0 0 1 18 0v6\"></path><path d=\"M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z\"></path>","heart":"<path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path>","help-circle":"<circle cx=\"12\" cy=\"12\" r=\"10\"></circle><path d=\"M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3\"></path><line x1=\"12\" y1=\"17\" x2=\"12.01\" y2=\"17\"></line>","hexagon":"<path d=\"M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z\"></path>","home":"<path d=\"M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"></path><polyline points=\"9 22 9 12 15 12 15 22\"></polyline>","image":"<rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\" ry=\"2\"></rect><circle cx=\"8.5\" cy=\"8.5\" r=\"1.5\"></circle><polyline points=\"21 15 16 10 5 21\"></polyline>","inbox":"<polyline points=\"22 12 16 12 14 15 10 15 8 12 2 12\"></polyline><path d=\"M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z\"></path>","info":"<circle cx=\"12\" cy=\"12\" r=\"10\"></circle><line x1=\"12\" y1=\"16\" x2=\"12\" y2=\"12\"></line><line x1=\"12\" y1=\"8\" x2=\"12.01\" y2=\"8\"></line>","instagram":"<rect x=\"2\" y=\"2\" width=\"20\" height=\"20\" rx=\"5\" ry=\"5\"></rect><path d=\"M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z\"></path><line x1=\"17.5\" y1=\"6.5\" x2=\"17.51\" y2=\"6.5\"></line>","italic":"<line x1=\"19\" y1=\"4\" x2=\"10\" y2=\"4\"></line><line x1=\"14\" y1=\"20\" x2=\"5\" y2=\"20\"></line><line x1=\"15\" y1=\"4\" x2=\"9\" y2=\"20\"></line>","key":"<path d=\"M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4\"></path>","layers":"<polygon points=\"12 2 2 7 12 12 22 7 12 2\"></polygon><polyline points=\"2 17 12 22 22 17\"></polyline><polyline points=\"2 12 12 17 22 12\"></polyline>","layout":"<rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\" ry=\"2\"></rect><line x1=\"3\" y1=\"9\" x2=\"21\" y2=\"9\"></line><line x1=\"9\" y1=\"21\" x2=\"9\" y2=\"9\"></line>","life-buoy":"<circle cx=\"12\" cy=\"12\" r=\"10\"></circle><circle cx=\"12\" cy=\"12\" r=\"4\"></circle><line x1=\"4.93\" y1=\"4.93\" x2=\"9.17\" y2=\"9.17\"></line><line x1=\"14.83\" y1=\"14.83\" x2=\"19.07\" y2=\"19.07\"></line><line x1=\"14.83\" y1=\"9.17\" x2=\"19.07\" y2=\"4.93\"></line><line x1=\"14.83\" y1=\"9.17\" x2=\"18.36\" y2=\"5.64\"></line><line x1=\"4.93\" y1=\"19.07\" x2=\"9.17\" y2=\"14.83\"></line>","link-2":"<path d=\"M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3\"></path><line x1=\"8\" y1=\"12\" x2=\"16\" y2=\"12\"></line>","link":"<path d=\"M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71\"></path><path d=\"M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71\"></path>","linkedin":"<path d=\"M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z\"></path><rect x=\"2\" y=\"9\" width=\"4\" height=\"12\"></rect><circle cx=\"4\" cy=\"4\" r=\"2\"></circle>","list":"<line x1=\"8\" y1=\"6\" x2=\"21\" y2=\"6\"></line><line x1=\"8\" y1=\"12\" x2=\"21\" y2=\"12\"></line><line x1=\"8\" y1=\"18\" x2=\"21\" y2=\"18\"></line><line x1=\"3\" y1=\"6\" x2=\"3.01\" y2=\"6\"></line><line x1=\"3\" y1=\"12\" x2=\"3.01\" y2=\"12\"></line><line x1=\"3\" y1=\"18\" x2=\"3.01\" y2=\"18\"></line>","loader":"<line x1=\"12\" y1=\"2\" x2=\"12\" y2=\"6\"></line><line x1=\"12\" y1=\"18\" x2=\"12\" y2=\"22\"></line><line x1=\"4.93\" y1=\"4.93\" x2=\"7.76\" y2=\"7.76\"></line><line x1=\"16.24\" y1=\"16.24\" x2=\"19.07\" y2=\"19.07\"></line><line x1=\"2\" y1=\"12\" x2=\"6\" y2=\"12\"></line><line x1=\"18\" y1=\"12\" x2=\"22\" y2=\"12\"></line><line x1=\"4.93\" y1=\"19.07\" x2=\"7.76\" y2=\"16.24\"></line><line x1=\"16.24\" y1=\"7.76\" x2=\"19.07\" y2=\"4.93\"></line>","lock":"<rect x=\"3\" y=\"11\" width=\"18\" height=\"11\" rx=\"2\" ry=\"2\"></rect><path d=\"M7 11V7a5 5 0 0 1 10 0v4\"></path>","log-in":"<path d=\"M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4\"></path><polyline points=\"10 17 15 12 10 7\"></polyline><line x1=\"15\" y1=\"12\" x2=\"3\" y2=\"12\"></line>","log-out":"<path d=\"M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4\"></path><polyline points=\"16 17 21 12 16 7\"></polyline><line x1=\"21\" y1=\"12\" x2=\"9\" y2=\"12\"></line>","mail":"<path d=\"M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z\"></path><polyline points=\"22,6 12,13 2,6\"></polyline>","map-pin":"<path d=\"M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z\"></path><circle cx=\"12\" cy=\"10\" r=\"3\"></circle>","map":"<polygon points=\"1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6\"></polygon><line x1=\"8\" y1=\"2\" x2=\"8\" y2=\"18\"></line><line x1=\"16\" y1=\"6\" x2=\"16\" y2=\"22\"></line>","maximize-2":"<polyline points=\"15 3 21 3 21 9\"></polyline><polyline points=\"9 21 3 21 3 15\"></polyline><line x1=\"21\" y1=\"3\" x2=\"14\" y2=\"10\"></line><line x1=\"3\" y1=\"21\" x2=\"10\" y2=\"14\"></line>","maximize":"<path d=\"M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3\"></path>","meh":"<circle cx=\"12\" cy=\"12\" r=\"10\"></circle><line x1=\"8\" y1=\"15\" x2=\"16\" y2=\"15\"></line><line x1=\"9\" y1=\"9\" x2=\"9.01\" y2=\"9\"></line><line x1=\"15\" y1=\"9\" x2=\"15.01\" y2=\"9\"></line>","menu":"<line x1=\"3\" y1=\"12\" x2=\"21\" y2=\"12\"></line><line x1=\"3\" y1=\"6\" x2=\"21\" y2=\"6\"></line><line x1=\"3\" y1=\"18\" x2=\"21\" y2=\"18\"></line>","message-circle":"<path d=\"M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z\"></path>","message-square":"<path d=\"M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z\"></path>","mic-off":"<line x1=\"1\" y1=\"1\" x2=\"23\" y2=\"23\"></line><path d=\"M9 9v3a3 3 0 0 0 5.12 2.12M15 9.34V4a3 3 0 0 0-5.94-.6\"></path><path d=\"M17 16.95A7 7 0 0 1 5 12v-2m14 0v2a7 7 0 0 1-.11 1.23\"></path><line x1=\"12\" y1=\"19\" x2=\"12\" y2=\"23\"></line><line x1=\"8\" y1=\"23\" x2=\"16\" y2=\"23\"></line>","mic":"<path d=\"M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z\"></path><path d=\"M19 10v2a7 7 0 0 1-14 0v-2\"></path><line x1=\"12\" y1=\"19\" x2=\"12\" y2=\"23\"></line><line x1=\"8\" y1=\"23\" x2=\"16\" y2=\"23\"></line>","minimize-2":"<polyline points=\"4 14 10 14 10 20\"></polyline><polyline points=\"20 10 14 10 14 4\"></polyline><line x1=\"14\" y1=\"10\" x2=\"21\" y2=\"3\"></line><line x1=\"3\" y1=\"21\" x2=\"10\" y2=\"14\"></line>","minimize":"<path d=\"M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3\"></path>","minus-circle":"<circle cx=\"12\" cy=\"12\" r=\"10\"></circle><line x1=\"8\" y1=\"12\" x2=\"16\" y2=\"12\"></line>","minus-square":"<rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\" ry=\"2\"></rect><line x1=\"8\" y1=\"12\" x2=\"16\" y2=\"12\"></line>","minus":"<line x1=\"5\" y1=\"12\" x2=\"19\" y2=\"12\"></line>","monitor":"<rect x=\"2\" y=\"3\" width=\"20\" height=\"14\" rx=\"2\" ry=\"2\"></rect><line x1=\"8\" y1=\"21\" x2=\"16\" y2=\"21\"></line><line x1=\"12\" y1=\"17\" x2=\"12\" y2=\"21\"></line>","moon":"<path d=\"M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z\"></path>","more-horizontal":"<circle cx=\"12\" cy=\"12\" r=\"1\"></circle><circle cx=\"19\" cy=\"12\" r=\"1\"></circle><circle cx=\"5\" cy=\"12\" r=\"1\"></circle>","more-vertical":"<circle cx=\"12\" cy=\"12\" r=\"1\"></circle><circle cx=\"12\" cy=\"5\" r=\"1\"></circle><circle cx=\"12\" cy=\"19\" r=\"1\"></circle>","mouse-pointer":"<path d=\"M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z\"></path><path d=\"M13 13l6 6\"></path>","move":"<polyline points=\"5 9 2 12 5 15\"></polyline><polyline points=\"9 5 12 2 15 5\"></polyline><polyline points=\"15 19 12 22 9 19\"></polyline><polyline points=\"19 9 22 12 19 15\"></polyline><line x1=\"2\" y1=\"12\" x2=\"22\" y2=\"12\"></line><line x1=\"12\" y1=\"2\" x2=\"12\" y2=\"22\"></line>","music":"<path d=\"M9 18V5l12-2v13\"></path><circle cx=\"6\" cy=\"18\" r=\"3\"></circle><circle cx=\"18\" cy=\"16\" r=\"3\"></circle>","navigation-2":"<polygon points=\"12 2 19 21 12 17 5 21 12 2\"></polygon>","navigation":"<polygon points=\"3 11 22 2 13 21 11 13 3 11\"></polygon>","octagon":"<polygon points=\"7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2\"></polygon>","package":"<line x1=\"16.5\" y1=\"9.4\" x2=\"7.5\" y2=\"4.21\"></line><path d=\"M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z\"></path><polyline points=\"3.27 6.96 12 12.01 20.73 6.96\"></polyline><line x1=\"12\" y1=\"22.08\" x2=\"12\" y2=\"12\"></line>","paperclip":"<path d=\"M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48\"></path>","pause-circle":"<circle cx=\"12\" cy=\"12\" r=\"10\"></circle><line x1=\"10\" y1=\"15\" x2=\"10\" y2=\"9\"></line><line x1=\"14\" y1=\"15\" x2=\"14\" y2=\"9\"></line>","pause":"<rect x=\"6\" y=\"4\" width=\"4\" height=\"16\"></rect><rect x=\"14\" y=\"4\" width=\"4\" height=\"16\"></rect>","pen-tool":"<path d=\"M12 19l7-7 3 3-7 7-3-3z\"></path><path d=\"M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z\"></path><path d=\"M2 2l7.586 7.586\"></path><circle cx=\"11\" cy=\"11\" r=\"2\"></circle>","percent":"<line x1=\"19\" y1=\"5\" x2=\"5\" y2=\"19\"></line><circle cx=\"6.5\" cy=\"6.5\" r=\"2.5\"></circle><circle cx=\"17.5\" cy=\"17.5\" r=\"2.5\"></circle>","phone-call":"<path d=\"M15.05 5A5 5 0 0 1 19 8.95M15.05 1A9 9 0 0 1 23 8.94m-1 7.98v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z\"></path>","phone-forwarded":"<polyline points=\"19 1 23 5 19 9\"></polyline><line x1=\"15\" y1=\"5\" x2=\"23\" y2=\"5\"></line><path d=\"M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z\"></path>","phone-incoming":"<polyline points=\"16 2 16 8 22 8\"></polyline><line x1=\"23\" y1=\"1\" x2=\"16\" y2=\"8\"></line><path d=\"M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z\"></path>","phone-missed":"<line x1=\"23\" y1=\"1\" x2=\"17\" y2=\"7\"></line><line x1=\"17\" y1=\"1\" x2=\"23\" y2=\"7\"></line><path d=\"M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z\"></path>","phone-off":"<path d=\"M10.68 13.31a16 16 0 0 0 3.41 2.6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7 2 2 0 0 1 1.72 2v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.42 19.42 0 0 1-3.33-2.67m-2.67-3.34a19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91\"></path><line x1=\"23\" y1=\"1\" x2=\"1\" y2=\"23\"></line>","phone-outgoing":"<polyline points=\"23 7 23 1 17 1\"></polyline><line x1=\"16\" y1=\"8\" x2=\"23\" y2=\"1\"></line><path d=\"M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z\"></path>","phone":"<path d=\"M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z\"></path>","pie-chart":"<path d=\"M21.21 15.89A10 10 0 1 1 8 2.83\"></path><path d=\"M22 12A10 10 0 0 0 12 2v10z\"></path>","play-circle":"<circle cx=\"12\" cy=\"12\" r=\"10\"></circle><polygon points=\"10 8 16 12 10 16 10 8\"></polygon>","play":"<polygon points=\"5 3 19 12 5 21 5 3\"></polygon>","plus-circle":"<circle cx=\"12\" cy=\"12\" r=\"10\"></circle><line x1=\"12\" y1=\"8\" x2=\"12\" y2=\"16\"></line><line x1=\"8\" y1=\"12\" x2=\"16\" y2=\"12\"></line>","plus-square":"<rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\" ry=\"2\"></rect><line x1=\"12\" y1=\"8\" x2=\"12\" y2=\"16\"></line><line x1=\"8\" y1=\"12\" x2=\"16\" y2=\"12\"></line>","plus":"<line x1=\"12\" y1=\"5\" x2=\"12\" y2=\"19\"></line><line x1=\"5\" y1=\"12\" x2=\"19\" y2=\"12\"></line>","pocket":"<path d=\"M4 3h16a2 2 0 0 1 2 2v6a10 10 0 0 1-10 10A10 10 0 0 1 2 11V5a2 2 0 0 1 2-2z\"></path><polyline points=\"8 10 12 14 16 10\"></polyline>","power":"<path d=\"M18.36 6.64a9 9 0 1 1-12.73 0\"></path><line x1=\"12\" y1=\"2\" x2=\"12\" y2=\"12\"></line>","printer":"<polyline points=\"6 9 6 2 18 2 18 9\"></polyline><path d=\"M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2\"></path><rect x=\"6\" y=\"14\" width=\"12\" height=\"8\"></rect>","radio":"<circle cx=\"12\" cy=\"12\" r=\"2\"></circle><path d=\"M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14\"></path>","refresh-ccw":"<polyline points=\"1 4 1 10 7 10\"></polyline><polyline points=\"23 20 23 14 17 14\"></polyline><path d=\"M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15\"></path>","refresh-cw":"<polyline points=\"23 4 23 10 17 10\"></polyline><polyline points=\"1 20 1 14 7 14\"></polyline><path d=\"M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15\"></path>","repeat":"<polyline points=\"17 1 21 5 17 9\"></polyline><path d=\"M3 11V9a4 4 0 0 1 4-4h14\"></path><polyline points=\"7 23 3 19 7 15\"></polyline><path d=\"M21 13v2a4 4 0 0 1-4 4H3\"></path>","rewind":"<polygon points=\"11 19 2 12 11 5 11 19\"></polygon><polygon points=\"22 19 13 12 22 5 22 19\"></polygon>","rotate-ccw":"<polyline points=\"1 4 1 10 7 10\"></polyline><path d=\"M3.51 15a9 9 0 1 0 2.13-9.36L1 10\"></path>","rotate-cw":"<polyline points=\"23 4 23 10 17 10\"></polyline><path d=\"M20.49 15a9 9 0 1 1-2.12-9.36L23 10\"></path>","rss":"<path d=\"M4 11a9 9 0 0 1 9 9\"></path><path d=\"M4 4a16 16 0 0 1 16 16\"></path><circle cx=\"5\" cy=\"19\" r=\"1\"></circle>","save":"<path d=\"M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z\"></path><polyline points=\"17 21 17 13 7 13 7 21\"></polyline><polyline points=\"7 3 7 8 15 8\"></polyline>","scissors":"<circle cx=\"6\" cy=\"6\" r=\"3\"></circle><circle cx=\"6\" cy=\"18\" r=\"3\"></circle><line x1=\"20\" y1=\"4\" x2=\"8.12\" y2=\"15.88\"></line><line x1=\"14.47\" y1=\"14.48\" x2=\"20\" y2=\"20\"></line><line x1=\"8.12\" y1=\"8.12\" x2=\"12\" y2=\"12\"></line>","search":"<circle cx=\"11\" cy=\"11\" r=\"8\"></circle><line x1=\"21\" y1=\"21\" x2=\"16.65\" y2=\"16.65\"></line>","send":"<line x1=\"22\" y1=\"2\" x2=\"11\" y2=\"13\"></line><polygon points=\"22 2 15 22 11 13 2 9 22 2\"></polygon>","server":"<rect x=\"2\" y=\"2\" width=\"20\" height=\"8\" rx=\"2\" ry=\"2\"></rect><rect x=\"2\" y=\"14\" width=\"20\" height=\"8\" rx=\"2\" ry=\"2\"></rect><line x1=\"6\" y1=\"6\" x2=\"6.01\" y2=\"6\"></line><line x1=\"6\" y1=\"18\" x2=\"6.01\" y2=\"18\"></line>","settings":"<circle cx=\"12\" cy=\"12\" r=\"3\"></circle><path d=\"M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z\"></path>","share-2":"<circle cx=\"18\" cy=\"5\" r=\"3\"></circle><circle cx=\"6\" cy=\"12\" r=\"3\"></circle><circle cx=\"18\" cy=\"19\" r=\"3\"></circle><line x1=\"8.59\" y1=\"13.51\" x2=\"15.42\" y2=\"17.49\"></line><line x1=\"15.41\" y1=\"6.51\" x2=\"8.59\" y2=\"10.49\"></line>","share":"<path d=\"M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8\"></path><polyline points=\"16 6 12 2 8 6\"></polyline><line x1=\"12\" y1=\"2\" x2=\"12\" y2=\"15\"></line>","shield-off":"<path d=\"M19.69 14a6.9 6.9 0 0 0 .31-2V5l-8-3-3.16 1.18\"></path><path d=\"M4.73 4.73L4 5v7c0 6 8 10 8 10a20.29 20.29 0 0 0 5.62-4.38\"></path><line x1=\"1\" y1=\"1\" x2=\"23\" y2=\"23\"></line>","shield":"<path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\"></path>","shopping-bag":"<path d=\"M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z\"></path><line x1=\"3\" y1=\"6\" x2=\"21\" y2=\"6\"></line><path d=\"M16 10a4 4 0 0 1-8 0\"></path>","shopping-cart":"<circle cx=\"9\" cy=\"21\" r=\"1\"></circle><circle cx=\"20\" cy=\"21\" r=\"1\"></circle><path d=\"M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6\"></path>","shuffle":"<polyline points=\"16 3 21 3 21 8\"></polyline><line x1=\"4\" y1=\"20\" x2=\"21\" y2=\"3\"></line><polyline points=\"21 16 21 21 16 21\"></polyline><line x1=\"15\" y1=\"15\" x2=\"21\" y2=\"21\"></line><line x1=\"4\" y1=\"4\" x2=\"9\" y2=\"9\"></line>","sidebar":"<rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\" ry=\"2\"></rect><line x1=\"9\" y1=\"3\" x2=\"9\" y2=\"21\"></line>","skip-back":"<polygon points=\"19 20 9 12 19 4 19 20\"></polygon><line x1=\"5\" y1=\"19\" x2=\"5\" y2=\"5\"></line>","skip-forward":"<polygon points=\"5 4 15 12 5 20 5 4\"></polygon><line x1=\"19\" y1=\"5\" x2=\"19\" y2=\"19\"></line>","slack":"<path d=\"M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z\"></path><path d=\"M20.5 10H19V8.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z\"></path><path d=\"M9.5 14c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5S8 21.33 8 20.5v-5c0-.83.67-1.5 1.5-1.5z\"></path><path d=\"M3.5 14H5v1.5c0 .83-.67 1.5-1.5 1.5S2 16.33 2 15.5 2.67 14 3.5 14z\"></path><path d=\"M14 14.5c0-.83.67-1.5 1.5-1.5h5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-5c-.83 0-1.5-.67-1.5-1.5z\"></path><path d=\"M15.5 19H14v1.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5z\"></path><path d=\"M10 9.5C10 8.67 9.33 8 8.5 8h-5C2.67 8 2 8.67 2 9.5S2.67 11 3.5 11h5c.83 0 1.5-.67 1.5-1.5z\"></path><path d=\"M8.5 5H10V3.5C10 2.67 9.33 2 8.5 2S7 2.67 7 3.5 7.67 5 8.5 5z\"></path>","slash":"<circle cx=\"12\" cy=\"12\" r=\"10\"></circle><line x1=\"4.93\" y1=\"4.93\" x2=\"19.07\" y2=\"19.07\"></line>","sliders":"<line x1=\"4\" y1=\"21\" x2=\"4\" y2=\"14\"></line><line x1=\"4\" y1=\"10\" x2=\"4\" y2=\"3\"></line><line x1=\"12\" y1=\"21\" x2=\"12\" y2=\"12\"></line><line x1=\"12\" y1=\"8\" x2=\"12\" y2=\"3\"></line><line x1=\"20\" y1=\"21\" x2=\"20\" y2=\"16\"></line><line x1=\"20\" y1=\"12\" x2=\"20\" y2=\"3\"></line><line x1=\"1\" y1=\"14\" x2=\"7\" y2=\"14\"></line><line x1=\"9\" y1=\"8\" x2=\"15\" y2=\"8\"></line><line x1=\"17\" y1=\"16\" x2=\"23\" y2=\"16\"></line>","smartphone":"<rect x=\"5\" y=\"2\" width=\"14\" height=\"20\" rx=\"2\" ry=\"2\"></rect><line x1=\"12\" y1=\"18\" x2=\"12.01\" y2=\"18\"></line>","smile":"<circle cx=\"12\" cy=\"12\" r=\"10\"></circle><path d=\"M8 14s1.5 2 4 2 4-2 4-2\"></path><line x1=\"9\" y1=\"9\" x2=\"9.01\" y2=\"9\"></line><line x1=\"15\" y1=\"9\" x2=\"15.01\" y2=\"9\"></line>","speaker":"<rect x=\"4\" y=\"2\" width=\"16\" height=\"20\" rx=\"2\" ry=\"2\"></rect><circle cx=\"12\" cy=\"14\" r=\"4\"></circle><line x1=\"12\" y1=\"6\" x2=\"12.01\" y2=\"6\"></line>","square":"<rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\" ry=\"2\"></rect>","star":"<polygon points=\"12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2\"></polygon>","stop-circle":"<circle cx=\"12\" cy=\"12\" r=\"10\"></circle><rect x=\"9\" y=\"9\" width=\"6\" height=\"6\"></rect>","sun":"<circle cx=\"12\" cy=\"12\" r=\"5\"></circle><line x1=\"12\" y1=\"1\" x2=\"12\" y2=\"3\"></line><line x1=\"12\" y1=\"21\" x2=\"12\" y2=\"23\"></line><line x1=\"4.22\" y1=\"4.22\" x2=\"5.64\" y2=\"5.64\"></line><line x1=\"18.36\" y1=\"18.36\" x2=\"19.78\" y2=\"19.78\"></line><line x1=\"1\" y1=\"12\" x2=\"3\" y2=\"12\"></line><line x1=\"21\" y1=\"12\" x2=\"23\" y2=\"12\"></line><line x1=\"4.22\" y1=\"19.78\" x2=\"5.64\" y2=\"18.36\"></line><line x1=\"18.36\" y1=\"5.64\" x2=\"19.78\" y2=\"4.22\"></line>","sunrise":"<path d=\"M17 18a5 5 0 0 0-10 0\"></path><line x1=\"12\" y1=\"2\" x2=\"12\" y2=\"9\"></line><line x1=\"4.22\" y1=\"10.22\" x2=\"5.64\" y2=\"11.64\"></line><line x1=\"1\" y1=\"18\" x2=\"3\" y2=\"18\"></line><line x1=\"21\" y1=\"18\" x2=\"23\" y2=\"18\"></line><line x1=\"18.36\" y1=\"11.64\" x2=\"19.78\" y2=\"10.22\"></line><line x1=\"23\" y1=\"22\" x2=\"1\" y2=\"22\"></line><polyline points=\"8 6 12 2 16 6\"></polyline>","sunset":"<path d=\"M17 18a5 5 0 0 0-10 0\"></path><line x1=\"12\" y1=\"9\" x2=\"12\" y2=\"2\"></line><line x1=\"4.22\" y1=\"10.22\" x2=\"5.64\" y2=\"11.64\"></line><line x1=\"1\" y1=\"18\" x2=\"3\" y2=\"18\"></line><line x1=\"21\" y1=\"18\" x2=\"23\" y2=\"18\"></line><line x1=\"18.36\" y1=\"11.64\" x2=\"19.78\" y2=\"10.22\"></line><line x1=\"23\" y1=\"22\" x2=\"1\" y2=\"22\"></line><polyline points=\"16 5 12 9 8 5\"></polyline>","tablet":"<rect x=\"4\" y=\"2\" width=\"16\" height=\"20\" rx=\"2\" ry=\"2\"></rect><line x1=\"12\" y1=\"18\" x2=\"12.01\" y2=\"18\"></line>","tag":"<path d=\"M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z\"></path><line x1=\"7\" y1=\"7\" x2=\"7.01\" y2=\"7\"></line>","target":"<circle cx=\"12\" cy=\"12\" r=\"10\"></circle><circle cx=\"12\" cy=\"12\" r=\"6\"></circle><circle cx=\"12\" cy=\"12\" r=\"2\"></circle>","terminal":"<polyline points=\"4 17 10 11 4 5\"></polyline><line x1=\"12\" y1=\"19\" x2=\"20\" y2=\"19\"></line>","thermometer":"<path d=\"M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z\"></path>","thumbs-down":"<path d=\"M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17\"></path>","thumbs-up":"<path d=\"M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3\"></path>","toggle-left":"<rect x=\"1\" y=\"5\" width=\"22\" height=\"14\" rx=\"7\" ry=\"7\"></rect><circle cx=\"8\" cy=\"12\" r=\"3\"></circle>","toggle-right":"<rect x=\"1\" y=\"5\" width=\"22\" height=\"14\" rx=\"7\" ry=\"7\"></rect><circle cx=\"16\" cy=\"12\" r=\"3\"></circle>","tool":"<path d=\"M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z\"></path>","trash-2":"<polyline points=\"3 6 5 6 21 6\"></polyline><path d=\"M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2\"></path><line x1=\"10\" y1=\"11\" x2=\"10\" y2=\"17\"></line><line x1=\"14\" y1=\"11\" x2=\"14\" y2=\"17\"></line>","trash":"<polyline points=\"3 6 5 6 21 6\"></polyline><path d=\"M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2\"></path>","trello":"<rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\" ry=\"2\"></rect><rect x=\"7\" y=\"7\" width=\"3\" height=\"9\"></rect><rect x=\"14\" y=\"7\" width=\"3\" height=\"5\"></rect>","trending-down":"<polyline points=\"23 18 13.5 8.5 8.5 13.5 1 6\"></polyline><polyline points=\"17 18 23 18 23 12\"></polyline>","trending-up":"<polyline points=\"23 6 13.5 15.5 8.5 10.5 1 18\"></polyline><polyline points=\"17 6 23 6 23 12\"></polyline>","triangle":"<path d=\"M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z\"></path>","truck":"<rect x=\"1\" y=\"3\" width=\"15\" height=\"13\"></rect><polygon points=\"16 8 20 8 23 11 23 16 16 16 16 8\"></polygon><circle cx=\"5.5\" cy=\"18.5\" r=\"2.5\"></circle><circle cx=\"18.5\" cy=\"18.5\" r=\"2.5\"></circle>","tv":"<rect x=\"2\" y=\"7\" width=\"20\" height=\"15\" rx=\"2\" ry=\"2\"></rect><polyline points=\"17 2 12 7 7 2\"></polyline>","twitch":"<path d=\"M21 2H3v16h5v4l4-4h5l4-4V2zm-10 9V7m5 4V7\"></path>","twitter":"<path d=\"M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z\"></path>","type":"<polyline points=\"4 7 4 4 20 4 20 7\"></polyline><line x1=\"9\" y1=\"20\" x2=\"15\" y2=\"20\"></line><line x1=\"12\" y1=\"4\" x2=\"12\" y2=\"20\"></line>","umbrella":"<path d=\"M23 12a11.05 11.05 0 0 0-22 0zm-5 7a3 3 0 0 1-6 0v-7\"></path>","underline":"<path d=\"M6 3v7a6 6 0 0 0 6 6 6 6 0 0 0 6-6V3\"></path><line x1=\"4\" y1=\"21\" x2=\"20\" y2=\"21\"></line>","unlock":"<rect x=\"3\" y=\"11\" width=\"18\" height=\"11\" rx=\"2\" ry=\"2\"></rect><path d=\"M7 11V7a5 5 0 0 1 9.9-1\"></path>","upload-cloud":"<polyline points=\"16 16 12 12 8 16\"></polyline><line x1=\"12\" y1=\"12\" x2=\"12\" y2=\"21\"></line><path d=\"M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3\"></path><polyline points=\"16 16 12 12 8 16\"></polyline>","upload":"<path d=\"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4\"></path><polyline points=\"17 8 12 3 7 8\"></polyline><line x1=\"12\" y1=\"3\" x2=\"12\" y2=\"15\"></line>","user-check":"<path d=\"M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2\"></path><circle cx=\"8.5\" cy=\"7\" r=\"4\"></circle><polyline points=\"17 11 19 13 23 9\"></polyline>","user-minus":"<path d=\"M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2\"></path><circle cx=\"8.5\" cy=\"7\" r=\"4\"></circle><line x1=\"23\" y1=\"11\" x2=\"17\" y2=\"11\"></line>","user-plus":"<path d=\"M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2\"></path><circle cx=\"8.5\" cy=\"7\" r=\"4\"></circle><line x1=\"20\" y1=\"8\" x2=\"20\" y2=\"14\"></line><line x1=\"23\" y1=\"11\" x2=\"17\" y2=\"11\"></line>","user-x":"<path d=\"M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2\"></path><circle cx=\"8.5\" cy=\"7\" r=\"4\"></circle><line x1=\"18\" y1=\"8\" x2=\"23\" y2=\"13\"></line><line x1=\"23\" y1=\"8\" x2=\"18\" y2=\"13\"></line>","user":"<path d=\"M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2\"></path><circle cx=\"12\" cy=\"7\" r=\"4\"></circle>","users":"<path d=\"M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2\"></path><circle cx=\"9\" cy=\"7\" r=\"4\"></circle><path d=\"M23 21v-2a4 4 0 0 0-3-3.87\"></path><path d=\"M16 3.13a4 4 0 0 1 0 7.75\"></path>","video-off":"<path d=\"M16 16v1a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h2m5.66 0H14a2 2 0 0 1 2 2v3.34l1 1L23 7v10\"></path><line x1=\"1\" y1=\"1\" x2=\"23\" y2=\"23\"></line>","video":"<polygon points=\"23 7 16 12 23 17 23 7\"></polygon><rect x=\"1\" y=\"5\" width=\"15\" height=\"14\" rx=\"2\" ry=\"2\"></rect>","voicemail":"<circle cx=\"5.5\" cy=\"11.5\" r=\"4.5\"></circle><circle cx=\"18.5\" cy=\"11.5\" r=\"4.5\"></circle><line x1=\"5.5\" y1=\"16\" x2=\"18.5\" y2=\"16\"></line>","volume-1":"<polygon points=\"11 5 6 9 2 9 2 15 6 15 11 19 11 5\"></polygon><path d=\"M15.54 8.46a5 5 0 0 1 0 7.07\"></path>","volume-2":"<polygon points=\"11 5 6 9 2 9 2 15 6 15 11 19 11 5\"></polygon><path d=\"M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07\"></path>","volume-x":"<polygon points=\"11 5 6 9 2 9 2 15 6 15 11 19 11 5\"></polygon><line x1=\"23\" y1=\"9\" x2=\"17\" y2=\"15\"></line><line x1=\"17\" y1=\"9\" x2=\"23\" y2=\"15\"></line>","volume":"<polygon points=\"11 5 6 9 2 9 2 15 6 15 11 19 11 5\"></polygon>","watch":"<circle cx=\"12\" cy=\"12\" r=\"7\"></circle><polyline points=\"12 9 12 12 13.5 13.5\"></polyline><path d=\"M16.51 17.35l-.35 3.83a2 2 0 0 1-2 1.82H9.83a2 2 0 0 1-2-1.82l-.35-3.83m.01-10.7l.35-3.83A2 2 0 0 1 9.83 1h4.35a2 2 0 0 1 2 1.82l.35 3.83\"></path>","wifi-off":"<line x1=\"1\" y1=\"1\" x2=\"23\" y2=\"23\"></line><path d=\"M16.72 11.06A10.94 10.94 0 0 1 19 12.55\"></path><path d=\"M5 12.55a10.94 10.94 0 0 1 5.17-2.39\"></path><path d=\"M10.71 5.05A16 16 0 0 1 22.58 9\"></path><path d=\"M1.42 9a15.91 15.91 0 0 1 4.7-2.88\"></path><path d=\"M8.53 16.11a6 6 0 0 1 6.95 0\"></path><line x1=\"12\" y1=\"20\" x2=\"12.01\" y2=\"20\"></line>","wifi":"<path d=\"M5 12.55a11 11 0 0 1 14.08 0\"></path><path d=\"M1.42 9a16 16 0 0 1 21.16 0\"></path><path d=\"M8.53 16.11a6 6 0 0 1 6.95 0\"></path><line x1=\"12\" y1=\"20\" x2=\"12.01\" y2=\"20\"></line>","wind":"<path d=\"M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2\"></path>","x-circle":"<circle cx=\"12\" cy=\"12\" r=\"10\"></circle><line x1=\"15\" y1=\"9\" x2=\"9\" y2=\"15\"></line><line x1=\"9\" y1=\"9\" x2=\"15\" y2=\"15\"></line>","x-octagon":"<polygon points=\"7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2\"></polygon><line x1=\"15\" y1=\"9\" x2=\"9\" y2=\"15\"></line><line x1=\"9\" y1=\"9\" x2=\"15\" y2=\"15\"></line>","x-square":"<rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\" ry=\"2\"></rect><line x1=\"9\" y1=\"9\" x2=\"15\" y2=\"15\"></line><line x1=\"15\" y1=\"9\" x2=\"9\" y2=\"15\"></line>","x":"<line x1=\"18\" y1=\"6\" x2=\"6\" y2=\"18\"></line><line x1=\"6\" y1=\"6\" x2=\"18\" y2=\"18\"></line>","youtube":"<path d=\"M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z\"></path><polygon points=\"9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02\"></polygon>","zap-off":"<polyline points=\"12.41 6.75 13 2 10.57 4.92\"></polyline><polyline points=\"18.57 12.91 21 10 15.66 10\"></polyline><polyline points=\"8 8 3 14 12 14 11 22 16 16\"></polyline><line x1=\"1\" y1=\"1\" x2=\"23\" y2=\"23\"></line>","zap":"<polygon points=\"13 2 3 14 12 14 11 22 21 10 12 10 13 2\"></polygon>","zoom-in":"<circle cx=\"11\" cy=\"11\" r=\"8\"></circle><line x1=\"21\" y1=\"21\" x2=\"16.65\" y2=\"16.65\"></line><line x1=\"11\" y1=\"8\" x2=\"11\" y2=\"14\"></line><line x1=\"8\" y1=\"11\" x2=\"14\" y2=\"11\"></line>","zoom-out":"<circle cx=\"11\" cy=\"11\" r=\"8\"></circle><line x1=\"21\" y1=\"21\" x2=\"16.65\" y2=\"16.65\"></line><line x1=\"8\" y1=\"11\" x2=\"14\" y2=\"11\"></line>"};
+
+/***/ }),
+
+/***/ "./node_modules/classnames/dedupe.js":
+/*!*******************************************!*\
+  !*** ./node_modules/classnames/dedupe.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_60059__) {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+  Copyright (c) 2016 Jed Watson.
+  Licensed under the MIT License (MIT), see
+  http://jedwatson.github.io/classnames
+*/
+/* global define */
+
+(function () {
+	'use strict';
+
+	var classNames = (function () {
+		// don't inherit from Object so we can skip hasOwnProperty check later
+		// http://stackoverflow.com/questions/15518328/creating-js-object-with-object-createnull#answer-21079232
+		function StorageObject() {}
+		StorageObject.prototype = Object.create(null);
+
+		function _parseArray (resultSet, array) {
+			var length = array.length;
+
+			for (var i = 0; i < length; ++i) {
+				_parse(resultSet, array[i]);
+			}
+		}
+
+		var hasOwn = {}.hasOwnProperty;
+
+		function _parseNumber (resultSet, num) {
+			resultSet[num] = true;
+		}
+
+		function _parseObject (resultSet, object) {
+			for (var k in object) {
+				if (hasOwn.call(object, k)) {
+					// set value to false instead of deleting it to avoid changing object structure
+					// https://www.smashingmagazine.com/2012/11/writing-fast-memory-efficient-javascript/#de-referencing-misconceptions
+					resultSet[k] = !!object[k];
+				}
+			}
+		}
+
+		var SPACE = /\s+/;
+		function _parseString (resultSet, str) {
+			var array = str.split(SPACE);
+			var length = array.length;
+
+			for (var i = 0; i < length; ++i) {
+				resultSet[array[i]] = true;
+			}
+		}
+
+		function _parse (resultSet, arg) {
+			if (!arg) return;
+			var argType = typeof arg;
+
+			// 'foo bar'
+			if (argType === 'string') {
+				_parseString(resultSet, arg);
+
+			// ['foo', 'bar', ...]
+			} else if (Array.isArray(arg)) {
+				_parseArray(resultSet, arg);
+
+			// { 'foo': true, ... }
+			} else if (argType === 'object') {
+				_parseObject(resultSet, arg);
+
+			// '130'
+			} else if (argType === 'number') {
+				_parseNumber(resultSet, arg);
+			}
+		}
+
+		function _classNames () {
+			// don't leak arguments
+			// https://github.com/petkaantonov/bluebird/wiki/Optimization-killers#32-leaking-arguments
+			var len = arguments.length;
+			var args = Array(len);
+			for (var i = 0; i < len; i++) {
+				args[i] = arguments[i];
+			}
+
+			var classSet = new StorageObject();
+			_parseArray(classSet, args);
+
+			var list = [];
+
+			for (var k in classSet) {
+				if (classSet[k]) {
+					list.push(k)
+				}
+			}
+
+			return list.join(' ');
+		}
+
+		return _classNames;
+	})();
+
+	if (typeof module !== 'undefined' && module.exports) {
+		module.exports = classNames;
+	} else if (true) {
+		// register as 'classnames', consistent with npm package name
+		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
+			return classNames;
+		}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	} else {}
+}());
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/es/array/from.js":
+/*!***********************************************!*\
+  !*** ./node_modules/core-js/es/array/from.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_63153__) {
+
+__nested_webpack_require_63153__(/*! ../../modules/es.string.iterator */ "./node_modules/core-js/modules/es.string.iterator.js");
+__nested_webpack_require_63153__(/*! ../../modules/es.array.from */ "./node_modules/core-js/modules/es.array.from.js");
+var path = __nested_webpack_require_63153__(/*! ../../internals/path */ "./node_modules/core-js/internals/path.js");
+
+module.exports = path.Array.from;
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/a-function.js":
+/*!******************************************************!*\
+  !*** ./node_modules/core-js/internals/a-function.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = function (it) {
+  if (typeof it != 'function') {
+    throw TypeError(String(it) + ' is not a function');
+  } return it;
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/an-object.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/core-js/internals/an-object.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_64303__) {
+
+var isObject = __nested_webpack_require_64303__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
+
+module.exports = function (it) {
+  if (!isObject(it)) {
+    throw TypeError(String(it) + ' is not an object');
+  } return it;
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/array-from.js":
+/*!******************************************************!*\
+  !*** ./node_modules/core-js/internals/array-from.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_64884__) {
+
+"use strict";
+
+var bind = __nested_webpack_require_64884__(/*! ../internals/bind-context */ "./node_modules/core-js/internals/bind-context.js");
+var toObject = __nested_webpack_require_64884__(/*! ../internals/to-object */ "./node_modules/core-js/internals/to-object.js");
+var callWithSafeIterationClosing = __nested_webpack_require_64884__(/*! ../internals/call-with-safe-iteration-closing */ "./node_modules/core-js/internals/call-with-safe-iteration-closing.js");
+var isArrayIteratorMethod = __nested_webpack_require_64884__(/*! ../internals/is-array-iterator-method */ "./node_modules/core-js/internals/is-array-iterator-method.js");
+var toLength = __nested_webpack_require_64884__(/*! ../internals/to-length */ "./node_modules/core-js/internals/to-length.js");
+var createProperty = __nested_webpack_require_64884__(/*! ../internals/create-property */ "./node_modules/core-js/internals/create-property.js");
+var getIteratorMethod = __nested_webpack_require_64884__(/*! ../internals/get-iterator-method */ "./node_modules/core-js/internals/get-iterator-method.js");
+
+// `Array.from` method
+// https://tc39.github.io/ecma262/#sec-array.from
+module.exports = function from(arrayLike /* , mapfn = undefined, thisArg = undefined */) {
+  var O = toObject(arrayLike);
+  var C = typeof this == 'function' ? this : Array;
+  var argumentsLength = arguments.length;
+  var mapfn = argumentsLength > 1 ? arguments[1] : undefined;
+  var mapping = mapfn !== undefined;
+  var index = 0;
+  var iteratorMethod = getIteratorMethod(O);
+  var length, result, step, iterator;
+  if (mapping) mapfn = bind(mapfn, argumentsLength > 2 ? arguments[2] : undefined, 2);
+  // if the target is not iterable or it's an array with the default iterator - use a simple case
+  if (iteratorMethod != undefined && !(C == Array && isArrayIteratorMethod(iteratorMethod))) {
+    iterator = iteratorMethod.call(O);
+    result = new C();
+    for (;!(step = iterator.next()).done; index++) {
+      createProperty(result, index, mapping
+        ? callWithSafeIterationClosing(iterator, mapfn, [step.value, index], true)
+        : step.value
+      );
+    }
+  } else {
+    length = toLength(O.length);
+    result = new C(length);
+    for (;length > index; index++) {
+      createProperty(result, index, mapping ? mapfn(O[index], index) : O[index]);
+    }
+  }
+  result.length = index;
+  return result;
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/array-includes.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/core-js/internals/array-includes.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_67506__) {
+
+var toIndexedObject = __nested_webpack_require_67506__(/*! ../internals/to-indexed-object */ "./node_modules/core-js/internals/to-indexed-object.js");
+var toLength = __nested_webpack_require_67506__(/*! ../internals/to-length */ "./node_modules/core-js/internals/to-length.js");
+var toAbsoluteIndex = __nested_webpack_require_67506__(/*! ../internals/to-absolute-index */ "./node_modules/core-js/internals/to-absolute-index.js");
+
+// `Array.prototype.{ indexOf, includes }` methods implementation
+// false -> Array#indexOf
+// https://tc39.github.io/ecma262/#sec-array.prototype.indexof
+// true  -> Array#includes
+// https://tc39.github.io/ecma262/#sec-array.prototype.includes
+module.exports = function (IS_INCLUDES) {
+  return function ($this, el, fromIndex) {
+    var O = toIndexedObject($this);
+    var length = toLength(O.length);
+    var index = toAbsoluteIndex(fromIndex, length);
+    var value;
+    // Array#includes uses SameValueZero equality algorithm
+    // eslint-disable-next-line no-self-compare
+    if (IS_INCLUDES && el != el) while (length > index) {
+      value = O[index++];
+      // eslint-disable-next-line no-self-compare
+      if (value != value) return true;
+    // Array#indexOf ignores holes, Array#includes - not
+    } else for (;length > index; index++) if (IS_INCLUDES || index in O) {
+      if (O[index] === el) return IS_INCLUDES || index || 0;
+    } return !IS_INCLUDES && -1;
+  };
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/bind-context.js":
+/*!********************************************************!*\
+  !*** ./node_modules/core-js/internals/bind-context.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_69228__) {
+
+var aFunction = __nested_webpack_require_69228__(/*! ../internals/a-function */ "./node_modules/core-js/internals/a-function.js");
+
+// optional / simple context binding
+module.exports = function (fn, that, length) {
+  aFunction(fn);
+  if (that === undefined) return fn;
+  switch (length) {
+    case 0: return function () {
+      return fn.call(that);
+    };
+    case 1: return function (a) {
+      return fn.call(that, a);
+    };
+    case 2: return function (a, b) {
+      return fn.call(that, a, b);
+    };
+    case 3: return function (a, b, c) {
+      return fn.call(that, a, b, c);
+    };
+  }
+  return function (/* ...args */) {
+    return fn.apply(that, arguments);
+  };
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/call-with-safe-iteration-closing.js":
+/*!****************************************************************************!*\
+  !*** ./node_modules/core-js/internals/call-with-safe-iteration-closing.js ***!
+  \****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_70317__) {
+
+var anObject = __nested_webpack_require_70317__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
+
+// call something on iterator step with safe closing on error
+module.exports = function (iterator, fn, value, ENTRIES) {
+  try {
+    return ENTRIES ? fn(anObject(value)[0], value[1]) : fn(value);
+  // 7.4.6 IteratorClose(iterator, completion)
+  } catch (error) {
+    var returnMethod = iterator['return'];
+    if (returnMethod !== undefined) anObject(returnMethod.call(iterator));
+    throw error;
+  }
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/check-correctness-of-iteration.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/core-js/internals/check-correctness-of-iteration.js ***!
+  \**************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_71254__) {
+
+var wellKnownSymbol = __nested_webpack_require_71254__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
+
+var ITERATOR = wellKnownSymbol('iterator');
+var SAFE_CLOSING = false;
+
+try {
+  var called = 0;
+  var iteratorWithReturn = {
+    next: function () {
+      return { done: !!called++ };
+    },
+    'return': function () {
+      SAFE_CLOSING = true;
+    }
+  };
+  iteratorWithReturn[ITERATOR] = function () {
+    return this;
+  };
+  // eslint-disable-next-line no-throw-literal
+  Array.from(iteratorWithReturn, function () { throw 2; });
+} catch (error) { /* empty */ }
+
+module.exports = function (exec, SKIP_CLOSING) {
+  if (!SKIP_CLOSING && !SAFE_CLOSING) return false;
+  var ITERATION_SUPPORT = false;
+  try {
+    var object = {};
+    object[ITERATOR] = function () {
+      return {
+        next: function () {
+          return { done: ITERATION_SUPPORT = true };
+        }
+      };
+    };
+    exec(object);
+  } catch (error) { /* empty */ }
+  return ITERATION_SUPPORT;
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/classof-raw.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/core-js/internals/classof-raw.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var toString = {}.toString;
+
+module.exports = function (it) {
+  return toString.call(it).slice(8, -1);
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/classof.js":
+/*!***************************************************!*\
+  !*** ./node_modules/core-js/internals/classof.js ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_73012__) {
+
+var classofRaw = __nested_webpack_require_73012__(/*! ../internals/classof-raw */ "./node_modules/core-js/internals/classof-raw.js");
+var wellKnownSymbol = __nested_webpack_require_73012__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
+
+var TO_STRING_TAG = wellKnownSymbol('toStringTag');
+// ES3 wrong here
+var CORRECT_ARGUMENTS = classofRaw(function () { return arguments; }()) == 'Arguments';
+
+// fallback for IE11 Script Access Denied error
+var tryGet = function (it, key) {
+  try {
+    return it[key];
+  } catch (error) { /* empty */ }
+};
+
+// getting tag from ES6+ `Object.prototype.toString`
+module.exports = function (it) {
+  var O, tag, result;
+  return it === undefined ? 'Undefined' : it === null ? 'Null'
+    // @@toStringTag case
+    : typeof (tag = tryGet(O = Object(it), TO_STRING_TAG)) == 'string' ? tag
+    // builtinTag case
+    : CORRECT_ARGUMENTS ? classofRaw(O)
+    // ES3 arguments fallback
+    : (result = classofRaw(O)) == 'Object' && typeof O.callee == 'function' ? 'Arguments' : result;
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/copy-constructor-properties.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/core-js/internals/copy-constructor-properties.js ***!
+  \***********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_74453__) {
+
+var has = __nested_webpack_require_74453__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
+var ownKeys = __nested_webpack_require_74453__(/*! ../internals/own-keys */ "./node_modules/core-js/internals/own-keys.js");
+var getOwnPropertyDescriptorModule = __nested_webpack_require_74453__(/*! ../internals/object-get-own-property-descriptor */ "./node_modules/core-js/internals/object-get-own-property-descriptor.js");
+var definePropertyModule = __nested_webpack_require_74453__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js");
+
+module.exports = function (target, source) {
+  var keys = ownKeys(source);
+  var defineProperty = definePropertyModule.f;
+  var getOwnPropertyDescriptor = getOwnPropertyDescriptorModule.f;
+  for (var i = 0; i < keys.length; i++) {
+    var key = keys[i];
+    if (!has(target, key)) defineProperty(target, key, getOwnPropertyDescriptor(source, key));
+  }
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/correct-prototype-getter.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/core-js/internals/correct-prototype-getter.js ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_75752__) {
+
+var fails = __nested_webpack_require_75752__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
+
+module.exports = !fails(function () {
+  function F() { /* empty */ }
+  F.prototype.constructor = null;
+  return Object.getPrototypeOf(new F()) !== F.prototype;
+});
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/create-iterator-constructor.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/core-js/internals/create-iterator-constructor.js ***!
+  \***********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_76425__) {
+
+"use strict";
+
+var IteratorPrototype = __nested_webpack_require_76425__(/*! ../internals/iterators-core */ "./node_modules/core-js/internals/iterators-core.js").IteratorPrototype;
+var create = __nested_webpack_require_76425__(/*! ../internals/object-create */ "./node_modules/core-js/internals/object-create.js");
+var createPropertyDescriptor = __nested_webpack_require_76425__(/*! ../internals/create-property-descriptor */ "./node_modules/core-js/internals/create-property-descriptor.js");
+var setToStringTag = __nested_webpack_require_76425__(/*! ../internals/set-to-string-tag */ "./node_modules/core-js/internals/set-to-string-tag.js");
+var Iterators = __nested_webpack_require_76425__(/*! ../internals/iterators */ "./node_modules/core-js/internals/iterators.js");
+
+var returnThis = function () { return this; };
+
+module.exports = function (IteratorConstructor, NAME, next) {
+  var TO_STRING_TAG = NAME + ' Iterator';
+  IteratorConstructor.prototype = create(IteratorPrototype, { next: createPropertyDescriptor(1, next) });
+  setToStringTag(IteratorConstructor, TO_STRING_TAG, false, true);
+  Iterators[TO_STRING_TAG] = returnThis;
+  return IteratorConstructor;
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/create-property-descriptor.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/core-js/internals/create-property-descriptor.js ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = function (bitmap, value) {
+  return {
+    enumerable: !(bitmap & 1),
+    configurable: !(bitmap & 2),
+    writable: !(bitmap & 4),
+    value: value
+  };
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/create-property.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/core-js/internals/create-property.js ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_78439__) {
+
+"use strict";
+
+var toPrimitive = __nested_webpack_require_78439__(/*! ../internals/to-primitive */ "./node_modules/core-js/internals/to-primitive.js");
+var definePropertyModule = __nested_webpack_require_78439__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js");
+var createPropertyDescriptor = __nested_webpack_require_78439__(/*! ../internals/create-property-descriptor */ "./node_modules/core-js/internals/create-property-descriptor.js");
+
+module.exports = function (object, key, value) {
+  var propertyKey = toPrimitive(key);
+  if (propertyKey in object) definePropertyModule.f(object, propertyKey, createPropertyDescriptor(0, value));
+  else object[propertyKey] = value;
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/define-iterator.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/core-js/internals/define-iterator.js ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_79489__) {
+
+"use strict";
+
+var $ = __nested_webpack_require_79489__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var createIteratorConstructor = __nested_webpack_require_79489__(/*! ../internals/create-iterator-constructor */ "./node_modules/core-js/internals/create-iterator-constructor.js");
+var getPrototypeOf = __nested_webpack_require_79489__(/*! ../internals/object-get-prototype-of */ "./node_modules/core-js/internals/object-get-prototype-of.js");
+var setPrototypeOf = __nested_webpack_require_79489__(/*! ../internals/object-set-prototype-of */ "./node_modules/core-js/internals/object-set-prototype-of.js");
+var setToStringTag = __nested_webpack_require_79489__(/*! ../internals/set-to-string-tag */ "./node_modules/core-js/internals/set-to-string-tag.js");
+var hide = __nested_webpack_require_79489__(/*! ../internals/hide */ "./node_modules/core-js/internals/hide.js");
+var redefine = __nested_webpack_require_79489__(/*! ../internals/redefine */ "./node_modules/core-js/internals/redefine.js");
+var wellKnownSymbol = __nested_webpack_require_79489__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
+var IS_PURE = __nested_webpack_require_79489__(/*! ../internals/is-pure */ "./node_modules/core-js/internals/is-pure.js");
+var Iterators = __nested_webpack_require_79489__(/*! ../internals/iterators */ "./node_modules/core-js/internals/iterators.js");
+var IteratorsCore = __nested_webpack_require_79489__(/*! ../internals/iterators-core */ "./node_modules/core-js/internals/iterators-core.js");
+
+var IteratorPrototype = IteratorsCore.IteratorPrototype;
+var BUGGY_SAFARI_ITERATORS = IteratorsCore.BUGGY_SAFARI_ITERATORS;
+var ITERATOR = wellKnownSymbol('iterator');
+var KEYS = 'keys';
+var VALUES = 'values';
+var ENTRIES = 'entries';
+
+var returnThis = function () { return this; };
+
+module.exports = function (Iterable, NAME, IteratorConstructor, next, DEFAULT, IS_SET, FORCED) {
+  createIteratorConstructor(IteratorConstructor, NAME, next);
+
+  var getIterationMethod = function (KIND) {
+    if (KIND === DEFAULT && defaultIterator) return defaultIterator;
+    if (!BUGGY_SAFARI_ITERATORS && KIND in IterablePrototype) return IterablePrototype[KIND];
+    switch (KIND) {
+      case KEYS: return function keys() { return new IteratorConstructor(this, KIND); };
+      case VALUES: return function values() { return new IteratorConstructor(this, KIND); };
+      case ENTRIES: return function entries() { return new IteratorConstructor(this, KIND); };
+    } return function () { return new IteratorConstructor(this); };
+  };
+
+  var TO_STRING_TAG = NAME + ' Iterator';
+  var INCORRECT_VALUES_NAME = false;
+  var IterablePrototype = Iterable.prototype;
+  var nativeIterator = IterablePrototype[ITERATOR]
+    || IterablePrototype['@@iterator']
+    || DEFAULT && IterablePrototype[DEFAULT];
+  var defaultIterator = !BUGGY_SAFARI_ITERATORS && nativeIterator || getIterationMethod(DEFAULT);
+  var anyNativeIterator = NAME == 'Array' ? IterablePrototype.entries || nativeIterator : nativeIterator;
+  var CurrentIteratorPrototype, methods, KEY;
+
+  // fix native
+  if (anyNativeIterator) {
+    CurrentIteratorPrototype = getPrototypeOf(anyNativeIterator.call(new Iterable()));
+    if (IteratorPrototype !== Object.prototype && CurrentIteratorPrototype.next) {
+      if (!IS_PURE && getPrototypeOf(CurrentIteratorPrototype) !== IteratorPrototype) {
+        if (setPrototypeOf) {
+          setPrototypeOf(CurrentIteratorPrototype, IteratorPrototype);
+        } else if (typeof CurrentIteratorPrototype[ITERATOR] != 'function') {
+          hide(CurrentIteratorPrototype, ITERATOR, returnThis);
+        }
+      }
+      // Set @@toStringTag to native iterators
+      setToStringTag(CurrentIteratorPrototype, TO_STRING_TAG, true, true);
+      if (IS_PURE) Iterators[TO_STRING_TAG] = returnThis;
+    }
+  }
+
+  // fix Array#{values, @@iterator}.name in V8 / FF
+  if (DEFAULT == VALUES && nativeIterator && nativeIterator.name !== VALUES) {
+    INCORRECT_VALUES_NAME = true;
+    defaultIterator = function values() { return nativeIterator.call(this); };
+  }
+
+  // define iterator
+  if ((!IS_PURE || FORCED) && IterablePrototype[ITERATOR] !== defaultIterator) {
+    hide(IterablePrototype, ITERATOR, defaultIterator);
+  }
+  Iterators[NAME] = defaultIterator;
+
+  // export additional methods
+  if (DEFAULT) {
+    methods = {
+      values: getIterationMethod(VALUES),
+      keys: IS_SET ? defaultIterator : getIterationMethod(KEYS),
+      entries: getIterationMethod(ENTRIES)
+    };
+    if (FORCED) for (KEY in methods) {
+      if (BUGGY_SAFARI_ITERATORS || INCORRECT_VALUES_NAME || !(KEY in IterablePrototype)) {
+        redefine(IterablePrototype, KEY, methods[KEY]);
+      }
+    } else $({ target: NAME, proto: true, forced: BUGGY_SAFARI_ITERATORS || INCORRECT_VALUES_NAME }, methods);
+  }
+
+  return methods;
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/descriptors.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/core-js/internals/descriptors.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_84548__) {
+
+var fails = __nested_webpack_require_84548__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
+
+// Thank's IE8 for his funny defineProperty
+module.exports = !fails(function () {
+  return Object.defineProperty({}, 'a', { get: function () { return 7; } }).a != 7;
+});
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/document-create-element.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/core-js/internals/document-create-element.js ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_85211__) {
+
+var global = __nested_webpack_require_85211__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
+var isObject = __nested_webpack_require_85211__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
+
+var document = global.document;
+// typeof document.createElement is 'object' in old IE
+var exist = isObject(document) && isObject(document.createElement);
+
+module.exports = function (it) {
+  return exist ? document.createElement(it) : {};
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/enum-bug-keys.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/core-js/internals/enum-bug-keys.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// IE8- don't enum bug keys
+module.exports = [
+  'constructor',
+  'hasOwnProperty',
+  'isPrototypeOf',
+  'propertyIsEnumerable',
+  'toLocaleString',
+  'toString',
+  'valueOf'
+];
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/export.js":
+/*!**************************************************!*\
+  !*** ./node_modules/core-js/internals/export.js ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_86501__) {
+
+var global = __nested_webpack_require_86501__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
+var getOwnPropertyDescriptor = __nested_webpack_require_86501__(/*! ../internals/object-get-own-property-descriptor */ "./node_modules/core-js/internals/object-get-own-property-descriptor.js").f;
+var hide = __nested_webpack_require_86501__(/*! ../internals/hide */ "./node_modules/core-js/internals/hide.js");
+var redefine = __nested_webpack_require_86501__(/*! ../internals/redefine */ "./node_modules/core-js/internals/redefine.js");
+var setGlobal = __nested_webpack_require_86501__(/*! ../internals/set-global */ "./node_modules/core-js/internals/set-global.js");
+var copyConstructorProperties = __nested_webpack_require_86501__(/*! ../internals/copy-constructor-properties */ "./node_modules/core-js/internals/copy-constructor-properties.js");
+var isForced = __nested_webpack_require_86501__(/*! ../internals/is-forced */ "./node_modules/core-js/internals/is-forced.js");
+
+/*
+  options.target      - name of the target object
+  options.global      - target is the global object
+  options.stat        - export as static methods of target
+  options.proto       - export as prototype methods of target
+  options.real        - real prototype method for the `pure` version
+  options.forced      - export even if the native feature is available
+  options.bind        - bind methods to the target, required for the `pure` version
+  options.wrap        - wrap constructors to preventing global pollution, required for the `pure` version
+  options.unsafe      - use the simple assignment of property instead of delete + defineProperty
+  options.sham        - add a flag to not completely full polyfills
+  options.enumerable  - export as enumerable property
+  options.noTargetGet - prevent calling a getter on target
+*/
+module.exports = function (options, source) {
+  var TARGET = options.target;
+  var GLOBAL = options.global;
+  var STATIC = options.stat;
+  var FORCED, target, key, targetProperty, sourceProperty, descriptor;
+  if (GLOBAL) {
+    target = global;
+  } else if (STATIC) {
+    target = global[TARGET] || setGlobal(TARGET, {});
+  } else {
+    target = (global[TARGET] || {}).prototype;
+  }
+  if (target) for (key in source) {
+    sourceProperty = source[key];
+    if (options.noTargetGet) {
+      descriptor = getOwnPropertyDescriptor(target, key);
+      targetProperty = descriptor && descriptor.value;
+    } else targetProperty = target[key];
+    FORCED = isForced(GLOBAL ? key : TARGET + (STATIC ? '.' : '#') + key, options.forced);
+    // contained in target
+    if (!FORCED && targetProperty !== undefined) {
+      if (typeof sourceProperty === typeof targetProperty) continue;
+      copyConstructorProperties(sourceProperty, targetProperty);
+    }
+    // add a flag to not completely full polyfills
+    if (options.sham || (targetProperty && targetProperty.sham)) {
+      hide(sourceProperty, 'sham', true);
+    }
+    // extend global
+    redefine(target, key, sourceProperty, options);
+  }
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/fails.js":
+/*!*************************************************!*\
+  !*** ./node_modules/core-js/internals/fails.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = function (exec) {
+  try {
+    return !!exec();
+  } catch (error) {
+    return true;
+  }
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/function-to-string.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/core-js/internals/function-to-string.js ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_90209__) {
+
+var shared = __nested_webpack_require_90209__(/*! ../internals/shared */ "./node_modules/core-js/internals/shared.js");
+
+module.exports = shared('native-function-to-string', Function.toString);
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/get-iterator-method.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/core-js/internals/get-iterator-method.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_90762__) {
+
+var classof = __nested_webpack_require_90762__(/*! ../internals/classof */ "./node_modules/core-js/internals/classof.js");
+var Iterators = __nested_webpack_require_90762__(/*! ../internals/iterators */ "./node_modules/core-js/internals/iterators.js");
+var wellKnownSymbol = __nested_webpack_require_90762__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
+
+var ITERATOR = wellKnownSymbol('iterator');
+
+module.exports = function (it) {
+  if (it != undefined) return it[ITERATOR]
+    || it['@@iterator']
+    || Iterators[classof(it)];
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/global.js":
+/*!**************************************************!*\
+  !*** ./node_modules/core-js/internals/global.js ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_91626__) {
+
+/* WEBPACK VAR INJECTION */(function(global) {var O = 'object';
+var check = function (it) {
+  return it && it.Math == Math && it;
+};
+
+// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
+module.exports =
+  // eslint-disable-next-line no-undef
+  check(typeof globalThis == O && globalThis) ||
+  check(typeof window == O && window) ||
+  check(typeof self == O && self) ||
+  check(typeof global == O && global) ||
+  // eslint-disable-next-line no-new-func
+  Function('return this')();
+
+/* WEBPACK VAR INJECTION */}.call(this, __nested_webpack_require_91626__(/*! ./../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/has.js":
+/*!***********************************************!*\
+  !*** ./node_modules/core-js/internals/has.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var hasOwnProperty = {}.hasOwnProperty;
+
+module.exports = function (it, key) {
+  return hasOwnProperty.call(it, key);
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/hidden-keys.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/core-js/internals/hidden-keys.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = {};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/hide.js":
+/*!************************************************!*\
+  !*** ./node_modules/core-js/internals/hide.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_93334__) {
+
+var DESCRIPTORS = __nested_webpack_require_93334__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
+var definePropertyModule = __nested_webpack_require_93334__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js");
+var createPropertyDescriptor = __nested_webpack_require_93334__(/*! ../internals/create-property-descriptor */ "./node_modules/core-js/internals/create-property-descriptor.js");
+
+module.exports = DESCRIPTORS ? function (object, key, value) {
+  return definePropertyModule.f(object, key, createPropertyDescriptor(1, value));
+} : function (object, key, value) {
+  object[key] = value;
+  return object;
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/html.js":
+/*!************************************************!*\
+  !*** ./node_modules/core-js/internals/html.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_94311__) {
+
+var global = __nested_webpack_require_94311__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
+
+var document = global.document;
+
+module.exports = document && document.documentElement;
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/ie8-dom-define.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/core-js/internals/ie8-dom-define.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_94859__) {
+
+var DESCRIPTORS = __nested_webpack_require_94859__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
+var fails = __nested_webpack_require_94859__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
+var createElement = __nested_webpack_require_94859__(/*! ../internals/document-create-element */ "./node_modules/core-js/internals/document-create-element.js");
+
+// Thank's IE8 for his funny defineProperty
+module.exports = !DESCRIPTORS && !fails(function () {
+  return Object.defineProperty(createElement('div'), 'a', {
+    get: function () { return 7; }
+  }).a != 7;
+});
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/indexed-object.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/core-js/internals/indexed-object.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_95796__) {
+
+// fallback for non-array-like ES3 and non-enumerable old V8 strings
+var fails = __nested_webpack_require_95796__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
+var classof = __nested_webpack_require_95796__(/*! ../internals/classof-raw */ "./node_modules/core-js/internals/classof-raw.js");
+
+var split = ''.split;
+
+module.exports = fails(function () {
+  // throws an error in rhino, see https://github.com/mozilla/rhino/issues/346
+  // eslint-disable-next-line no-prototype-builtins
+  return !Object('z').propertyIsEnumerable(0);
+}) ? function (it) {
+  return classof(it) == 'String' ? split.call(it, '') : Object(it);
+} : Object;
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/internal-state.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/core-js/internals/internal-state.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_96779__) {
+
+var NATIVE_WEAK_MAP = __nested_webpack_require_96779__(/*! ../internals/native-weak-map */ "./node_modules/core-js/internals/native-weak-map.js");
+var global = __nested_webpack_require_96779__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
+var isObject = __nested_webpack_require_96779__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
+var hide = __nested_webpack_require_96779__(/*! ../internals/hide */ "./node_modules/core-js/internals/hide.js");
+var objectHas = __nested_webpack_require_96779__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
+var sharedKey = __nested_webpack_require_96779__(/*! ../internals/shared-key */ "./node_modules/core-js/internals/shared-key.js");
+var hiddenKeys = __nested_webpack_require_96779__(/*! ../internals/hidden-keys */ "./node_modules/core-js/internals/hidden-keys.js");
+
+var WeakMap = global.WeakMap;
+var set, get, has;
+
+var enforce = function (it) {
+  return has(it) ? get(it) : set(it, {});
+};
+
+var getterFor = function (TYPE) {
+  return function (it) {
+    var state;
+    if (!isObject(it) || (state = get(it)).type !== TYPE) {
+      throw TypeError('Incompatible receiver, ' + TYPE + ' required');
+    } return state;
+  };
+};
+
+if (NATIVE_WEAK_MAP) {
+  var store = new WeakMap();
+  var wmget = store.get;
+  var wmhas = store.has;
+  var wmset = store.set;
+  set = function (it, metadata) {
+    wmset.call(store, it, metadata);
+    return metadata;
+  };
+  get = function (it) {
+    return wmget.call(store, it) || {};
+  };
+  has = function (it) {
+    return wmhas.call(store, it);
+  };
+} else {
+  var STATE = sharedKey('state');
+  hiddenKeys[STATE] = true;
+  set = function (it, metadata) {
+    hide(it, STATE, metadata);
+    return metadata;
+  };
+  get = function (it) {
+    return objectHas(it, STATE) ? it[STATE] : {};
+  };
+  has = function (it) {
+    return objectHas(it, STATE);
+  };
+}
+
+module.exports = {
+  set: set,
+  get: get,
+  has: has,
+  enforce: enforce,
+  getterFor: getterFor
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/is-array-iterator-method.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/core-js/internals/is-array-iterator-method.js ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_99095__) {
+
+var wellKnownSymbol = __nested_webpack_require_99095__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
+var Iterators = __nested_webpack_require_99095__(/*! ../internals/iterators */ "./node_modules/core-js/internals/iterators.js");
+
+var ITERATOR = wellKnownSymbol('iterator');
+var ArrayPrototype = Array.prototype;
+
+// check on default Array iterator
+module.exports = function (it) {
+  return it !== undefined && (Iterators.Array === it || ArrayPrototype[ITERATOR] === it);
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/is-forced.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/core-js/internals/is-forced.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_99926__) {
+
+var fails = __nested_webpack_require_99926__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
+
+var replacement = /#|\.prototype\./;
+
+var isForced = function (feature, detection) {
+  var value = data[normalize(feature)];
+  return value == POLYFILL ? true
+    : value == NATIVE ? false
+    : typeof detection == 'function' ? fails(detection)
+    : !!detection;
+};
+
+var normalize = isForced.normalize = function (string) {
+  return String(string).replace(replacement, '.').toLowerCase();
+};
+
+var data = isForced.data = {};
+var NATIVE = isForced.NATIVE = 'N';
+var POLYFILL = isForced.POLYFILL = 'P';
+
+module.exports = isForced;
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/is-object.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/core-js/internals/is-object.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = function (it) {
+  return typeof it === 'object' ? it !== null : typeof it === 'function';
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/is-pure.js":
+/*!***************************************************!*\
+  !*** ./node_modules/core-js/internals/is-pure.js ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = false;
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/iterators-core.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/core-js/internals/iterators-core.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_101660__) {
+
+"use strict";
+
+var getPrototypeOf = __nested_webpack_require_101660__(/*! ../internals/object-get-prototype-of */ "./node_modules/core-js/internals/object-get-prototype-of.js");
+var hide = __nested_webpack_require_101660__(/*! ../internals/hide */ "./node_modules/core-js/internals/hide.js");
+var has = __nested_webpack_require_101660__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
+var wellKnownSymbol = __nested_webpack_require_101660__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
+var IS_PURE = __nested_webpack_require_101660__(/*! ../internals/is-pure */ "./node_modules/core-js/internals/is-pure.js");
+
+var ITERATOR = wellKnownSymbol('iterator');
+var BUGGY_SAFARI_ITERATORS = false;
+
+var returnThis = function () { return this; };
+
+// `%IteratorPrototype%` object
+// https://tc39.github.io/ecma262/#sec-%iteratorprototype%-object
+var IteratorPrototype, PrototypeOfArrayIteratorPrototype, arrayIterator;
+
+if ([].keys) {
+  arrayIterator = [].keys();
+  // Safari 8 has buggy iterators w/o `next`
+  if (!('next' in arrayIterator)) BUGGY_SAFARI_ITERATORS = true;
+  else {
+    PrototypeOfArrayIteratorPrototype = getPrototypeOf(getPrototypeOf(arrayIterator));
+    if (PrototypeOfArrayIteratorPrototype !== Object.prototype) IteratorPrototype = PrototypeOfArrayIteratorPrototype;
+  }
+}
+
+if (IteratorPrototype == undefined) IteratorPrototype = {};
+
+// 25.1.2.1.1 %IteratorPrototype%[@@iterator]()
+if (!IS_PURE && !has(IteratorPrototype, ITERATOR)) hide(IteratorPrototype, ITERATOR, returnThis);
+
+module.exports = {
+  IteratorPrototype: IteratorPrototype,
+  BUGGY_SAFARI_ITERATORS: BUGGY_SAFARI_ITERATORS
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/iterators.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/core-js/internals/iterators.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = {};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/native-symbol.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/core-js/internals/native-symbol.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_103948__) {
+
+var fails = __nested_webpack_require_103948__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
+
+module.exports = !!Object.getOwnPropertySymbols && !fails(function () {
+  // Chrome 38 Symbol has incorrect toString conversion
+  // eslint-disable-next-line no-undef
+  return !String(Symbol());
+});
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/native-weak-map.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/core-js/internals/native-weak-map.js ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_104608__) {
+
+var global = __nested_webpack_require_104608__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
+var nativeFunctionToString = __nested_webpack_require_104608__(/*! ../internals/function-to-string */ "./node_modules/core-js/internals/function-to-string.js");
+
+var WeakMap = global.WeakMap;
+
+module.exports = typeof WeakMap === 'function' && /native code/.test(nativeFunctionToString.call(WeakMap));
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/object-create.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/core-js/internals/object-create.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_105350__) {
+
+var anObject = __nested_webpack_require_105350__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
+var defineProperties = __nested_webpack_require_105350__(/*! ../internals/object-define-properties */ "./node_modules/core-js/internals/object-define-properties.js");
+var enumBugKeys = __nested_webpack_require_105350__(/*! ../internals/enum-bug-keys */ "./node_modules/core-js/internals/enum-bug-keys.js");
+var hiddenKeys = __nested_webpack_require_105350__(/*! ../internals/hidden-keys */ "./node_modules/core-js/internals/hidden-keys.js");
+var html = __nested_webpack_require_105350__(/*! ../internals/html */ "./node_modules/core-js/internals/html.js");
+var documentCreateElement = __nested_webpack_require_105350__(/*! ../internals/document-create-element */ "./node_modules/core-js/internals/document-create-element.js");
+var sharedKey = __nested_webpack_require_105350__(/*! ../internals/shared-key */ "./node_modules/core-js/internals/shared-key.js");
+var IE_PROTO = sharedKey('IE_PROTO');
+
+var PROTOTYPE = 'prototype';
+var Empty = function () { /* empty */ };
+
+// Create object with fake `null` prototype: use iframe Object with cleared prototype
+var createDict = function () {
+  // Thrash, waste and sodomy: IE GC bug
+  var iframe = documentCreateElement('iframe');
+  var length = enumBugKeys.length;
+  var lt = '<';
+  var script = 'script';
+  var gt = '>';
+  var js = 'java' + script + ':';
+  var iframeDocument;
+  iframe.style.display = 'none';
+  html.appendChild(iframe);
+  iframe.src = String(js);
+  iframeDocument = iframe.contentWindow.document;
+  iframeDocument.open();
+  iframeDocument.write(lt + script + gt + 'document.F=Object' + lt + '/' + script + gt);
+  iframeDocument.close();
+  createDict = iframeDocument.F;
+  while (length--) delete createDict[PROTOTYPE][enumBugKeys[length]];
+  return createDict();
+};
+
+// 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
+module.exports = Object.create || function create(O, Properties) {
+  var result;
+  if (O !== null) {
+    Empty[PROTOTYPE] = anObject(O);
+    result = new Empty();
+    Empty[PROTOTYPE] = null;
+    // add "__proto__" for Object.getPrototypeOf polyfill
+    result[IE_PROTO] = O;
+  } else result = createDict();
+  return Properties === undefined ? result : defineProperties(result, Properties);
+};
+
+hiddenKeys[IE_PROTO] = true;
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/object-define-properties.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/core-js/internals/object-define-properties.js ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_107983__) {
+
+var DESCRIPTORS = __nested_webpack_require_107983__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
+var definePropertyModule = __nested_webpack_require_107983__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js");
+var anObject = __nested_webpack_require_107983__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
+var objectKeys = __nested_webpack_require_107983__(/*! ../internals/object-keys */ "./node_modules/core-js/internals/object-keys.js");
+
+module.exports = DESCRIPTORS ? Object.defineProperties : function defineProperties(O, Properties) {
+  anObject(O);
+  var keys = objectKeys(Properties);
+  var length = keys.length;
+  var i = 0;
+  var key;
+  while (length > i) definePropertyModule.f(O, key = keys[i++], Properties[key]);
+  return O;
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/object-define-property.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/core-js/internals/object-define-property.js ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_109180__) {
+
+var DESCRIPTORS = __nested_webpack_require_109180__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
+var IE8_DOM_DEFINE = __nested_webpack_require_109180__(/*! ../internals/ie8-dom-define */ "./node_modules/core-js/internals/ie8-dom-define.js");
+var anObject = __nested_webpack_require_109180__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
+var toPrimitive = __nested_webpack_require_109180__(/*! ../internals/to-primitive */ "./node_modules/core-js/internals/to-primitive.js");
+
+var nativeDefineProperty = Object.defineProperty;
+
+exports.f = DESCRIPTORS ? nativeDefineProperty : function defineProperty(O, P, Attributes) {
+  anObject(O);
+  P = toPrimitive(P, true);
+  anObject(Attributes);
+  if (IE8_DOM_DEFINE) try {
+    return nativeDefineProperty(O, P, Attributes);
+  } catch (error) { /* empty */ }
+  if ('get' in Attributes || 'set' in Attributes) throw TypeError('Accessors not supported');
+  if ('value' in Attributes) O[P] = Attributes.value;
+  return O;
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/object-get-own-property-descriptor.js":
+/*!******************************************************************************!*\
+  !*** ./node_modules/core-js/internals/object-get-own-property-descriptor.js ***!
+  \******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_110592__) {
+
+var DESCRIPTORS = __nested_webpack_require_110592__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
+var propertyIsEnumerableModule = __nested_webpack_require_110592__(/*! ../internals/object-property-is-enumerable */ "./node_modules/core-js/internals/object-property-is-enumerable.js");
+var createPropertyDescriptor = __nested_webpack_require_110592__(/*! ../internals/create-property-descriptor */ "./node_modules/core-js/internals/create-property-descriptor.js");
+var toIndexedObject = __nested_webpack_require_110592__(/*! ../internals/to-indexed-object */ "./node_modules/core-js/internals/to-indexed-object.js");
+var toPrimitive = __nested_webpack_require_110592__(/*! ../internals/to-primitive */ "./node_modules/core-js/internals/to-primitive.js");
+var has = __nested_webpack_require_110592__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
+var IE8_DOM_DEFINE = __nested_webpack_require_110592__(/*! ../internals/ie8-dom-define */ "./node_modules/core-js/internals/ie8-dom-define.js");
+
+var nativeGetOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
+
+exports.f = DESCRIPTORS ? nativeGetOwnPropertyDescriptor : function getOwnPropertyDescriptor(O, P) {
+  O = toIndexedObject(O);
+  P = toPrimitive(P, true);
+  if (IE8_DOM_DEFINE) try {
+    return nativeGetOwnPropertyDescriptor(O, P);
+  } catch (error) { /* empty */ }
+  if (has(O, P)) return createPropertyDescriptor(!propertyIsEnumerableModule.f.call(O, P), O[P]);
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/object-get-own-property-names.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/core-js/internals/object-get-own-property-names.js ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_112394__) {
+
+// 19.1.2.7 / 15.2.3.4 Object.getOwnPropertyNames(O)
+var internalObjectKeys = __nested_webpack_require_112394__(/*! ../internals/object-keys-internal */ "./node_modules/core-js/internals/object-keys-internal.js");
+var enumBugKeys = __nested_webpack_require_112394__(/*! ../internals/enum-bug-keys */ "./node_modules/core-js/internals/enum-bug-keys.js");
+
+var hiddenKeys = enumBugKeys.concat('length', 'prototype');
+
+exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
+  return internalObjectKeys(O, hiddenKeys);
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/object-get-own-property-symbols.js":
+/*!***************************************************************************!*\
+  !*** ./node_modules/core-js/internals/object-get-own-property-symbols.js ***!
+  \***************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+exports.f = Object.getOwnPropertySymbols;
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/object-get-prototype-of.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/core-js/internals/object-get-prototype-of.js ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_113734__) {
+
+var has = __nested_webpack_require_113734__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
+var toObject = __nested_webpack_require_113734__(/*! ../internals/to-object */ "./node_modules/core-js/internals/to-object.js");
+var sharedKey = __nested_webpack_require_113734__(/*! ../internals/shared-key */ "./node_modules/core-js/internals/shared-key.js");
+var CORRECT_PROTOTYPE_GETTER = __nested_webpack_require_113734__(/*! ../internals/correct-prototype-getter */ "./node_modules/core-js/internals/correct-prototype-getter.js");
+
+var IE_PROTO = sharedKey('IE_PROTO');
+var ObjectPrototype = Object.prototype;
+
+// 19.1.2.9 / 15.2.3.2 Object.getPrototypeOf(O)
+module.exports = CORRECT_PROTOTYPE_GETTER ? Object.getPrototypeOf : function (O) {
+  O = toObject(O);
+  if (has(O, IE_PROTO)) return O[IE_PROTO];
+  if (typeof O.constructor == 'function' && O instanceof O.constructor) {
+    return O.constructor.prototype;
+  } return O instanceof Object ? ObjectPrototype : null;
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/object-keys-internal.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/core-js/internals/object-keys-internal.js ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_115046__) {
+
+var has = __nested_webpack_require_115046__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
+var toIndexedObject = __nested_webpack_require_115046__(/*! ../internals/to-indexed-object */ "./node_modules/core-js/internals/to-indexed-object.js");
+var arrayIncludes = __nested_webpack_require_115046__(/*! ../internals/array-includes */ "./node_modules/core-js/internals/array-includes.js");
+var hiddenKeys = __nested_webpack_require_115046__(/*! ../internals/hidden-keys */ "./node_modules/core-js/internals/hidden-keys.js");
+
+var arrayIndexOf = arrayIncludes(false);
+
+module.exports = function (object, names) {
+  var O = toIndexedObject(object);
+  var i = 0;
+  var result = [];
+  var key;
+  for (key in O) !has(hiddenKeys, key) && has(O, key) && result.push(key);
+  // Don't enum bug & hidden keys
+  while (names.length > i) if (has(O, key = names[i++])) {
+    ~arrayIndexOf(result, key) || result.push(key);
+  }
+  return result;
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/object-keys.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/core-js/internals/object-keys.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_116282__) {
+
+var internalObjectKeys = __nested_webpack_require_116282__(/*! ../internals/object-keys-internal */ "./node_modules/core-js/internals/object-keys-internal.js");
+var enumBugKeys = __nested_webpack_require_116282__(/*! ../internals/enum-bug-keys */ "./node_modules/core-js/internals/enum-bug-keys.js");
+
+// 19.1.2.14 / 15.2.3.14 Object.keys(O)
+module.exports = Object.keys || function keys(O) {
+  return internalObjectKeys(O, enumBugKeys);
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/object-property-is-enumerable.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/core-js/internals/object-property-is-enumerable.js ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_117107__) {
+
+"use strict";
+
+var nativePropertyIsEnumerable = {}.propertyIsEnumerable;
+var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
+
+// Nashorn ~ JDK8 bug
+var NASHORN_BUG = getOwnPropertyDescriptor && !nativePropertyIsEnumerable.call({ 1: 2 }, 1);
+
+exports.f = NASHORN_BUG ? function propertyIsEnumerable(V) {
+  var descriptor = getOwnPropertyDescriptor(this, V);
+  return !!descriptor && descriptor.enumerable;
+} : nativePropertyIsEnumerable;
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/object-set-prototype-of.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/core-js/internals/object-set-prototype-of.js ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_117944__) {
+
+var validateSetPrototypeOfArguments = __nested_webpack_require_117944__(/*! ../internals/validate-set-prototype-of-arguments */ "./node_modules/core-js/internals/validate-set-prototype-of-arguments.js");
+
+// Works with __proto__ only. Old v8 can't work with null proto objects.
+/* eslint-disable no-proto */
+module.exports = Object.setPrototypeOf || ('__proto__' in {} ? function () {
+  var correctSetter = false;
+  var test = {};
+  var setter;
+  try {
+    setter = Object.getOwnPropertyDescriptor(Object.prototype, '__proto__').set;
+    setter.call(test, []);
+    correctSetter = test instanceof Array;
+  } catch (error) { /* empty */ }
+  return function setPrototypeOf(O, proto) {
+    validateSetPrototypeOfArguments(O, proto);
+    if (correctSetter) setter.call(O, proto);
+    else O.__proto__ = proto;
+    return O;
+  };
+}() : undefined);
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/own-keys.js":
+/*!****************************************************!*\
+  !*** ./node_modules/core-js/internals/own-keys.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_119101__) {
+
+var global = __nested_webpack_require_119101__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
+var getOwnPropertyNamesModule = __nested_webpack_require_119101__(/*! ../internals/object-get-own-property-names */ "./node_modules/core-js/internals/object-get-own-property-names.js");
+var getOwnPropertySymbolsModule = __nested_webpack_require_119101__(/*! ../internals/object-get-own-property-symbols */ "./node_modules/core-js/internals/object-get-own-property-symbols.js");
+var anObject = __nested_webpack_require_119101__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
+
+var Reflect = global.Reflect;
+
+// all object keys, includes non-enumerable and symbols
+module.exports = Reflect && Reflect.ownKeys || function ownKeys(it) {
+  var keys = getOwnPropertyNamesModule.f(anObject(it));
+  var getOwnPropertySymbols = getOwnPropertySymbolsModule.f;
+  return getOwnPropertySymbols ? keys.concat(getOwnPropertySymbols(it)) : keys;
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/path.js":
+/*!************************************************!*\
+  !*** ./node_modules/core-js/internals/path.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_120343__) {
+
+module.exports = __nested_webpack_require_120343__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/redefine.js":
+/*!****************************************************!*\
+  !*** ./node_modules/core-js/internals/redefine.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_120782__) {
+
+var global = __nested_webpack_require_120782__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
+var shared = __nested_webpack_require_120782__(/*! ../internals/shared */ "./node_modules/core-js/internals/shared.js");
+var hide = __nested_webpack_require_120782__(/*! ../internals/hide */ "./node_modules/core-js/internals/hide.js");
+var has = __nested_webpack_require_120782__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
+var setGlobal = __nested_webpack_require_120782__(/*! ../internals/set-global */ "./node_modules/core-js/internals/set-global.js");
+var nativeFunctionToString = __nested_webpack_require_120782__(/*! ../internals/function-to-string */ "./node_modules/core-js/internals/function-to-string.js");
+var InternalStateModule = __nested_webpack_require_120782__(/*! ../internals/internal-state */ "./node_modules/core-js/internals/internal-state.js");
+
+var getInternalState = InternalStateModule.get;
+var enforceInternalState = InternalStateModule.enforce;
+var TEMPLATE = String(nativeFunctionToString).split('toString');
+
+shared('inspectSource', function (it) {
+  return nativeFunctionToString.call(it);
+});
+
+(module.exports = function (O, key, value, options) {
+  var unsafe = options ? !!options.unsafe : false;
+  var simple = options ? !!options.enumerable : false;
+  var noTargetGet = options ? !!options.noTargetGet : false;
+  if (typeof value == 'function') {
+    if (typeof key == 'string' && !has(value, 'name')) hide(value, 'name', key);
+    enforceInternalState(value).source = TEMPLATE.join(typeof key == 'string' ? key : '');
+  }
+  if (O === global) {
+    if (simple) O[key] = value;
+    else setGlobal(key, value);
+    return;
+  } else if (!unsafe) {
+    delete O[key];
+  } else if (!noTargetGet && O[key]) {
+    simple = true;
+  }
+  if (simple) O[key] = value;
+  else hide(O, key, value);
+// add fake Function#toString for correct work wrapped methods / constructors with methods like LoDash isNative
+})(Function.prototype, 'toString', function toString() {
+  return typeof this == 'function' && getInternalState(this).source || nativeFunctionToString.call(this);
+});
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/require-object-coercible.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/core-js/internals/require-object-coercible.js ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// `RequireObjectCoercible` abstract operation
+// https://tc39.github.io/ecma262/#sec-requireobjectcoercible
+module.exports = function (it) {
+  if (it == undefined) throw TypeError("Can't call method on " + it);
+  return it;
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/set-global.js":
+/*!******************************************************!*\
+  !*** ./node_modules/core-js/internals/set-global.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_123762__) {
+
+var global = __nested_webpack_require_123762__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
+var hide = __nested_webpack_require_123762__(/*! ../internals/hide */ "./node_modules/core-js/internals/hide.js");
+
+module.exports = function (key, value) {
+  try {
+    hide(global, key, value);
+  } catch (error) {
+    global[key] = value;
+  } return value;
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/set-to-string-tag.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/core-js/internals/set-to-string-tag.js ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_124480__) {
+
+var defineProperty = __nested_webpack_require_124480__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js").f;
+var has = __nested_webpack_require_124480__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
+var wellKnownSymbol = __nested_webpack_require_124480__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
+
+var TO_STRING_TAG = wellKnownSymbol('toStringTag');
+
+module.exports = function (it, TAG, STATIC) {
+  if (it && !has(it = STATIC ? it : it.prototype, TO_STRING_TAG)) {
+    defineProperty(it, TO_STRING_TAG, { configurable: true, value: TAG });
+  }
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/shared-key.js":
+/*!******************************************************!*\
+  !*** ./node_modules/core-js/internals/shared-key.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_125451__) {
+
+var shared = __nested_webpack_require_125451__(/*! ../internals/shared */ "./node_modules/core-js/internals/shared.js");
+var uid = __nested_webpack_require_125451__(/*! ../internals/uid */ "./node_modules/core-js/internals/uid.js");
+
+var keys = shared('keys');
+
+module.exports = function (key) {
+  return keys[key] || (keys[key] = uid(key));
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/shared.js":
+/*!**************************************************!*\
+  !*** ./node_modules/core-js/internals/shared.js ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_126088__) {
+
+var global = __nested_webpack_require_126088__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
+var setGlobal = __nested_webpack_require_126088__(/*! ../internals/set-global */ "./node_modules/core-js/internals/set-global.js");
+var IS_PURE = __nested_webpack_require_126088__(/*! ../internals/is-pure */ "./node_modules/core-js/internals/is-pure.js");
+
+var SHARED = '__core-js_shared__';
+var store = global[SHARED] || setGlobal(SHARED, {});
+
+(module.exports = function (key, value) {
+  return store[key] || (store[key] = value !== undefined ? value : {});
+})('versions', []).push({
+  version: '3.1.3',
+  mode: IS_PURE ? 'pure' : 'global',
+  copyright: '© 2019 Denis Pushkarev (zloirock.ru)'
+});
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/string-at.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/core-js/internals/string-at.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_127098__) {
+
+var toInteger = __nested_webpack_require_127098__(/*! ../internals/to-integer */ "./node_modules/core-js/internals/to-integer.js");
+var requireObjectCoercible = __nested_webpack_require_127098__(/*! ../internals/require-object-coercible */ "./node_modules/core-js/internals/require-object-coercible.js");
+
+// CONVERT_TO_STRING: true  -> String#at
+// CONVERT_TO_STRING: false -> String#codePointAt
+module.exports = function (that, pos, CONVERT_TO_STRING) {
+  var S = String(requireObjectCoercible(that));
+  var position = toInteger(pos);
+  var size = S.length;
+  var first, second;
+  if (position < 0 || position >= size) return CONVERT_TO_STRING ? '' : undefined;
+  first = S.charCodeAt(position);
+  return first < 0xD800 || first > 0xDBFF || position + 1 === size
+    || (second = S.charCodeAt(position + 1)) < 0xDC00 || second > 0xDFFF
+      ? CONVERT_TO_STRING ? S.charAt(position) : first
+      : CONVERT_TO_STRING ? S.slice(position, position + 2) : (first - 0xD800 << 10) + (second - 0xDC00) + 0x10000;
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/to-absolute-index.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/core-js/internals/to-absolute-index.js ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_128446__) {
+
+var toInteger = __nested_webpack_require_128446__(/*! ../internals/to-integer */ "./node_modules/core-js/internals/to-integer.js");
+
+var max = Math.max;
+var min = Math.min;
+
+// Helper for a popular repeating case of the spec:
+// Let integer be ? ToInteger(index).
+// If integer < 0, let result be max((length + integer), 0); else let result be min(length, length).
+module.exports = function (index, length) {
+  var integer = toInteger(index);
+  return integer < 0 ? max(integer + length, 0) : min(integer, length);
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/to-indexed-object.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/core-js/internals/to-indexed-object.js ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_129314__) {
+
+// toObject with fallback for non-array-like ES3 strings
+var IndexedObject = __nested_webpack_require_129314__(/*! ../internals/indexed-object */ "./node_modules/core-js/internals/indexed-object.js");
+var requireObjectCoercible = __nested_webpack_require_129314__(/*! ../internals/require-object-coercible */ "./node_modules/core-js/internals/require-object-coercible.js");
+
+module.exports = function (it) {
+  return IndexedObject(requireObjectCoercible(it));
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/to-integer.js":
+/*!******************************************************!*\
+  !*** ./node_modules/core-js/internals/to-integer.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var ceil = Math.ceil;
+var floor = Math.floor;
+
+// `ToInteger` abstract operation
+// https://tc39.github.io/ecma262/#sec-tointeger
+module.exports = function (argument) {
+  return isNaN(argument = +argument) ? 0 : (argument > 0 ? floor : ceil)(argument);
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/to-length.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/core-js/internals/to-length.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_130652__) {
+
+var toInteger = __nested_webpack_require_130652__(/*! ../internals/to-integer */ "./node_modules/core-js/internals/to-integer.js");
+
+var min = Math.min;
+
+// `ToLength` abstract operation
+// https://tc39.github.io/ecma262/#sec-tolength
+module.exports = function (argument) {
+  return argument > 0 ? min(toInteger(argument), 0x1FFFFFFFFFFFFF) : 0; // 2 ** 53 - 1 == 9007199254740991
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/to-object.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/core-js/internals/to-object.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_131354__) {
+
+var requireObjectCoercible = __nested_webpack_require_131354__(/*! ../internals/require-object-coercible */ "./node_modules/core-js/internals/require-object-coercible.js");
+
+// `ToObject` abstract operation
+// https://tc39.github.io/ecma262/#sec-toobject
+module.exports = function (argument) {
+  return Object(requireObjectCoercible(argument));
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/to-primitive.js":
+/*!********************************************************!*\
+  !*** ./node_modules/core-js/internals/to-primitive.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_132032__) {
+
+var isObject = __nested_webpack_require_132032__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
+
+// 7.1.1 ToPrimitive(input [, PreferredType])
+// instead of the ES6 spec version, we didn't implement @@toPrimitive case
+// and the second argument - flag - preferred type is a string
+module.exports = function (it, S) {
+  if (!isObject(it)) return it;
+  var fn, val;
+  if (S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it))) return val;
+  if (typeof (fn = it.valueOf) == 'function' && !isObject(val = fn.call(it))) return val;
+  if (!S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it))) return val;
+  throw TypeError("Can't convert object to primitive value");
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/uid.js":
+/*!***********************************************!*\
+  !*** ./node_modules/core-js/internals/uid.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var id = 0;
+var postfix = Math.random();
+
+module.exports = function (key) {
+  return 'Symbol('.concat(key === undefined ? '' : key, ')_', (++id + postfix).toString(36));
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/validate-set-prototype-of-arguments.js":
+/*!*******************************************************************************!*\
+  !*** ./node_modules/core-js/internals/validate-set-prototype-of-arguments.js ***!
+  \*******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_133659__) {
+
+var isObject = __nested_webpack_require_133659__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
+var anObject = __nested_webpack_require_133659__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
+
+module.exports = function (O, proto) {
+  anObject(O);
+  if (!isObject(proto) && proto !== null) {
+    throw TypeError("Can't set " + String(proto) + ' as a prototype');
+  }
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/well-known-symbol.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/core-js/internals/well-known-symbol.js ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_134430__) {
+
+var global = __nested_webpack_require_134430__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
+var shared = __nested_webpack_require_134430__(/*! ../internals/shared */ "./node_modules/core-js/internals/shared.js");
+var uid = __nested_webpack_require_134430__(/*! ../internals/uid */ "./node_modules/core-js/internals/uid.js");
+var NATIVE_SYMBOL = __nested_webpack_require_134430__(/*! ../internals/native-symbol */ "./node_modules/core-js/internals/native-symbol.js");
+
+var Symbol = global.Symbol;
+var store = shared('wks');
+
+module.exports = function (name) {
+  return store[name] || (store[name] = NATIVE_SYMBOL && Symbol[name]
+    || (NATIVE_SYMBOL ? Symbol : uid)('Symbol.' + name));
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/modules/es.array.from.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/core-js/modules/es.array.from.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_135432__) {
+
+var $ = __nested_webpack_require_135432__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var from = __nested_webpack_require_135432__(/*! ../internals/array-from */ "./node_modules/core-js/internals/array-from.js");
+var checkCorrectnessOfIteration = __nested_webpack_require_135432__(/*! ../internals/check-correctness-of-iteration */ "./node_modules/core-js/internals/check-correctness-of-iteration.js");
+
+var INCORRECT_ITERATION = !checkCorrectnessOfIteration(function (iterable) {
+  Array.from(iterable);
+});
+
+// `Array.from` method
+// https://tc39.github.io/ecma262/#sec-array.from
+$({ target: 'Array', stat: true, forced: INCORRECT_ITERATION }, {
+  from: from
+});
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/modules/es.string.iterator.js":
+/*!************************************************************!*\
+  !*** ./node_modules/core-js/modules/es.string.iterator.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_136446__) {
+
+"use strict";
+
+var codePointAt = __nested_webpack_require_136446__(/*! ../internals/string-at */ "./node_modules/core-js/internals/string-at.js");
+var InternalStateModule = __nested_webpack_require_136446__(/*! ../internals/internal-state */ "./node_modules/core-js/internals/internal-state.js");
+var defineIterator = __nested_webpack_require_136446__(/*! ../internals/define-iterator */ "./node_modules/core-js/internals/define-iterator.js");
+
+var STRING_ITERATOR = 'String Iterator';
+var setInternalState = InternalStateModule.set;
+var getInternalState = InternalStateModule.getterFor(STRING_ITERATOR);
+
+// `String.prototype[@@iterator]` method
+// https://tc39.github.io/ecma262/#sec-string.prototype-@@iterator
+defineIterator(String, 'String', function (iterated) {
+  setInternalState(this, {
+    type: STRING_ITERATOR,
+    string: String(iterated),
+    index: 0
+  });
+// `%StringIteratorPrototype%.next` method
+// https://tc39.github.io/ecma262/#sec-%stringiteratorprototype%.next
+}, function next() {
+  var state = getInternalState(this);
+  var string = state.string;
+  var index = state.index;
+  var point;
+  if (index >= string.length) return { value: undefined, done: true };
+  point = codePointAt(string, index, true);
+  state.index += point.length;
+  return { value: point, done: false };
+});
+
+
+/***/ }),
+
+/***/ "./node_modules/webpack/buildin/global.js":
+/*!***********************************!*\
+  !*** (webpack)/buildin/global.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || Function("return this")() || (1, eval)("this");
+} catch (e) {
+	// This works if the window reference is available
+	if (typeof window === "object") g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+
+/***/ }),
+
+/***/ "./src/default-attrs.json":
+/*!********************************!*\
+  !*** ./src/default-attrs.json ***!
+  \********************************/
+/*! exports provided: xmlns, width, height, viewBox, fill, stroke, stroke-width, stroke-linecap, stroke-linejoin, default */
+/***/ (function(module) {
+
+module.exports = {"xmlns":"http://www.w3.org/2000/svg","width":24,"height":24,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","stroke-width":2,"stroke-linecap":"round","stroke-linejoin":"round"};
+
+/***/ }),
+
+/***/ "./src/icon.js":
+/*!*********************!*\
+  !*** ./src/icon.js ***!
+  \*********************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_139191__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _dedupe = __nested_webpack_require_139191__(/*! classnames/dedupe */ "./node_modules/classnames/dedupe.js");
+
+var _dedupe2 = _interopRequireDefault(_dedupe);
+
+var _defaultAttrs = __nested_webpack_require_139191__(/*! ./default-attrs.json */ "./src/default-attrs.json");
+
+var _defaultAttrs2 = _interopRequireDefault(_defaultAttrs);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Icon = function () {
+  function Icon(name, contents) {
+    var tags = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
+
+    _classCallCheck(this, Icon);
+
+    this.name = name;
+    this.contents = contents;
+    this.tags = tags;
+    this.attrs = _extends({}, _defaultAttrs2.default, { class: 'feather feather-' + name });
+  }
+
+  /**
+   * Create an SVG string.
+   * @param {Object} attrs
+   * @returns {string}
+   */
+
+
+  _createClass(Icon, [{
+    key: 'toSvg',
+    value: function toSvg() {
+      var attrs = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+      var combinedAttrs = _extends({}, this.attrs, attrs, { class: (0, _dedupe2.default)(this.attrs.class, attrs.class) });
+
+      return '<svg ' + attrsToString(combinedAttrs) + '>' + this.contents + '</svg>';
+    }
+
+    /**
+     * Return string representation of an `Icon`.
+     *
+     * Added for backward compatibility. If old code expects `feather.icons.<name>`
+     * to be a string, `toString()` will get implicitly called.
+     *
+     * @returns {string}
+     */
+
+  }, {
+    key: 'toString',
+    value: function toString() {
+      return this.contents;
+    }
+  }]);
+
+  return Icon;
+}();
+
+/**
+ * Convert attributes object to string of HTML attributes.
+ * @param {Object} attrs
+ * @returns {string}
+ */
+
+
+function attrsToString(attrs) {
+  return Object.keys(attrs).map(function (key) {
+    return key + '="' + attrs[key] + '"';
+  }).join(' ');
+}
+
+exports.default = Icon;
+
+/***/ }),
+
+/***/ "./src/icons.js":
+/*!**********************!*\
+  !*** ./src/icons.js ***!
+  \**********************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_142349__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _icon = __nested_webpack_require_142349__(/*! ./icon */ "./src/icon.js");
+
+var _icon2 = _interopRequireDefault(_icon);
+
+var _icons = __nested_webpack_require_142349__(/*! ../dist/icons.json */ "./dist/icons.json");
+
+var _icons2 = _interopRequireDefault(_icons);
+
+var _tags = __nested_webpack_require_142349__(/*! ./tags.json */ "./src/tags.json");
+
+var _tags2 = _interopRequireDefault(_tags);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = Object.keys(_icons2.default).map(function (key) {
+  return new _icon2.default(key, _icons2.default[key], _tags2.default[key]);
+}).reduce(function (object, icon) {
+  object[icon.name] = icon;
+  return object;
+}, {});
+
+/***/ }),
+
+/***/ "./src/index.js":
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_143325__) {
+
+"use strict";
+
+
+var _icons = __nested_webpack_require_143325__(/*! ./icons */ "./src/icons.js");
+
+var _icons2 = _interopRequireDefault(_icons);
+
+var _toSvg = __nested_webpack_require_143325__(/*! ./to-svg */ "./src/to-svg.js");
+
+var _toSvg2 = _interopRequireDefault(_toSvg);
+
+var _replace = __nested_webpack_require_143325__(/*! ./replace */ "./src/replace.js");
+
+var _replace2 = _interopRequireDefault(_replace);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+module.exports = { icons: _icons2.default, toSvg: _toSvg2.default, replace: _replace2.default };
+
+/***/ }),
+
+/***/ "./src/replace.js":
+/*!************************!*\
+  !*** ./src/replace.js ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_144107__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /* eslint-env browser */
+
+
+var _dedupe = __nested_webpack_require_144107__(/*! classnames/dedupe */ "./node_modules/classnames/dedupe.js");
+
+var _dedupe2 = _interopRequireDefault(_dedupe);
+
+var _icons = __nested_webpack_require_144107__(/*! ./icons */ "./src/icons.js");
+
+var _icons2 = _interopRequireDefault(_icons);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * Replace all HTML elements that have a `data-feather` attribute with SVG markup
+ * corresponding to the element's `data-feather` attribute value.
+ * @param {Object} attrs
+ */
+function replace() {
+  var attrs = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+  if (typeof document === 'undefined') {
+    throw new Error('`feather.replace()` only works in a browser environment.');
+  }
+
+  var elementsToReplace = document.querySelectorAll('[data-feather]');
+
+  Array.from(elementsToReplace).forEach(function (element) {
+    return replaceElement(element, attrs);
+  });
+}
+
+/**
+ * Replace a single HTML element with SVG markup
+ * corresponding to the element's `data-feather` attribute value.
+ * @param {HTMLElement} element
+ * @param {Object} attrs
+ */
+function replaceElement(element) {
+  var attrs = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+  var elementAttrs = getAttrs(element);
+  var name = elementAttrs['data-feather'];
+  delete elementAttrs['data-feather'];
+
+  var svgString = _icons2.default[name].toSvg(_extends({}, attrs, elementAttrs, { class: (0, _dedupe2.default)(attrs.class, elementAttrs.class) }));
+  var svgDocument = new DOMParser().parseFromString(svgString, 'image/svg+xml');
+  var svgElement = svgDocument.querySelector('svg');
+
+  element.parentNode.replaceChild(svgElement, element);
+}
+
+/**
+ * Get the attributes of an HTML element.
+ * @param {HTMLElement} element
+ * @returns {Object}
+ */
+function getAttrs(element) {
+  return Array.from(element.attributes).reduce(function (attrs, attr) {
+    attrs[attr.name] = attr.value;
+    return attrs;
+  }, {});
+}
+
+exports.default = replace;
+
+/***/ }),
+
+/***/ "./src/tags.json":
+/*!***********************!*\
+  !*** ./src/tags.json ***!
+  \***********************/
+/*! exports provided: activity, airplay, alert-circle, alert-octagon, alert-triangle, align-center, align-justify, align-left, align-right, anchor, archive, at-sign, award, aperture, bar-chart, bar-chart-2, battery, battery-charging, bell, bell-off, bluetooth, book-open, book, bookmark, box, briefcase, calendar, camera, cast, circle, clipboard, clock, cloud-drizzle, cloud-lightning, cloud-rain, cloud-snow, cloud, codepen, codesandbox, code, coffee, columns, command, compass, copy, corner-down-left, corner-down-right, corner-left-down, corner-left-up, corner-right-down, corner-right-up, corner-up-left, corner-up-right, cpu, credit-card, crop, crosshair, database, delete, disc, dollar-sign, droplet, edit, edit-2, edit-3, eye, eye-off, external-link, facebook, fast-forward, figma, file-minus, file-plus, file-text, film, filter, flag, folder-minus, folder-plus, folder, framer, frown, gift, git-branch, git-commit, git-merge, git-pull-request, github, gitlab, globe, hard-drive, hash, headphones, heart, help-circle, hexagon, home, image, inbox, instagram, key, layers, layout, life-bouy, link, link-2, linkedin, list, lock, log-in, log-out, mail, map-pin, map, maximize, maximize-2, meh, menu, message-circle, message-square, mic-off, mic, minimize, minimize-2, minus, monitor, moon, more-horizontal, more-vertical, mouse-pointer, move, music, navigation, navigation-2, octagon, package, paperclip, pause, pause-circle, pen-tool, percent, phone-call, phone-forwarded, phone-incoming, phone-missed, phone-off, phone-outgoing, phone, play, pie-chart, play-circle, plus, plus-circle, plus-square, pocket, power, printer, radio, refresh-cw, refresh-ccw, repeat, rewind, rotate-ccw, rotate-cw, rss, save, scissors, search, send, settings, share-2, shield, shield-off, shopping-bag, shopping-cart, shuffle, skip-back, skip-forward, slack, slash, sliders, smartphone, smile, speaker, star, stop-circle, sun, sunrise, sunset, tablet, tag, target, terminal, thermometer, thumbs-down, thumbs-up, toggle-left, toggle-right, tool, trash, trash-2, triangle, truck, tv, twitch, twitter, type, umbrella, unlock, user-check, user-minus, user-plus, user-x, user, users, video-off, video, voicemail, volume, volume-1, volume-2, volume-x, watch, wifi-off, wifi, wind, x-circle, x-octagon, x-square, x, youtube, zap-off, zap, zoom-in, zoom-out, default */
+/***/ (function(module) {
+
+module.exports = {"activity":["pulse","health","action","motion"],"airplay":["stream","cast","mirroring"],"alert-circle":["warning","alert","danger"],"alert-octagon":["warning","alert","danger"],"alert-triangle":["warning","alert","danger"],"align-center":["text alignment","center"],"align-justify":["text alignment","justified"],"align-left":["text alignment","left"],"align-right":["text alignment","right"],"anchor":[],"archive":["index","box"],"at-sign":["mention","at","email","message"],"award":["achievement","badge"],"aperture":["camera","photo"],"bar-chart":["statistics","diagram","graph"],"bar-chart-2":["statistics","diagram","graph"],"battery":["power","electricity"],"battery-charging":["power","electricity"],"bell":["alarm","notification","sound"],"bell-off":["alarm","notification","silent"],"bluetooth":["wireless"],"book-open":["read","library"],"book":["read","dictionary","booklet","magazine","library"],"bookmark":["read","clip","marker","tag"],"box":["cube"],"briefcase":["work","bag","baggage","folder"],"calendar":["date"],"camera":["photo"],"cast":["chromecast","airplay"],"circle":["off","zero","record"],"clipboard":["copy"],"clock":["time","watch","alarm"],"cloud-drizzle":["weather","shower"],"cloud-lightning":["weather","bolt"],"cloud-rain":["weather"],"cloud-snow":["weather","blizzard"],"cloud":["weather"],"codepen":["logo"],"codesandbox":["logo"],"code":["source","programming"],"coffee":["drink","cup","mug","tea","cafe","hot","beverage"],"columns":["layout"],"command":["keyboard","cmd","terminal","prompt"],"compass":["navigation","safari","travel","direction"],"copy":["clone","duplicate"],"corner-down-left":["arrow","return"],"corner-down-right":["arrow"],"corner-left-down":["arrow"],"corner-left-up":["arrow"],"corner-right-down":["arrow"],"corner-right-up":["arrow"],"corner-up-left":["arrow"],"corner-up-right":["arrow"],"cpu":["processor","technology"],"credit-card":["purchase","payment","cc"],"crop":["photo","image"],"crosshair":["aim","target"],"database":["storage","memory"],"delete":["remove"],"disc":["album","cd","dvd","music"],"dollar-sign":["currency","money","payment"],"droplet":["water"],"edit":["pencil","change"],"edit-2":["pencil","change"],"edit-3":["pencil","change"],"eye":["view","watch"],"eye-off":["view","watch","hide","hidden"],"external-link":["outbound"],"facebook":["logo","social"],"fast-forward":["music"],"figma":["logo","design","tool"],"file-minus":["delete","remove","erase"],"file-plus":["add","create","new"],"file-text":["data","txt","pdf"],"film":["movie","video"],"filter":["funnel","hopper"],"flag":["report"],"folder-minus":["directory"],"folder-plus":["directory"],"folder":["directory"],"framer":["logo","design","tool"],"frown":["emoji","face","bad","sad","emotion"],"gift":["present","box","birthday","party"],"git-branch":["code","version control"],"git-commit":["code","version control"],"git-merge":["code","version control"],"git-pull-request":["code","version control"],"github":["logo","version control"],"gitlab":["logo","version control"],"globe":["world","browser","language","translate"],"hard-drive":["computer","server","memory","data"],"hash":["hashtag","number","pound"],"headphones":["music","audio","sound"],"heart":["like","love","emotion"],"help-circle":["question mark"],"hexagon":["shape","node.js","logo"],"home":["house","living"],"image":["picture"],"inbox":["email"],"instagram":["logo","camera"],"key":["password","login","authentication","secure"],"layers":["stack"],"layout":["window","webpage"],"life-bouy":["help","life ring","support"],"link":["chain","url"],"link-2":["chain","url"],"linkedin":["logo","social media"],"list":["options"],"lock":["security","password","secure"],"log-in":["sign in","arrow","enter"],"log-out":["sign out","arrow","exit"],"mail":["email","message"],"map-pin":["location","navigation","travel","marker"],"map":["location","navigation","travel"],"maximize":["fullscreen"],"maximize-2":["fullscreen","arrows","expand"],"meh":["emoji","face","neutral","emotion"],"menu":["bars","navigation","hamburger"],"message-circle":["comment","chat"],"message-square":["comment","chat"],"mic-off":["record","sound","mute"],"mic":["record","sound","listen"],"minimize":["exit fullscreen","close"],"minimize-2":["exit fullscreen","arrows","close"],"minus":["subtract"],"monitor":["tv","screen","display"],"moon":["dark","night"],"more-horizontal":["ellipsis"],"more-vertical":["ellipsis"],"mouse-pointer":["arrow","cursor"],"move":["arrows"],"music":["note"],"navigation":["location","travel"],"navigation-2":["location","travel"],"octagon":["stop"],"package":["box","container"],"paperclip":["attachment"],"pause":["music","stop"],"pause-circle":["music","audio","stop"],"pen-tool":["vector","drawing"],"percent":["discount"],"phone-call":["ring"],"phone-forwarded":["call"],"phone-incoming":["call"],"phone-missed":["call"],"phone-off":["call","mute"],"phone-outgoing":["call"],"phone":["call"],"play":["music","start"],"pie-chart":["statistics","diagram"],"play-circle":["music","start"],"plus":["add","new"],"plus-circle":["add","new"],"plus-square":["add","new"],"pocket":["logo","save"],"power":["on","off"],"printer":["fax","office","device"],"radio":["signal"],"refresh-cw":["synchronise","arrows"],"refresh-ccw":["arrows"],"repeat":["loop","arrows"],"rewind":["music"],"rotate-ccw":["arrow"],"rotate-cw":["arrow"],"rss":["feed","subscribe"],"save":["floppy disk"],"scissors":["cut"],"search":["find","magnifier","magnifying glass"],"send":["message","mail","email","paper airplane","paper aeroplane"],"settings":["cog","edit","gear","preferences"],"share-2":["network","connections"],"shield":["security","secure"],"shield-off":["security","insecure"],"shopping-bag":["ecommerce","cart","purchase","store"],"shopping-cart":["ecommerce","cart","purchase","store"],"shuffle":["music"],"skip-back":["music"],"skip-forward":["music"],"slack":["logo"],"slash":["ban","no"],"sliders":["settings","controls"],"smartphone":["cellphone","device"],"smile":["emoji","face","happy","good","emotion"],"speaker":["audio","music"],"star":["bookmark","favorite","like"],"stop-circle":["media","music"],"sun":["brightness","weather","light"],"sunrise":["weather","time","morning","day"],"sunset":["weather","time","evening","night"],"tablet":["device"],"tag":["label"],"target":["logo","bullseye"],"terminal":["code","command line","prompt"],"thermometer":["temperature","celsius","fahrenheit","weather"],"thumbs-down":["dislike","bad","emotion"],"thumbs-up":["like","good","emotion"],"toggle-left":["on","off","switch"],"toggle-right":["on","off","switch"],"tool":["settings","spanner"],"trash":["garbage","delete","remove","bin"],"trash-2":["garbage","delete","remove","bin"],"triangle":["delta"],"truck":["delivery","van","shipping","transport","lorry"],"tv":["television","stream"],"twitch":["logo"],"twitter":["logo","social"],"type":["text"],"umbrella":["rain","weather"],"unlock":["security"],"user-check":["followed","subscribed"],"user-minus":["delete","remove","unfollow","unsubscribe"],"user-plus":["new","add","create","follow","subscribe"],"user-x":["delete","remove","unfollow","unsubscribe","unavailable"],"user":["person","account"],"users":["group"],"video-off":["camera","movie","film"],"video":["camera","movie","film"],"voicemail":["phone"],"volume":["music","sound","mute"],"volume-1":["music","sound"],"volume-2":["music","sound"],"volume-x":["music","sound","mute"],"watch":["clock","time"],"wifi-off":["disabled"],"wifi":["connection","signal","wireless"],"wind":["weather","air"],"x-circle":["cancel","close","delete","remove","times","clear"],"x-octagon":["delete","stop","alert","warning","times","clear"],"x-square":["cancel","close","delete","remove","times","clear"],"x":["cancel","close","delete","remove","times","clear"],"youtube":["logo","video","play"],"zap-off":["flash","camera","lightning"],"zap":["flash","camera","lightning"],"zoom-in":["magnifying glass"],"zoom-out":["magnifying glass"]};
+
+/***/ }),
+
+/***/ "./src/to-svg.js":
+/*!***********************!*\
+  !*** ./src/to-svg.js ***!
+  \***********************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_157167__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _icons = __nested_webpack_require_157167__(/*! ./icons */ "./src/icons.js");
+
+var _icons2 = _interopRequireDefault(_icons);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * Create an SVG string.
+ * @deprecated
+ * @param {string} name
+ * @param {Object} attrs
+ * @returns {string}
+ */
+function toSvg(name) {
+  var attrs = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+  console.warn('feather.toSvg() is deprecated. Please use feather.icons[name].toSvg() instead.');
+
+  if (!name) {
+    throw new Error('The required `key` (icon name) parameter is missing.');
+  }
+
+  if (!_icons2.default[name]) {
+    throw new Error('No icon matching \'' + name + '\'. See the complete list of icons at https://feathericons.com');
+  }
+
+  return _icons2.default[name].toSvg(attrs);
+}
+
+exports.default = toSvg;
+
+/***/ }),
+
+/***/ 0:
+/*!**************************************************!*\
+  !*** multi core-js/es/array/from ./src/index.js ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __nested_webpack_require_158389__) {
+
+__nested_webpack_require_158389__(/*! core-js/es/array/from */"./node_modules/core-js/es/array/from.js");
+module.exports = __nested_webpack_require_158389__(/*! /home/travis/build/feathericons/feather/src/index.js */"./src/index.js");
+
+
+/***/ })
+
+/******/ });
+});
+//# sourceMappingURL=feather.js.map
+
+/***/ }),
+
+/***/ "./node_modules/boxicons/fonts/boxicons.eot":
+/*!**************************************************!*\
+  !*** ./node_modules/boxicons/fonts/boxicons.eot ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/fonts/vendor/boxicons/boxicons.eot?092b78589f3f53e60030583f6b24cb7d");
+
+/***/ }),
+
+/***/ "./node_modules/boxicons/fonts/boxicons.svg":
+/*!**************************************************!*\
+  !*** ./node_modules/boxicons/fonts/boxicons.svg ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/fonts/vendor/boxicons/boxicons.svg?045b05bf2dc119267a90218b026573c9");
+
+/***/ }),
+
+/***/ "./node_modules/boxicons/fonts/boxicons.ttf":
+/*!**************************************************!*\
+  !*** ./node_modules/boxicons/fonts/boxicons.ttf ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/fonts/vendor/boxicons/boxicons.ttf?cbd149c55e2396cb52e7e9d6440a125d");
+
+/***/ }),
+
+/***/ "./node_modules/boxicons/fonts/boxicons.woff":
+/*!***************************************************!*\
+  !*** ./node_modules/boxicons/fonts/boxicons.woff ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/fonts/vendor/boxicons/boxicons.woff?0f4528cf3c75a4b361c0df7cc5007906");
+
+/***/ }),
+
+/***/ "./node_modules/boxicons/fonts/boxicons.woff2":
+/*!****************************************************!*\
+  !*** ./node_modules/boxicons/fonts/boxicons.woff2 ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/fonts/vendor/boxicons/boxicons.woff2?8d765747a5588f36ff61ff20511ff5af");
 
 /***/ }),
 
@@ -20992,10 +23652,10 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
 
 /***/ }),
 
-/***/ "./resources/sass/honda.scss":
-/*!***********************************!*\
-  !*** ./resources/sass/honda.scss ***!
-  \***********************************/
+/***/ "./resources/dist/sass/honda.scss":
+/*!****************************************!*\
+  !*** ./resources/dist/sass/honda.scss ***!
+  \****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -21005,10 +23665,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/css/app.css":
-/*!*******************************!*\
-  !*** ./resources/css/app.css ***!
-  \*******************************/
+/***/ "./resources/dist/css/app.css":
+/*!************************************!*\
+  !*** ./resources/dist/css/app.css ***!
+  \************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -21210,6 +23870,315 @@ process.chdir = function (dir) {
 process.umask = function() { return 0; };
 
 
+/***/ }),
+
+/***/ "./node_modules/boxicons/css/boxicons.css":
+/*!************************************************!*\
+  !*** ./node_modules/boxicons/css/boxicons.css ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_boxicons_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!../../postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./boxicons.css */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/boxicons/css/boxicons.css");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_boxicons_css__WEBPACK_IMPORTED_MODULE_1__.default, options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_boxicons_css__WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js":
+/*!****************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js ***!
+  \****************************************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+var isOldIE = function isOldIE() {
+  var memo;
+  return function memorize() {
+    if (typeof memo === 'undefined') {
+      // Test for IE <= 9 as proposed by Browserhacks
+      // @see http://browserhacks.com/#hack-e71d8692f65334173fee715c222cb805
+      // Tests for existence of standard globals is to allow style-loader
+      // to operate correctly into non-standard environments
+      // @see https://github.com/webpack-contrib/style-loader/issues/177
+      memo = Boolean(window && document && document.all && !window.atob);
+    }
+
+    return memo;
+  };
+}();
+
+var getTarget = function getTarget() {
+  var memo = {};
+  return function memorize(target) {
+    if (typeof memo[target] === 'undefined') {
+      var styleTarget = document.querySelector(target); // Special case to return head of iframe instead of iframe itself
+
+      if (window.HTMLIFrameElement && styleTarget instanceof window.HTMLIFrameElement) {
+        try {
+          // This will throw an exception if access to iframe is blocked
+          // due to cross-origin restrictions
+          styleTarget = styleTarget.contentDocument.head;
+        } catch (e) {
+          // istanbul ignore next
+          styleTarget = null;
+        }
+      }
+
+      memo[target] = styleTarget;
+    }
+
+    return memo[target];
+  };
+}();
+
+var stylesInDom = [];
+
+function getIndexByIdentifier(identifier) {
+  var result = -1;
+
+  for (var i = 0; i < stylesInDom.length; i++) {
+    if (stylesInDom[i].identifier === identifier) {
+      result = i;
+      break;
+    }
+  }
+
+  return result;
+}
+
+function modulesToDom(list, options) {
+  var idCountMap = {};
+  var identifiers = [];
+
+  for (var i = 0; i < list.length; i++) {
+    var item = list[i];
+    var id = options.base ? item[0] + options.base : item[0];
+    var count = idCountMap[id] || 0;
+    var identifier = "".concat(id, " ").concat(count);
+    idCountMap[id] = count + 1;
+    var index = getIndexByIdentifier(identifier);
+    var obj = {
+      css: item[1],
+      media: item[2],
+      sourceMap: item[3]
+    };
+
+    if (index !== -1) {
+      stylesInDom[index].references++;
+      stylesInDom[index].updater(obj);
+    } else {
+      stylesInDom.push({
+        identifier: identifier,
+        updater: addStyle(obj, options),
+        references: 1
+      });
+    }
+
+    identifiers.push(identifier);
+  }
+
+  return identifiers;
+}
+
+function insertStyleElement(options) {
+  var style = document.createElement('style');
+  var attributes = options.attributes || {};
+
+  if (typeof attributes.nonce === 'undefined') {
+    var nonce =  true ? __webpack_require__.nc : 0;
+
+    if (nonce) {
+      attributes.nonce = nonce;
+    }
+  }
+
+  Object.keys(attributes).forEach(function (key) {
+    style.setAttribute(key, attributes[key]);
+  });
+
+  if (typeof options.insert === 'function') {
+    options.insert(style);
+  } else {
+    var target = getTarget(options.insert || 'head');
+
+    if (!target) {
+      throw new Error("Couldn't find a style target. This probably means that the value for the 'insert' parameter is invalid.");
+    }
+
+    target.appendChild(style);
+  }
+
+  return style;
+}
+
+function removeStyleElement(style) {
+  // istanbul ignore if
+  if (style.parentNode === null) {
+    return false;
+  }
+
+  style.parentNode.removeChild(style);
+}
+/* istanbul ignore next  */
+
+
+var replaceText = function replaceText() {
+  var textStore = [];
+  return function replace(index, replacement) {
+    textStore[index] = replacement;
+    return textStore.filter(Boolean).join('\n');
+  };
+}();
+
+function applyToSingletonTag(style, index, remove, obj) {
+  var css = remove ? '' : obj.media ? "@media ".concat(obj.media, " {").concat(obj.css, "}") : obj.css; // For old IE
+
+  /* istanbul ignore if  */
+
+  if (style.styleSheet) {
+    style.styleSheet.cssText = replaceText(index, css);
+  } else {
+    var cssNode = document.createTextNode(css);
+    var childNodes = style.childNodes;
+
+    if (childNodes[index]) {
+      style.removeChild(childNodes[index]);
+    }
+
+    if (childNodes.length) {
+      style.insertBefore(cssNode, childNodes[index]);
+    } else {
+      style.appendChild(cssNode);
+    }
+  }
+}
+
+function applyToTag(style, options, obj) {
+  var css = obj.css;
+  var media = obj.media;
+  var sourceMap = obj.sourceMap;
+
+  if (media) {
+    style.setAttribute('media', media);
+  } else {
+    style.removeAttribute('media');
+  }
+
+  if (sourceMap && typeof btoa !== 'undefined') {
+    css += "\n/*# sourceMappingURL=data:application/json;base64,".concat(btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))), " */");
+  } // For old IE
+
+  /* istanbul ignore if  */
+
+
+  if (style.styleSheet) {
+    style.styleSheet.cssText = css;
+  } else {
+    while (style.firstChild) {
+      style.removeChild(style.firstChild);
+    }
+
+    style.appendChild(document.createTextNode(css));
+  }
+}
+
+var singleton = null;
+var singletonCounter = 0;
+
+function addStyle(obj, options) {
+  var style;
+  var update;
+  var remove;
+
+  if (options.singleton) {
+    var styleIndex = singletonCounter++;
+    style = singleton || (singleton = insertStyleElement(options));
+    update = applyToSingletonTag.bind(null, style, styleIndex, false);
+    remove = applyToSingletonTag.bind(null, style, styleIndex, true);
+  } else {
+    style = insertStyleElement(options);
+    update = applyToTag.bind(null, style, options);
+
+    remove = function remove() {
+      removeStyleElement(style);
+    };
+  }
+
+  update(obj);
+  return function updateStyle(newObj) {
+    if (newObj) {
+      if (newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap) {
+        return;
+      }
+
+      update(obj = newObj);
+    } else {
+      remove();
+    }
+  };
+}
+
+module.exports = function (list, options) {
+  options = options || {}; // Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+  // tags it will allow on a page
+
+  if (!options.singleton && typeof options.singleton !== 'boolean') {
+    options.singleton = isOldIE();
+  }
+
+  list = list || [];
+  var lastIdentifiers = modulesToDom(list, options);
+  return function update(newList) {
+    newList = newList || [];
+
+    if (Object.prototype.toString.call(newList) !== '[object Array]') {
+      return;
+    }
+
+    for (var i = 0; i < lastIdentifiers.length; i++) {
+      var identifier = lastIdentifiers[i];
+      var index = getIndexByIdentifier(identifier);
+      stylesInDom[index].references--;
+    }
+
+    var newLastIdentifiers = modulesToDom(newList, options);
+
+    for (var _i = 0; _i < lastIdentifiers.length; _i++) {
+      var _identifier = lastIdentifiers[_i];
+
+      var _index = getIndexByIdentifier(_identifier);
+
+      if (stylesInDom[_index].references === 0) {
+        stylesInDom[_index].updater();
+
+        stylesInDom.splice(_index, 1);
+      }
+    }
+
+    lastIdentifiers = newLastIdentifiers;
+  };
+};
+
 /***/ })
 
 /******/ 	});
@@ -21247,6 +24216,30 @@ process.umask = function() { return 0; };
 /******/ 	// It's empty as some runtime module handles the default behavior
 /******/ 	__webpack_require__.x = x => {}
 /************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => module['default'] :
+/******/ 				() => module;
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/global */
 /******/ 	(() => {
 /******/ 		__webpack_require__.g = (function() {
@@ -21296,9 +24289,9 @@ process.umask = function() { return 0; };
 /******/ 		};
 /******/ 		
 /******/ 		var deferredModules = [
-/******/ 			["./resources/js/app.js"],
-/******/ 			["./resources/sass/honda.scss"],
-/******/ 			["./resources/css/app.css"]
+/******/ 			["./resources/dist/js/app.js"],
+/******/ 			["./resources/dist/sass/honda.scss"],
+/******/ 			["./resources/dist/css/app.css"]
 /******/ 		];
 /******/ 		// no chunk on demand loading
 /******/ 		
