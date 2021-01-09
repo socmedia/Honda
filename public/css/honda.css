@@ -2,14 +2,14 @@
 @charset "UTF-8";
 @font-face {
   font-family: "icomoon";
-  src: url(/fonts/icomoon.eot?98d566b6388f4a298cf5e418cdec2c3c);
-  src: url(/fonts/icomoon.eot?98d566b6388f4a298cf5e418cdec2c3c) format("embedded-opentype"), url(/fonts/icomoon.ttf?7771d7aaeb13b03a90be2fd5f62ad2b8) format("truetype"), url(/fonts/icomoon.woff?57276c9bee6c2de47dfe03a59cabfcc8) format("woff"), url(/images/icomoon.svg?62445821252209ef62bfcb3054d62ca7) format("svg");
+  src: url(/fonts/icomoon.eot?68c59617804cdb81af1a0013a9111bd3);
+  src: url(/fonts/icomoon.eot?68c59617804cdb81af1a0013a9111bd3) format("embedded-opentype"), url(/fonts/icomoon.ttf?6c9e1ff8a3191a3cdff42e6a1c948ec0) format("truetype"), url(/fonts/icomoon.woff?40d020ce925b369ac696fb16af0a7be2) format("woff"), url(/images/icomoon.svg?6f4e70df8d3fe9c406ff25a7ba801332) format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block;
 }
-[class^=honda__icon-],
-[class*=" honda__icon-"] {
+[class^=honda__icon],
+[class*=honda__icon] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: "icomoon" !important;
   speak: never;
@@ -23,28 +23,36 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.honda__icon-community:before {
+.honda__icon-jateng:before {
   content: "";
 }
 
-.honda__icon-gunungan:before {
+.honda__icon-community:before {
   content: "";
 }
 
-.honda__icon-home:before {
+.honda__icon-gunungan:before {
   content: "";
 }
 
-.honda__icon-news:before {
+.honda__icon-home:before {
   content: "";
 }
 
-.honda__icon-product:before {
+.honda__icon-jateng_gunungan:before {
   content: "";
 }
 
-.honda__icon-service:before {
+.honda__icon-news:before {
   content: "";
+}
+
+.honda__icon-product:before {
+  content: "";
+}
+
+.honda__icon-service:before {
+  content: "";
 }
 
 @-webkit-keyframes fadeDown {
@@ -106,30 +114,40 @@ body {
   height: 80px;
   width: 100%;
   display: block;
-  padding: 1rem 7%;
+  padding: 1rem;
   box-sizing: border-box;
 }
 .navigation .menus {
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: space-between;
   width: 100%;
   height: 100%;
 }
+@media (min-width: 992px) {
+  .navigation .menus {
+    display: flex;
+  }
+}
 .navigation .menus .menu a {
   display: inline-flex;
   align-items: center;
   font-weight: 700;
-  margin: 0.5rem 0;
+  margin: 2% 1%;
   transition: 0.3s all;
 }
 .navigation .menus .menu a span {
-  margin-right: 0.875rem;
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+}
+.navigation .menus .menu a span.text {
+  font-size: clamp(.75rem, 2.5vw, 1rem);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin: 0 0.275rem;
 }
 .navigation .menus .menu a .feather {
-  margin-left: 1rem;
-  width: 1.2rem;
+  width: 1rem;
+  height: 1rem;
 }
 .navigation .menus .menu a:hover {
   color: #E61B33;
@@ -156,12 +174,16 @@ body {
 .footer {
   height: 685px;
   width: 100%;
+  padding: 3rem 10% 1rem;
   position: relative;
   display: block;
   background-image: url(/images/footer_bg.jpg?684e3f14fa6db2bacdc8a2feffc5f02a);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+}
+.footer .honda__icon-jateng_gunungan {
+  font-size: 12rem;
 }
 
 main {
@@ -265,4 +287,12 @@ h1.header__text {
   height: 3px;
   width: 30%;
   background-color: #2B2B2B;
+}
+
+.honda__icon-jateng_gunungan.heading_text {
+  font-size: 7rem;
+}
+
+.honda__icon-jateng.heading_text {
+  font-size: 4rem;
 }

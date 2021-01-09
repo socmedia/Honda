@@ -21,8 +21,8 @@
 
 <body>
     <header class="header">
-        <img src="{{asset('images/honda_jateng_gunungan.svg')}}" alt="Honda Jateng Logo">
-        <img src="{{asset('images/honda_jateng.svg')}}" alt="Honda Jateng">
+        <span class="heading_text honda__icon-jateng_gunungan text-white"></span>
+        <span class="heading_text honda__icon-jateng text-white"></span>
     </header>
 
     <nav class="navigation">
@@ -30,42 +30,41 @@
             <li class="menu">
                 <a href="">
                     <span class="honda__icon-home"></span>
-                    Home
-                    <i data-feather="chevron-down"></i>
+                    <span class="text">Home</span>
                 </a>
             </li>
             <li class="menu">
                 <a href="">
                     <span class="honda__icon-gunungan"></span>
-                    Honda Jateng
+                    <span class="text">Honda Jateng</span>
                     <i data-feather="chevron-down"></i>
                 </a>
             </li>
             <li class="menu">
                 <a href="">
                     <span class="honda__icon-product"></span>
-                    Produk
+                    <span class="text">Produk</span>
                     <i data-feather="chevron-down"></i>
                 </a>
             </li>
             <li class="menu">
                 <a href="">
                     <span class="honda__icon-service"></span>
-                    Layanan & Suku Cadang
+                    <span class="text">Layanan & Suku Cadang</span>
                     <i data-feather="chevron-down"></i>
                 </a>
             </li>
             <li class="menu">
                 <a href="">
                     <span class="honda__icon-news"></span>
-                    Berita
+                    <span class="text">Berita</span>
                     <i data-feather="chevron-down"></i>
                 </a>
             </li>
             <li class="menu">
                 <a href="">
                     <span class="honda__icon-community"></span>
-                    Komunitas
+                    <span class="text">Komunitas</span>
                     <i data-feather="chevron-down"></i>
                 </a>
             </li>
@@ -80,7 +79,20 @@
     </div>
 
     <footer class="footer">
-        <img src="{{asset('images/honda_jateng_gunungan.svg')}}" alt="Honda Jateng Logo">
+        <div class="flex flex-wrap">
+            <div class="w-full p-4 sm:w-1/2 lg:w-1/4">
+                <span class="honda__icon-jateng_gunungan text-white"></span>
+            </div>
+            <div class="w-full p-4 sm:w-1/2 lg:w-1/4">
+                <span class="honda__icon-jateng_gunungan text-white"></span>
+            </div>
+            <div class="w-full p-4 sm:w-1/2 lg:w-1/4">
+                <span class="honda__icon-jateng_gunungan text-white"></span>
+            </div>
+            <div class="w-full p-4 sm:w-1/2 lg:w-1/4">
+                <span class="honda__icon-jateng_gunungan text-white"></span>
+            </div>
+        </div>
     </footer>
 </body>
 

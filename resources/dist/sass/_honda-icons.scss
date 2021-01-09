@@ -1,17 +1,17 @@
 @font-face {
     font-family: 'icomoon';
-    src: url('honda/icomoon.eot?tdp2n1');
-    src: url('honda/icomoon.eot?tdp2n1#iefix') format('embedded-opentype'),
-        url('honda/icomoon.ttf?tdp2n1') format('truetype'),
-        url('honda/icomoon.woff?tdp2n1') format('woff'),
-        url('honda/icomoon.svg?tdp2n1#icomoon') format('svg');
+    src: url('honda/icomoon.eot?wax1up');
+    src: url('honda/icomoon.eot?wax1up#iefix') format('embedded-opentype'),
+        url('honda/icomoon.ttf?wax1up') format('truetype'),
+        url('honda/icomoon.woff?wax1up') format('woff'),
+        url('honda/icomoon.svg?wax1up#icomoon') format('svg');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 
-[class^="honda__icon-"],
-[class*=" honda__icon-"] {
+[class^="honda__icon"],
+[class*="honda__icon"] {
     /* use !important to prevent issues with browser extensions that change fonts */
     font-family: 'icomoon' !important;
     speak: never;
@@ -21,32 +21,39 @@
     text-transform: none;
     line-height: 1;
 
-
     /* Better Font Rendering =========== */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
-.honda__icon-community:before {
+.honda__icon-jateng:before {
     content: "\e900";
 }
 
-.honda__icon-gunungan:before {
+.honda__icon-community:before {
     content: "\e901";
 }
 
-.honda__icon-home:before {
+.honda__icon-gunungan:before {
     content: "\e902";
 }
 
-.honda__icon-news:before {
+.honda__icon-home:before {
     content: "\e903";
 }
 
-.honda__icon-product:before {
+.honda__icon-jateng_gunungan:before {
     content: "\e904";
 }
 
-.honda__icon-service:before {
+.honda__icon-news:before {
     content: "\e905";
+}
+
+.honda__icon-product:before {
+    content: "\e906";
+}
+
+.honda__icon-service:before {
+    content: "\e907";
 }
