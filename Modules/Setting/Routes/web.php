@@ -11,9 +11,9 @@
 |
  */
 
-Route::prefix('setting')->group(function () {
-    // Route::get('/', 'SettingController@index');
-    Route::get('/', function () {
-        return view('setting::index');
-    });
+Route::group([
+    'prefix' => '_admin/pengaturan',
+    'as' => 'setting',
+], function () {
+    Route::get('/', 'SettingController@index')->name('index');
 });

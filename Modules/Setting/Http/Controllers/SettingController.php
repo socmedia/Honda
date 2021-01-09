@@ -8,12 +8,23 @@ use Illuminate\Routing\Controller;
 
 class SettingController extends Controller
 {
+    private $model;
+
+    /**
+     * Class constructor.
+     */
+    public function __construct()
+    {
+        // $this->model = $settingRepositoryInterface;
+    }
+
     /**
      * Display a listing of the resource.
      * @return Renderable
      */
     public function index()
     {
+        return $this->model;
         return view('setting::index');
     }
 

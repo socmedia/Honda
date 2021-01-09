@@ -14,7 +14,9 @@
 
     <link href="{{asset('css/adm.css')}}" rel="stylesheet" />
 
-    <script src="{{asset('js/adm.js')}}" defer async></script>
+    @stack('styles')
+
+    <script src="{{asset('js/adm.js')}}"></script>
 </head>
 
 <body>
@@ -53,11 +55,35 @@
                     </ul>
 
                     <ul class="navbar-nav ml-auto d-flex align-items-center">
-                        <li>
-                            <a class="profile-pic" href="#">
-                                <img src="https://ui-avatars.com/api/?background=0D8ABC&color=fff" alt="user-img"
-                                    width="36" class="img-circle"><span class="text-white font-medium">Steave</span>
-                            </a>
+                        <li class="pr-5 mr-3">
+                            <div class="dropdown">
+                                <a class="profile-pic dropdown-toggle" href="javascript:void(0)" id="dropdownMenuButton"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="https://ui-avatars.com/api/?background=0D8ABC&color=fff" alt="user-img"
+                                        width="36" class="img-circle">
+                                    <span class="text-white font-medium">Steave</span>
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <li>
+                                        <a class="dropdown-item" href="#">
+                                            <i class="fa fa-user mr-2"></i>Profil
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">
+                                            <i class="fa fa-cog mr-2"></i>Pengaturan
+                                        </a>
+                                    </li>
+                                    <li class="divider">
+                                        <hr class="w-75 my-0">
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">
+                                            <i class='fa fa-power-off mr-2'></i>Keluar
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -132,6 +158,9 @@
             </footer>
         </div>>
     </div>
+
+    @stack('scripts')
+
 </body>
 
 </html>

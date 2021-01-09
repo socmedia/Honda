@@ -1,6 +1,1957 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./node_modules/alpinejs/dist/alpine.js":
+/*!**********************************************!*\
+  !*** ./node_modules/alpinejs/dist/alpine.js ***!
+  \**********************************************/
+/***/ (function(module) {
+
+(function (global, factory) {
+   true ? module.exports = factory() :
+  0;
+}(this, (function () { 'use strict';
+
+  function _defineProperty(obj, key, value) {
+    if (key in obj) {
+      Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      });
+    } else {
+      obj[key] = value;
+    }
+
+    return obj;
+  }
+
+  function ownKeys(object, enumerableOnly) {
+    var keys = Object.keys(object);
+
+    if (Object.getOwnPropertySymbols) {
+      var symbols = Object.getOwnPropertySymbols(object);
+      if (enumerableOnly) symbols = symbols.filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+      });
+      keys.push.apply(keys, symbols);
+    }
+
+    return keys;
+  }
+
+  function _objectSpread2(target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i] != null ? arguments[i] : {};
+
+      if (i % 2) {
+        ownKeys(Object(source), true).forEach(function (key) {
+          _defineProperty(target, key, source[key]);
+        });
+      } else if (Object.getOwnPropertyDescriptors) {
+        Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+      } else {
+        ownKeys(Object(source)).forEach(function (key) {
+          Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+        });
+      }
+    }
+
+    return target;
+  }
+
+  // Thanks @stimulus:
+  // https://github.com/stimulusjs/stimulus/blob/master/packages/%40stimulus/core/src/application.ts
+  function domReady() {
+    return new Promise(resolve => {
+      if (document.readyState == "loading") {
+        document.addEventListener("DOMContentLoaded", resolve);
+      } else {
+        resolve();
+      }
+    });
+  }
+  function arrayUnique(array) {
+    return Array.from(new Set(array));
+  }
+  function isTesting() {
+    return navigator.userAgent.includes("Node.js") || navigator.userAgent.includes("jsdom");
+  }
+  function checkedAttrLooseCompare(valueA, valueB) {
+    return valueA == valueB;
+  }
+  function warnIfMalformedTemplate(el, directive) {
+    if (el.tagName.toLowerCase() !== 'template') {
+      console.warn(`Alpine: [${directive}] directive should only be added to <template> tags. See https://github.com/alpinejs/alpine#${directive}`);
+    } else if (el.content.childElementCount !== 1) {
+      console.warn(`Alpine: <template> tag with [${directive}] encountered with multiple element roots. Make sure <template> only has a single child element.`);
+    }
+  }
+  function kebabCase(subject) {
+    return subject.replace(/([a-z])([A-Z])/g, '$1-$2').replace(/[_\s]/, '-').toLowerCase();
+  }
+  function camelCase(subject) {
+    return subject.toLowerCase().replace(/-(\w)/g, (match, char) => char.toUpperCase());
+  }
+  function walk(el, callback) {
+    if (callback(el) === false) return;
+    let node = el.firstElementChild;
+
+    while (node) {
+      walk(node, callback);
+      node = node.nextElementSibling;
+    }
+  }
+  function debounce(func, wait) {
+    var timeout;
+    return function () {
+      var context = this,
+          args = arguments;
+
+      var later = function later() {
+        timeout = null;
+        func.apply(context, args);
+      };
+
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+    };
+  }
+
+  const handleError = (el, expression, error) => {
+    console.warn(`Alpine Error: "${error}"\n\nExpression: "${expression}"\nElement:`, el);
+
+    if (!isTesting()) {
+      throw error;
+    }
+  };
+
+  function tryCatch(cb, {
+    el,
+    expression
+  }) {
+    try {
+      const value = cb();
+      return value instanceof Promise ? value.catch(e => handleError(el, expression, e)) : value;
+    } catch (e) {
+      handleError(el, expression, e);
+    }
+  }
+
+  function saferEval(el, expression, dataContext, additionalHelperVariables = {}) {
+    return tryCatch(() => {
+      if (typeof expression === 'function') {
+        return expression.call(dataContext);
+      }
+
+      return new Function(['$data', ...Object.keys(additionalHelperVariables)], `var __alpine_result; with($data) { __alpine_result = ${expression} }; return __alpine_result`)(dataContext, ...Object.values(additionalHelperVariables));
+    }, {
+      el,
+      expression
+    });
+  }
+  function saferEvalNoReturn(el, expression, dataContext, additionalHelperVariables = {}) {
+    return tryCatch(() => {
+      if (typeof expression === 'function') {
+        return Promise.resolve(expression.call(dataContext, additionalHelperVariables['$event']));
+      }
+
+      let AsyncFunction = Function;
+      /* MODERN-ONLY:START */
+
+      AsyncFunction = Object.getPrototypeOf(async function () {}).constructor;
+      /* MODERN-ONLY:END */
+      // For the cases when users pass only a function reference to the caller: `x-on:click="foo"`
+      // Where "foo" is a function. Also, we'll pass the function the event instance when we call it.
+
+      if (Object.keys(dataContext).includes(expression)) {
+        let methodReference = new Function(['dataContext', ...Object.keys(additionalHelperVariables)], `with(dataContext) { return ${expression} }`)(dataContext, ...Object.values(additionalHelperVariables));
+
+        if (typeof methodReference === 'function') {
+          return Promise.resolve(methodReference.call(dataContext, additionalHelperVariables['$event']));
+        } else {
+          return Promise.resolve();
+        }
+      }
+
+      return Promise.resolve(new AsyncFunction(['dataContext', ...Object.keys(additionalHelperVariables)], `with(dataContext) { ${expression} }`)(dataContext, ...Object.values(additionalHelperVariables)));
+    }, {
+      el,
+      expression
+    });
+  }
+  const xAttrRE = /^x-(on|bind|data|text|html|model|if|for|show|cloak|transition|ref|spread)\b/;
+  function isXAttr(attr) {
+    const name = replaceAtAndColonWithStandardSyntax(attr.name);
+    return xAttrRE.test(name);
+  }
+  function getXAttrs(el, component, type) {
+    let directives = Array.from(el.attributes).filter(isXAttr).map(parseHtmlAttribute); // Get an object of directives from x-spread.
+
+    let spreadDirective = directives.filter(directive => directive.type === 'spread')[0];
+
+    if (spreadDirective) {
+      let spreadObject = saferEval(el, spreadDirective.expression, component.$data); // Add x-spread directives to the pile of existing directives.
+
+      directives = directives.concat(Object.entries(spreadObject).map(([name, value]) => parseHtmlAttribute({
+        name,
+        value
+      })));
+    }
+
+    if (type) return directives.filter(i => i.type === type);
+    return sortDirectives(directives);
+  }
+
+  function sortDirectives(directives) {
+    let directiveOrder = ['bind', 'model', 'show', 'catch-all'];
+    return directives.sort((a, b) => {
+      let typeA = directiveOrder.indexOf(a.type) === -1 ? 'catch-all' : a.type;
+      let typeB = directiveOrder.indexOf(b.type) === -1 ? 'catch-all' : b.type;
+      return directiveOrder.indexOf(typeA) - directiveOrder.indexOf(typeB);
+    });
+  }
+
+  function parseHtmlAttribute({
+    name,
+    value
+  }) {
+    const normalizedName = replaceAtAndColonWithStandardSyntax(name);
+    const typeMatch = normalizedName.match(xAttrRE);
+    const valueMatch = normalizedName.match(/:([a-zA-Z0-9\-:]+)/);
+    const modifiers = normalizedName.match(/\.[^.\]]+(?=[^\]]*$)/g) || [];
+    return {
+      type: typeMatch ? typeMatch[1] : null,
+      value: valueMatch ? valueMatch[1] : null,
+      modifiers: modifiers.map(i => i.replace('.', '')),
+      expression: value
+    };
+  }
+  function isBooleanAttr(attrName) {
+    // As per HTML spec table https://html.spec.whatwg.org/multipage/indices.html#attributes-3:boolean-attribute
+    // Array roughly ordered by estimated usage
+    const booleanAttributes = ['disabled', 'checked', 'required', 'readonly', 'hidden', 'open', 'selected', 'autofocus', 'itemscope', 'multiple', 'novalidate', 'allowfullscreen', 'allowpaymentrequest', 'formnovalidate', 'autoplay', 'controls', 'loop', 'muted', 'playsinline', 'default', 'ismap', 'reversed', 'async', 'defer', 'nomodule'];
+    return booleanAttributes.includes(attrName);
+  }
+  function replaceAtAndColonWithStandardSyntax(name) {
+    if (name.startsWith('@')) {
+      return name.replace('@', 'x-on:');
+    } else if (name.startsWith(':')) {
+      return name.replace(':', 'x-bind:');
+    }
+
+    return name;
+  }
+  function convertClassStringToArray(classList, filterFn = Boolean) {
+    return classList.split(' ').filter(filterFn);
+  }
+  const TRANSITION_TYPE_IN = 'in';
+  const TRANSITION_TYPE_OUT = 'out';
+  const TRANSITION_CANCELLED = 'cancelled';
+  function transitionIn(el, show, reject, component, forceSkip = false) {
+    // We don't want to transition on the initial page load.
+    if (forceSkip) return show();
+
+    if (el.__x_transition && el.__x_transition.type === TRANSITION_TYPE_IN) {
+      // there is already a similar transition going on, this was probably triggered by
+      // a change in a different property, let's just leave the previous one doing its job
+      return;
+    }
+
+    const attrs = getXAttrs(el, component, 'transition');
+    const showAttr = getXAttrs(el, component, 'show')[0]; // If this is triggered by a x-show.transition.
+
+    if (showAttr && showAttr.modifiers.includes('transition')) {
+      let modifiers = showAttr.modifiers; // If x-show.transition.out, we'll skip the "in" transition.
+
+      if (modifiers.includes('out') && !modifiers.includes('in')) return show();
+      const settingBothSidesOfTransition = modifiers.includes('in') && modifiers.includes('out'); // If x-show.transition.in...out... only use "in" related modifiers for this transition.
+
+      modifiers = settingBothSidesOfTransition ? modifiers.filter((i, index) => index < modifiers.indexOf('out')) : modifiers;
+      transitionHelperIn(el, modifiers, show, reject); // Otherwise, we can assume x-transition:enter.
+    } else if (attrs.some(attr => ['enter', 'enter-start', 'enter-end'].includes(attr.value))) {
+      transitionClassesIn(el, component, attrs, show, reject);
+    } else {
+      // If neither, just show that damn thing.
+      show();
+    }
+  }
+  function transitionOut(el, hide, reject, component, forceSkip = false) {
+    // We don't want to transition on the initial page load.
+    if (forceSkip) return hide();
+
+    if (el.__x_transition && el.__x_transition.type === TRANSITION_TYPE_OUT) {
+      // there is already a similar transition going on, this was probably triggered by
+      // a change in a different property, let's just leave the previous one doing its job
+      return;
+    }
+
+    const attrs = getXAttrs(el, component, 'transition');
+    const showAttr = getXAttrs(el, component, 'show')[0];
+
+    if (showAttr && showAttr.modifiers.includes('transition')) {
+      let modifiers = showAttr.modifiers;
+      if (modifiers.includes('in') && !modifiers.includes('out')) return hide();
+      const settingBothSidesOfTransition = modifiers.includes('in') && modifiers.includes('out');
+      modifiers = settingBothSidesOfTransition ? modifiers.filter((i, index) => index > modifiers.indexOf('out')) : modifiers;
+      transitionHelperOut(el, modifiers, settingBothSidesOfTransition, hide, reject);
+    } else if (attrs.some(attr => ['leave', 'leave-start', 'leave-end'].includes(attr.value))) {
+      transitionClassesOut(el, component, attrs, hide, reject);
+    } else {
+      hide();
+    }
+  }
+  function transitionHelperIn(el, modifiers, showCallback, reject) {
+    // Default values inspired by: https://material.io/design/motion/speed.html#duration
+    const styleValues = {
+      duration: modifierValue(modifiers, 'duration', 150),
+      origin: modifierValue(modifiers, 'origin', 'center'),
+      first: {
+        opacity: 0,
+        scale: modifierValue(modifiers, 'scale', 95)
+      },
+      second: {
+        opacity: 1,
+        scale: 100
+      }
+    };
+    transitionHelper(el, modifiers, showCallback, () => {}, reject, styleValues, TRANSITION_TYPE_IN);
+  }
+  function transitionHelperOut(el, modifiers, settingBothSidesOfTransition, hideCallback, reject) {
+    // Make the "out" transition .5x slower than the "in". (Visually better)
+    // HOWEVER, if they explicitly set a duration for the "out" transition,
+    // use that.
+    const duration = settingBothSidesOfTransition ? modifierValue(modifiers, 'duration', 150) : modifierValue(modifiers, 'duration', 150) / 2;
+    const styleValues = {
+      duration: duration,
+      origin: modifierValue(modifiers, 'origin', 'center'),
+      first: {
+        opacity: 1,
+        scale: 100
+      },
+      second: {
+        opacity: 0,
+        scale: modifierValue(modifiers, 'scale', 95)
+      }
+    };
+    transitionHelper(el, modifiers, () => {}, hideCallback, reject, styleValues, TRANSITION_TYPE_OUT);
+  }
+
+  function modifierValue(modifiers, key, fallback) {
+    // If the modifier isn't present, use the default.
+    if (modifiers.indexOf(key) === -1) return fallback; // If it IS present, grab the value after it: x-show.transition.duration.500ms
+
+    const rawValue = modifiers[modifiers.indexOf(key) + 1];
+    if (!rawValue) return fallback;
+
+    if (key === 'scale') {
+      // Check if the very next value is NOT a number and return the fallback.
+      // If x-show.transition.scale, we'll use the default scale value.
+      // That is how a user opts out of the opacity transition.
+      if (!isNumeric(rawValue)) return fallback;
+    }
+
+    if (key === 'duration') {
+      // Support x-show.transition.duration.500ms && duration.500
+      let match = rawValue.match(/([0-9]+)ms/);
+      if (match) return match[1];
+    }
+
+    if (key === 'origin') {
+      // Support chaining origin directions: x-show.transition.top.right
+      if (['top', 'right', 'left', 'center', 'bottom'].includes(modifiers[modifiers.indexOf(key) + 2])) {
+        return [rawValue, modifiers[modifiers.indexOf(key) + 2]].join(' ');
+      }
+    }
+
+    return rawValue;
+  }
+
+  function transitionHelper(el, modifiers, hook1, hook2, reject, styleValues, type) {
+    // clear the previous transition if exists to avoid caching the wrong styles
+    if (el.__x_transition) {
+      el.__x_transition.cancel && el.__x_transition.cancel();
+    } // If the user set these style values, we'll put them back when we're done with them.
+
+
+    const opacityCache = el.style.opacity;
+    const transformCache = el.style.transform;
+    const transformOriginCache = el.style.transformOrigin; // If no modifiers are present: x-show.transition, we'll default to both opacity and scale.
+
+    const noModifiers = !modifiers.includes('opacity') && !modifiers.includes('scale');
+    const transitionOpacity = noModifiers || modifiers.includes('opacity');
+    const transitionScale = noModifiers || modifiers.includes('scale'); // These are the explicit stages of a transition (same stages for in and for out).
+    // This way you can get a birds eye view of the hooks, and the differences
+    // between them.
+
+    const stages = {
+      start() {
+        if (transitionOpacity) el.style.opacity = styleValues.first.opacity;
+        if (transitionScale) el.style.transform = `scale(${styleValues.first.scale / 100})`;
+      },
+
+      during() {
+        if (transitionScale) el.style.transformOrigin = styleValues.origin;
+        el.style.transitionProperty = [transitionOpacity ? `opacity` : ``, transitionScale ? `transform` : ``].join(' ').trim();
+        el.style.transitionDuration = `${styleValues.duration / 1000}s`;
+        el.style.transitionTimingFunction = `cubic-bezier(0.4, 0.0, 0.2, 1)`;
+      },
+
+      show() {
+        hook1();
+      },
+
+      end() {
+        if (transitionOpacity) el.style.opacity = styleValues.second.opacity;
+        if (transitionScale) el.style.transform = `scale(${styleValues.second.scale / 100})`;
+      },
+
+      hide() {
+        hook2();
+      },
+
+      cleanup() {
+        if (transitionOpacity) el.style.opacity = opacityCache;
+        if (transitionScale) el.style.transform = transformCache;
+        if (transitionScale) el.style.transformOrigin = transformOriginCache;
+        el.style.transitionProperty = null;
+        el.style.transitionDuration = null;
+        el.style.transitionTimingFunction = null;
+      }
+
+    };
+    transition(el, stages, type, reject);
+  }
+
+  const ensureStringExpression = (expression, el, component) => {
+    return typeof expression === 'function' ? component.evaluateReturnExpression(el, expression) : expression;
+  };
+
+  function transitionClassesIn(el, component, directives, showCallback, reject) {
+    const enter = convertClassStringToArray(ensureStringExpression((directives.find(i => i.value === 'enter') || {
+      expression: ''
+    }).expression, el, component));
+    const enterStart = convertClassStringToArray(ensureStringExpression((directives.find(i => i.value === 'enter-start') || {
+      expression: ''
+    }).expression, el, component));
+    const enterEnd = convertClassStringToArray(ensureStringExpression((directives.find(i => i.value === 'enter-end') || {
+      expression: ''
+    }).expression, el, component));
+    transitionClasses(el, enter, enterStart, enterEnd, showCallback, () => {}, TRANSITION_TYPE_IN, reject);
+  }
+  function transitionClassesOut(el, component, directives, hideCallback, reject) {
+    const leave = convertClassStringToArray(ensureStringExpression((directives.find(i => i.value === 'leave') || {
+      expression: ''
+    }).expression, el, component));
+    const leaveStart = convertClassStringToArray(ensureStringExpression((directives.find(i => i.value === 'leave-start') || {
+      expression: ''
+    }).expression, el, component));
+    const leaveEnd = convertClassStringToArray(ensureStringExpression((directives.find(i => i.value === 'leave-end') || {
+      expression: ''
+    }).expression, el, component));
+    transitionClasses(el, leave, leaveStart, leaveEnd, () => {}, hideCallback, TRANSITION_TYPE_OUT, reject);
+  }
+  function transitionClasses(el, classesDuring, classesStart, classesEnd, hook1, hook2, type, reject) {
+    // clear the previous transition if exists to avoid caching the wrong classes
+    if (el.__x_transition) {
+      el.__x_transition.cancel && el.__x_transition.cancel();
+    }
+
+    const originalClasses = el.__x_original_classes || [];
+    const stages = {
+      start() {
+        el.classList.add(...classesStart);
+      },
+
+      during() {
+        el.classList.add(...classesDuring);
+      },
+
+      show() {
+        hook1();
+      },
+
+      end() {
+        // Don't remove classes that were in the original class attribute.
+        el.classList.remove(...classesStart.filter(i => !originalClasses.includes(i)));
+        el.classList.add(...classesEnd);
+      },
+
+      hide() {
+        hook2();
+      },
+
+      cleanup() {
+        el.classList.remove(...classesDuring.filter(i => !originalClasses.includes(i)));
+        el.classList.remove(...classesEnd.filter(i => !originalClasses.includes(i)));
+      }
+
+    };
+    transition(el, stages, type, reject);
+  }
+  function transition(el, stages, type, reject) {
+    const finish = once(() => {
+      stages.hide(); // Adding an "isConnected" check, in case the callback
+      // removed the element from the DOM.
+
+      if (el.isConnected) {
+        stages.cleanup();
+      }
+
+      delete el.__x_transition;
+    });
+    el.__x_transition = {
+      // Set transition type so we can avoid clearing transition if the direction is the same
+      type: type,
+      // create a callback for the last stages of the transition so we can call it
+      // from different point and early terminate it. Once will ensure that function
+      // is only called one time.
+      cancel: once(() => {
+        reject(TRANSITION_CANCELLED);
+        finish();
+      }),
+      finish,
+      // This store the next animation frame so we can cancel it
+      nextFrame: null
+    };
+    stages.start();
+    stages.during();
+    el.__x_transition.nextFrame = requestAnimationFrame(() => {
+      // Note: Safari's transitionDuration property will list out comma separated transition durations
+      // for every single transition property. Let's grab the first one and call it a day.
+      let duration = Number(getComputedStyle(el).transitionDuration.replace(/,.*/, '').replace('s', '')) * 1000;
+
+      if (duration === 0) {
+        duration = Number(getComputedStyle(el).animationDuration.replace('s', '')) * 1000;
+      }
+
+      stages.show();
+      el.__x_transition.nextFrame = requestAnimationFrame(() => {
+        stages.end();
+        setTimeout(el.__x_transition.finish, duration);
+      });
+    });
+  }
+  function isNumeric(subject) {
+    return !Array.isArray(subject) && !isNaN(subject);
+  } // Thanks @vuejs
+  // https://github.com/vuejs/vue/blob/4de4649d9637262a9b007720b59f80ac72a5620c/src/shared/util.js
+
+  function once(callback) {
+    let called = false;
+    return function () {
+      if (!called) {
+        called = true;
+        callback.apply(this, arguments);
+      }
+    };
+  }
+
+  function handleForDirective(component, templateEl, expression, initialUpdate, extraVars) {
+    warnIfMalformedTemplate(templateEl, 'x-for');
+    let iteratorNames = typeof expression === 'function' ? parseForExpression(component.evaluateReturnExpression(templateEl, expression)) : parseForExpression(expression);
+    let items = evaluateItemsAndReturnEmptyIfXIfIsPresentAndFalseOnElement(component, templateEl, iteratorNames, extraVars); // As we walk the array, we'll also walk the DOM (updating/creating as we go).
+
+    let currentEl = templateEl;
+    items.forEach((item, index) => {
+      let iterationScopeVariables = getIterationScopeVariables(iteratorNames, item, index, items, extraVars());
+      let currentKey = generateKeyForIteration(component, templateEl, index, iterationScopeVariables);
+      let nextEl = lookAheadForMatchingKeyedElementAndMoveItIfFound(currentEl.nextElementSibling, currentKey); // If we haven't found a matching key, insert the element at the current position.
+
+      if (!nextEl) {
+        nextEl = addElementInLoopAfterCurrentEl(templateEl, currentEl); // And transition it in if it's not the first page load.
+
+        transitionIn(nextEl, () => {}, () => {}, component, initialUpdate);
+        nextEl.__x_for = iterationScopeVariables;
+        component.initializeElements(nextEl, () => nextEl.__x_for); // Otherwise update the element we found.
+      } else {
+        // Temporarily remove the key indicator to allow the normal "updateElements" to work.
+        delete nextEl.__x_for_key;
+        nextEl.__x_for = iterationScopeVariables;
+        component.updateElements(nextEl, () => nextEl.__x_for);
+      }
+
+      currentEl = nextEl;
+      currentEl.__x_for_key = currentKey;
+    });
+    removeAnyLeftOverElementsFromPreviousUpdate(currentEl, component);
+  } // This was taken from VueJS 2.* core. Thanks Vue!
+
+  function parseForExpression(expression) {
+    let forIteratorRE = /,([^,\}\]]*)(?:,([^,\}\]]*))?$/;
+    let stripParensRE = /^\(|\)$/g;
+    let forAliasRE = /([\s\S]*?)\s+(?:in|of)\s+([\s\S]*)/;
+    let inMatch = expression.match(forAliasRE);
+    if (!inMatch) return;
+    let res = {};
+    res.items = inMatch[2].trim();
+    let item = inMatch[1].trim().replace(stripParensRE, '');
+    let iteratorMatch = item.match(forIteratorRE);
+
+    if (iteratorMatch) {
+      res.item = item.replace(forIteratorRE, '').trim();
+      res.index = iteratorMatch[1].trim();
+
+      if (iteratorMatch[2]) {
+        res.collection = iteratorMatch[2].trim();
+      }
+    } else {
+      res.item = item;
+    }
+
+    return res;
+  }
+
+  function getIterationScopeVariables(iteratorNames, item, index, items, extraVars) {
+    // We must create a new object, so each iteration has a new scope
+    let scopeVariables = extraVars ? _objectSpread2({}, extraVars) : {};
+    scopeVariables[iteratorNames.item] = item;
+    if (iteratorNames.index) scopeVariables[iteratorNames.index] = index;
+    if (iteratorNames.collection) scopeVariables[iteratorNames.collection] = items;
+    return scopeVariables;
+  }
+
+  function generateKeyForIteration(component, el, index, iterationScopeVariables) {
+    let bindKeyAttribute = getXAttrs(el, component, 'bind').filter(attr => attr.value === 'key')[0]; // If the dev hasn't specified a key, just return the index of the iteration.
+
+    if (!bindKeyAttribute) return index;
+    return component.evaluateReturnExpression(el, bindKeyAttribute.expression, () => iterationScopeVariables);
+  }
+
+  function evaluateItemsAndReturnEmptyIfXIfIsPresentAndFalseOnElement(component, el, iteratorNames, extraVars) {
+    let ifAttribute = getXAttrs(el, component, 'if')[0];
+
+    if (ifAttribute && !component.evaluateReturnExpression(el, ifAttribute.expression)) {
+      return [];
+    }
+
+    let items = component.evaluateReturnExpression(el, iteratorNames.items, extraVars); // This adds support for the `i in n` syntax.
+
+    if (isNumeric(items) && items > 0) {
+      items = Array.from(Array(items).keys(), i => i + 1);
+    }
+
+    return items;
+  }
+
+  function addElementInLoopAfterCurrentEl(templateEl, currentEl) {
+    let clone = document.importNode(templateEl.content, true);
+    currentEl.parentElement.insertBefore(clone, currentEl.nextElementSibling);
+    return currentEl.nextElementSibling;
+  }
+
+  function lookAheadForMatchingKeyedElementAndMoveItIfFound(nextEl, currentKey) {
+    if (!nextEl) return; // If we are already past the x-for generated elements, we don't need to look ahead.
+
+    if (nextEl.__x_for_key === undefined) return; // If the the key's DO match, no need to look ahead.
+
+    if (nextEl.__x_for_key === currentKey) return nextEl; // If they don't, we'll look ahead for a match.
+    // If we find it, we'll move it to the current position in the loop.
+
+    let tmpNextEl = nextEl;
+
+    while (tmpNextEl) {
+      if (tmpNextEl.__x_for_key === currentKey) {
+        return tmpNextEl.parentElement.insertBefore(tmpNextEl, nextEl);
+      }
+
+      tmpNextEl = tmpNextEl.nextElementSibling && tmpNextEl.nextElementSibling.__x_for_key !== undefined ? tmpNextEl.nextElementSibling : false;
+    }
+  }
+
+  function removeAnyLeftOverElementsFromPreviousUpdate(currentEl, component) {
+    var nextElementFromOldLoop = currentEl.nextElementSibling && currentEl.nextElementSibling.__x_for_key !== undefined ? currentEl.nextElementSibling : false;
+
+    while (nextElementFromOldLoop) {
+      let nextElementFromOldLoopImmutable = nextElementFromOldLoop;
+      let nextSibling = nextElementFromOldLoop.nextElementSibling;
+      transitionOut(nextElementFromOldLoop, () => {
+        nextElementFromOldLoopImmutable.remove();
+      }, () => {}, component);
+      nextElementFromOldLoop = nextSibling && nextSibling.__x_for_key !== undefined ? nextSibling : false;
+    }
+  }
+
+  function handleAttributeBindingDirective(component, el, attrName, expression, extraVars, attrType, modifiers) {
+    var value = component.evaluateReturnExpression(el, expression, extraVars);
+
+    if (attrName === 'value') {
+      if (Alpine.ignoreFocusedForValueBinding && document.activeElement.isSameNode(el)) return; // If nested model key is undefined, set the default value to empty string.
+
+      if (value === undefined && expression.match(/\./)) {
+        value = '';
+      }
+
+      if (el.type === 'radio') {
+        // Set radio value from x-bind:value, if no "value" attribute exists.
+        // If there are any initial state values, radio will have a correct
+        // "checked" value since x-bind:value is processed before x-model.
+        if (el.attributes.value === undefined && attrType === 'bind') {
+          el.value = value;
+        } else if (attrType !== 'bind') {
+          el.checked = checkedAttrLooseCompare(el.value, value);
+        }
+      } else if (el.type === 'checkbox') {
+        // If we are explicitly binding a string to the :value, set the string,
+        // If the value is a boolean, leave it alone, it will be set to "on"
+        // automatically.
+        if (typeof value !== 'boolean' && ![null, undefined].includes(value) && attrType === 'bind') {
+          el.value = String(value);
+        } else if (attrType !== 'bind') {
+          if (Array.isArray(value)) {
+            // I'm purposely not using Array.includes here because it's
+            // strict, and because of Numeric/String mis-casting, I
+            // want the "includes" to be "fuzzy".
+            el.checked = value.some(val => checkedAttrLooseCompare(val, el.value));
+          } else {
+            el.checked = !!value;
+          }
+        }
+      } else if (el.tagName === 'SELECT') {
+        updateSelect(el, value);
+      } else {
+        if (el.value === value) return;
+        el.value = value;
+      }
+    } else if (attrName === 'class') {
+      if (Array.isArray(value)) {
+        const originalClasses = el.__x_original_classes || [];
+        el.setAttribute('class', arrayUnique(originalClasses.concat(value)).join(' '));
+      } else if (typeof value === 'object') {
+        // Sorting the keys / class names by their boolean value will ensure that
+        // anything that evaluates to `false` and needs to remove classes is run first.
+        const keysSortedByBooleanValue = Object.keys(value).sort((a, b) => value[a] - value[b]);
+        keysSortedByBooleanValue.forEach(classNames => {
+          if (value[classNames]) {
+            convertClassStringToArray(classNames).forEach(className => el.classList.add(className));
+          } else {
+            convertClassStringToArray(classNames).forEach(className => el.classList.remove(className));
+          }
+        });
+      } else {
+        const originalClasses = el.__x_original_classes || [];
+        const newClasses = value ? convertClassStringToArray(value) : [];
+        el.setAttribute('class', arrayUnique(originalClasses.concat(newClasses)).join(' '));
+      }
+    } else {
+      attrName = modifiers.includes('camel') ? camelCase(attrName) : attrName; // If an attribute's bound value is null, undefined or false, remove the attribute
+
+      if ([null, undefined, false].includes(value)) {
+        el.removeAttribute(attrName);
+      } else {
+        isBooleanAttr(attrName) ? setIfChanged(el, attrName, attrName) : setIfChanged(el, attrName, value);
+      }
+    }
+  }
+
+  function setIfChanged(el, attrName, value) {
+    if (el.getAttribute(attrName) != value) {
+      el.setAttribute(attrName, value);
+    }
+  }
+
+  function updateSelect(el, value) {
+    const arrayWrappedValue = [].concat(value).map(value => {
+      return value + '';
+    });
+    Array.from(el.options).forEach(option => {
+      option.selected = arrayWrappedValue.includes(option.value || option.text);
+    });
+  }
+
+  function handleTextDirective(el, output, expression) {
+    // If nested model key is undefined, set the default value to empty string.
+    if (output === undefined && expression.match(/\./)) {
+      output = '';
+    }
+
+    el.textContent = output;
+  }
+
+  function handleHtmlDirective(component, el, expression, extraVars) {
+    el.innerHTML = component.evaluateReturnExpression(el, expression, extraVars);
+  }
+
+  function handleShowDirective(component, el, value, modifiers, initialUpdate = false) {
+    const hide = () => {
+      el.style.display = 'none';
+      el.__x_is_shown = false;
+    };
+
+    const show = () => {
+      if (el.style.length === 1 && el.style.display === 'none') {
+        el.removeAttribute('style');
+      } else {
+        el.style.removeProperty('display');
+      }
+
+      el.__x_is_shown = true;
+    };
+
+    if (initialUpdate === true) {
+      if (value) {
+        show();
+      } else {
+        hide();
+      }
+
+      return;
+    }
+
+    const handle = (resolve, reject) => {
+      if (value) {
+        if (el.style.display === 'none' || el.__x_transition) {
+          transitionIn(el, () => {
+            show();
+          }, reject, component);
+        }
+
+        resolve(() => {});
+      } else {
+        if (el.style.display !== 'none') {
+          transitionOut(el, () => {
+            resolve(() => {
+              hide();
+            });
+          }, reject, component);
+        } else {
+          resolve(() => {});
+        }
+      }
+    }; // The working of x-show is a bit complex because we need to
+    // wait for any child transitions to finish before hiding
+    // some element. Also, this has to be done recursively.
+    // If x-show.immediate, foregoe the waiting.
+
+
+    if (modifiers.includes('immediate')) {
+      handle(finish => finish(), () => {});
+      return;
+    } // x-show is encountered during a DOM tree walk. If an element
+    // we encounter is NOT a child of another x-show element we
+    // can execute the previous x-show stack (if one exists).
+
+
+    if (component.showDirectiveLastElement && !component.showDirectiveLastElement.contains(el)) {
+      component.executeAndClearRemainingShowDirectiveStack();
+    }
+
+    component.showDirectiveStack.push(handle);
+    component.showDirectiveLastElement = el;
+  }
+
+  function handleIfDirective(component, el, expressionResult, initialUpdate, extraVars) {
+    warnIfMalformedTemplate(el, 'x-if');
+    const elementHasAlreadyBeenAdded = el.nextElementSibling && el.nextElementSibling.__x_inserted_me === true;
+
+    if (expressionResult && (!elementHasAlreadyBeenAdded || el.__x_transition)) {
+      const clone = document.importNode(el.content, true);
+      el.parentElement.insertBefore(clone, el.nextElementSibling);
+      transitionIn(el.nextElementSibling, () => {}, () => {}, component, initialUpdate);
+      component.initializeElements(el.nextElementSibling, extraVars);
+      el.nextElementSibling.__x_inserted_me = true;
+    } else if (!expressionResult && elementHasAlreadyBeenAdded) {
+      transitionOut(el.nextElementSibling, () => {
+        el.nextElementSibling.remove();
+      }, () => {}, component, initialUpdate);
+    }
+  }
+
+  function registerListener(component, el, event, modifiers, expression, extraVars = {}) {
+    const options = {
+      passive: modifiers.includes('passive')
+    };
+
+    if (modifiers.includes('camel')) {
+      event = camelCase(event);
+    }
+
+    if (modifiers.includes('away')) {
+      let handler = e => {
+        // Don't do anything if the click came from the element or within it.
+        if (el.contains(e.target)) return; // Don't do anything if this element isn't currently visible.
+
+        if (el.offsetWidth < 1 && el.offsetHeight < 1) return; // Now that we are sure the element is visible, AND the click
+        // is from outside it, let's run the expression.
+
+        runListenerHandler(component, expression, e, extraVars);
+
+        if (modifiers.includes('once')) {
+          document.removeEventListener(event, handler, options);
+        }
+      }; // Listen for this event at the root level.
+
+
+      document.addEventListener(event, handler, options);
+    } else {
+      let listenerTarget = modifiers.includes('window') ? window : modifiers.includes('document') ? document : el;
+
+      let handler = e => {
+        // Remove this global event handler if the element that declared it
+        // has been removed. It's now stale.
+        if (listenerTarget === window || listenerTarget === document) {
+          if (!document.body.contains(el)) {
+            listenerTarget.removeEventListener(event, handler, options);
+            return;
+          }
+        }
+
+        if (isKeyEvent(event)) {
+          if (isListeningForASpecificKeyThatHasntBeenPressed(e, modifiers)) {
+            return;
+          }
+        }
+
+        if (modifiers.includes('prevent')) e.preventDefault();
+        if (modifiers.includes('stop')) e.stopPropagation(); // If the .self modifier isn't present, or if it is present and
+        // the target element matches the element we are registering the
+        // event on, run the handler
+
+        if (!modifiers.includes('self') || e.target === el) {
+          const returnValue = runListenerHandler(component, expression, e, extraVars);
+          returnValue.then(value => {
+            if (value === false) {
+              e.preventDefault();
+            } else {
+              if (modifiers.includes('once')) {
+                listenerTarget.removeEventListener(event, handler, options);
+              }
+            }
+          });
+        }
+      };
+
+      if (modifiers.includes('debounce')) {
+        let nextModifier = modifiers[modifiers.indexOf('debounce') + 1] || 'invalid-wait';
+        let wait = isNumeric(nextModifier.split('ms')[0]) ? Number(nextModifier.split('ms')[0]) : 250;
+        handler = debounce(handler, wait);
+      }
+
+      listenerTarget.addEventListener(event, handler, options);
+    }
+  }
+
+  function runListenerHandler(component, expression, e, extraVars) {
+    return component.evaluateCommandExpression(e.target, expression, () => {
+      return _objectSpread2(_objectSpread2({}, extraVars()), {}, {
+        '$event': e
+      });
+    });
+  }
+
+  function isKeyEvent(event) {
+    return ['keydown', 'keyup'].includes(event);
+  }
+
+  function isListeningForASpecificKeyThatHasntBeenPressed(e, modifiers) {
+    let keyModifiers = modifiers.filter(i => {
+      return !['window', 'document', 'prevent', 'stop'].includes(i);
+    });
+
+    if (keyModifiers.includes('debounce')) {
+      let debounceIndex = keyModifiers.indexOf('debounce');
+      keyModifiers.splice(debounceIndex, isNumeric((keyModifiers[debounceIndex + 1] || 'invalid-wait').split('ms')[0]) ? 2 : 1);
+    } // If no modifier is specified, we'll call it a press.
+
+
+    if (keyModifiers.length === 0) return false; // If one is passed, AND it matches the key pressed, we'll call it a press.
+
+    if (keyModifiers.length === 1 && keyModifiers[0] === keyToModifier(e.key)) return false; // The user is listening for key combinations.
+
+    const systemKeyModifiers = ['ctrl', 'shift', 'alt', 'meta', 'cmd', 'super'];
+    const selectedSystemKeyModifiers = systemKeyModifiers.filter(modifier => keyModifiers.includes(modifier));
+    keyModifiers = keyModifiers.filter(i => !selectedSystemKeyModifiers.includes(i));
+
+    if (selectedSystemKeyModifiers.length > 0) {
+      const activelyPressedKeyModifiers = selectedSystemKeyModifiers.filter(modifier => {
+        // Alias "cmd" and "super" to "meta"
+        if (modifier === 'cmd' || modifier === 'super') modifier = 'meta';
+        return e[`${modifier}Key`];
+      }); // If all the modifiers selected are pressed, ...
+
+      if (activelyPressedKeyModifiers.length === selectedSystemKeyModifiers.length) {
+        // AND the remaining key is pressed as well. It's a press.
+        if (keyModifiers[0] === keyToModifier(e.key)) return false;
+      }
+    } // We'll call it NOT a valid keypress.
+
+
+    return true;
+  }
+
+  function keyToModifier(key) {
+    switch (key) {
+      case '/':
+        return 'slash';
+
+      case ' ':
+      case 'Spacebar':
+        return 'space';
+
+      default:
+        return key && kebabCase(key);
+    }
+  }
+
+  function registerModelListener(component, el, modifiers, expression, extraVars) {
+    // If the element we are binding to is a select, a radio, or checkbox
+    // we'll listen for the change event instead of the "input" event.
+    var event = el.tagName.toLowerCase() === 'select' || ['checkbox', 'radio'].includes(el.type) || modifiers.includes('lazy') ? 'change' : 'input';
+    const listenerExpression = `${expression} = rightSideOfExpression($event, ${expression})`;
+    registerListener(component, el, event, modifiers, listenerExpression, () => {
+      return _objectSpread2(_objectSpread2({}, extraVars()), {}, {
+        rightSideOfExpression: generateModelAssignmentFunction(el, modifiers, expression)
+      });
+    });
+  }
+
+  function generateModelAssignmentFunction(el, modifiers, expression) {
+    if (el.type === 'radio') {
+      // Radio buttons only work properly when they share a name attribute.
+      // People might assume we take care of that for them, because
+      // they already set a shared "x-model" attribute.
+      if (!el.hasAttribute('name')) el.setAttribute('name', expression);
+    }
+
+    return (event, currentValue) => {
+      // Check for event.detail due to an issue where IE11 handles other events as a CustomEvent.
+      if (event instanceof CustomEvent && event.detail) {
+        return event.detail;
+      } else if (el.type === 'checkbox') {
+        // If the data we are binding to is an array, toggle its value inside the array.
+        if (Array.isArray(currentValue)) {
+          const newValue = modifiers.includes('number') ? safeParseNumber(event.target.value) : event.target.value;
+          return event.target.checked ? currentValue.concat([newValue]) : currentValue.filter(el => !checkedAttrLooseCompare(el, newValue));
+        } else {
+          return event.target.checked;
+        }
+      } else if (el.tagName.toLowerCase() === 'select' && el.multiple) {
+        return modifiers.includes('number') ? Array.from(event.target.selectedOptions).map(option => {
+          const rawValue = option.value || option.text;
+          return safeParseNumber(rawValue);
+        }) : Array.from(event.target.selectedOptions).map(option => {
+          return option.value || option.text;
+        });
+      } else {
+        const rawValue = event.target.value;
+        return modifiers.includes('number') ? safeParseNumber(rawValue) : modifiers.includes('trim') ? rawValue.trim() : rawValue;
+      }
+    };
+  }
+
+  function safeParseNumber(rawValue) {
+    const number = rawValue ? parseFloat(rawValue) : null;
+    return isNumeric(number) ? number : rawValue;
+  }
+
+  /**
+   * Copyright (C) 2017 salesforce.com, inc.
+   */
+  const { isArray } = Array;
+  const { getPrototypeOf, create: ObjectCreate, defineProperty: ObjectDefineProperty, defineProperties: ObjectDefineProperties, isExtensible, getOwnPropertyDescriptor, getOwnPropertyNames, getOwnPropertySymbols, preventExtensions, hasOwnProperty, } = Object;
+  const { push: ArrayPush, concat: ArrayConcat, map: ArrayMap, } = Array.prototype;
+  function isUndefined(obj) {
+      return obj === undefined;
+  }
+  function isFunction(obj) {
+      return typeof obj === 'function';
+  }
+  function isObject(obj) {
+      return typeof obj === 'object';
+  }
+  const proxyToValueMap = new WeakMap();
+  function registerProxy(proxy, value) {
+      proxyToValueMap.set(proxy, value);
+  }
+  const unwrap = (replicaOrAny) => proxyToValueMap.get(replicaOrAny) || replicaOrAny;
+
+  function wrapValue(membrane, value) {
+      return membrane.valueIsObservable(value) ? membrane.getProxy(value) : value;
+  }
+  /**
+   * Unwrap property descriptors will set value on original descriptor
+   * We only need to unwrap if value is specified
+   * @param descriptor external descrpitor provided to define new property on original value
+   */
+  function unwrapDescriptor(descriptor) {
+      if (hasOwnProperty.call(descriptor, 'value')) {
+          descriptor.value = unwrap(descriptor.value);
+      }
+      return descriptor;
+  }
+  function lockShadowTarget(membrane, shadowTarget, originalTarget) {
+      const targetKeys = ArrayConcat.call(getOwnPropertyNames(originalTarget), getOwnPropertySymbols(originalTarget));
+      targetKeys.forEach((key) => {
+          let descriptor = getOwnPropertyDescriptor(originalTarget, key);
+          // We do not need to wrap the descriptor if configurable
+          // Because we can deal with wrapping it when user goes through
+          // Get own property descriptor. There is also a chance that this descriptor
+          // could change sometime in the future, so we can defer wrapping
+          // until we need to
+          if (!descriptor.configurable) {
+              descriptor = wrapDescriptor(membrane, descriptor, wrapValue);
+          }
+          ObjectDefineProperty(shadowTarget, key, descriptor);
+      });
+      preventExtensions(shadowTarget);
+  }
+  class ReactiveProxyHandler {
+      constructor(membrane, value) {
+          this.originalTarget = value;
+          this.membrane = membrane;
+      }
+      get(shadowTarget, key) {
+          const { originalTarget, membrane } = this;
+          const value = originalTarget[key];
+          const { valueObserved } = membrane;
+          valueObserved(originalTarget, key);
+          return membrane.getProxy(value);
+      }
+      set(shadowTarget, key, value) {
+          const { originalTarget, membrane: { valueMutated } } = this;
+          const oldValue = originalTarget[key];
+          if (oldValue !== value) {
+              originalTarget[key] = value;
+              valueMutated(originalTarget, key);
+          }
+          else if (key === 'length' && isArray(originalTarget)) {
+              // fix for issue #236: push will add the new index, and by the time length
+              // is updated, the internal length is already equal to the new length value
+              // therefore, the oldValue is equal to the value. This is the forking logic
+              // to support this use case.
+              valueMutated(originalTarget, key);
+          }
+          return true;
+      }
+      deleteProperty(shadowTarget, key) {
+          const { originalTarget, membrane: { valueMutated } } = this;
+          delete originalTarget[key];
+          valueMutated(originalTarget, key);
+          return true;
+      }
+      apply(shadowTarget, thisArg, argArray) {
+          /* No op */
+      }
+      construct(target, argArray, newTarget) {
+          /* No op */
+      }
+      has(shadowTarget, key) {
+          const { originalTarget, membrane: { valueObserved } } = this;
+          valueObserved(originalTarget, key);
+          return key in originalTarget;
+      }
+      ownKeys(shadowTarget) {
+          const { originalTarget } = this;
+          return ArrayConcat.call(getOwnPropertyNames(originalTarget), getOwnPropertySymbols(originalTarget));
+      }
+      isExtensible(shadowTarget) {
+          const shadowIsExtensible = isExtensible(shadowTarget);
+          if (!shadowIsExtensible) {
+              return shadowIsExtensible;
+          }
+          const { originalTarget, membrane } = this;
+          const targetIsExtensible = isExtensible(originalTarget);
+          if (!targetIsExtensible) {
+              lockShadowTarget(membrane, shadowTarget, originalTarget);
+          }
+          return targetIsExtensible;
+      }
+      setPrototypeOf(shadowTarget, prototype) {
+      }
+      getPrototypeOf(shadowTarget) {
+          const { originalTarget } = this;
+          return getPrototypeOf(originalTarget);
+      }
+      getOwnPropertyDescriptor(shadowTarget, key) {
+          const { originalTarget, membrane } = this;
+          const { valueObserved } = this.membrane;
+          // keys looked up via hasOwnProperty need to be reactive
+          valueObserved(originalTarget, key);
+          let desc = getOwnPropertyDescriptor(originalTarget, key);
+          if (isUndefined(desc)) {
+              return desc;
+          }
+          const shadowDescriptor = getOwnPropertyDescriptor(shadowTarget, key);
+          if (!isUndefined(shadowDescriptor)) {
+              return shadowDescriptor;
+          }
+          // Note: by accessing the descriptor, the key is marked as observed
+          // but access to the value, setter or getter (if available) cannot observe
+          // mutations, just like regular methods, in which case we just do nothing.
+          desc = wrapDescriptor(membrane, desc, wrapValue);
+          if (!desc.configurable) {
+              // If descriptor from original target is not configurable,
+              // We must copy the wrapped descriptor over to the shadow target.
+              // Otherwise, proxy will throw an invariant error.
+              // This is our last chance to lock the value.
+              // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/handler/getOwnPropertyDescriptor#Invariants
+              ObjectDefineProperty(shadowTarget, key, desc);
+          }
+          return desc;
+      }
+      preventExtensions(shadowTarget) {
+          const { originalTarget, membrane } = this;
+          lockShadowTarget(membrane, shadowTarget, originalTarget);
+          preventExtensions(originalTarget);
+          return true;
+      }
+      defineProperty(shadowTarget, key, descriptor) {
+          const { originalTarget, membrane } = this;
+          const { valueMutated } = membrane;
+          const { configurable } = descriptor;
+          // We have to check for value in descriptor
+          // because Object.freeze(proxy) calls this method
+          // with only { configurable: false, writeable: false }
+          // Additionally, method will only be called with writeable:false
+          // if the descriptor has a value, as opposed to getter/setter
+          // So we can just check if writable is present and then see if
+          // value is present. This eliminates getter and setter descriptors
+          if (hasOwnProperty.call(descriptor, 'writable') && !hasOwnProperty.call(descriptor, 'value')) {
+              const originalDescriptor = getOwnPropertyDescriptor(originalTarget, key);
+              descriptor.value = originalDescriptor.value;
+          }
+          ObjectDefineProperty(originalTarget, key, unwrapDescriptor(descriptor));
+          if (configurable === false) {
+              ObjectDefineProperty(shadowTarget, key, wrapDescriptor(membrane, descriptor, wrapValue));
+          }
+          valueMutated(originalTarget, key);
+          return true;
+      }
+  }
+
+  function wrapReadOnlyValue(membrane, value) {
+      return membrane.valueIsObservable(value) ? membrane.getReadOnlyProxy(value) : value;
+  }
+  class ReadOnlyHandler {
+      constructor(membrane, value) {
+          this.originalTarget = value;
+          this.membrane = membrane;
+      }
+      get(shadowTarget, key) {
+          const { membrane, originalTarget } = this;
+          const value = originalTarget[key];
+          const { valueObserved } = membrane;
+          valueObserved(originalTarget, key);
+          return membrane.getReadOnlyProxy(value);
+      }
+      set(shadowTarget, key, value) {
+          return false;
+      }
+      deleteProperty(shadowTarget, key) {
+          return false;
+      }
+      apply(shadowTarget, thisArg, argArray) {
+          /* No op */
+      }
+      construct(target, argArray, newTarget) {
+          /* No op */
+      }
+      has(shadowTarget, key) {
+          const { originalTarget, membrane: { valueObserved } } = this;
+          valueObserved(originalTarget, key);
+          return key in originalTarget;
+      }
+      ownKeys(shadowTarget) {
+          const { originalTarget } = this;
+          return ArrayConcat.call(getOwnPropertyNames(originalTarget), getOwnPropertySymbols(originalTarget));
+      }
+      setPrototypeOf(shadowTarget, prototype) {
+      }
+      getOwnPropertyDescriptor(shadowTarget, key) {
+          const { originalTarget, membrane } = this;
+          const { valueObserved } = membrane;
+          // keys looked up via hasOwnProperty need to be reactive
+          valueObserved(originalTarget, key);
+          let desc = getOwnPropertyDescriptor(originalTarget, key);
+          if (isUndefined(desc)) {
+              return desc;
+          }
+          const shadowDescriptor = getOwnPropertyDescriptor(shadowTarget, key);
+          if (!isUndefined(shadowDescriptor)) {
+              return shadowDescriptor;
+          }
+          // Note: by accessing the descriptor, the key is marked as observed
+          // but access to the value or getter (if available) cannot be observed,
+          // just like regular methods, in which case we just do nothing.
+          desc = wrapDescriptor(membrane, desc, wrapReadOnlyValue);
+          if (hasOwnProperty.call(desc, 'set')) {
+              desc.set = undefined; // readOnly membrane does not allow setters
+          }
+          if (!desc.configurable) {
+              // If descriptor from original target is not configurable,
+              // We must copy the wrapped descriptor over to the shadow target.
+              // Otherwise, proxy will throw an invariant error.
+              // This is our last chance to lock the value.
+              // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/handler/getOwnPropertyDescriptor#Invariants
+              ObjectDefineProperty(shadowTarget, key, desc);
+          }
+          return desc;
+      }
+      preventExtensions(shadowTarget) {
+          return false;
+      }
+      defineProperty(shadowTarget, key, descriptor) {
+          return false;
+      }
+  }
+  function createShadowTarget(value) {
+      let shadowTarget = undefined;
+      if (isArray(value)) {
+          shadowTarget = [];
+      }
+      else if (isObject(value)) {
+          shadowTarget = {};
+      }
+      return shadowTarget;
+  }
+  const ObjectDotPrototype = Object.prototype;
+  function defaultValueIsObservable(value) {
+      // intentionally checking for null
+      if (value === null) {
+          return false;
+      }
+      // treat all non-object types, including undefined, as non-observable values
+      if (typeof value !== 'object') {
+          return false;
+      }
+      if (isArray(value)) {
+          return true;
+      }
+      const proto = getPrototypeOf(value);
+      return (proto === ObjectDotPrototype || proto === null || getPrototypeOf(proto) === null);
+  }
+  const defaultValueObserved = (obj, key) => {
+      /* do nothing */
+  };
+  const defaultValueMutated = (obj, key) => {
+      /* do nothing */
+  };
+  const defaultValueDistortion = (value) => value;
+  function wrapDescriptor(membrane, descriptor, getValue) {
+      const { set, get } = descriptor;
+      if (hasOwnProperty.call(descriptor, 'value')) {
+          descriptor.value = getValue(membrane, descriptor.value);
+      }
+      else {
+          if (!isUndefined(get)) {
+              descriptor.get = function () {
+                  // invoking the original getter with the original target
+                  return getValue(membrane, get.call(unwrap(this)));
+              };
+          }
+          if (!isUndefined(set)) {
+              descriptor.set = function (value) {
+                  // At this point we don't have a clear indication of whether
+                  // or not a valid mutation will occur, we don't have the key,
+                  // and we are not sure why and how they are invoking this setter.
+                  // Nevertheless we preserve the original semantics by invoking the
+                  // original setter with the original target and the unwrapped value
+                  set.call(unwrap(this), membrane.unwrapProxy(value));
+              };
+          }
+      }
+      return descriptor;
+  }
+  class ReactiveMembrane {
+      constructor(options) {
+          this.valueDistortion = defaultValueDistortion;
+          this.valueMutated = defaultValueMutated;
+          this.valueObserved = defaultValueObserved;
+          this.valueIsObservable = defaultValueIsObservable;
+          this.objectGraph = new WeakMap();
+          if (!isUndefined(options)) {
+              const { valueDistortion, valueMutated, valueObserved, valueIsObservable } = options;
+              this.valueDistortion = isFunction(valueDistortion) ? valueDistortion : defaultValueDistortion;
+              this.valueMutated = isFunction(valueMutated) ? valueMutated : defaultValueMutated;
+              this.valueObserved = isFunction(valueObserved) ? valueObserved : defaultValueObserved;
+              this.valueIsObservable = isFunction(valueIsObservable) ? valueIsObservable : defaultValueIsObservable;
+          }
+      }
+      getProxy(value) {
+          const unwrappedValue = unwrap(value);
+          const distorted = this.valueDistortion(unwrappedValue);
+          if (this.valueIsObservable(distorted)) {
+              const o = this.getReactiveState(unwrappedValue, distorted);
+              // when trying to extract the writable version of a readonly
+              // we return the readonly.
+              return o.readOnly === value ? value : o.reactive;
+          }
+          return distorted;
+      }
+      getReadOnlyProxy(value) {
+          value = unwrap(value);
+          const distorted = this.valueDistortion(value);
+          if (this.valueIsObservable(distorted)) {
+              return this.getReactiveState(value, distorted).readOnly;
+          }
+          return distorted;
+      }
+      unwrapProxy(p) {
+          return unwrap(p);
+      }
+      getReactiveState(value, distortedValue) {
+          const { objectGraph, } = this;
+          let reactiveState = objectGraph.get(distortedValue);
+          if (reactiveState) {
+              return reactiveState;
+          }
+          const membrane = this;
+          reactiveState = {
+              get reactive() {
+                  const reactiveHandler = new ReactiveProxyHandler(membrane, distortedValue);
+                  // caching the reactive proxy after the first time it is accessed
+                  const proxy = new Proxy(createShadowTarget(distortedValue), reactiveHandler);
+                  registerProxy(proxy, value);
+                  ObjectDefineProperty(this, 'reactive', { value: proxy });
+                  return proxy;
+              },
+              get readOnly() {
+                  const readOnlyHandler = new ReadOnlyHandler(membrane, distortedValue);
+                  // caching the readOnly proxy after the first time it is accessed
+                  const proxy = new Proxy(createShadowTarget(distortedValue), readOnlyHandler);
+                  registerProxy(proxy, value);
+                  ObjectDefineProperty(this, 'readOnly', { value: proxy });
+                  return proxy;
+              }
+          };
+          objectGraph.set(distortedValue, reactiveState);
+          return reactiveState;
+      }
+  }
+  /** version: 0.26.0 */
+
+  function wrap(data, mutationCallback) {
+
+    let membrane = new ReactiveMembrane({
+      valueMutated(target, key) {
+        mutationCallback(target, key);
+      }
+
+    });
+    return {
+      data: membrane.getProxy(data),
+      membrane: membrane
+    };
+  }
+  function unwrap$1(membrane, observable) {
+    let unwrappedData = membrane.unwrapProxy(observable);
+    let copy = {};
+    Object.keys(unwrappedData).forEach(key => {
+      if (['$el', '$refs', '$nextTick', '$watch'].includes(key)) return;
+      copy[key] = unwrappedData[key];
+    });
+    return copy;
+  }
+
+  class Component {
+    constructor(el, componentForClone = null) {
+      this.$el = el;
+      const dataAttr = this.$el.getAttribute('x-data');
+      const dataExpression = dataAttr === '' ? '{}' : dataAttr;
+      const initExpression = this.$el.getAttribute('x-init');
+      let dataExtras = {
+        $el: this.$el
+      };
+      let canonicalComponentElementReference = componentForClone ? componentForClone.$el : this.$el;
+      Object.entries(Alpine.magicProperties).forEach(([name, callback]) => {
+        Object.defineProperty(dataExtras, `$${name}`, {
+          get: function get() {
+            return callback(canonicalComponentElementReference);
+          }
+        });
+      });
+      this.unobservedData = componentForClone ? componentForClone.getUnobservedData() : saferEval(el, dataExpression, dataExtras);
+      // Construct a Proxy-based observable. This will be used to handle reactivity.
+
+      let {
+        membrane,
+        data
+      } = this.wrapDataInObservable(this.unobservedData);
+      this.$data = data;
+      this.membrane = membrane; // After making user-supplied data methods reactive, we can now add
+      // our magic properties to the original data for access.
+
+      this.unobservedData.$el = this.$el;
+      this.unobservedData.$refs = this.getRefsProxy();
+      this.nextTickStack = [];
+
+      this.unobservedData.$nextTick = callback => {
+        this.nextTickStack.push(callback);
+      };
+
+      this.watchers = {};
+
+      this.unobservedData.$watch = (property, callback) => {
+        if (!this.watchers[property]) this.watchers[property] = [];
+        this.watchers[property].push(callback);
+      };
+      /* MODERN-ONLY:START */
+      // We remove this piece of code from the legacy build.
+      // In IE11, we have already defined our helpers at this point.
+      // Register custom magic properties.
+
+
+      Object.entries(Alpine.magicProperties).forEach(([name, callback]) => {
+        Object.defineProperty(this.unobservedData, `$${name}`, {
+          get: function get() {
+            return callback(canonicalComponentElementReference, this.$el);
+          }
+        });
+      });
+      /* MODERN-ONLY:END */
+
+      this.showDirectiveStack = [];
+      this.showDirectiveLastElement;
+      componentForClone || Alpine.onBeforeComponentInitializeds.forEach(callback => callback(this));
+      var initReturnedCallback; // If x-init is present AND we aren't cloning (skip x-init on clone)
+
+      if (initExpression && !componentForClone) {
+        // We want to allow data manipulation, but not trigger DOM updates just yet.
+        // We haven't even initialized the elements with their Alpine bindings. I mean c'mon.
+        this.pauseReactivity = true;
+        initReturnedCallback = this.evaluateReturnExpression(this.$el, initExpression);
+        this.pauseReactivity = false;
+      } // Register all our listeners and set all our attribute bindings.
+
+
+      this.initializeElements(this.$el); // Use mutation observer to detect new elements being added within this component at run-time.
+      // Alpine's just so darn flexible amirite?
+
+      this.listenForNewElementsToInitialize();
+
+      if (typeof initReturnedCallback === 'function') {
+        // Run the callback returned from the "x-init" hook to allow the user to do stuff after
+        // Alpine's got it's grubby little paws all over everything.
+        initReturnedCallback.call(this.$data);
+      }
+
+      componentForClone || setTimeout(() => {
+        Alpine.onComponentInitializeds.forEach(callback => callback(this));
+      }, 0);
+    }
+
+    getUnobservedData() {
+      return unwrap$1(this.membrane, this.$data);
+    }
+
+    wrapDataInObservable(data) {
+      var self = this;
+      let updateDom = debounce(function () {
+        self.updateElements(self.$el);
+      }, 0);
+      return wrap(data, (target, key) => {
+        if (self.watchers[key]) {
+          // If there's a watcher for this specific key, run it.
+          self.watchers[key].forEach(callback => callback(target[key]));
+        } else if (Array.isArray(target)) {
+          // Arrays are special cases, if any of the items change, we consider the array as mutated.
+          Object.keys(self.watchers).forEach(fullDotNotationKey => {
+            let dotNotationParts = fullDotNotationKey.split('.'); // Ignore length mutations since they would result in duplicate calls.
+            // For example, when calling push, we would get a mutation for the item's key
+            // and a second mutation for the length property.
+
+            if (key === 'length') return;
+            dotNotationParts.reduce((comparisonData, part) => {
+              if (Object.is(target, comparisonData[part])) {
+                self.watchers[fullDotNotationKey].forEach(callback => callback(target));
+              }
+
+              return comparisonData[part];
+            }, self.unobservedData);
+          });
+        } else {
+          // Let's walk through the watchers with "dot-notation" (foo.bar) and see
+          // if this mutation fits any of them.
+          Object.keys(self.watchers).filter(i => i.includes('.')).forEach(fullDotNotationKey => {
+            let dotNotationParts = fullDotNotationKey.split('.'); // If this dot-notation watcher's last "part" doesn't match the current
+            // key, then skip it early for performance reasons.
+
+            if (key !== dotNotationParts[dotNotationParts.length - 1]) return; // Now, walk through the dot-notation "parts" recursively to find
+            // a match, and call the watcher if one's found.
+
+            dotNotationParts.reduce((comparisonData, part) => {
+              if (Object.is(target, comparisonData)) {
+                // Run the watchers.
+                self.watchers[fullDotNotationKey].forEach(callback => callback(target[key]));
+              }
+
+              return comparisonData[part];
+            }, self.unobservedData);
+          });
+        } // Don't react to data changes for cases like the `x-created` hook.
+
+
+        if (self.pauseReactivity) return;
+        updateDom();
+      });
+    }
+
+    walkAndSkipNestedComponents(el, callback, initializeComponentCallback = () => {}) {
+      walk(el, el => {
+        // We've hit a component.
+        if (el.hasAttribute('x-data')) {
+          // If it's not the current one.
+          if (!el.isSameNode(this.$el)) {
+            // Initialize it if it's not.
+            if (!el.__x) initializeComponentCallback(el); // Now we'll let that sub-component deal with itself.
+
+            return false;
+          }
+        }
+
+        return callback(el);
+      });
+    }
+
+    initializeElements(rootEl, extraVars = () => {}) {
+      this.walkAndSkipNestedComponents(rootEl, el => {
+        // Don't touch spawns from for loop
+        if (el.__x_for_key !== undefined) return false; // Don't touch spawns from if directives
+
+        if (el.__x_inserted_me !== undefined) return false;
+        this.initializeElement(el, extraVars);
+      }, el => {
+        el.__x = new Component(el);
+      });
+      this.executeAndClearRemainingShowDirectiveStack();
+      this.executeAndClearNextTickStack(rootEl);
+    }
+
+    initializeElement(el, extraVars) {
+      // To support class attribute merging, we have to know what the element's
+      // original class attribute looked like for reference.
+      if (el.hasAttribute('class') && getXAttrs(el, this).length > 0) {
+        el.__x_original_classes = convertClassStringToArray(el.getAttribute('class'));
+      }
+
+      this.registerListeners(el, extraVars);
+      this.resolveBoundAttributes(el, true, extraVars);
+    }
+
+    updateElements(rootEl, extraVars = () => {}) {
+      this.walkAndSkipNestedComponents(rootEl, el => {
+        // Don't touch spawns from for loop (and check if the root is actually a for loop in a parent, don't skip it.)
+        if (el.__x_for_key !== undefined && !el.isSameNode(this.$el)) return false;
+        this.updateElement(el, extraVars);
+      }, el => {
+        el.__x = new Component(el);
+      });
+      this.executeAndClearRemainingShowDirectiveStack();
+      this.executeAndClearNextTickStack(rootEl);
+    }
+
+    executeAndClearNextTickStack(el) {
+      // Skip spawns from alpine directives
+      if (el === this.$el && this.nextTickStack.length > 0) {
+        // We run the tick stack after the next frame to allow any
+        // running transitions to pass the initial show stage.
+        requestAnimationFrame(() => {
+          while (this.nextTickStack.length > 0) {
+            this.nextTickStack.shift()();
+          }
+        });
+      }
+    }
+
+    executeAndClearRemainingShowDirectiveStack() {
+      // The goal here is to start all the x-show transitions
+      // and build a nested promise chain so that elements
+      // only hide when the children are finished hiding.
+      this.showDirectiveStack.reverse().map(handler => {
+        return new Promise((resolve, reject) => {
+          handler(resolve, reject);
+        });
+      }).reduce((promiseChain, promise) => {
+        return promiseChain.then(() => {
+          return promise.then(finishElement => {
+            finishElement();
+          });
+        });
+      }, Promise.resolve(() => {})).catch(e => {
+        if (e !== TRANSITION_CANCELLED) throw e;
+      }); // We've processed the handler stack. let's clear it.
+
+      this.showDirectiveStack = [];
+      this.showDirectiveLastElement = undefined;
+    }
+
+    updateElement(el, extraVars) {
+      this.resolveBoundAttributes(el, false, extraVars);
+    }
+
+    registerListeners(el, extraVars) {
+      getXAttrs(el, this).forEach(({
+        type,
+        value,
+        modifiers,
+        expression
+      }) => {
+        switch (type) {
+          case 'on':
+            registerListener(this, el, value, modifiers, expression, extraVars);
+            break;
+
+          case 'model':
+            registerModelListener(this, el, modifiers, expression, extraVars);
+            break;
+        }
+      });
+    }
+
+    resolveBoundAttributes(el, initialUpdate = false, extraVars) {
+      let attrs = getXAttrs(el, this);
+      attrs.forEach(({
+        type,
+        value,
+        modifiers,
+        expression
+      }) => {
+        switch (type) {
+          case 'model':
+            handleAttributeBindingDirective(this, el, 'value', expression, extraVars, type, modifiers);
+            break;
+
+          case 'bind':
+            // The :key binding on an x-for is special, ignore it.
+            if (el.tagName.toLowerCase() === 'template' && value === 'key') return;
+            handleAttributeBindingDirective(this, el, value, expression, extraVars, type, modifiers);
+            break;
+
+          case 'text':
+            var output = this.evaluateReturnExpression(el, expression, extraVars);
+            handleTextDirective(el, output, expression);
+            break;
+
+          case 'html':
+            handleHtmlDirective(this, el, expression, extraVars);
+            break;
+
+          case 'show':
+            var output = this.evaluateReturnExpression(el, expression, extraVars);
+            handleShowDirective(this, el, output, modifiers, initialUpdate);
+            break;
+
+          case 'if':
+            // If this element also has x-for on it, don't process x-if.
+            // We will let the "x-for" directive handle the "if"ing.
+            if (attrs.some(i => i.type === 'for')) return;
+            var output = this.evaluateReturnExpression(el, expression, extraVars);
+            handleIfDirective(this, el, output, initialUpdate, extraVars);
+            break;
+
+          case 'for':
+            handleForDirective(this, el, expression, initialUpdate, extraVars);
+            break;
+
+          case 'cloak':
+            el.removeAttribute('x-cloak');
+            break;
+        }
+      });
+    }
+
+    evaluateReturnExpression(el, expression, extraVars = () => {}) {
+      return saferEval(el, expression, this.$data, _objectSpread2(_objectSpread2({}, extraVars()), {}, {
+        $dispatch: this.getDispatchFunction(el)
+      }));
+    }
+
+    evaluateCommandExpression(el, expression, extraVars = () => {}) {
+      return saferEvalNoReturn(el, expression, this.$data, _objectSpread2(_objectSpread2({}, extraVars()), {}, {
+        $dispatch: this.getDispatchFunction(el)
+      }));
+    }
+
+    getDispatchFunction(el) {
+      return (event, detail = {}) => {
+        el.dispatchEvent(new CustomEvent(event, {
+          detail,
+          bubbles: true
+        }));
+      };
+    }
+
+    listenForNewElementsToInitialize() {
+      const targetNode = this.$el;
+      const observerOptions = {
+        childList: true,
+        attributes: true,
+        subtree: true
+      };
+      const observer = new MutationObserver(mutations => {
+        for (let i = 0; i < mutations.length; i++) {
+          // Filter out mutations triggered from child components.
+          const closestParentComponent = mutations[i].target.closest('[x-data]');
+          if (!(closestParentComponent && closestParentComponent.isSameNode(this.$el))) continue;
+
+          if (mutations[i].type === 'attributes' && mutations[i].attributeName === 'x-data') {
+            const xAttr = mutations[i].target.getAttribute('x-data') || '{}';
+            const rawData = saferEval(this.$el, xAttr, {
+              $el: this.$el
+            });
+            Object.keys(rawData).forEach(key => {
+              if (this.$data[key] !== rawData[key]) {
+                this.$data[key] = rawData[key];
+              }
+            });
+          }
+
+          if (mutations[i].addedNodes.length > 0) {
+            mutations[i].addedNodes.forEach(node => {
+              if (node.nodeType !== 1 || node.__x_inserted_me) return;
+
+              if (node.matches('[x-data]') && !node.__x) {
+                node.__x = new Component(node);
+                return;
+              }
+
+              this.initializeElements(node);
+            });
+          }
+        }
+      });
+      observer.observe(targetNode, observerOptions);
+    }
+
+    getRefsProxy() {
+      var self = this;
+      var refObj = {};
+      // One of the goals of this is to not hold elements in memory, but rather re-evaluate
+      // the DOM when the system needs something from it. This way, the framework is flexible and
+      // friendly to outside DOM changes from libraries like Vue/Livewire.
+      // For this reason, I'm using an "on-demand" proxy to fake a "$refs" object.
+
+      return new Proxy(refObj, {
+        get(object, property) {
+          if (property === '$isAlpineProxy') return true;
+          var ref; // We can't just query the DOM because it's hard to filter out refs in
+          // nested components.
+
+          self.walkAndSkipNestedComponents(self.$el, el => {
+            if (el.hasAttribute('x-ref') && el.getAttribute('x-ref') === property) {
+              ref = el;
+            }
+          });
+          return ref;
+        }
+
+      });
+    }
+
+  }
+
+  const Alpine = {
+    version: "2.8.0",
+    pauseMutationObserver: false,
+    magicProperties: {},
+    onComponentInitializeds: [],
+    onBeforeComponentInitializeds: [],
+    ignoreFocusedForValueBinding: false,
+    start: async function start() {
+      if (!isTesting()) {
+        await domReady();
+      }
+
+      this.discoverComponents(el => {
+        this.initializeComponent(el);
+      }); // It's easier and more performant to just support Turbolinks than listen
+      // to MutationObserver mutations at the document level.
+
+      document.addEventListener("turbolinks:load", () => {
+        this.discoverUninitializedComponents(el => {
+          this.initializeComponent(el);
+        });
+      });
+      this.listenForNewUninitializedComponentsAtRunTime();
+    },
+    discoverComponents: function discoverComponents(callback) {
+      const rootEls = document.querySelectorAll('[x-data]');
+      rootEls.forEach(rootEl => {
+        callback(rootEl);
+      });
+    },
+    discoverUninitializedComponents: function discoverUninitializedComponents(callback, el = null) {
+      const rootEls = (el || document).querySelectorAll('[x-data]');
+      Array.from(rootEls).filter(el => el.__x === undefined).forEach(rootEl => {
+        callback(rootEl);
+      });
+    },
+    listenForNewUninitializedComponentsAtRunTime: function listenForNewUninitializedComponentsAtRunTime() {
+      const targetNode = document.querySelector('body');
+      const observerOptions = {
+        childList: true,
+        attributes: true,
+        subtree: true
+      };
+      const observer = new MutationObserver(mutations => {
+        if (this.pauseMutationObserver) return;
+
+        for (let i = 0; i < mutations.length; i++) {
+          if (mutations[i].addedNodes.length > 0) {
+            mutations[i].addedNodes.forEach(node => {
+              // Discard non-element nodes (like line-breaks)
+              if (node.nodeType !== 1) return; // Discard any changes happening within an existing component.
+              // They will take care of themselves.
+
+              if (node.parentElement && node.parentElement.closest('[x-data]')) return;
+              this.discoverUninitializedComponents(el => {
+                this.initializeComponent(el);
+              }, node.parentElement);
+            });
+          }
+        }
+      });
+      observer.observe(targetNode, observerOptions);
+    },
+    initializeComponent: function initializeComponent(el) {
+      if (!el.__x) {
+        // Wrap in a try/catch so that we don't prevent other components
+        // from initializing when one component contains an error.
+        try {
+          el.__x = new Component(el);
+        } catch (error) {
+          setTimeout(() => {
+            throw error;
+          }, 0);
+        }
+      }
+    },
+    clone: function clone(component, newEl) {
+      if (!newEl.__x) {
+        newEl.__x = new Component(newEl, component);
+      }
+    },
+    addMagicProperty: function addMagicProperty(name, callback) {
+      this.magicProperties[name] = callback;
+    },
+    onComponentInitialized: function onComponentInitialized(callback) {
+      this.onComponentInitializeds.push(callback);
+    },
+    onBeforeComponentInitialized: function onBeforeComponentInitialized(callback) {
+      this.onBeforeComponentInitializeds.push(callback);
+    }
+  };
+
+  if (!isTesting()) {
+    window.Alpine = Alpine;
+
+    if (window.deferLoadingAlpine) {
+      window.deferLoadingAlpine(function () {
+        window.Alpine.start();
+      });
+    } else {
+      window.Alpine.start();
+    }
+  }
+
+  return Alpine;
+
+})));
+
+
+/***/ }),
+
 /***/ "./node_modules/axios/index.js":
 /*!*************************************!*\
   !*** ./node_modules/axios/index.js ***!
@@ -1834,6 +3785,43 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./resources/dist/js/adm_main.js":
+/*!***************************************!*\
+  !*** ./resources/dist/js/adm_main.js ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/**
+ * We'll load the axios HTTP library which allows us to easily issue requests
+ * to our Laravel back-end. This library automatically handles sending the
+ * CSRF token as a header based on the value of the "XSRF" token cookie.
+ */
+
+window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+
+__webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.js");
+
+__webpack_require__(/*! popper.js */ "./node_modules/popper.js/dist/esm/popper.js");
+
+window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+/**
+ * Echo exposes an expressive API for subscribing to channels and listening
+ * for events that are broadcast by Laravel. Echo and event broadcasting
+ * allows your team to easily build robust real-time web applications.
+ */
+// import Echo from 'laravel-echo';
+// window.Pusher = require('pusher-js');
+// window.Echo = new Echo({
+//     broadcaster: 'pusher',
+//     key: process.env.MIX_PUSHER_APP_KEY,
+//     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
+//     forceTLS: true
+// });
+
+/***/ }),
+
 /***/ "./resources/dist/js/custom.js":
 /*!*************************************!*\
   !*** ./resources/dist/js/custom.js ***!
@@ -1852,15 +3840,15 @@ $(function () {
   $(".search-box a, .search-box .app-search .srh-btn").on('click', function () {
     $(".app-search").toggle(200);
     $(".app-search input").focus();
-  }); // ============================================================== 
+  }); // ==============================================================
   // Resize all elements
-  // ============================================================== 
+  // ==============================================================
 
   $("body, .page-wrapper").trigger("resize");
   $(".page-wrapper").delay(20).show(); //****************************
 
   /* This is for the mini-sidebar if width is less then 1170*/
-  //**************************** 
+  //****************************
 
   var setsidebartype = function setsidebartype() {
     var width = window.innerWidth > 0 ? window.innerWidth : this.screen.width;
@@ -7095,6 +9083,243 @@ $(function () {
 })));
 //# sourceMappingURL=bootstrap.js.map
 
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[8].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[8].oneOf[1].use[2]!./node_modules/boxicons/css/boxicons.css":
+/*!**********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[8].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[8].oneOf[1].use[2]!./node_modules/boxicons/css/boxicons.css ***!
+  \**********************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../css-loader/dist/runtime/getUrl.js */ "./node_modules/css-loader/dist/runtime/getUrl.js");
+/* harmony import */ var _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _fonts_boxicons_eot__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../fonts/boxicons.eot */ "./node_modules/boxicons/fonts/boxicons.eot");
+/* harmony import */ var _fonts_boxicons_woff2__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../fonts/boxicons.woff2 */ "./node_modules/boxicons/fonts/boxicons.woff2");
+/* harmony import */ var _fonts_boxicons_woff__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../fonts/boxicons.woff */ "./node_modules/boxicons/fonts/boxicons.woff");
+/* harmony import */ var _fonts_boxicons_ttf__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../fonts/boxicons.ttf */ "./node_modules/boxicons/fonts/boxicons.ttf");
+/* harmony import */ var _fonts_boxicons_svg__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../fonts/boxicons.svg */ "./node_modules/boxicons/fonts/boxicons.svg");
+// Imports
+
+
+
+
+
+
+
+var ___CSS_LOADER_EXPORT___ = _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+var ___CSS_LOADER_URL_REPLACEMENT_0___ = _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_fonts_boxicons_eot__WEBPACK_IMPORTED_MODULE_2__.default);
+var ___CSS_LOADER_URL_REPLACEMENT_1___ = _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_fonts_boxicons_woff2__WEBPACK_IMPORTED_MODULE_3__.default);
+var ___CSS_LOADER_URL_REPLACEMENT_2___ = _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_fonts_boxicons_woff__WEBPACK_IMPORTED_MODULE_4__.default);
+var ___CSS_LOADER_URL_REPLACEMENT_3___ = _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_fonts_boxicons_ttf__WEBPACK_IMPORTED_MODULE_5__.default);
+var ___CSS_LOADER_URL_REPLACEMENT_4___ = _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_fonts_boxicons_svg__WEBPACK_IMPORTED_MODULE_6__.default, { hash: "?#boxicons" });
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "@font-face\n{\n    font-family: 'boxicons';\n    font-weight: normal;\n    font-style: normal;\n\n    src: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n    src: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ") format('embedded-opentype'),\n    url(" + ___CSS_LOADER_URL_REPLACEMENT_1___ + ") format('woff2'),\n    url(" + ___CSS_LOADER_URL_REPLACEMENT_2___ + ") format('woff'),\n    url(" + ___CSS_LOADER_URL_REPLACEMENT_3___ + ") format('truetype'),\n    url(" + ___CSS_LOADER_URL_REPLACEMENT_4___ + ") format('svg');\n}\n.bx\n{\n    font-family: 'boxicons' !important;\n    font-weight: normal;\n    font-style: normal;\n    font-variant: normal;\n    line-height: 1;\n\n    display: inline-block;\n\n    text-transform: none;\n\n    speak: none;\n    -webkit-font-smoothing: antialiased;\n    -moz-osx-font-smoothing: grayscale;\n}\n.bx-ul\n{\n    margin-left: 2em;\n    padding-left: 0;\n\n    list-style: none;\n}\n.bx-ul > li\n{\n    position: relative;\n}\n.bx-ul .bx\n{\n    font-size: inherit;\n    line-height: inherit;\n\n    position: absolute;\n    left: -2em;\n\n    width: 2em;\n\n    text-align: center;\n}\n@-webkit-keyframes spin\n{\n    0%\n    {\n        transform: rotate(0);\n    }\n    100%\n    {\n        transform: rotate(359deg);\n    }\n}\n@keyframes spin\n{\n    0%\n    {\n        transform: rotate(0);\n    }\n    100%\n    {\n        transform: rotate(359deg);\n    }\n}\n@-webkit-keyframes burst\n{\n    0%\n    {\n        transform: scale(1);\n\n        opacity: 1;\n    }\n    90%\n    {\n        transform: scale(1.5);\n\n        opacity: 0;\n    }\n}\n@keyframes burst\n{\n    0%\n    {\n        transform: scale(1);\n\n        opacity: 1;\n    }\n    90%\n    {\n        transform: scale(1.5);\n\n        opacity: 0;\n    }\n}\n@-webkit-keyframes flashing\n{\n    0%\n    {\n        opacity: 1;\n    }\n    45%\n    {\n        opacity: 0;\n    }\n    90%\n    {\n        opacity: 1;\n    }\n}\n@keyframes flashing\n{\n    0%\n    {\n        opacity: 1;\n    }\n    45%\n    {\n        opacity: 0;\n    }\n    90%\n    {\n        opacity: 1;\n    }\n}\n@-webkit-keyframes fade-left\n{\n    0%\n    {\n        transform: translateX(0);\n\n        opacity: 1;\n    }\n    75%\n    {\n        transform: translateX(-20px);\n\n        opacity: 0;\n    }\n}\n@keyframes fade-left\n{\n    0%\n    {\n        transform: translateX(0);\n\n        opacity: 1;\n    }\n    75%\n    {\n        transform: translateX(-20px);\n\n        opacity: 0;\n    }\n}\n@-webkit-keyframes fade-right\n{\n    0%\n    {\n        transform: translateX(0);\n\n        opacity: 1;\n    }\n    75%\n    {\n        transform: translateX(20px);\n\n        opacity: 0;\n    }\n}\n@keyframes fade-right\n{\n    0%\n    {\n        transform: translateX(0);\n\n        opacity: 1;\n    }\n    75%\n    {\n        transform: translateX(20px);\n\n        opacity: 0;\n    }\n}\n@-webkit-keyframes fade-up\n{\n    0%\n    {\n        transform: translateY(0);\n\n        opacity: 1;\n    }\n    75%\n    {\n        transform: translateY(-20px);\n\n        opacity: 0;\n    }\n}\n@keyframes fade-up\n{\n    0%\n    {\n        transform: translateY(0);\n\n        opacity: 1;\n    }\n    75%\n    {\n        transform: translateY(-20px);\n\n        opacity: 0;\n    }\n}\n@-webkit-keyframes fade-down\n{\n    0%\n    {\n        transform: translateY(0);\n\n        opacity: 1;\n    }\n    75%\n    {\n        transform: translateY(20px);\n\n        opacity: 0;\n    }\n}\n@keyframes fade-down\n{\n    0%\n    {\n        transform: translateY(0);\n\n        opacity: 1;\n    }\n    75%\n    {\n        transform: translateY(20px);\n\n        opacity: 0;\n    }\n}\n@-webkit-keyframes tada\n{\n    from\n    {\n        transform: scale3d(1, 1, 1);\n    }\n\n    10%,\n    20%\n    {\n        transform: scale3d(.95, .95, .95) rotate3d(0, 0, 1, -10deg);\n    }\n\n    30%,\n    50%,\n    70%,\n    90%\n    {\n        transform: scale3d(1, 1, 1) rotate3d(0, 0, 1, 10deg);\n    }\n\n    40%,\n    60%,\n    80%\n    {\n        transform: scale3d(1, 1, 1) rotate3d(0, 0, 1, -10deg);\n    }\n\n    to\n    {\n        transform: scale3d(1, 1, 1);\n    }\n}\n\n@keyframes tada\n{\n    from\n    {\n        transform: scale3d(1, 1, 1);\n    }\n\n    10%,\n    20%\n    {\n        transform: scale3d(.95, .95, .95) rotate3d(0, 0, 1, -10deg);\n    }\n\n    30%,\n    50%,\n    70%,\n    90%\n    {\n        transform: scale3d(1, 1, 1) rotate3d(0, 0, 1, 10deg);\n    }\n\n    40%,\n    60%,\n    80%\n    {\n        transform: rotate3d(0, 0, 1, -10deg);\n    }\n\n    to\n    {\n        transform: scale3d(1, 1, 1);\n    }\n}\n.bx-spin\n{\n    -webkit-animation: spin 2s linear infinite;\n            animation: spin 2s linear infinite;\n}\n.bx-spin-hover:hover\n{\n    -webkit-animation: spin 2s linear infinite;\n            animation: spin 2s linear infinite;\n}\n\n.bx-tada\n{\n    -webkit-animation: tada 1.5s ease infinite;\n            animation: tada 1.5s ease infinite;\n}\n.bx-tada-hover:hover\n{\n    -webkit-animation: tada 1.5s ease infinite;\n            animation: tada 1.5s ease infinite;\n}\n\n.bx-flashing\n{\n    -webkit-animation: flashing 1.5s infinite linear;\n            animation: flashing 1.5s infinite linear;\n}\n.bx-flashing-hover:hover\n{\n    -webkit-animation: flashing 1.5s infinite linear;\n            animation: flashing 1.5s infinite linear;\n}\n\n.bx-burst\n{\n    -webkit-animation: burst 1.5s infinite linear;\n            animation: burst 1.5s infinite linear;\n}\n.bx-burst-hover:hover\n{\n    -webkit-animation: burst 1.5s infinite linear;\n            animation: burst 1.5s infinite linear;\n}\n.bx-fade-up\n{\n    -webkit-animation: fade-up 1.5s infinite linear;\n            animation: fade-up 1.5s infinite linear;\n}\n.bx-fade-up-hover:hover\n{\n    -webkit-animation: fade-up 1.5s infinite linear;\n            animation: fade-up 1.5s infinite linear;\n}\n.bx-fade-down\n{\n    -webkit-animation: fade-down 1.5s infinite linear;\n            animation: fade-down 1.5s infinite linear;\n}\n.bx-fade-down-hover:hover\n{\n    -webkit-animation: fade-down 1.5s infinite linear;\n            animation: fade-down 1.5s infinite linear;\n}\n.bx-fade-left\n{\n    -webkit-animation: fade-left 1.5s infinite linear;\n            animation: fade-left 1.5s infinite linear;\n}\n.bx-fade-left-hover:hover\n{\n    -webkit-animation: fade-left 1.5s infinite linear;\n            animation: fade-left 1.5s infinite linear;\n}\n.bx-fade-right\n{\n    -webkit-animation: fade-right 1.5s infinite linear;\n            animation: fade-right 1.5s infinite linear;\n}\n.bx-fade-right-hover:hover\n{\n    -webkit-animation: fade-right 1.5s infinite linear;\n            animation: fade-right 1.5s infinite linear;\n}\n.bx-xs\n{\n    font-size: 1rem!important;\n}\n.bx-sm\n{\n    font-size: 1.55rem!important;\n}\n.bx-md\n{\n    font-size: 2.25rem!important;\n}\n.bx-fw\n{\n    font-size: 1.2857142857em;\n    line-height: .8em;\n\n    width: 1.2857142857em;\n    height: .8em;\n    margin-top: -.2em!important;\n\n    vertical-align: middle;\n}\n\n.bx-lg\n{\n    font-size: 3.0rem!important;\n}\n.bx-pull-left\n{\n    float: left;\n\n    margin-right: .3em!important;\n}\n\n.bx-pull-right\n{\n    float: right;\n\n    margin-left: .3em!important;\n}\n.bx-rotate-90\n{\n    transform: rotate(90deg);\n\n    -ms-filter: 'progid:DXImageTransform.Microsoft.BasicImage(rotation=1)';\n}\n.bx-rotate-180\n{\n    transform: rotate(180deg);\n\n    -ms-filter: 'progid:DXImageTransform.Microsoft.BasicImage(rotation=2)';\n}\n.bx-rotate-270\n{\n    transform: rotate(270deg);\n\n    -ms-filter: 'progid:DXImageTransform.Microsoft.BasicImage(rotation=3)';\n}\n.bx-flip-horizontal\n{\n    transform: scaleX(-1);\n\n    -ms-filter: 'progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1)';\n}\n.bx-flip-vertical\n{\n    transform: scaleY(-1);\n\n    -ms-filter: 'progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)';\n}\n.bx-border\n{\n    padding: .25em;\n\n    border: .07em solid rgba(0,0,0,.1);\n    border-radius: .25em;\n}\n.bx-border-circle\n{\n    padding: .25em;\n\n    border: .07em solid rgba(0,0,0,.1);\n    border-radius: 50%;\n}\n\n  .bx-abacus:before {\n    content: \"\\e900\";\n  }\n  .bx-accessibility:before {\n    content: \"\\e901\";\n  }\n  .bx-add-to-queue:before {\n    content: \"\\e902\";\n  }\n  .bx-adjust:before {\n    content: \"\\e903\";\n  }\n  .bx-alarm:before {\n    content: \"\\e904\";\n  }\n  .bx-alarm-add:before {\n    content: \"\\e905\";\n  }\n  .bx-alarm-exclamation:before {\n    content: \"\\e906\";\n  }\n  .bx-alarm-off:before {\n    content: \"\\e907\";\n  }\n  .bx-alarm-snooze:before {\n    content: \"\\e908\";\n  }\n  .bx-album:before {\n    content: \"\\e909\";\n  }\n  .bx-align-justify:before {\n    content: \"\\e90a\";\n  }\n  .bx-align-left:before {\n    content: \"\\e90b\";\n  }\n  .bx-align-middle:before {\n    content: \"\\e90c\";\n  }\n  .bx-align-right:before {\n    content: \"\\e90d\";\n  }\n  .bx-analyse:before {\n    content: \"\\e90e\";\n  }\n  .bx-anchor:before {\n    content: \"\\e90f\";\n  }\n  .bx-angry:before {\n    content: \"\\e910\";\n  }\n  .bx-aperture:before {\n    content: \"\\e911\";\n  }\n  .bx-arch:before {\n    content: \"\\e912\";\n  }\n  .bx-archive:before {\n    content: \"\\e913\";\n  }\n  .bx-archive-in:before {\n    content: \"\\e914\";\n  }\n  .bx-archive-out:before {\n    content: \"\\e915\";\n  }\n  .bx-area:before {\n    content: \"\\e916\";\n  }\n  .bx-arrow-back:before {\n    content: \"\\e917\";\n  }\n  .bx-arrow-from-bottom:before {\n    content: \"\\e918\";\n  }\n  .bx-arrow-from-left:before {\n    content: \"\\e919\";\n  }\n  .bx-arrow-from-right:before {\n    content: \"\\e91a\";\n  }\n  .bx-arrow-from-top:before {\n    content: \"\\e91b\";\n  }\n  .bx-arrow-to-bottom:before {\n    content: \"\\e91c\";\n  }\n  .bx-arrow-to-left:before {\n    content: \"\\e91d\";\n  }\n  .bx-arrow-to-right:before {\n    content: \"\\e91e\";\n  }\n  .bx-arrow-to-top:before {\n    content: \"\\e91f\";\n  }\n  .bx-at:before {\n    content: \"\\e920\";\n  }\n  .bx-atom:before {\n    content: \"\\e921\";\n  }\n  .bx-award:before {\n    content: \"\\e922\";\n  }\n  .bx-badge:before {\n    content: \"\\e923\";\n  }\n  .bx-badge-check:before {\n    content: \"\\e924\";\n  }\n  .bx-ball:before {\n    content: \"\\e925\";\n  }\n  .bx-band-aid:before {\n    content: \"\\e926\";\n  }\n  .bx-bar-chart:before {\n    content: \"\\e927\";\n  }\n  .bx-bar-chart-alt:before {\n    content: \"\\e928\";\n  }\n  .bx-bar-chart-alt-2:before {\n    content: \"\\e929\";\n  }\n  .bx-bar-chart-square:before {\n    content: \"\\e92a\";\n  }\n  .bx-barcode:before {\n    content: \"\\e92b\";\n  }\n  .bx-barcode-reader:before {\n    content: \"\\e92c\";\n  }\n  .bx-baseball:before {\n    content: \"\\e92d\";\n  }\n  .bx-basket:before {\n    content: \"\\e92e\";\n  }\n  .bx-basketball:before {\n    content: \"\\e92f\";\n  }\n  .bx-bath:before {\n    content: \"\\e930\";\n  }\n  .bx-battery:before {\n    content: \"\\e931\";\n  }\n  .bx-bed:before {\n    content: \"\\e932\";\n  }\n  .bx-been-here:before {\n    content: \"\\e933\";\n  }\n  .bx-beer:before {\n    content: \"\\e934\";\n  }\n  .bx-bell:before {\n    content: \"\\e935\";\n  }\n  .bx-bell-minus:before {\n    content: \"\\e936\";\n  }\n  .bx-bell-off:before {\n    content: \"\\e937\";\n  }\n  .bx-bell-plus:before {\n    content: \"\\e938\";\n  }\n  .bx-bible:before {\n    content: \"\\e939\";\n  }\n  .bx-bitcoin:before {\n    content: \"\\e93a\";\n  }\n  .bx-blanket:before {\n    content: \"\\e93b\";\n  }\n  .bx-block:before {\n    content: \"\\e93c\";\n  }\n  .bx-bluetooth:before {\n    content: \"\\e93d\";\n  }\n  .bx-body:before {\n    content: \"\\e93e\";\n  }\n  .bx-bold:before {\n    content: \"\\e93f\";\n  }\n  .bx-bolt-circle:before {\n    content: \"\\e940\";\n  }\n  .bx-bomb:before {\n    content: \"\\e941\";\n  }\n  .bx-bone:before {\n    content: \"\\e942\";\n  }\n  .bx-bong:before {\n    content: \"\\e943\";\n  }\n  .bx-book:before {\n    content: \"\\e944\";\n  }\n  .bx-book-add:before {\n    content: \"\\e945\";\n  }\n  .bx-book-alt:before {\n    content: \"\\e946\";\n  }\n  .bx-book-bookmark:before {\n    content: \"\\e947\";\n  }\n  .bx-book-content:before {\n    content: \"\\e948\";\n  }\n  .bx-book-heart:before {\n    content: \"\\e949\";\n  }\n  .bx-bookmark:before {\n    content: \"\\e94a\";\n  }\n  .bx-bookmark-alt:before {\n    content: \"\\e94b\";\n  }\n  .bx-bookmark-alt-minus:before {\n    content: \"\\e94c\";\n  }\n  .bx-bookmark-alt-plus:before {\n    content: \"\\e94d\";\n  }\n  .bx-bookmark-heart:before {\n    content: \"\\e94e\";\n  }\n  .bx-bookmark-minus:before {\n    content: \"\\e94f\";\n  }\n  .bx-bookmark-plus:before {\n    content: \"\\e950\";\n  }\n  .bx-bookmarks:before {\n    content: \"\\e951\";\n  }\n  .bx-book-open:before {\n    content: \"\\e952\";\n  }\n  .bx-book-reader:before {\n    content: \"\\e953\";\n  }\n  .bx-border-all:before {\n    content: \"\\e954\";\n  }\n  .bx-border-bottom:before {\n    content: \"\\e955\";\n  }\n  .bx-border-inner:before {\n    content: \"\\e956\";\n  }\n  .bx-border-left:before {\n    content: \"\\e957\";\n  }\n  .bx-border-none:before {\n    content: \"\\e958\";\n  }\n  .bx-border-outer:before {\n    content: \"\\e959\";\n  }\n  .bx-border-radius:before {\n    content: \"\\e95a\";\n  }\n  .bx-border-right:before {\n    content: \"\\e95b\";\n  }\n  .bx-border-top:before {\n    content: \"\\e95c\";\n  }\n  .bx-bot:before {\n    content: \"\\e95d\";\n  }\n  .bx-bowling-ball:before {\n    content: \"\\e95e\";\n  }\n  .bx-box:before {\n    content: \"\\e95f\";\n  }\n  .bx-bracket:before {\n    content: \"\\e960\";\n  }\n  .bx-braille:before {\n    content: \"\\e961\";\n  }\n  .bx-brain:before {\n    content: \"\\e962\";\n  }\n  .bx-briefcase:before {\n    content: \"\\e963\";\n  }\n  .bx-briefcase-alt:before {\n    content: \"\\e964\";\n  }\n  .bx-briefcase-alt-2:before {\n    content: \"\\e965\";\n  }\n  .bx-brightness:before {\n    content: \"\\e966\";\n  }\n  .bx-brightness-half:before {\n    content: \"\\e967\";\n  }\n  .bx-broadcast:before {\n    content: \"\\e968\";\n  }\n  .bx-brush:before {\n    content: \"\\e969\";\n  }\n  .bx-brush-alt:before {\n    content: \"\\e96a\";\n  }\n  .bx-bug:before {\n    content: \"\\e96b\";\n  }\n  .bx-bug-alt:before {\n    content: \"\\e96c\";\n  }\n  .bx-building:before {\n    content: \"\\e96d\";\n  }\n  .bx-building-house:before {\n    content: \"\\e96e\";\n  }\n  .bx-buildings:before {\n    content: \"\\e96f\";\n  }\n  .bx-bulb:before {\n    content: \"\\e970\";\n  }\n  .bx-bullseye:before {\n    content: \"\\e971\";\n  }\n  .bx-buoy:before {\n    content: \"\\e972\";\n  }\n  .bx-bus:before {\n    content: \"\\e973\";\n  }\n  .bx-bus-school:before {\n    content: \"\\e974\";\n  }\n  .bx-cabinet:before {\n    content: \"\\e975\";\n  }\n  .bx-cake:before {\n    content: \"\\e976\";\n  }\n  .bx-calculator:before {\n    content: \"\\e977\";\n  }\n  .bx-calendar:before {\n    content: \"\\e978\";\n  }\n  .bx-calendar-alt:before {\n    content: \"\\e979\";\n  }\n  .bx-calendar-check:before {\n    content: \"\\e97a\";\n  }\n  .bx-calendar-edit:before {\n    content: \"\\e97b\";\n  }\n  .bx-calendar-event:before {\n    content: \"\\e97c\";\n  }\n  .bx-calendar-exclamation:before {\n    content: \"\\e97d\";\n  }\n  .bx-calendar-heart:before {\n    content: \"\\e97e\";\n  }\n  .bx-calendar-minus:before {\n    content: \"\\e97f\";\n  }\n  .bx-calendar-plus:before {\n    content: \"\\e980\";\n  }\n  .bx-calendar-star:before {\n    content: \"\\e981\";\n  }\n  .bx-calendar-week:before {\n    content: \"\\e982\";\n  }\n  .bx-calendar-x:before {\n    content: \"\\e983\";\n  }\n  .bx-camera:before {\n    content: \"\\e984\";\n  }\n  .bx-camera-home:before {\n    content: \"\\e985\";\n  }\n  .bx-camera-movie:before {\n    content: \"\\e986\";\n  }\n  .bx-camera-off:before {\n    content: \"\\e987\";\n  }\n  .bx-capsule:before {\n    content: \"\\e988\";\n  }\n  .bx-captions:before {\n    content: \"\\e989\";\n  }\n  .bx-car:before {\n    content: \"\\e98a\";\n  }\n  .bx-card:before {\n    content: \"\\e98b\";\n  }\n  .bx-caret-down:before {\n    content: \"\\e98c\";\n  }\n  .bx-caret-down-circle:before {\n    content: \"\\e98d\";\n  }\n  .bx-caret-down-square:before {\n    content: \"\\e98e\";\n  }\n  .bx-caret-left:before {\n    content: \"\\e98f\";\n  }\n  .bx-caret-left-circle:before {\n    content: \"\\e990\";\n  }\n  .bx-caret-left-square:before {\n    content: \"\\e991\";\n  }\n  .bx-caret-right:before {\n    content: \"\\e992\";\n  }\n  .bx-caret-right-circle:before {\n    content: \"\\e993\";\n  }\n  .bx-caret-right-square:before {\n    content: \"\\e994\";\n  }\n  .bx-caret-up:before {\n    content: \"\\e995\";\n  }\n  .bx-caret-up-circle:before {\n    content: \"\\e996\";\n  }\n  .bx-caret-up-square:before {\n    content: \"\\e997\";\n  }\n  .bx-carousel:before {\n    content: \"\\e998\";\n  }\n  .bx-cart:before {\n    content: \"\\e999\";\n  }\n  .bx-cart-alt:before {\n    content: \"\\e99a\";\n  }\n  .bx-cast:before {\n    content: \"\\e99b\";\n  }\n  .bx-category:before {\n    content: \"\\e99c\";\n  }\n  .bx-category-alt:before {\n    content: \"\\e99d\";\n  }\n  .bx-cctv:before {\n    content: \"\\e99e\";\n  }\n  .bx-certification:before {\n    content: \"\\e99f\";\n  }\n  .bx-chair:before {\n    content: \"\\e9a0\";\n  }\n  .bx-chalkboard:before {\n    content: \"\\e9a1\";\n  }\n  .bx-chart:before {\n    content: \"\\e9a2\";\n  }\n  .bx-chat:before {\n    content: \"\\e9a3\";\n  }\n  .bx-check:before {\n    content: \"\\e9a4\";\n  }\n  .bx-checkbox:before {\n    content: \"\\e9a5\";\n  }\n  .bx-checkbox-checked:before {\n    content: \"\\e9a6\";\n  }\n  .bx-checkbox-square:before {\n    content: \"\\e9a7\";\n  }\n  .bx-check-circle:before {\n    content: \"\\e9a8\";\n  }\n  .bx-check-double:before {\n    content: \"\\e9a9\";\n  }\n  .bx-check-shield:before {\n    content: \"\\e9aa\";\n  }\n  .bx-check-square:before {\n    content: \"\\e9ab\";\n  }\n  .bx-chevron-down:before {\n    content: \"\\e9ac\";\n  }\n  .bx-chevron-down-circle:before {\n    content: \"\\e9ad\";\n  }\n  .bx-chevron-down-square:before {\n    content: \"\\e9ae\";\n  }\n  .bx-chevron-left:before {\n    content: \"\\e9af\";\n  }\n  .bx-chevron-left-circle:before {\n    content: \"\\e9b0\";\n  }\n  .bx-chevron-left-square:before {\n    content: \"\\e9b1\";\n  }\n  .bx-chevron-right:before {\n    content: \"\\e9b2\";\n  }\n  .bx-chevron-right-circle:before {\n    content: \"\\e9b3\";\n  }\n  .bx-chevron-right-square:before {\n    content: \"\\e9b4\";\n  }\n  .bx-chevrons-down:before {\n    content: \"\\e9b5\";\n  }\n  .bx-chevrons-left:before {\n    content: \"\\e9b6\";\n  }\n  .bx-chevrons-right:before {\n    content: \"\\e9b7\";\n  }\n  .bx-chevrons-up:before {\n    content: \"\\e9b8\";\n  }\n  .bx-chevron-up:before {\n    content: \"\\e9b9\";\n  }\n  .bx-chevron-up-circle:before {\n    content: \"\\e9ba\";\n  }\n  .bx-chevron-up-square:before {\n    content: \"\\e9bb\";\n  }\n  .bx-chip:before {\n    content: \"\\e9bc\";\n  }\n  .bx-church:before {\n    content: \"\\e9bd\";\n  }\n  .bx-circle:before {\n    content: \"\\e9be\";\n  }\n  .bx-clinic:before {\n    content: \"\\e9bf\";\n  }\n  .bx-clipboard:before {\n    content: \"\\e9c0\";\n  }\n  .bx-closet:before {\n    content: \"\\e9c1\";\n  }\n  .bx-cloud:before {\n    content: \"\\e9c2\";\n  }\n  .bx-cloud-download:before {\n    content: \"\\e9c3\";\n  }\n  .bx-cloud-drizzle:before {\n    content: \"\\e9c4\";\n  }\n  .bx-cloud-lightning:before {\n    content: \"\\e9c5\";\n  }\n  .bx-cloud-light-rain:before {\n    content: \"\\e9c6\";\n  }\n  .bx-cloud-rain:before {\n    content: \"\\e9c7\";\n  }\n  .bx-cloud-snow:before {\n    content: \"\\e9c8\";\n  }\n  .bx-cloud-upload:before {\n    content: \"\\e9c9\";\n  }\n  .bx-code:before {\n    content: \"\\e9ca\";\n  }\n  .bx-code-alt:before {\n    content: \"\\e9cb\";\n  }\n  .bx-code-block:before {\n    content: \"\\e9cc\";\n  }\n  .bx-code-curly:before {\n    content: \"\\e9cd\";\n  }\n  .bx-coffee:before {\n    content: \"\\e9ce\";\n  }\n  .bx-coffee-togo:before {\n    content: \"\\e9cf\";\n  }\n  .bx-cog:before {\n    content: \"\\e9d0\";\n  }\n  .bx-coin:before {\n    content: \"\\e9d1\";\n  }\n  .bx-coin-stack:before {\n    content: \"\\e9d2\";\n  }\n  .bx-collapse:before {\n    content: \"\\e9d3\";\n  }\n  .bx-collection:before {\n    content: \"\\e9d4\";\n  }\n  .bx-color-fill:before {\n    content: \"\\e9d5\";\n  }\n  .bx-columns:before {\n    content: \"\\e9d6\";\n  }\n  .bx-command:before {\n    content: \"\\e9d7\";\n  }\n  .bx-comment:before {\n    content: \"\\e9d8\";\n  }\n  .bx-comment-add:before {\n    content: \"\\e9d9\";\n  }\n  .bx-comment-check:before {\n    content: \"\\e9da\";\n  }\n  .bx-comment-detail:before {\n    content: \"\\e9db\";\n  }\n  .bx-comment-dots:before {\n    content: \"\\e9dc\";\n  }\n  .bx-comment-edit:before {\n    content: \"\\e9dd\";\n  }\n  .bx-comment-error:before {\n    content: \"\\e9de\";\n  }\n  .bx-comment-minus:before {\n    content: \"\\e9df\";\n  }\n  .bx-comment-x:before {\n    content: \"\\e9e0\";\n  }\n  .bx-compass:before {\n    content: \"\\e9e1\";\n  }\n  .bx-confused:before {\n    content: \"\\e9e2\";\n  }\n  .bx-conversation:before {\n    content: \"\\e9e3\";\n  }\n  .bx-cookie:before {\n    content: \"\\e9e4\";\n  }\n  .bx-cool:before {\n    content: \"\\e9e5\";\n  }\n  .bx-copy:before {\n    content: \"\\e9e6\";\n  }\n  .bx-copy-alt:before {\n    content: \"\\e9e7\";\n  }\n  .bx-copyright:before {\n    content: \"\\e9e8\";\n  }\n  .bx-credit-card:before {\n    content: \"\\e9e9\";\n  }\n  .bx-credit-card-alt:before {\n    content: \"\\e9ea\";\n  }\n  .bx-credit-card-front:before {\n    content: \"\\e9eb\";\n  }\n  .bx-crop:before {\n    content: \"\\e9ec\";\n  }\n  .bx-crosshair:before {\n    content: \"\\e9ed\";\n  }\n  .bx-crown:before {\n    content: \"\\e9ee\";\n  }\n  .bx-cube:before {\n    content: \"\\e9ef\";\n  }\n  .bx-cube-alt:before {\n    content: \"\\e9f0\";\n  }\n  .bx-cuboid:before {\n    content: \"\\e9f1\";\n  }\n  .bx-current-location:before {\n    content: \"\\e9f2\";\n  }\n  .bx-customize:before {\n    content: \"\\e9f3\";\n  }\n  .bx-cut:before {\n    content: \"\\e9f4\";\n  }\n  .bx-cycling:before {\n    content: \"\\e9f5\";\n  }\n  .bx-cylinder:before {\n    content: \"\\e9f6\";\n  }\n  .bx-data:before {\n    content: \"\\e9f7\";\n  }\n  .bx-desktop:before {\n    content: \"\\e9f8\";\n  }\n  .bx-detail:before {\n    content: \"\\e9f9\";\n  }\n  .bx-devices:before {\n    content: \"\\e9fa\";\n  }\n  .bx-dialpad:before {\n    content: \"\\e9fb\";\n  }\n  .bx-dialpad-alt:before {\n    content: \"\\e9fc\";\n  }\n  .bx-diamond:before {\n    content: \"\\e9fd\";\n  }\n  .bx-dice-1:before {\n    content: \"\\e9fe\";\n  }\n  .bx-dice-2:before {\n    content: \"\\e9ff\";\n  }\n  .bx-dice-3:before {\n    content: \"\\ea00\";\n  }\n  .bx-dice-4:before {\n    content: \"\\ea01\";\n  }\n  .bx-dice-5:before {\n    content: \"\\ea02\";\n  }\n  .bx-dice-6:before {\n    content: \"\\ea03\";\n  }\n  .bx-directions:before {\n    content: \"\\ea04\";\n  }\n  .bx-disc:before {\n    content: \"\\ea05\";\n  }\n  .bx-dish:before {\n    content: \"\\ea06\";\n  }\n  .bx-dislike:before {\n    content: \"\\ea07\";\n  }\n  .bx-dizzy:before {\n    content: \"\\ea08\";\n  }\n  .bx-dna:before {\n    content: \"\\ea09\";\n  }\n  .bx-dock-bottom:before {\n    content: \"\\ea0a\";\n  }\n  .bx-dock-left:before {\n    content: \"\\ea0b\";\n  }\n  .bx-dock-right:before {\n    content: \"\\ea0c\";\n  }\n  .bx-dock-top:before {\n    content: \"\\ea0d\";\n  }\n  .bx-dollar:before {\n    content: \"\\ea0e\";\n  }\n  .bx-dollar-circle:before {\n    content: \"\\ea0f\";\n  }\n  .bx-donate-blood:before {\n    content: \"\\ea10\";\n  }\n  .bx-donate-heart:before {\n    content: \"\\ea11\";\n  }\n  .bx-door-open:before {\n    content: \"\\ea12\";\n  }\n  .bx-dots-horizontal:before {\n    content: \"\\ea13\";\n  }\n  .bx-dots-horizontal-rounded:before {\n    content: \"\\ea14\";\n  }\n  .bx-dots-vertical:before {\n    content: \"\\ea15\";\n  }\n  .bx-dots-vertical-rounded:before {\n    content: \"\\ea16\";\n  }\n  .bx-doughnut-chart:before {\n    content: \"\\ea17\";\n  }\n  .bx-down-arrow:before {\n    content: \"\\ea18\";\n  }\n  .bx-down-arrow-alt:before {\n    content: \"\\ea19\";\n  }\n  .bx-down-arrow-circle:before {\n    content: \"\\ea1a\";\n  }\n  .bx-download:before {\n    content: \"\\ea1b\";\n  }\n  .bx-downvote:before {\n    content: \"\\ea1c\";\n  }\n  .bx-drink:before {\n    content: \"\\ea1d\";\n  }\n  .bx-droplet:before {\n    content: \"\\ea1e\";\n  }\n  .bx-dumbbell:before {\n    content: \"\\ea1f\";\n  }\n  .bx-duplicate:before {\n    content: \"\\ea20\";\n  }\n  .bx-edit:before {\n    content: \"\\ea21\";\n  }\n  .bx-edit-alt:before {\n    content: \"\\ea22\";\n  }\n  .bx-envelope:before {\n    content: \"\\ea23\";\n  }\n  .bx-envelope-open:before {\n    content: \"\\ea24\";\n  }\n  .bx-equalizer:before {\n    content: \"\\ea25\";\n  }\n  .bx-eraser:before {\n    content: \"\\ea26\";\n  }\n  .bx-error:before {\n    content: \"\\ea27\";\n  }\n  .bx-error-alt:before {\n    content: \"\\ea28\";\n  }\n  .bx-error-circle:before {\n    content: \"\\ea29\";\n  }\n  .bx-euro:before {\n    content: \"\\ea2a\";\n  }\n  .bx-exclude:before {\n    content: \"\\ea2b\";\n  }\n  .bx-exit:before {\n    content: \"\\ea2c\";\n  }\n  .bx-exit-fullscreen:before {\n    content: \"\\ea2d\";\n  }\n  .bx-expand:before {\n    content: \"\\ea2e\";\n  }\n  .bx-expand-alt:before {\n    content: \"\\ea2f\";\n  }\n  .bx-export:before {\n    content: \"\\ea30\";\n  }\n  .bx-extension:before {\n    content: \"\\ea31\";\n  }\n  .bx-face:before {\n    content: \"\\ea32\";\n  }\n  .bx-fast-forward:before {\n    content: \"\\ea33\";\n  }\n  .bx-fast-forward-circle:before {\n    content: \"\\ea34\";\n  }\n  .bx-female:before {\n    content: \"\\ea35\";\n  }\n  .bx-female-sign:before {\n    content: \"\\ea36\";\n  }\n  .bx-file:before {\n    content: \"\\ea37\";\n  }\n  .bx-file-blank:before {\n    content: \"\\ea38\";\n  }\n  .bx-file-find:before {\n    content: \"\\ea39\";\n  }\n  .bx-film:before {\n    content: \"\\ea3a\";\n  }\n  .bx-filter:before {\n    content: \"\\ea3b\";\n  }\n  .bx-filter-alt:before {\n    content: \"\\ea3c\";\n  }\n  .bx-fingerprint:before {\n    content: \"\\ea3d\";\n  }\n  .bx-first-aid:before {\n    content: \"\\ea3e\";\n  }\n  .bx-first-page:before {\n    content: \"\\ea3f\";\n  }\n  .bx-flag:before {\n    content: \"\\ea40\";\n  }\n  .bx-folder:before {\n    content: \"\\ea41\";\n  }\n  .bx-folder-minus:before {\n    content: \"\\ea42\";\n  }\n  .bx-folder-open:before {\n    content: \"\\ea43\";\n  }\n  .bx-folder-plus:before {\n    content: \"\\ea44\";\n  }\n  .bx-font:before {\n    content: \"\\ea45\";\n  }\n  .bx-font-color:before {\n    content: \"\\ea46\";\n  }\n  .bx-font-family:before {\n    content: \"\\ea47\";\n  }\n  .bx-font-size:before {\n    content: \"\\ea48\";\n  }\n  .bx-food-menu:before {\n    content: \"\\ea49\";\n  }\n  .bx-food-tag:before {\n    content: \"\\ea4a\";\n  }\n  .bx-football:before {\n    content: \"\\ea4b\";\n  }\n  .bx-fridge:before {\n    content: \"\\ea4c\";\n  }\n  .bx-fullscreen:before {\n    content: \"\\ea4d\";\n  }\n  .bx-game:before {\n    content: \"\\ea4e\";\n  }\n  .bx-gas-pump:before {\n    content: \"\\ea4f\";\n  }\n  .bx-ghost:before {\n    content: \"\\ea50\";\n  }\n  .bx-gift:before {\n    content: \"\\ea51\";\n  }\n  .bx-git-branch:before {\n    content: \"\\ea52\";\n  }\n  .bx-git-commit:before {\n    content: \"\\ea53\";\n  }\n  .bx-git-compare:before {\n    content: \"\\ea54\";\n  }\n  .bx-git-merge:before {\n    content: \"\\ea55\";\n  }\n  .bx-git-pull-request:before {\n    content: \"\\ea56\";\n  }\n  .bx-git-repo-forked:before {\n    content: \"\\ea57\";\n  }\n  .bx-glasses:before {\n    content: \"\\ea58\";\n  }\n  .bx-glasses-alt:before {\n    content: \"\\ea59\";\n  }\n  .bx-globe:before {\n    content: \"\\ea5a\";\n  }\n  .bx-globe-alt:before {\n    content: \"\\ea5b\";\n  }\n  .bx-grid:before {\n    content: \"\\ea5c\";\n  }\n  .bx-grid-alt:before {\n    content: \"\\ea5d\";\n  }\n  .bx-grid-horizontal:before {\n    content: \"\\ea5e\";\n  }\n  .bx-grid-small:before {\n    content: \"\\ea5f\";\n  }\n  .bx-grid-vertical:before {\n    content: \"\\ea60\";\n  }\n  .bx-group:before {\n    content: \"\\ea61\";\n  }\n  .bx-handicap:before {\n    content: \"\\ea62\";\n  }\n  .bx-happy:before {\n    content: \"\\ea63\";\n  }\n  .bx-happy-alt:before {\n    content: \"\\ea64\";\n  }\n  .bx-happy-beaming:before {\n    content: \"\\ea65\";\n  }\n  .bx-happy-heart-eyes:before {\n    content: \"\\ea66\";\n  }\n  .bx-hash:before {\n    content: \"\\ea67\";\n  }\n  .bx-hdd:before {\n    content: \"\\ea68\";\n  }\n  .bx-heading:before {\n    content: \"\\ea69\";\n  }\n  .bx-headphone:before {\n    content: \"\\ea6a\";\n  }\n  .bx-health:before {\n    content: \"\\ea6b\";\n  }\n  .bx-heart:before {\n    content: \"\\ea6c\";\n  }\n  .bx-heart-circle:before {\n    content: \"\\ea6d\";\n  }\n  .bx-heart-square:before {\n    content: \"\\ea6e\";\n  }\n  .bx-help-circle:before {\n    content: \"\\ea6f\";\n  }\n  .bx-hide:before {\n    content: \"\\ea70\";\n  }\n  .bx-highlight:before {\n    content: \"\\ea71\";\n  }\n  .bx-history:before {\n    content: \"\\ea72\";\n  }\n  .bx-hive:before {\n    content: \"\\ea73\";\n  }\n  .bx-home:before {\n    content: \"\\ea74\";\n  }\n  .bx-home-alt:before {\n    content: \"\\ea75\";\n  }\n  .bx-home-circle:before {\n    content: \"\\ea76\";\n  }\n  .bx-home-heart:before {\n    content: \"\\ea77\";\n  }\n  .bx-home-smile:before {\n    content: \"\\ea78\";\n  }\n  .bx-horizontal-center:before {\n    content: \"\\ea79\";\n  }\n  .bx-hotel:before {\n    content: \"\\ea7a\";\n  }\n  .bx-hourglass:before {\n    content: \"\\ea7b\";\n  }\n  .bx-id-card:before {\n    content: \"\\ea7c\";\n  }\n  .bx-image:before {\n    content: \"\\ea7d\";\n  }\n  .bx-image-add:before {\n    content: \"\\ea7e\";\n  }\n  .bx-image-alt:before {\n    content: \"\\ea7f\";\n  }\n  .bx-images:before {\n    content: \"\\ea80\";\n  }\n  .bx-import:before {\n    content: \"\\ea81\";\n  }\n  .bx-infinite:before {\n    content: \"\\ea82\";\n  }\n  .bx-info-circle:before {\n    content: \"\\ea83\";\n  }\n  .bx-info-square:before {\n    content: \"\\ea84\";\n  }\n  .bx-intersect:before {\n    content: \"\\ea85\";\n  }\n  .bx-italic:before {\n    content: \"\\ea86\";\n  }\n  .bx-joystick:before {\n    content: \"\\ea87\";\n  }\n  .bx-joystick-alt:before {\n    content: \"\\ea88\";\n  }\n  .bx-joystick-button:before {\n    content: \"\\ea89\";\n  }\n  .bx-key:before {\n    content: \"\\ea8a\";\n  }\n  .bx-label:before {\n    content: \"\\ea8b\";\n  }\n  .bx-landscape:before {\n    content: \"\\ea8c\";\n  }\n  .bx-laptop:before {\n    content: \"\\ea8d\";\n  }\n  .bx-last-page:before {\n    content: \"\\ea8e\";\n  }\n  .bx-laugh:before {\n    content: \"\\ea8f\";\n  }\n  .bx-layer:before {\n    content: \"\\ea90\";\n  }\n  .bx-layer-minus:before {\n    content: \"\\ea91\";\n  }\n  .bx-layer-plus:before {\n    content: \"\\ea92\";\n  }\n  .bx-layout:before {\n    content: \"\\ea93\";\n  }\n  .bx-left-arrow:before {\n    content: \"\\ea94\";\n  }\n  .bx-left-arrow-alt:before {\n    content: \"\\ea95\";\n  }\n  .bx-left-arrow-circle:before {\n    content: \"\\ea96\";\n  }\n  .bx-left-down-arrow-circle:before {\n    content: \"\\ea97\";\n  }\n  .bx-left-indent:before {\n    content: \"\\ea98\";\n  }\n  .bx-left-top-arrow-circle:before {\n    content: \"\\ea99\";\n  }\n  .bx-library:before {\n    content: \"\\ea9a\";\n  }\n  .bx-like:before {\n    content: \"\\ea9b\";\n  }\n  .bx-line-chart:before {\n    content: \"\\ea9c\";\n  }\n  .bx-line-chart-down:before {\n    content: \"\\ea9d\";\n  }\n  .bx-link:before {\n    content: \"\\ea9e\";\n  }\n  .bx-link-alt:before {\n    content: \"\\ea9f\";\n  }\n  .bx-link-external:before {\n    content: \"\\eaa0\";\n  }\n  .bx-lira:before {\n    content: \"\\eaa1\";\n  }\n  .bx-list-check:before {\n    content: \"\\eaa2\";\n  }\n  .bx-list-minus:before {\n    content: \"\\eaa3\";\n  }\n  .bx-list-ol:before {\n    content: \"\\eaa4\";\n  }\n  .bx-list-plus:before {\n    content: \"\\eaa5\";\n  }\n  .bx-list-ul:before {\n    content: \"\\eaa6\";\n  }\n  .bx-loader:before {\n    content: \"\\eaa7\";\n  }\n  .bx-loader-alt:before {\n    content: \"\\eaa8\";\n  }\n  .bx-loader-circle:before {\n    content: \"\\eaa9\";\n  }\n  .bx-location-plus:before {\n    content: \"\\eaaa\";\n  }\n  .bx-lock:before {\n    content: \"\\eaab\";\n  }\n  .bx-lock-alt:before {\n    content: \"\\eaac\";\n  }\n  .bx-lock-open:before {\n    content: \"\\eaad\";\n  }\n  .bx-lock-open-alt:before {\n    content: \"\\eaae\";\n  }\n  .bx-log-in:before {\n    content: \"\\eaaf\";\n  }\n  .bx-log-in-circle:before {\n    content: \"\\eab0\";\n  }\n  .bx-log-out:before {\n    content: \"\\eab1\";\n  }\n  .bx-log-out-circle:before {\n    content: \"\\eab2\";\n  }\n  .bx-low-vision:before {\n    content: \"\\eab3\";\n  }\n  .bx-magnet:before {\n    content: \"\\eab4\";\n  }\n  .bx-mail-send:before {\n    content: \"\\eab5\";\n  }\n  .bx-male:before {\n    content: \"\\eab6\";\n  }\n  .bx-male-sign:before {\n    content: \"\\eab7\";\n  }\n  .bx-map:before {\n    content: \"\\eab8\";\n  }\n  .bx-map-alt:before {\n    content: \"\\eab9\";\n  }\n  .bx-map-pin:before {\n    content: \"\\eaba\";\n  }\n  .bx-mask:before {\n    content: \"\\eabb\";\n  }\n  .bx-medal:before {\n    content: \"\\eabc\";\n  }\n  .bx-meh:before {\n    content: \"\\eabd\";\n  }\n  .bx-meh-alt:before {\n    content: \"\\eabe\";\n  }\n  .bx-meh-blank:before {\n    content: \"\\eabf\";\n  }\n  .bx-memory-card:before {\n    content: \"\\eac0\";\n  }\n  .bx-menu:before {\n    content: \"\\eac1\";\n  }\n  .bx-menu-alt-left:before {\n    content: \"\\eac2\";\n  }\n  .bx-menu-alt-right:before {\n    content: \"\\eac3\";\n  }\n  .bx-merge:before {\n    content: \"\\eac4\";\n  }\n  .bx-message:before {\n    content: \"\\eac5\";\n  }\n  .bx-message-add:before {\n    content: \"\\eac6\";\n  }\n  .bx-message-alt:before {\n    content: \"\\eac7\";\n  }\n  .bx-message-alt-add:before {\n    content: \"\\eac8\";\n  }\n  .bx-message-alt-check:before {\n    content: \"\\eac9\";\n  }\n  .bx-message-alt-detail:before {\n    content: \"\\eaca\";\n  }\n  .bx-message-alt-dots:before {\n    content: \"\\eacb\";\n  }\n  .bx-message-alt-edit:before {\n    content: \"\\eacc\";\n  }\n  .bx-message-alt-error:before {\n    content: \"\\eacd\";\n  }\n  .bx-message-alt-minus:before {\n    content: \"\\eace\";\n  }\n  .bx-message-alt-x:before {\n    content: \"\\eacf\";\n  }\n  .bx-message-check:before {\n    content: \"\\ead0\";\n  }\n  .bx-message-detail:before {\n    content: \"\\ead1\";\n  }\n  .bx-message-dots:before {\n    content: \"\\ead2\";\n  }\n  .bx-message-edit:before {\n    content: \"\\ead3\";\n  }\n  .bx-message-error:before {\n    content: \"\\ead4\";\n  }\n  .bx-message-minus:before {\n    content: \"\\ead5\";\n  }\n  .bx-message-rounded:before {\n    content: \"\\ead6\";\n  }\n  .bx-message-rounded-add:before {\n    content: \"\\ead7\";\n  }\n  .bx-message-rounded-check:before {\n    content: \"\\ead8\";\n  }\n  .bx-message-rounded-detail:before {\n    content: \"\\ead9\";\n  }\n  .bx-message-rounded-dots:before {\n    content: \"\\eada\";\n  }\n  .bx-message-rounded-edit:before {\n    content: \"\\eadb\";\n  }\n  .bx-message-rounded-error:before {\n    content: \"\\eadc\";\n  }\n  .bx-message-rounded-minus:before {\n    content: \"\\eadd\";\n  }\n  .bx-message-rounded-x:before {\n    content: \"\\eade\";\n  }\n  .bx-message-square:before {\n    content: \"\\eadf\";\n  }\n  .bx-message-square-add:before {\n    content: \"\\eae0\";\n  }\n  .bx-message-square-check:before {\n    content: \"\\eae1\";\n  }\n  .bx-message-square-detail:before {\n    content: \"\\eae2\";\n  }\n  .bx-message-square-dots:before {\n    content: \"\\eae3\";\n  }\n  .bx-message-square-edit:before {\n    content: \"\\eae4\";\n  }\n  .bx-message-square-error:before {\n    content: \"\\eae5\";\n  }\n  .bx-message-square-minus:before {\n    content: \"\\eae6\";\n  }\n  .bx-message-square-x:before {\n    content: \"\\eae7\";\n  }\n  .bx-message-x:before {\n    content: \"\\eae8\";\n  }\n  .bx-meteor:before {\n    content: \"\\eae9\";\n  }\n  .bx-microchip:before {\n    content: \"\\eaea\";\n  }\n  .bx-microphone:before {\n    content: \"\\eaeb\";\n  }\n  .bx-microphone-off:before {\n    content: \"\\eaec\";\n  }\n  .bx-minus:before {\n    content: \"\\eaed\";\n  }\n  .bx-minus-back:before {\n    content: \"\\eaee\";\n  }\n  .bx-minus-circle:before {\n    content: \"\\eaef\";\n  }\n  .bx-minus-front:before {\n    content: \"\\eaf0\";\n  }\n  .bx-mobile:before {\n    content: \"\\eaf1\";\n  }\n  .bx-mobile-alt:before {\n    content: \"\\eaf2\";\n  }\n  .bx-mobile-landscape:before {\n    content: \"\\eaf3\";\n  }\n  .bx-mobile-vibration:before {\n    content: \"\\eaf4\";\n  }\n  .bx-money:before {\n    content: \"\\eaf5\";\n  }\n  .bx-moon:before {\n    content: \"\\eaf6\";\n  }\n  .bx-mouse:before {\n    content: \"\\eaf7\";\n  }\n  .bx-mouse-alt:before {\n    content: \"\\eaf8\";\n  }\n  .bx-move:before {\n    content: \"\\eaf9\";\n  }\n  .bx-move-horizontal:before {\n    content: \"\\eafa\";\n  }\n  .bx-move-vertical:before {\n    content: \"\\eafb\";\n  }\n  .bx-movie:before {\n    content: \"\\eafc\";\n  }\n  .bx-movie-play:before {\n    content: \"\\eafd\";\n  }\n  .bx-music:before {\n    content: \"\\eafe\";\n  }\n  .bx-navigation:before {\n    content: \"\\eaff\";\n  }\n  .bx-network-chart:before {\n    content: \"\\eb00\";\n  }\n  .bx-news:before {\n    content: \"\\eb01\";\n  }\n  .bx-no-entry:before {\n    content: \"\\eb02\";\n  }\n  .bx-note:before {\n    content: \"\\eb03\";\n  }\n  .bx-notepad:before {\n    content: \"\\eb04\";\n  }\n  .bx-notification:before {\n    content: \"\\eb05\";\n  }\n  .bx-notification-off:before {\n    content: \"\\eb06\";\n  }\n  .bx-outline:before {\n    content: \"\\eb07\";\n  }\n  .bx-package:before {\n    content: \"\\eb08\";\n  }\n  .bx-paint:before {\n    content: \"\\eb09\";\n  }\n  .bx-paint-roll:before {\n    content: \"\\eb0a\";\n  }\n  .bx-palette:before {\n    content: \"\\eb0b\";\n  }\n  .bx-paperclip:before {\n    content: \"\\eb0c\";\n  }\n  .bx-paper-plane:before {\n    content: \"\\eb0d\";\n  }\n  .bx-paragraph:before {\n    content: \"\\eb0e\";\n  }\n  .bx-paste:before {\n    content: \"\\eb0f\";\n  }\n  .bx-pause:before {\n    content: \"\\eb10\";\n  }\n  .bx-pause-circle:before {\n    content: \"\\eb11\";\n  }\n  .bx-pen:before {\n    content: \"\\eb12\";\n  }\n  .bx-pencil:before {\n    content: \"\\eb13\";\n  }\n  .bx-phone:before {\n    content: \"\\eb14\";\n  }\n  .bx-phone-call:before {\n    content: \"\\eb15\";\n  }\n  .bx-phone-incoming:before {\n    content: \"\\eb16\";\n  }\n  .bx-phone-outgoing:before {\n    content: \"\\eb17\";\n  }\n  .bx-photo-album:before {\n    content: \"\\eb18\";\n  }\n  .bx-pie-chart:before {\n    content: \"\\eb19\";\n  }\n  .bx-pie-chart-alt:before {\n    content: \"\\eb1a\";\n  }\n  .bx-pie-chart-alt-2:before {\n    content: \"\\eb1b\";\n  }\n  .bx-pin:before {\n    content: \"\\eb1c\";\n  }\n  .bx-planet:before {\n    content: \"\\eb1d\";\n  }\n  .bx-play:before {\n    content: \"\\eb1e\";\n  }\n  .bx-play-circle:before {\n    content: \"\\eb1f\";\n  }\n  .bx-plug:before {\n    content: \"\\eb20\";\n  }\n  .bx-plus:before {\n    content: \"\\eb21\";\n  }\n  .bx-plus-circle:before {\n    content: \"\\eb22\";\n  }\n  .bx-plus-medical:before {\n    content: \"\\eb23\";\n  }\n  .bx-pointer:before {\n    content: \"\\eb24\";\n  }\n  .bx-poll:before {\n    content: \"\\eb25\";\n  }\n  .bx-polygon:before {\n    content: \"\\eb26\";\n  }\n  .bx-pound:before {\n    content: \"\\eb27\";\n  }\n  .bx-power-off:before {\n    content: \"\\eb28\";\n  }\n  .bx-printer:before {\n    content: \"\\eb29\";\n  }\n  .bx-pulse:before {\n    content: \"\\eb2a\";\n  }\n  .bx-purchase-tag:before {\n    content: \"\\eb2b\";\n  }\n  .bx-purchase-tag-alt:before {\n    content: \"\\eb2c\";\n  }\n  .bx-pyramid:before {\n    content: \"\\eb2d\";\n  }\n  .bx-question-mark:before {\n    content: \"\\eb2e\";\n  }\n  .bx-radar:before {\n    content: \"\\eb2f\";\n  }\n  .bx-radio:before {\n    content: \"\\eb30\";\n  }\n  .bx-radio-circle:before {\n    content: \"\\eb31\";\n  }\n  .bx-radio-circle-marked:before {\n    content: \"\\eb32\";\n  }\n  .bx-receipt:before {\n    content: \"\\eb33\";\n  }\n  .bx-rectangle:before {\n    content: \"\\eb34\";\n  }\n  .bx-recycle:before {\n    content: \"\\eb35\";\n  }\n  .bx-redo:before {\n    content: \"\\eb36\";\n  }\n  .bx-refresh:before {\n    content: \"\\eb37\";\n  }\n  .bx-rename:before {\n    content: \"\\eb38\";\n  }\n  .bx-repeat:before {\n    content: \"\\eb39\";\n  }\n  .bx-reply:before {\n    content: \"\\eb3a\";\n  }\n  .bx-reply-all:before {\n    content: \"\\eb3b\";\n  }\n  .bx-repost:before {\n    content: \"\\eb3c\";\n  }\n  .bx-reset:before {\n    content: \"\\eb3d\";\n  }\n  .bx-restaurant:before {\n    content: \"\\eb3e\";\n  }\n  .bx-revision:before {\n    content: \"\\eb3f\";\n  }\n  .bx-rewind:before {\n    content: \"\\eb40\";\n  }\n  .bx-rewind-circle:before {\n    content: \"\\eb41\";\n  }\n  .bx-right-arrow:before {\n    content: \"\\eb42\";\n  }\n  .bx-right-arrow-alt:before {\n    content: \"\\eb43\";\n  }\n  .bx-right-arrow-circle:before {\n    content: \"\\eb44\";\n  }\n  .bx-right-down-arrow-circle:before {\n    content: \"\\eb45\";\n  }\n  .bx-right-indent:before {\n    content: \"\\eb46\";\n  }\n  .bx-right-top-arrow-circle:before {\n    content: \"\\eb47\";\n  }\n  .bx-rocket:before {\n    content: \"\\eb48\";\n  }\n  .bx-rotate-left:before {\n    content: \"\\eb49\";\n  }\n  .bx-rotate-right:before {\n    content: \"\\eb4a\";\n  }\n  .bx-rss:before {\n    content: \"\\eb4b\";\n  }\n  .bx-ruble:before {\n    content: \"\\eb4c\";\n  }\n  .bx-ruler:before {\n    content: \"\\eb4d\";\n  }\n  .bx-run:before {\n    content: \"\\eb4e\";\n  }\n  .bx-rupee:before {\n    content: \"\\eb4f\";\n  }\n  .bx-sad:before {\n    content: \"\\eb50\";\n  }\n  .bx-save:before {\n    content: \"\\eb51\";\n  }\n  .bx-scan:before {\n    content: \"\\eb52\";\n  }\n  .bx-screenshot:before {\n    content: \"\\eb53\";\n  }\n  .bx-search:before {\n    content: \"\\eb54\";\n  }\n  .bx-search-alt:before {\n    content: \"\\eb55\";\n  }\n  .bx-search-alt-2:before {\n    content: \"\\eb56\";\n  }\n  .bx-selection:before {\n    content: \"\\eb57\";\n  }\n  .bx-select-multiple:before {\n    content: \"\\eb58\";\n  }\n  .bx-send:before {\n    content: \"\\eb59\";\n  }\n  .bx-server:before {\n    content: \"\\eb5a\";\n  }\n  .bx-shape-circle:before {\n    content: \"\\eb5b\";\n  }\n  .bx-shape-polygon:before {\n    content: \"\\eb5c\";\n  }\n  .bx-shape-square:before {\n    content: \"\\eb5d\";\n  }\n  .bx-shape-triangle:before {\n    content: \"\\eb5e\";\n  }\n  .bx-share:before {\n    content: \"\\eb5f\";\n  }\n  .bx-share-alt:before {\n    content: \"\\eb60\";\n  }\n  .bx-shekel:before {\n    content: \"\\eb61\";\n  }\n  .bx-shield:before {\n    content: \"\\eb62\";\n  }\n  .bx-shield-alt:before {\n    content: \"\\eb63\";\n  }\n  .bx-shield-alt-2:before {\n    content: \"\\eb64\";\n  }\n  .bx-shield-quarter:before {\n    content: \"\\eb65\";\n  }\n  .bx-shield-x:before {\n    content: \"\\eb66\";\n  }\n  .bx-shocked:before {\n    content: \"\\eb67\";\n  }\n  .bx-shopping-bag:before {\n    content: \"\\eb68\";\n  }\n  .bx-show:before {\n    content: \"\\eb69\";\n  }\n  .bx-show-alt:before {\n    content: \"\\eb6a\";\n  }\n  .bx-shuffle:before {\n    content: \"\\eb6b\";\n  }\n  .bx-sidebar:before {\n    content: \"\\eb6c\";\n  }\n  .bx-sitemap:before {\n    content: \"\\eb6d\";\n  }\n  .bx-skip-next:before {\n    content: \"\\eb6e\";\n  }\n  .bx-skip-next-circle:before {\n    content: \"\\eb6f\";\n  }\n  .bx-skip-previous:before {\n    content: \"\\eb70\";\n  }\n  .bx-skip-previous-circle:before {\n    content: \"\\eb71\";\n  }\n  .bx-sleepy:before {\n    content: \"\\eb72\";\n  }\n  .bx-slider:before {\n    content: \"\\eb73\";\n  }\n  .bx-slider-alt:before {\n    content: \"\\eb74\";\n  }\n  .bx-slideshow:before {\n    content: \"\\eb75\";\n  }\n  .bx-smile:before {\n    content: \"\\eb76\";\n  }\n  .bx-sort:before {\n    content: \"\\eb77\";\n  }\n  .bx-sort-alt-2:before {\n    content: \"\\eb78\";\n  }\n  .bx-sort-a-z:before {\n    content: \"\\eb79\";\n  }\n  .bx-sort-down:before {\n    content: \"\\eb7a\";\n  }\n  .bx-sort-up:before {\n    content: \"\\eb7b\";\n  }\n  .bx-sort-z-a:before {\n    content: \"\\eb7c\";\n  }\n  .bx-spa:before {\n    content: \"\\eb7d\";\n  }\n  .bx-space-bar:before {\n    content: \"\\eb7e\";\n  }\n  .bx-spray-can:before {\n    content: \"\\eb7f\";\n  }\n  .bx-spreadsheet:before {\n    content: \"\\eb80\";\n  }\n  .bx-square:before {\n    content: \"\\eb81\";\n  }\n  .bx-square-rounded:before {\n    content: \"\\eb82\";\n  }\n  .bx-star:before {\n    content: \"\\eb83\";\n  }\n  .bx-station:before {\n    content: \"\\eb84\";\n  }\n  .bx-stats:before {\n    content: \"\\eb85\";\n  }\n  .bx-sticker:before {\n    content: \"\\eb86\";\n  }\n  .bx-stop:before {\n    content: \"\\eb87\";\n  }\n  .bx-stop-circle:before {\n    content: \"\\eb88\";\n  }\n  .bx-stopwatch:before {\n    content: \"\\eb89\";\n  }\n  .bx-store:before {\n    content: \"\\eb8a\";\n  }\n  .bx-store-alt:before {\n    content: \"\\eb8b\";\n  }\n  .bx-street-view:before {\n    content: \"\\eb8c\";\n  }\n  .bx-strikethrough:before {\n    content: \"\\eb8d\";\n  }\n  .bx-subdirectory-left:before {\n    content: \"\\eb8e\";\n  }\n  .bx-subdirectory-right:before {\n    content: \"\\eb8f\";\n  }\n  .bx-sun:before {\n    content: \"\\eb90\";\n  }\n  .bx-support:before {\n    content: \"\\eb91\";\n  }\n  .bx-swim:before {\n    content: \"\\eb92\";\n  }\n  .bx-sync:before {\n    content: \"\\eb93\";\n  }\n  .bx-tab:before {\n    content: \"\\eb94\";\n  }\n  .bx-table:before {\n    content: \"\\eb95\";\n  }\n  .bx-tachometer:before {\n    content: \"\\eb96\";\n  }\n  .bx-tag:before {\n    content: \"\\eb97\";\n  }\n  .bx-tag-alt:before {\n    content: \"\\eb98\";\n  }\n  .bx-target-lock:before {\n    content: \"\\eb99\";\n  }\n  .bx-task:before {\n    content: \"\\eb9a\";\n  }\n  .bx-task-x:before {\n    content: \"\\eb9b\";\n  }\n  .bx-taxi:before {\n    content: \"\\eb9c\";\n  }\n  .bx-tennis-ball:before {\n    content: \"\\eb9d\";\n  }\n  .bx-terminal:before {\n    content: \"\\eb9e\";\n  }\n  .bx-test-tube:before {\n    content: \"\\eb9f\";\n  }\n  .bx-text:before {\n    content: \"\\eba0\";\n  }\n  .bx-time:before {\n    content: \"\\eba1\";\n  }\n  .bx-time-five:before {\n    content: \"\\eba2\";\n  }\n  .bx-timer:before {\n    content: \"\\eba3\";\n  }\n  .bx-tired:before {\n    content: \"\\eba4\";\n  }\n  .bx-toggle-left:before {\n    content: \"\\eba5\";\n  }\n  .bx-toggle-right:before {\n    content: \"\\eba6\";\n  }\n  .bx-tone:before {\n    content: \"\\eba7\";\n  }\n  .bx-traffic-cone:before {\n    content: \"\\eba8\";\n  }\n  .bx-train:before {\n    content: \"\\eba9\";\n  }\n  .bx-transfer:before {\n    content: \"\\ebaa\";\n  }\n  .bx-transfer-alt:before {\n    content: \"\\ebab\";\n  }\n  .bx-trash:before {\n    content: \"\\ebac\";\n  }\n  .bx-trash-alt:before {\n    content: \"\\ebad\";\n  }\n  .bx-trending-down:before {\n    content: \"\\ebae\";\n  }\n  .bx-trending-up:before {\n    content: \"\\ebaf\";\n  }\n  .bx-trim:before {\n    content: \"\\ebb0\";\n  }\n  .bx-trip:before {\n    content: \"\\ebb1\";\n  }\n  .bx-trophy:before {\n    content: \"\\ebb2\";\n  }\n  .bx-tv:before {\n    content: \"\\ebb3\";\n  }\n  .bx-underline:before {\n    content: \"\\ebb4\";\n  }\n  .bx-undo:before {\n    content: \"\\ebb5\";\n  }\n  .bx-unite:before {\n    content: \"\\ebb6\";\n  }\n  .bx-unlink:before {\n    content: \"\\ebb7\";\n  }\n  .bx-up-arrow:before {\n    content: \"\\ebb8\";\n  }\n  .bx-up-arrow-alt:before {\n    content: \"\\ebb9\";\n  }\n  .bx-up-arrow-circle:before {\n    content: \"\\ebba\";\n  }\n  .bx-upload:before {\n    content: \"\\ebbb\";\n  }\n  .bx-upside-down:before {\n    content: \"\\ebbc\";\n  }\n  .bx-upvote:before {\n    content: \"\\ebbd\";\n  }\n  .bx-usb:before {\n    content: \"\\ebbe\";\n  }\n  .bx-user:before {\n    content: \"\\ebbf\";\n  }\n  .bx-user-check:before {\n    content: \"\\ebc0\";\n  }\n  .bx-user-circle:before {\n    content: \"\\ebc1\";\n  }\n  .bx-user-minus:before {\n    content: \"\\ebc2\";\n  }\n  .bx-user-pin:before {\n    content: \"\\ebc3\";\n  }\n  .bx-user-plus:before {\n    content: \"\\ebc4\";\n  }\n  .bx-user-voice:before {\n    content: \"\\ebc5\";\n  }\n  .bx-user-x:before {\n    content: \"\\ebc6\";\n  }\n  .bx-vector:before {\n    content: \"\\ebc7\";\n  }\n  .bx-vertical-center:before {\n    content: \"\\ebc8\";\n  }\n  .bx-vial:before {\n    content: \"\\ebc9\";\n  }\n  .bx-video:before {\n    content: \"\\ebca\";\n  }\n  .bx-video-off:before {\n    content: \"\\ebcb\";\n  }\n  .bx-video-plus:before {\n    content: \"\\ebcc\";\n  }\n  .bx-video-recording:before {\n    content: \"\\ebcd\";\n  }\n  .bx-voicemail:before {\n    content: \"\\ebce\";\n  }\n  .bx-volume:before {\n    content: \"\\ebcf\";\n  }\n  .bx-volume-full:before {\n    content: \"\\ebd0\";\n  }\n  .bx-volume-low:before {\n    content: \"\\ebd1\";\n  }\n  .bx-volume-mute:before {\n    content: \"\\ebd2\";\n  }\n  .bx-walk:before {\n    content: \"\\ebd3\";\n  }\n  .bx-wallet:before {\n    content: \"\\ebd4\";\n  }\n  .bx-wallet-alt:before {\n    content: \"\\ebd5\";\n  }\n  .bx-water:before {\n    content: \"\\ebd6\";\n  }\n  .bx-webcam:before {\n    content: \"\\ebd7\";\n  }\n  .bx-wifi:before {\n    content: \"\\ebd8\";\n  }\n  .bx-wifi-0:before {\n    content: \"\\ebd9\";\n  }\n  .bx-wifi-1:before {\n    content: \"\\ebda\";\n  }\n  .bx-wifi-2:before {\n    content: \"\\ebdb\";\n  }\n  .bx-wifi-off:before {\n    content: \"\\ebdc\";\n  }\n  .bx-wind:before {\n    content: \"\\ebdd\";\n  }\n  .bx-window:before {\n    content: \"\\ebde\";\n  }\n  .bx-window-alt:before {\n    content: \"\\ebdf\";\n  }\n  .bx-window-close:before {\n    content: \"\\ebe0\";\n  }\n  .bx-window-open:before {\n    content: \"\\ebe1\";\n  }\n  .bx-windows:before {\n    content: \"\\ebe2\";\n  }\n  .bx-wine:before {\n    content: \"\\ebe3\";\n  }\n  .bx-wink-smile:before {\n    content: \"\\ebe4\";\n  }\n  .bx-wink-tongue:before {\n    content: \"\\ebe5\";\n  }\n  .bx-won:before {\n    content: \"\\ebe6\";\n  }\n  .bx-world:before {\n    content: \"\\ebe7\";\n  }\n  .bx-wrench:before {\n    content: \"\\ebe8\";\n  }\n  .bx-x:before {\n    content: \"\\ebe9\";\n  }\n  .bx-x-circle:before {\n    content: \"\\ebea\";\n  }\n  .bx-yen:before {\n    content: \"\\ebeb\";\n  }\n  .bx-zoom-in:before {\n    content: \"\\ebec\";\n  }\n  .bx-zoom-out:before {\n    content: \"\\ebed\";\n  }\n  .bxs-add-to-queue:before {\n    content: \"\\ebee\";\n  }\n  .bxs-adjust:before {\n    content: \"\\ebef\";\n  }\n  .bxs-adjust-alt:before {\n    content: \"\\ebf0\";\n  }\n  .bxs-alarm:before {\n    content: \"\\ebf1\";\n  }\n  .bxs-alarm-add:before {\n    content: \"\\ebf2\";\n  }\n  .bxs-alarm-exclamation:before {\n    content: \"\\ebf3\";\n  }\n  .bxs-alarm-off:before {\n    content: \"\\ebf4\";\n  }\n  .bxs-alarm-snooze:before {\n    content: \"\\ebf5\";\n  }\n  .bxs-album:before {\n    content: \"\\ebf6\";\n  }\n  .bxs-ambulance:before {\n    content: \"\\ebf7\";\n  }\n  .bxs-analyse:before {\n    content: \"\\ebf8\";\n  }\n  .bxs-angry:before {\n    content: \"\\ebf9\";\n  }\n  .bxs-arch:before {\n    content: \"\\ebfa\";\n  }\n  .bxs-archive:before {\n    content: \"\\ebfb\";\n  }\n  .bxs-archive-in:before {\n    content: \"\\ebfc\";\n  }\n  .bxs-archive-out:before {\n    content: \"\\ebfd\";\n  }\n  .bxs-area:before {\n    content: \"\\ebfe\";\n  }\n  .bxs-arrow-from-bottom:before {\n    content: \"\\ebff\";\n  }\n  .bxs-arrow-from-left:before {\n    content: \"\\ec00\";\n  }\n  .bxs-arrow-from-right:before {\n    content: \"\\ec01\";\n  }\n  .bxs-arrow-from-top:before {\n    content: \"\\ec02\";\n  }\n  .bxs-arrow-to-bottom:before {\n    content: \"\\ec03\";\n  }\n  .bxs-arrow-to-left:before {\n    content: \"\\ec04\";\n  }\n  .bxs-arrow-to-right:before {\n    content: \"\\ec05\";\n  }\n  .bxs-arrow-to-top:before {\n    content: \"\\ec06\";\n  }\n  .bxs-award:before {\n    content: \"\\ec07\";\n  }\n  .bxs-baby-carriage:before {\n    content: \"\\ec08\";\n  }\n  .bxs-backpack:before {\n    content: \"\\ec09\";\n  }\n  .bxs-badge:before {\n    content: \"\\ec0a\";\n  }\n  .bxs-badge-check:before {\n    content: \"\\ec0b\";\n  }\n  .bxs-badge-dollar:before {\n    content: \"\\ec0c\";\n  }\n  .bxs-ball:before {\n    content: \"\\ec0d\";\n  }\n  .bxs-band-aid:before {\n    content: \"\\ec0e\";\n  }\n  .bxs-bank:before {\n    content: \"\\ec0f\";\n  }\n  .bxs-bar-chart-alt-2:before {\n    content: \"\\ec10\";\n  }\n  .bxs-bar-chart-square:before {\n    content: \"\\ec11\";\n  }\n  .bxs-barcode:before {\n    content: \"\\ec12\";\n  }\n  .bxs-baseball:before {\n    content: \"\\ec13\";\n  }\n  .bxs-basket:before {\n    content: \"\\ec14\";\n  }\n  .bxs-basketball:before {\n    content: \"\\ec15\";\n  }\n  .bxs-bath:before {\n    content: \"\\ec16\";\n  }\n  .bxs-battery:before {\n    content: \"\\ec17\";\n  }\n  .bxs-battery-charging:before {\n    content: \"\\ec18\";\n  }\n  .bxs-battery-full:before {\n    content: \"\\ec19\";\n  }\n  .bxs-battery-low:before {\n    content: \"\\ec1a\";\n  }\n  .bxs-bed:before {\n    content: \"\\ec1b\";\n  }\n  .bxs-been-here:before {\n    content: \"\\ec1c\";\n  }\n  .bxs-beer:before {\n    content: \"\\ec1d\";\n  }\n  .bxs-bell:before {\n    content: \"\\ec1e\";\n  }\n  .bxs-bell-minus:before {\n    content: \"\\ec1f\";\n  }\n  .bxs-bell-off:before {\n    content: \"\\ec20\";\n  }\n  .bxs-bell-plus:before {\n    content: \"\\ec21\";\n  }\n  .bxs-bell-ring:before {\n    content: \"\\ec22\";\n  }\n  .bxs-bible:before {\n    content: \"\\ec23\";\n  }\n  .bxs-binoculars:before {\n    content: \"\\ec24\";\n  }\n  .bxs-blanket:before {\n    content: \"\\ec25\";\n  }\n  .bxs-bolt:before {\n    content: \"\\ec26\";\n  }\n  .bxs-bolt-circle:before {\n    content: \"\\ec27\";\n  }\n  .bxs-bomb:before {\n    content: \"\\ec28\";\n  }\n  .bxs-bone:before {\n    content: \"\\ec29\";\n  }\n  .bxs-bong:before {\n    content: \"\\ec2a\";\n  }\n  .bxs-book:before {\n    content: \"\\ec2b\";\n  }\n  .bxs-book-add:before {\n    content: \"\\ec2c\";\n  }\n  .bxs-book-alt:before {\n    content: \"\\ec2d\";\n  }\n  .bxs-book-bookmark:before {\n    content: \"\\ec2e\";\n  }\n  .bxs-book-content:before {\n    content: \"\\ec2f\";\n  }\n  .bxs-book-heart:before {\n    content: \"\\ec30\";\n  }\n  .bxs-bookmark:before {\n    content: \"\\ec31\";\n  }\n  .bxs-bookmark-alt:before {\n    content: \"\\ec32\";\n  }\n  .bxs-bookmark-alt-minus:before {\n    content: \"\\ec33\";\n  }\n  .bxs-bookmark-alt-plus:before {\n    content: \"\\ec34\";\n  }\n  .bxs-bookmark-heart:before {\n    content: \"\\ec35\";\n  }\n  .bxs-bookmark-minus:before {\n    content: \"\\ec36\";\n  }\n  .bxs-bookmark-plus:before {\n    content: \"\\ec37\";\n  }\n  .bxs-bookmarks:before {\n    content: \"\\ec38\";\n  }\n  .bxs-bookmark-star:before {\n    content: \"\\ec39\";\n  }\n  .bxs-book-open:before {\n    content: \"\\ec3a\";\n  }\n  .bxs-book-reader:before {\n    content: \"\\ec3b\";\n  }\n  .bxs-bot:before {\n    content: \"\\ec3c\";\n  }\n  .bxs-bowling-ball:before {\n    content: \"\\ec3d\";\n  }\n  .bxs-box:before {\n    content: \"\\ec3e\";\n  }\n  .bxs-brain:before {\n    content: \"\\ec3f\";\n  }\n  .bxs-briefcase:before {\n    content: \"\\ec40\";\n  }\n  .bxs-briefcase-alt:before {\n    content: \"\\ec41\";\n  }\n  .bxs-briefcase-alt-2:before {\n    content: \"\\ec42\";\n  }\n  .bxs-brightness:before {\n    content: \"\\ec43\";\n  }\n  .bxs-brightness-half:before {\n    content: \"\\ec44\";\n  }\n  .bxs-brush:before {\n    content: \"\\ec45\";\n  }\n  .bxs-brush-alt:before {\n    content: \"\\ec46\";\n  }\n  .bxs-bug:before {\n    content: \"\\ec47\";\n  }\n  .bxs-bug-alt:before {\n    content: \"\\ec48\";\n  }\n  .bxs-building:before {\n    content: \"\\ec49\";\n  }\n  .bxs-building-house:before {\n    content: \"\\ec4a\";\n  }\n  .bxs-buildings:before {\n    content: \"\\ec4b\";\n  }\n  .bxs-bulb:before {\n    content: \"\\ec4c\";\n  }\n  .bxs-bullseye:before {\n    content: \"\\ec4d\";\n  }\n  .bxs-buoy:before {\n    content: \"\\ec4e\";\n  }\n  .bxs-bus:before {\n    content: \"\\ec4f\";\n  }\n  .bxs-business:before {\n    content: \"\\ec50\";\n  }\n  .bxs-bus-school:before {\n    content: \"\\ec51\";\n  }\n  .bxs-cabinet:before {\n    content: \"\\ec52\";\n  }\n  .bxs-cake:before {\n    content: \"\\ec53\";\n  }\n  .bxs-calculator:before {\n    content: \"\\ec54\";\n  }\n  .bxs-calendar:before {\n    content: \"\\ec55\";\n  }\n  .bxs-calendar-alt:before {\n    content: \"\\ec56\";\n  }\n  .bxs-calendar-check:before {\n    content: \"\\ec57\";\n  }\n  .bxs-calendar-edit:before {\n    content: \"\\ec58\";\n  }\n  .bxs-calendar-event:before {\n    content: \"\\ec59\";\n  }\n  .bxs-calendar-exclamation:before {\n    content: \"\\ec5a\";\n  }\n  .bxs-calendar-heart:before {\n    content: \"\\ec5b\";\n  }\n  .bxs-calendar-minus:before {\n    content: \"\\ec5c\";\n  }\n  .bxs-calendar-plus:before {\n    content: \"\\ec5d\";\n  }\n  .bxs-calendar-star:before {\n    content: \"\\ec5e\";\n  }\n  .bxs-calendar-week:before {\n    content: \"\\ec5f\";\n  }\n  .bxs-calendar-x:before {\n    content: \"\\ec60\";\n  }\n  .bxs-camera:before {\n    content: \"\\ec61\";\n  }\n  .bxs-camera-home:before {\n    content: \"\\ec62\";\n  }\n  .bxs-camera-movie:before {\n    content: \"\\ec63\";\n  }\n  .bxs-camera-off:before {\n    content: \"\\ec64\";\n  }\n  .bxs-camera-plus:before {\n    content: \"\\ec65\";\n  }\n  .bxs-capsule:before {\n    content: \"\\ec66\";\n  }\n  .bxs-captions:before {\n    content: \"\\ec67\";\n  }\n  .bxs-car:before {\n    content: \"\\ec68\";\n  }\n  .bxs-car-battery:before {\n    content: \"\\ec69\";\n  }\n  .bxs-car-crash:before {\n    content: \"\\ec6a\";\n  }\n  .bxs-card:before {\n    content: \"\\ec6b\";\n  }\n  .bxs-caret-down-circle:before {\n    content: \"\\ec6c\";\n  }\n  .bxs-caret-down-square:before {\n    content: \"\\ec6d\";\n  }\n  .bxs-caret-left-circle:before {\n    content: \"\\ec6e\";\n  }\n  .bxs-caret-left-square:before {\n    content: \"\\ec6f\";\n  }\n  .bxs-caret-right-circle:before {\n    content: \"\\ec70\";\n  }\n  .bxs-caret-right-square:before {\n    content: \"\\ec71\";\n  }\n  .bxs-caret-up-circle:before {\n    content: \"\\ec72\";\n  }\n  .bxs-caret-up-square:before {\n    content: \"\\ec73\";\n  }\n  .bxs-car-garage:before {\n    content: \"\\ec74\";\n  }\n  .bxs-car-mechanic:before {\n    content: \"\\ec75\";\n  }\n  .bxs-carousel:before {\n    content: \"\\ec76\";\n  }\n  .bxs-cart:before {\n    content: \"\\ec77\";\n  }\n  .bxs-cart-add:before {\n    content: \"\\ec78\";\n  }\n  .bxs-cart-alt:before {\n    content: \"\\ec79\";\n  }\n  .bxs-cart-download:before {\n    content: \"\\ec7a\";\n  }\n  .bxs-car-wash:before {\n    content: \"\\ec7b\";\n  }\n  .bxs-category:before {\n    content: \"\\ec7c\";\n  }\n  .bxs-category-alt:before {\n    content: \"\\ec7d\";\n  }\n  .bxs-cctv:before {\n    content: \"\\ec7e\";\n  }\n  .bxs-certification:before {\n    content: \"\\ec7f\";\n  }\n  .bxs-chalkboard:before {\n    content: \"\\ec80\";\n  }\n  .bxs-chart:before {\n    content: \"\\ec81\";\n  }\n  .bxs-chat:before {\n    content: \"\\ec82\";\n  }\n  .bxs-checkbox:before {\n    content: \"\\ec83\";\n  }\n  .bxs-checkbox-checked:before {\n    content: \"\\ec84\";\n  }\n  .bxs-check-circle:before {\n    content: \"\\ec85\";\n  }\n  .bxs-check-shield:before {\n    content: \"\\ec86\";\n  }\n  .bxs-check-square:before {\n    content: \"\\ec87\";\n  }\n  .bxs-chess:before {\n    content: \"\\ec88\";\n  }\n  .bxs-chevron-down:before {\n    content: \"\\ec89\";\n  }\n  .bxs-chevron-down-circle:before {\n    content: \"\\ec8a\";\n  }\n  .bxs-chevron-down-square:before {\n    content: \"\\ec8b\";\n  }\n  .bxs-chevron-left:before {\n    content: \"\\ec8c\";\n  }\n  .bxs-chevron-left-circle:before {\n    content: \"\\ec8d\";\n  }\n  .bxs-chevron-left-square:before {\n    content: \"\\ec8e\";\n  }\n  .bxs-chevron-right:before {\n    content: \"\\ec8f\";\n  }\n  .bxs-chevron-right-circle:before {\n    content: \"\\ec90\";\n  }\n  .bxs-chevron-right-square:before {\n    content: \"\\ec91\";\n  }\n  .bxs-chevrons-down:before {\n    content: \"\\ec92\";\n  }\n  .bxs-chevrons-left:before {\n    content: \"\\ec93\";\n  }\n  .bxs-chevrons-right:before {\n    content: \"\\ec94\";\n  }\n  .bxs-chevrons-up:before {\n    content: \"\\ec95\";\n  }\n  .bxs-chevron-up:before {\n    content: \"\\ec96\";\n  }\n  .bxs-chevron-up-circle:before {\n    content: \"\\ec97\";\n  }\n  .bxs-chevron-up-square:before {\n    content: \"\\ec98\";\n  }\n  .bxs-chip:before {\n    content: \"\\ec99\";\n  }\n  .bxs-church:before {\n    content: \"\\ec9a\";\n  }\n  .bxs-circle:before {\n    content: \"\\ec9b\";\n  }\n  .bxs-city:before {\n    content: \"\\ec9c\";\n  }\n  .bxs-clinic:before {\n    content: \"\\ec9d\";\n  }\n  .bxs-cloud:before {\n    content: \"\\ec9e\";\n  }\n  .bxs-cloud-download:before {\n    content: \"\\ec9f\";\n  }\n  .bxs-cloud-lightning:before {\n    content: \"\\eca0\";\n  }\n  .bxs-cloud-rain:before {\n    content: \"\\eca1\";\n  }\n  .bxs-cloud-upload:before {\n    content: \"\\eca2\";\n  }\n  .bxs-coffee:before {\n    content: \"\\eca3\";\n  }\n  .bxs-coffee-alt:before {\n    content: \"\\eca4\";\n  }\n  .bxs-coffee-togo:before {\n    content: \"\\eca5\";\n  }\n  .bxs-cog:before {\n    content: \"\\eca6\";\n  }\n  .bxs-coin:before {\n    content: \"\\eca7\";\n  }\n  .bxs-coin-stack:before {\n    content: \"\\eca8\";\n  }\n  .bxs-collection:before {\n    content: \"\\eca9\";\n  }\n  .bxs-color-fill:before {\n    content: \"\\ecaa\";\n  }\n  .bxs-comment:before {\n    content: \"\\ecab\";\n  }\n  .bxs-comment-add:before {\n    content: \"\\ecac\";\n  }\n  .bxs-comment-check:before {\n    content: \"\\ecad\";\n  }\n  .bxs-comment-detail:before {\n    content: \"\\ecae\";\n  }\n  .bxs-comment-dots:before {\n    content: \"\\ecaf\";\n  }\n  .bxs-comment-edit:before {\n    content: \"\\ecb0\";\n  }\n  .bxs-comment-error:before {\n    content: \"\\ecb1\";\n  }\n  .bxs-comment-minus:before {\n    content: \"\\ecb2\";\n  }\n  .bxs-comment-x:before {\n    content: \"\\ecb3\";\n  }\n  .bxs-compass:before {\n    content: \"\\ecb4\";\n  }\n  .bxs-component:before {\n    content: \"\\ecb5\";\n  }\n  .bxs-confused:before {\n    content: \"\\ecb6\";\n  }\n  .bxs-contact:before {\n    content: \"\\ecb7\";\n  }\n  .bxs-conversation:before {\n    content: \"\\ecb8\";\n  }\n  .bxs-cookie:before {\n    content: \"\\ecb9\";\n  }\n  .bxs-cool:before {\n    content: \"\\ecba\";\n  }\n  .bxs-copy:before {\n    content: \"\\ecbb\";\n  }\n  .bxs-copy-alt:before {\n    content: \"\\ecbc\";\n  }\n  .bxs-copyright:before {\n    content: \"\\ecbd\";\n  }\n  .bxs-coupon:before {\n    content: \"\\ecbe\";\n  }\n  .bxs-credit-card:before {\n    content: \"\\ecbf\";\n  }\n  .bxs-credit-card-alt:before {\n    content: \"\\ecc0\";\n  }\n  .bxs-credit-card-front:before {\n    content: \"\\ecc1\";\n  }\n  .bxs-crop:before {\n    content: \"\\ecc2\";\n  }\n  .bxs-crown:before {\n    content: \"\\ecc3\";\n  }\n  .bxs-cube:before {\n    content: \"\\ecc4\";\n  }\n  .bxs-cube-alt:before {\n    content: \"\\ecc5\";\n  }\n  .bxs-cuboid:before {\n    content: \"\\ecc6\";\n  }\n  .bxs-customize:before {\n    content: \"\\ecc7\";\n  }\n  .bxs-cylinder:before {\n    content: \"\\ecc8\";\n  }\n  .bxs-dashboard:before {\n    content: \"\\ecc9\";\n  }\n  .bxs-data:before {\n    content: \"\\ecca\";\n  }\n  .bxs-detail:before {\n    content: \"\\eccb\";\n  }\n  .bxs-devices:before {\n    content: \"\\eccc\";\n  }\n  .bxs-diamond:before {\n    content: \"\\eccd\";\n  }\n  .bxs-dice-1:before {\n    content: \"\\ecce\";\n  }\n  .bxs-dice-2:before {\n    content: \"\\eccf\";\n  }\n  .bxs-dice-3:before {\n    content: \"\\ecd0\";\n  }\n  .bxs-dice-4:before {\n    content: \"\\ecd1\";\n  }\n  .bxs-dice-5:before {\n    content: \"\\ecd2\";\n  }\n  .bxs-dice-6:before {\n    content: \"\\ecd3\";\n  }\n  .bxs-direction-left:before {\n    content: \"\\ecd4\";\n  }\n  .bxs-direction-right:before {\n    content: \"\\ecd5\";\n  }\n  .bxs-directions:before {\n    content: \"\\ecd6\";\n  }\n  .bxs-disc:before {\n    content: \"\\ecd7\";\n  }\n  .bxs-discount:before {\n    content: \"\\ecd8\";\n  }\n  .bxs-dish:before {\n    content: \"\\ecd9\";\n  }\n  .bxs-dislike:before {\n    content: \"\\ecda\";\n  }\n  .bxs-dizzy:before {\n    content: \"\\ecdb\";\n  }\n  .bxs-dock-bottom:before {\n    content: \"\\ecdc\";\n  }\n  .bxs-dock-left:before {\n    content: \"\\ecdd\";\n  }\n  .bxs-dock-right:before {\n    content: \"\\ecde\";\n  }\n  .bxs-dock-top:before {\n    content: \"\\ecdf\";\n  }\n  .bxs-dollar-circle:before {\n    content: \"\\ece0\";\n  }\n  .bxs-donate-blood:before {\n    content: \"\\ece1\";\n  }\n  .bxs-donate-heart:before {\n    content: \"\\ece2\";\n  }\n  .bxs-door-open:before {\n    content: \"\\ece3\";\n  }\n  .bxs-doughnut-chart:before {\n    content: \"\\ece4\";\n  }\n  .bxs-down-arrow:before {\n    content: \"\\ece5\";\n  }\n  .bxs-down-arrow-alt:before {\n    content: \"\\ece6\";\n  }\n  .bxs-down-arrow-circle:before {\n    content: \"\\ece7\";\n  }\n  .bxs-down-arrow-square:before {\n    content: \"\\ece8\";\n  }\n  .bxs-download:before {\n    content: \"\\ece9\";\n  }\n  .bxs-downvote:before {\n    content: \"\\ecea\";\n  }\n  .bxs-drink:before {\n    content: \"\\eceb\";\n  }\n  .bxs-droplet:before {\n    content: \"\\ecec\";\n  }\n  .bxs-droplet-half:before {\n    content: \"\\eced\";\n  }\n  .bxs-dryer:before {\n    content: \"\\ecee\";\n  }\n  .bxs-duplicate:before {\n    content: \"\\ecef\";\n  }\n  .bxs-edit:before {\n    content: \"\\ecf0\";\n  }\n  .bxs-edit-alt:before {\n    content: \"\\ecf1\";\n  }\n  .bxs-edit-location:before {\n    content: \"\\ecf2\";\n  }\n  .bxs-eject:before {\n    content: \"\\ecf3\";\n  }\n  .bxs-envelope:before {\n    content: \"\\ecf4\";\n  }\n  .bxs-envelope-open:before {\n    content: \"\\ecf5\";\n  }\n  .bxs-eraser:before {\n    content: \"\\ecf6\";\n  }\n  .bxs-error:before {\n    content: \"\\ecf7\";\n  }\n  .bxs-error-alt:before {\n    content: \"\\ecf8\";\n  }\n  .bxs-error-circle:before {\n    content: \"\\ecf9\";\n  }\n  .bxs-ev-station:before {\n    content: \"\\ecfa\";\n  }\n  .bxs-exit:before {\n    content: \"\\ecfb\";\n  }\n  .bxs-extension:before {\n    content: \"\\ecfc\";\n  }\n  .bxs-eyedropper:before {\n    content: \"\\ecfd\";\n  }\n  .bxs-face:before {\n    content: \"\\ecfe\";\n  }\n  .bxs-face-mask:before {\n    content: \"\\ecff\";\n  }\n  .bxs-factory:before {\n    content: \"\\ed00\";\n  }\n  .bxs-fast-forward-circle:before {\n    content: \"\\ed01\";\n  }\n  .bxs-file:before {\n    content: \"\\ed02\";\n  }\n  .bxs-file-archive:before {\n    content: \"\\ed03\";\n  }\n  .bxs-file-blank:before {\n    content: \"\\ed04\";\n  }\n  .bxs-file-css:before {\n    content: \"\\ed05\";\n  }\n  .bxs-file-doc:before {\n    content: \"\\ed06\";\n  }\n  .bxs-file-export:before {\n    content: \"\\ed07\";\n  }\n  .bxs-file-find:before {\n    content: \"\\ed08\";\n  }\n  .bxs-file-gif:before {\n    content: \"\\ed09\";\n  }\n  .bxs-file-html:before {\n    content: \"\\ed0a\";\n  }\n  .bxs-file-image:before {\n    content: \"\\ed0b\";\n  }\n  .bxs-file-import:before {\n    content: \"\\ed0c\";\n  }\n  .bxs-file-jpg:before {\n    content: \"\\ed0d\";\n  }\n  .bxs-file-js:before {\n    content: \"\\ed0e\";\n  }\n  .bxs-file-json:before {\n    content: \"\\ed0f\";\n  }\n  .bxs-file-md:before {\n    content: \"\\ed10\";\n  }\n  .bxs-file-pdf:before {\n    content: \"\\ed11\";\n  }\n  .bxs-file-plus:before {\n    content: \"\\ed12\";\n  }\n  .bxs-file-png:before {\n    content: \"\\ed13\";\n  }\n  .bxs-file-txt:before {\n    content: \"\\ed14\";\n  }\n  .bxs-film:before {\n    content: \"\\ed15\";\n  }\n  .bxs-filter-alt:before {\n    content: \"\\ed16\";\n  }\n  .bxs-first-aid:before {\n    content: \"\\ed17\";\n  }\n  .bxs-flag:before {\n    content: \"\\ed18\";\n  }\n  .bxs-flag-alt:before {\n    content: \"\\ed19\";\n  }\n  .bxs-flag-checkered:before {\n    content: \"\\ed1a\";\n  }\n  .bxs-flame:before {\n    content: \"\\ed1b\";\n  }\n  .bxs-flask:before {\n    content: \"\\ed1c\";\n  }\n  .bxs-florist:before {\n    content: \"\\ed1d\";\n  }\n  .bxs-folder:before {\n    content: \"\\ed1e\";\n  }\n  .bxs-folder-minus:before {\n    content: \"\\ed1f\";\n  }\n  .bxs-folder-open:before {\n    content: \"\\ed20\";\n  }\n  .bxs-folder-plus:before {\n    content: \"\\ed21\";\n  }\n  .bxs-food-menu:before {\n    content: \"\\ed22\";\n  }\n  .bxs-fridge:before {\n    content: \"\\ed23\";\n  }\n  .bxs-game:before {\n    content: \"\\ed24\";\n  }\n  .bxs-gas-pump:before {\n    content: \"\\ed25\";\n  }\n  .bxs-ghost:before {\n    content: \"\\ed26\";\n  }\n  .bxs-gift:before {\n    content: \"\\ed27\";\n  }\n  .bxs-graduation:before {\n    content: \"\\ed28\";\n  }\n  .bxs-grid:before {\n    content: \"\\ed29\";\n  }\n  .bxs-grid-alt:before {\n    content: \"\\ed2a\";\n  }\n  .bxs-group:before {\n    content: \"\\ed2b\";\n  }\n  .bxs-guitar-amp:before {\n    content: \"\\ed2c\";\n  }\n  .bxs-hand-down:before {\n    content: \"\\ed2d\";\n  }\n  .bxs-hand-left:before {\n    content: \"\\ed2e\";\n  }\n  .bxs-hand-right:before {\n    content: \"\\ed2f\";\n  }\n  .bxs-hand-up:before {\n    content: \"\\ed30\";\n  }\n  .bxs-happy:before {\n    content: \"\\ed31\";\n  }\n  .bxs-happy-alt:before {\n    content: \"\\ed32\";\n  }\n  .bxs-happy-beaming:before {\n    content: \"\\ed33\";\n  }\n  .bxs-happy-heart-eyes:before {\n    content: \"\\ed34\";\n  }\n  .bxs-hdd:before {\n    content: \"\\ed35\";\n  }\n  .bxs-heart:before {\n    content: \"\\ed36\";\n  }\n  .bxs-heart-circle:before {\n    content: \"\\ed37\";\n  }\n  .bxs-heart-square:before {\n    content: \"\\ed38\";\n  }\n  .bxs-help-circle:before {\n    content: \"\\ed39\";\n  }\n  .bxs-hide:before {\n    content: \"\\ed3a\";\n  }\n  .bxs-home:before {\n    content: \"\\ed3b\";\n  }\n  .bxs-home-circle:before {\n    content: \"\\ed3c\";\n  }\n  .bxs-home-heart:before {\n    content: \"\\ed3d\";\n  }\n  .bxs-home-smile:before {\n    content: \"\\ed3e\";\n  }\n  .bxs-hot:before {\n    content: \"\\ed3f\";\n  }\n  .bxs-hotel:before {\n    content: \"\\ed40\";\n  }\n  .bxs-hourglass:before {\n    content: \"\\ed41\";\n  }\n  .bxs-hourglass-bottom:before {\n    content: \"\\ed42\";\n  }\n  .bxs-hourglass-top:before {\n    content: \"\\ed43\";\n  }\n  .bxs-id-card:before {\n    content: \"\\ed44\";\n  }\n  .bxs-image:before {\n    content: \"\\ed45\";\n  }\n  .bxs-image-add:before {\n    content: \"\\ed46\";\n  }\n  .bxs-image-alt:before {\n    content: \"\\ed47\";\n  }\n  .bxs-inbox:before {\n    content: \"\\ed48\";\n  }\n  .bxs-info-circle:before {\n    content: \"\\ed49\";\n  }\n  .bxs-info-square:before {\n    content: \"\\ed4a\";\n  }\n  .bxs-institution:before {\n    content: \"\\ed4b\";\n  }\n  .bxs-joystick:before {\n    content: \"\\ed4c\";\n  }\n  .bxs-joystick-alt:before {\n    content: \"\\ed4d\";\n  }\n  .bxs-joystick-button:before {\n    content: \"\\ed4e\";\n  }\n  .bxs-key:before {\n    content: \"\\ed4f\";\n  }\n  .bxs-keyboard:before {\n    content: \"\\ed50\";\n  }\n  .bxs-label:before {\n    content: \"\\ed51\";\n  }\n  .bxs-landmark:before {\n    content: \"\\ed52\";\n  }\n  .bxs-landscape:before {\n    content: \"\\ed53\";\n  }\n  .bxs-laugh:before {\n    content: \"\\ed54\";\n  }\n  .bxs-layer:before {\n    content: \"\\ed55\";\n  }\n  .bxs-layer-minus:before {\n    content: \"\\ed56\";\n  }\n  .bxs-layer-plus:before {\n    content: \"\\ed57\";\n  }\n  .bxs-layout:before {\n    content: \"\\ed58\";\n  }\n  .bxs-left-arrow:before {\n    content: \"\\ed59\";\n  }\n  .bxs-left-arrow-alt:before {\n    content: \"\\ed5a\";\n  }\n  .bxs-left-arrow-circle:before {\n    content: \"\\ed5b\";\n  }\n  .bxs-left-arrow-square:before {\n    content: \"\\ed5c\";\n  }\n  .bxs-left-down-arrow-circle:before {\n    content: \"\\ed5d\";\n  }\n  .bxs-left-top-arrow-circle:before {\n    content: \"\\ed5e\";\n  }\n  .bxs-like:before {\n    content: \"\\ed5f\";\n  }\n  .bxs-location-plus:before {\n    content: \"\\ed60\";\n  }\n  .bxs-lock:before {\n    content: \"\\ed61\";\n  }\n  .bxs-lock-alt:before {\n    content: \"\\ed62\";\n  }\n  .bxs-lock-open:before {\n    content: \"\\ed63\";\n  }\n  .bxs-lock-open-alt:before {\n    content: \"\\ed64\";\n  }\n  .bxs-log-in:before {\n    content: \"\\ed65\";\n  }\n  .bxs-log-in-circle:before {\n    content: \"\\ed66\";\n  }\n  .bxs-log-out:before {\n    content: \"\\ed67\";\n  }\n  .bxs-log-out-circle:before {\n    content: \"\\ed68\";\n  }\n  .bxs-low-vision:before {\n    content: \"\\ed69\";\n  }\n  .bxs-magic-wand:before {\n    content: \"\\ed6a\";\n  }\n  .bxs-magnet:before {\n    content: \"\\ed6b\";\n  }\n  .bxs-map:before {\n    content: \"\\ed6c\";\n  }\n  .bxs-map-alt:before {\n    content: \"\\ed6d\";\n  }\n  .bxs-map-pin:before {\n    content: \"\\ed6e\";\n  }\n  .bxs-mask:before {\n    content: \"\\ed6f\";\n  }\n  .bxs-medal:before {\n    content: \"\\ed70\";\n  }\n  .bxs-megaphone:before {\n    content: \"\\ed71\";\n  }\n  .bxs-meh:before {\n    content: \"\\ed72\";\n  }\n  .bxs-meh-alt:before {\n    content: \"\\ed73\";\n  }\n  .bxs-meh-blank:before {\n    content: \"\\ed74\";\n  }\n  .bxs-memory-card:before {\n    content: \"\\ed75\";\n  }\n  .bxs-message:before {\n    content: \"\\ed76\";\n  }\n  .bxs-message-add:before {\n    content: \"\\ed77\";\n  }\n  .bxs-message-alt:before {\n    content: \"\\ed78\";\n  }\n  .bxs-message-alt-add:before {\n    content: \"\\ed79\";\n  }\n  .bxs-message-alt-check:before {\n    content: \"\\ed7a\";\n  }\n  .bxs-message-alt-detail:before {\n    content: \"\\ed7b\";\n  }\n  .bxs-message-alt-dots:before {\n    content: \"\\ed7c\";\n  }\n  .bxs-message-alt-edit:before {\n    content: \"\\ed7d\";\n  }\n  .bxs-message-alt-error:before {\n    content: \"\\ed7e\";\n  }\n  .bxs-message-alt-minus:before {\n    content: \"\\ed7f\";\n  }\n  .bxs-message-alt-x:before {\n    content: \"\\ed80\";\n  }\n  .bxs-message-check:before {\n    content: \"\\ed81\";\n  }\n  .bxs-message-detail:before {\n    content: \"\\ed82\";\n  }\n  .bxs-message-dots:before {\n    content: \"\\ed83\";\n  }\n  .bxs-message-edit:before {\n    content: \"\\ed84\";\n  }\n  .bxs-message-error:before {\n    content: \"\\ed85\";\n  }\n  .bxs-message-minus:before {\n    content: \"\\ed86\";\n  }\n  .bxs-message-rounded:before {\n    content: \"\\ed87\";\n  }\n  .bxs-message-rounded-add:before {\n    content: \"\\ed88\";\n  }\n  .bxs-message-rounded-check:before {\n    content: \"\\ed89\";\n  }\n  .bxs-message-rounded-detail:before {\n    content: \"\\ed8a\";\n  }\n  .bxs-message-rounded-dots:before {\n    content: \"\\ed8b\";\n  }\n  .bxs-message-rounded-edit:before {\n    content: \"\\ed8c\";\n  }\n  .bxs-message-rounded-error:before {\n    content: \"\\ed8d\";\n  }\n  .bxs-message-rounded-minus:before {\n    content: \"\\ed8e\";\n  }\n  .bxs-message-rounded-x:before {\n    content: \"\\ed8f\";\n  }\n  .bxs-message-square:before {\n    content: \"\\ed90\";\n  }\n  .bxs-message-square-add:before {\n    content: \"\\ed91\";\n  }\n  .bxs-message-square-check:before {\n    content: \"\\ed92\";\n  }\n  .bxs-message-square-detail:before {\n    content: \"\\ed93\";\n  }\n  .bxs-message-square-dots:before {\n    content: \"\\ed94\";\n  }\n  .bxs-message-square-edit:before {\n    content: \"\\ed95\";\n  }\n  .bxs-message-square-error:before {\n    content: \"\\ed96\";\n  }\n  .bxs-message-square-minus:before {\n    content: \"\\ed97\";\n  }\n  .bxs-message-square-x:before {\n    content: \"\\ed98\";\n  }\n  .bxs-message-x:before {\n    content: \"\\ed99\";\n  }\n  .bxs-meteor:before {\n    content: \"\\ed9a\";\n  }\n  .bxs-microchip:before {\n    content: \"\\ed9b\";\n  }\n  .bxs-microphone:before {\n    content: \"\\ed9c\";\n  }\n  .bxs-microphone-alt:before {\n    content: \"\\ed9d\";\n  }\n  .bxs-microphone-off:before {\n    content: \"\\ed9e\";\n  }\n  .bxs-minus-circle:before {\n    content: \"\\ed9f\";\n  }\n  .bxs-minus-square:before {\n    content: \"\\eda0\";\n  }\n  .bxs-mobile:before {\n    content: \"\\eda1\";\n  }\n  .bxs-mobile-vibration:before {\n    content: \"\\eda2\";\n  }\n  .bxs-moon:before {\n    content: \"\\eda3\";\n  }\n  .bxs-mouse:before {\n    content: \"\\eda4\";\n  }\n  .bxs-mouse-alt:before {\n    content: \"\\eda5\";\n  }\n  .bxs-movie:before {\n    content: \"\\eda6\";\n  }\n  .bxs-movie-play:before {\n    content: \"\\eda7\";\n  }\n  .bxs-music:before {\n    content: \"\\eda8\";\n  }\n  .bxs-navigation:before {\n    content: \"\\eda9\";\n  }\n  .bxs-network-chart:before {\n    content: \"\\edaa\";\n  }\n  .bxs-news:before {\n    content: \"\\edab\";\n  }\n  .bxs-no-entry:before {\n    content: \"\\edac\";\n  }\n  .bxs-note:before {\n    content: \"\\edad\";\n  }\n  .bxs-notepad:before {\n    content: \"\\edae\";\n  }\n  .bxs-notification:before {\n    content: \"\\edaf\";\n  }\n  .bxs-notification-off:before {\n    content: \"\\edb0\";\n  }\n  .bxs-offer:before {\n    content: \"\\edb1\";\n  }\n  .bxs-package:before {\n    content: \"\\edb2\";\n  }\n  .bxs-paint:before {\n    content: \"\\edb3\";\n  }\n  .bxs-paint-roll:before {\n    content: \"\\edb4\";\n  }\n  .bxs-palette:before {\n    content: \"\\edb5\";\n  }\n  .bxs-paper-plane:before {\n    content: \"\\edb6\";\n  }\n  .bxs-parking:before {\n    content: \"\\edb7\";\n  }\n  .bxs-paste:before {\n    content: \"\\edb8\";\n  }\n  .bxs-pen:before {\n    content: \"\\edb9\";\n  }\n  .bxs-pencil:before {\n    content: \"\\edba\";\n  }\n  .bxs-phone:before {\n    content: \"\\edbb\";\n  }\n  .bxs-phone-call:before {\n    content: \"\\edbc\";\n  }\n  .bxs-phone-incoming:before {\n    content: \"\\edbd\";\n  }\n  .bxs-phone-outgoing:before {\n    content: \"\\edbe\";\n  }\n  .bxs-photo-album:before {\n    content: \"\\edbf\";\n  }\n  .bxs-piano:before {\n    content: \"\\edc0\";\n  }\n  .bxs-pie-chart:before {\n    content: \"\\edc1\";\n  }\n  .bxs-pie-chart-alt:before {\n    content: \"\\edc2\";\n  }\n  .bxs-pie-chart-alt-2:before {\n    content: \"\\edc3\";\n  }\n  .bxs-pin:before {\n    content: \"\\edc4\";\n  }\n  .bxs-pizza:before {\n    content: \"\\edc5\";\n  }\n  .bxs-plane:before {\n    content: \"\\edc6\";\n  }\n  .bxs-plane-alt:before {\n    content: \"\\edc7\";\n  }\n  .bxs-plane-land:before {\n    content: \"\\edc8\";\n  }\n  .bxs-planet:before {\n    content: \"\\edc9\";\n  }\n  .bxs-plane-take-off:before {\n    content: \"\\edca\";\n  }\n  .bxs-playlist:before {\n    content: \"\\edcb\";\n  }\n  .bxs-plug:before {\n    content: \"\\edcc\";\n  }\n  .bxs-plus-circle:before {\n    content: \"\\edcd\";\n  }\n  .bxs-plus-square:before {\n    content: \"\\edce\";\n  }\n  .bxs-pointer:before {\n    content: \"\\edcf\";\n  }\n  .bxs-polygon:before {\n    content: \"\\edd0\";\n  }\n  .bxs-printer:before {\n    content: \"\\edd1\";\n  }\n  .bxs-purchase-tag:before {\n    content: \"\\edd2\";\n  }\n  .bxs-purchase-tag-alt:before {\n    content: \"\\edd3\";\n  }\n  .bxs-pyramid:before {\n    content: \"\\edd4\";\n  }\n  .bxs-quote-alt-left:before {\n    content: \"\\edd5\";\n  }\n  .bxs-quote-alt-right:before {\n    content: \"\\edd6\";\n  }\n  .bxs-quote-left:before {\n    content: \"\\edd7\";\n  }\n  .bxs-quote-right:before {\n    content: \"\\edd8\";\n  }\n  .bxs-quote-single-left:before {\n    content: \"\\edd9\";\n  }\n  .bxs-quote-single-right:before {\n    content: \"\\edda\";\n  }\n  .bxs-radiation:before {\n    content: \"\\eddb\";\n  }\n  .bxs-radio:before {\n    content: \"\\eddc\";\n  }\n  .bxs-receipt:before {\n    content: \"\\eddd\";\n  }\n  .bxs-rectangle:before {\n    content: \"\\edde\";\n  }\n  .bxs-rename:before {\n    content: \"\\eddf\";\n  }\n  .bxs-report:before {\n    content: \"\\ede0\";\n  }\n  .bxs-rewind-circle:before {\n    content: \"\\ede1\";\n  }\n  .bxs-right-arrow:before {\n    content: \"\\ede2\";\n  }\n  .bxs-right-arrow-alt:before {\n    content: \"\\ede3\";\n  }\n  .bxs-right-arrow-circle:before {\n    content: \"\\ede4\";\n  }\n  .bxs-right-arrow-square:before {\n    content: \"\\ede5\";\n  }\n  .bxs-right-down-arrow-circle:before {\n    content: \"\\ede6\";\n  }\n  .bxs-right-top-arrow-circle:before {\n    content: \"\\ede7\";\n  }\n  .bxs-rocket:before {\n    content: \"\\ede8\";\n  }\n  .bxs-ruler:before {\n    content: \"\\ede9\";\n  }\n  .bxs-sad:before {\n    content: \"\\edea\";\n  }\n  .bxs-save:before {\n    content: \"\\edeb\";\n  }\n  .bxs-school:before {\n    content: \"\\edec\";\n  }\n  .bxs-search:before {\n    content: \"\\eded\";\n  }\n  .bxs-search-alt-2:before {\n    content: \"\\edee\";\n  }\n  .bxs-select-multiple:before {\n    content: \"\\edef\";\n  }\n  .bxs-send:before {\n    content: \"\\edf0\";\n  }\n  .bxs-server:before {\n    content: \"\\edf1\";\n  }\n  .bxs-shapes:before {\n    content: \"\\edf2\";\n  }\n  .bxs-share:before {\n    content: \"\\edf3\";\n  }\n  .bxs-share-alt:before {\n    content: \"\\edf4\";\n  }\n  .bxs-shield:before {\n    content: \"\\edf5\";\n  }\n  .bxs-shield-alt-2:before {\n    content: \"\\edf6\";\n  }\n  .bxs-shield-x:before {\n    content: \"\\edf7\";\n  }\n  .bxs-ship:before {\n    content: \"\\edf8\";\n  }\n  .bxs-shocked:before {\n    content: \"\\edf9\";\n  }\n  .bxs-shopping-bag:before {\n    content: \"\\edfa\";\n  }\n  .bxs-shopping-bag-alt:before {\n    content: \"\\edfb\";\n  }\n  .bxs-shopping-bags:before {\n    content: \"\\edfc\";\n  }\n  .bxs-show:before {\n    content: \"\\edfd\";\n  }\n  .bxs-skip-next-circle:before {\n    content: \"\\edfe\";\n  }\n  .bxs-skip-previous-circle:before {\n    content: \"\\edff\";\n  }\n  .bxs-skull:before {\n    content: \"\\ee00\";\n  }\n  .bxs-sleepy:before {\n    content: \"\\ee01\";\n  }\n  .bxs-slideshow:before {\n    content: \"\\ee02\";\n  }\n  .bxs-smile:before {\n    content: \"\\ee03\";\n  }\n  .bxs-sort-alt:before {\n    content: \"\\ee04\";\n  }\n  .bxs-spa:before {\n    content: \"\\ee05\";\n  }\n  .bxs-spray-can:before {\n    content: \"\\ee06\";\n  }\n  .bxs-spreadsheet:before {\n    content: \"\\ee07\";\n  }\n  .bxs-square:before {\n    content: \"\\ee08\";\n  }\n  .bxs-square-rounded:before {\n    content: \"\\ee09\";\n  }\n  .bxs-star:before {\n    content: \"\\ee0a\";\n  }\n  .bxs-star-half:before {\n    content: \"\\ee0b\";\n  }\n  .bxs-sticker:before {\n    content: \"\\ee0c\";\n  }\n  .bxs-stopwatch:before {\n    content: \"\\ee0d\";\n  }\n  .bxs-store:before {\n    content: \"\\ee0e\";\n  }\n  .bxs-store-alt:before {\n    content: \"\\ee0f\";\n  }\n  .bxs-sun:before {\n    content: \"\\ee10\";\n  }\n  .bxs-tachometer:before {\n    content: \"\\ee11\";\n  }\n  .bxs-tag:before {\n    content: \"\\ee12\";\n  }\n  .bxs-tag-alt:before {\n    content: \"\\ee13\";\n  }\n  .bxs-tag-x:before {\n    content: \"\\ee14\";\n  }\n  .bxs-taxi:before {\n    content: \"\\ee15\";\n  }\n  .bxs-tennis-ball:before {\n    content: \"\\ee16\";\n  }\n  .bxs-terminal:before {\n    content: \"\\ee17\";\n  }\n  .bxs-thermometer:before {\n    content: \"\\ee18\";\n  }\n  .bxs-time:before {\n    content: \"\\ee19\";\n  }\n  .bxs-time-five:before {\n    content: \"\\ee1a\";\n  }\n  .bxs-timer:before {\n    content: \"\\ee1b\";\n  }\n  .bxs-tired:before {\n    content: \"\\ee1c\";\n  }\n  .bxs-toggle-left:before {\n    content: \"\\ee1d\";\n  }\n  .bxs-toggle-right:before {\n    content: \"\\ee1e\";\n  }\n  .bxs-tone:before {\n    content: \"\\ee1f\";\n  }\n  .bxs-torch:before {\n    content: \"\\ee20\";\n  }\n  .bxs-to-top:before {\n    content: \"\\ee21\";\n  }\n  .bxs-traffic:before {\n    content: \"\\ee22\";\n  }\n  .bxs-traffic-barrier:before {\n    content: \"\\ee23\";\n  }\n  .bxs-traffic-cone:before {\n    content: \"\\ee24\";\n  }\n  .bxs-train:before {\n    content: \"\\ee25\";\n  }\n  .bxs-trash:before {\n    content: \"\\ee26\";\n  }\n  .bxs-trash-alt:before {\n    content: \"\\ee27\";\n  }\n  .bxs-tree:before {\n    content: \"\\ee28\";\n  }\n  .bxs-trophy:before {\n    content: \"\\ee29\";\n  }\n  .bxs-truck:before {\n    content: \"\\ee2a\";\n  }\n  .bxs-t-shirt:before {\n    content: \"\\ee2b\";\n  }\n  .bxs-tv:before {\n    content: \"\\ee2c\";\n  }\n  .bxs-up-arrow:before {\n    content: \"\\ee2d\";\n  }\n  .bxs-up-arrow-alt:before {\n    content: \"\\ee2e\";\n  }\n  .bxs-up-arrow-circle:before {\n    content: \"\\ee2f\";\n  }\n  .bxs-up-arrow-square:before {\n    content: \"\\ee30\";\n  }\n  .bxs-upside-down:before {\n    content: \"\\ee31\";\n  }\n  .bxs-upvote:before {\n    content: \"\\ee32\";\n  }\n  .bxs-user:before {\n    content: \"\\ee33\";\n  }\n  .bxs-user-account:before {\n    content: \"\\ee34\";\n  }\n  .bxs-user-badge:before {\n    content: \"\\ee35\";\n  }\n  .bxs-user-check:before {\n    content: \"\\ee36\";\n  }\n  .bxs-user-circle:before {\n    content: \"\\ee37\";\n  }\n  .bxs-user-detail:before {\n    content: \"\\ee38\";\n  }\n  .bxs-user-minus:before {\n    content: \"\\ee39\";\n  }\n  .bxs-user-pin:before {\n    content: \"\\ee3a\";\n  }\n  .bxs-user-plus:before {\n    content: \"\\ee3b\";\n  }\n  .bxs-user-rectangle:before {\n    content: \"\\ee3c\";\n  }\n  .bxs-user-voice:before {\n    content: \"\\ee3d\";\n  }\n  .bxs-user-x:before {\n    content: \"\\ee3e\";\n  }\n  .bxs-vector:before {\n    content: \"\\ee3f\";\n  }\n  .bxs-vial:before {\n    content: \"\\ee40\";\n  }\n  .bxs-video:before {\n    content: \"\\ee41\";\n  }\n  .bxs-video-off:before {\n    content: \"\\ee42\";\n  }\n  .bxs-video-plus:before {\n    content: \"\\ee43\";\n  }\n  .bxs-video-recording:before {\n    content: \"\\ee44\";\n  }\n  .bxs-videos:before {\n    content: \"\\ee45\";\n  }\n  .bxs-virus:before {\n    content: \"\\ee46\";\n  }\n  .bxs-virus-block:before {\n    content: \"\\ee47\";\n  }\n  .bxs-volume:before {\n    content: \"\\ee48\";\n  }\n  .bxs-volume-full:before {\n    content: \"\\ee49\";\n  }\n  .bxs-volume-low:before {\n    content: \"\\ee4a\";\n  }\n  .bxs-volume-mute:before {\n    content: \"\\ee4b\";\n  }\n  .bxs-wallet:before {\n    content: \"\\ee4c\";\n  }\n  .bxs-wallet-alt:before {\n    content: \"\\ee4d\";\n  }\n  .bxs-washer:before {\n    content: \"\\ee4e\";\n  }\n  .bxs-watch:before {\n    content: \"\\ee4f\";\n  }\n  .bxs-watch-alt:before {\n    content: \"\\ee50\";\n  }\n  .bxs-webcam:before {\n    content: \"\\ee51\";\n  }\n  .bxs-widget:before {\n    content: \"\\ee52\";\n  }\n  .bxs-window-alt:before {\n    content: \"\\ee53\";\n  }\n  .bxs-wine:before {\n    content: \"\\ee54\";\n  }\n  .bxs-wink-smile:before {\n    content: \"\\ee55\";\n  }\n  .bxs-wink-tongue:before {\n    content: \"\\ee56\";\n  }\n  .bxs-wrench:before {\n    content: \"\\ee57\";\n  }\n  .bxs-x-circle:before {\n    content: \"\\ee58\";\n  }\n  .bxs-x-square:before {\n    content: \"\\ee59\";\n  }\n  .bxs-yin-yang:before {\n    content: \"\\ee5a\";\n  }\n  .bxs-zap:before {\n    content: \"\\ee5b\";\n  }\n  .bxs-zoom-in:before {\n    content: \"\\ee5c\";\n  }\n  .bxs-zoom-out:before {\n    content: \"\\ee5d\";\n  }\n  .bxl-500px:before {\n    content: \"\\ee5e\";\n  }\n  .bxl-adobe:before {\n    content: \"\\ee5f\";\n  }\n  .bxl-airbnb:before {\n    content: \"\\ee60\";\n  }\n  .bxl-algolia:before {\n    content: \"\\ee61\";\n  }\n  .bxl-amazon:before {\n    content: \"\\ee62\";\n  }\n  .bxl-android:before {\n    content: \"\\ee63\";\n  }\n  .bxl-angular:before {\n    content: \"\\ee64\";\n  }\n  .bxl-apple:before {\n    content: \"\\ee65\";\n  }\n  .bxl-audible:before {\n    content: \"\\ee66\";\n  }\n  .bxl-baidu:before {\n    content: \"\\ee67\";\n  }\n  .bxl-behance:before {\n    content: \"\\ee68\";\n  }\n  .bxl-bing:before {\n    content: \"\\ee69\";\n  }\n  .bxl-bitcoin:before {\n    content: \"\\ee6a\";\n  }\n  .bxl-blender:before {\n    content: \"\\ee6b\";\n  }\n  .bxl-blogger:before {\n    content: \"\\ee6c\";\n  }\n  .bxl-bootstrap:before {\n    content: \"\\ee6d\";\n  }\n  .bxl-chrome:before {\n    content: \"\\ee6e\";\n  }\n  .bxl-codepen:before {\n    content: \"\\ee6f\";\n  }\n  .bxl-c-plus-plus:before {\n    content: \"\\ee70\";\n  }\n  .bxl-creative-commons:before {\n    content: \"\\ee71\";\n  }\n  .bxl-css3:before {\n    content: \"\\ee72\";\n  }\n  .bxl-dailymotion:before {\n    content: \"\\ee73\";\n  }\n  .bxl-deviantart:before {\n    content: \"\\ee74\";\n  }\n  .bxl-dev-to:before {\n    content: \"\\ee75\";\n  }\n  .bxl-digg:before {\n    content: \"\\ee76\";\n  }\n  .bxl-digitalocean:before {\n    content: \"\\ee77\";\n  }\n  .bxl-discord:before {\n    content: \"\\ee78\";\n  }\n  .bxl-discourse:before {\n    content: \"\\ee79\";\n  }\n  .bxl-django:before {\n    content: \"\\ee7a\";\n  }\n  .bxl-dribbble:before {\n    content: \"\\ee7b\";\n  }\n  .bxl-dropbox:before {\n    content: \"\\ee7c\";\n  }\n  .bxl-drupal:before {\n    content: \"\\ee7d\";\n  }\n  .bxl-ebay:before {\n    content: \"\\ee7e\";\n  }\n  .bxl-edge:before {\n    content: \"\\ee7f\";\n  }\n  .bxl-etsy:before {\n    content: \"\\ee80\";\n  }\n  .bxl-facebook:before {\n    content: \"\\ee81\";\n  }\n  .bxl-facebook-circle:before {\n    content: \"\\ee82\";\n  }\n  .bxl-facebook-square:before {\n    content: \"\\ee83\";\n  }\n  .bxl-figma:before {\n    content: \"\\ee84\";\n  }\n  .bxl-firebase:before {\n    content: \"\\ee85\";\n  }\n  .bxl-firefox:before {\n    content: \"\\ee86\";\n  }\n  .bxl-flickr:before {\n    content: \"\\ee87\";\n  }\n  .bxl-flickr-square:before {\n    content: \"\\ee88\";\n  }\n  .bxl-foursquare:before {\n    content: \"\\ee89\";\n  }\n  .bxl-git:before {\n    content: \"\\ee8a\";\n  }\n  .bxl-github:before {\n    content: \"\\ee8b\";\n  }\n  .bxl-gitlab:before {\n    content: \"\\ee8c\";\n  }\n  .bxl-google:before {\n    content: \"\\ee8d\";\n  }\n  .bxl-google-cloud:before {\n    content: \"\\ee8e\";\n  }\n  .bxl-google-plus:before {\n    content: \"\\ee8f\";\n  }\n  .bxl-google-plus-circle:before {\n    content: \"\\ee90\";\n  }\n  .bxl-html5:before {\n    content: \"\\ee91\";\n  }\n  .bxl-imdb:before {\n    content: \"\\ee92\";\n  }\n  .bxl-instagram:before {\n    content: \"\\ee93\";\n  }\n  .bxl-instagram-alt:before {\n    content: \"\\ee94\";\n  }\n  .bxl-internet-explorer:before {\n    content: \"\\ee95\";\n  }\n  .bxl-invision:before {\n    content: \"\\ee96\";\n  }\n  .bxl-javascript:before {\n    content: \"\\ee97\";\n  }\n  .bxl-joomla:before {\n    content: \"\\ee98\";\n  }\n  .bxl-jquery:before {\n    content: \"\\ee99\";\n  }\n  .bxl-jsfiddle:before {\n    content: \"\\ee9a\";\n  }\n  .bxl-kickstarter:before {\n    content: \"\\ee9b\";\n  }\n  .bxl-kubernetes:before {\n    content: \"\\ee9c\";\n  }\n  .bxl-less:before {\n    content: \"\\ee9d\";\n  }\n  .bxl-linkedin:before {\n    content: \"\\ee9e\";\n  }\n  .bxl-linkedin-square:before {\n    content: \"\\ee9f\";\n  }\n  .bxl-magento:before {\n    content: \"\\eea0\";\n  }\n  .bxl-mailchimp:before {\n    content: \"\\eea1\";\n  }\n  .bxl-markdown:before {\n    content: \"\\eea2\";\n  }\n  .bxl-mastercard:before {\n    content: \"\\eea3\";\n  }\n  .bxl-medium:before {\n    content: \"\\eea4\";\n  }\n  .bxl-medium-old:before {\n    content: \"\\eea5\";\n  }\n  .bxl-medium-square:before {\n    content: \"\\eea6\";\n  }\n  .bxl-messenger:before {\n    content: \"\\eea7\";\n  }\n  .bxl-microsoft:before {\n    content: \"\\eea8\";\n  }\n  .bxl-microsoft-teams:before {\n    content: \"\\eea9\";\n  }\n  .bxl-nodejs:before {\n    content: \"\\eeaa\";\n  }\n  .bxl-ok-ru:before {\n    content: \"\\eeab\";\n  }\n  .bxl-opera:before {\n    content: \"\\eeac\";\n  }\n  .bxl-patreon:before {\n    content: \"\\eead\";\n  }\n  .bxl-paypal:before {\n    content: \"\\eeae\";\n  }\n  .bxl-periscope:before {\n    content: \"\\eeaf\";\n  }\n  .bxl-pinterest:before {\n    content: \"\\eeb0\";\n  }\n  .bxl-pinterest-alt:before {\n    content: \"\\eeb1\";\n  }\n  .bxl-play-store:before {\n    content: \"\\eeb2\";\n  }\n  .bxl-pocket:before {\n    content: \"\\eeb3\";\n  }\n  .bxl-product-hunt:before {\n    content: \"\\eeb4\";\n  }\n  .bxl-python:before {\n    content: \"\\eeb5\";\n  }\n  .bxl-quora:before {\n    content: \"\\eeb6\";\n  }\n  .bxl-react:before {\n    content: \"\\eeb7\";\n  }\n  .bxl-redbubble:before {\n    content: \"\\eeb8\";\n  }\n  .bxl-reddit:before {\n    content: \"\\eeb9\";\n  }\n  .bxl-redux:before {\n    content: \"\\eeba\";\n  }\n  .bxl-sass:before {\n    content: \"\\eebb\";\n  }\n  .bxl-shopify:before {\n    content: \"\\eebc\";\n  }\n  .bxl-skype:before {\n    content: \"\\eebd\";\n  }\n  .bxl-slack:before {\n    content: \"\\eebe\";\n  }\n  .bxl-slack-old:before {\n    content: \"\\eebf\";\n  }\n  .bxl-snapchat:before {\n    content: \"\\eec0\";\n  }\n  .bxl-soundcloud:before {\n    content: \"\\eec1\";\n  }\n  .bxl-spotify:before {\n    content: \"\\eec2\";\n  }\n  .bxl-spring-boot:before {\n    content: \"\\eec3\";\n  }\n  .bxl-squarespace:before {\n    content: \"\\eec4\";\n  }\n  .bxl-stack-overflow:before {\n    content: \"\\eec5\";\n  }\n  .bxl-stripe:before {\n    content: \"\\eec6\";\n  }\n  .bxl-telegram:before {\n    content: \"\\eec7\";\n  }\n  .bxl-trello:before {\n    content: \"\\eec8\";\n  }\n  .bxl-tumblr:before {\n    content: \"\\eec9\";\n  }\n  .bxl-tux:before {\n    content: \"\\eeca\";\n  }\n  .bxl-twitch:before {\n    content: \"\\eecb\";\n  }\n  .bxl-twitter:before {\n    content: \"\\eecc\";\n  }\n  .bxl-unsplash:before {\n    content: \"\\eecd\";\n  }\n  .bxl-vimeo:before {\n    content: \"\\eece\";\n  }\n  .bxl-visa:before {\n    content: \"\\eecf\";\n  }\n  .bxl-vk:before {\n    content: \"\\eed0\";\n  }\n  .bxl-vuejs:before {\n    content: \"\\eed1\";\n  }\n  .bxl-whatsapp:before {\n    content: \"\\eed2\";\n  }\n  .bxl-whatsapp-square:before {\n    content: \"\\eed3\";\n  }\n  .bxl-wikipedia:before {\n    content: \"\\eed4\";\n  }\n  .bxl-windows:before {\n    content: \"\\eed5\";\n  }\n  .bxl-wix:before {\n    content: \"\\eed6\";\n  }\n  .bxl-wordpress:before {\n    content: \"\\eed7\";\n  }\n  .bxl-yahoo:before {\n    content: \"\\eed8\";\n  }\n  .bxl-yelp:before {\n    content: \"\\eed9\";\n  }\n  .bxl-youtube:before {\n    content: \"\\eeda\";\n  }\n  .bxl-zoom:before {\n    content: \"\\eedb\";\n  }\n  ", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/runtime/api.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/css-loader/dist/runtime/api.js ***!
+  \*****************************************************/
+/***/ ((module) => {
+
+"use strict";
+
+
+/*
+  MIT License http://www.opensource.org/licenses/mit-license.php
+  Author Tobias Koppers @sokra
+*/
+// css base code, injected by the css-loader
+// eslint-disable-next-line func-names
+module.exports = function (cssWithMappingToString) {
+  var list = []; // return the list of modules as css string
+
+  list.toString = function toString() {
+    return this.map(function (item) {
+      var content = cssWithMappingToString(item);
+
+      if (item[2]) {
+        return "@media ".concat(item[2], " {").concat(content, "}");
+      }
+
+      return content;
+    }).join('');
+  }; // import a list of modules into the list
+  // eslint-disable-next-line func-names
+
+
+  list.i = function (modules, mediaQuery, dedupe) {
+    if (typeof modules === 'string') {
+      // eslint-disable-next-line no-param-reassign
+      modules = [[null, modules, '']];
+    }
+
+    var alreadyImportedModules = {};
+
+    if (dedupe) {
+      for (var i = 0; i < this.length; i++) {
+        // eslint-disable-next-line prefer-destructuring
+        var id = this[i][0];
+
+        if (id != null) {
+          alreadyImportedModules[id] = true;
+        }
+      }
+    }
+
+    for (var _i = 0; _i < modules.length; _i++) {
+      var item = [].concat(modules[_i]);
+
+      if (dedupe && alreadyImportedModules[item[0]]) {
+        // eslint-disable-next-line no-continue
+        continue;
+      }
+
+      if (mediaQuery) {
+        if (!item[2]) {
+          item[2] = mediaQuery;
+        } else {
+          item[2] = "".concat(mediaQuery, " and ").concat(item[2]);
+        }
+      }
+
+      list.push(item);
+    }
+  };
+
+  return list;
+};
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/runtime/getUrl.js":
+/*!********************************************************!*\
+  !*** ./node_modules/css-loader/dist/runtime/getUrl.js ***!
+  \********************************************************/
+/***/ ((module) => {
+
+"use strict";
+
+
+module.exports = function (url, options) {
+  if (!options) {
+    // eslint-disable-next-line no-param-reassign
+    options = {};
+  } // eslint-disable-next-line no-underscore-dangle, no-param-reassign
+
+
+  url = url && url.__esModule ? url.default : url;
+
+  if (typeof url !== 'string') {
+    return url;
+  } // If url is already wrapped in quotes, remove them
+
+
+  if (/^['"].*['"]$/.test(url)) {
+    // eslint-disable-next-line no-param-reassign
+    url = url.slice(1, -1);
+  }
+
+  if (options.hash) {
+    // eslint-disable-next-line no-param-reassign
+    url += options.hash;
+  } // Should url be wrapped?
+  // See https://drafts.csswg.org/css-values-3/#urls
+
+
+  if (/["'() \t\n]/.test(url) || options.needQuotes) {
+    return "\"".concat(url.replace(/"/g, '\\"').replace(/\n/g, '\\n'), "\"");
+  }
+
+  return url;
+};
+
+/***/ }),
+
+/***/ "./node_modules/boxicons/fonts/boxicons.eot":
+/*!**************************************************!*\
+  !*** ./node_modules/boxicons/fonts/boxicons.eot ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/fonts/vendor/boxicons/boxicons.eot?092b78589f3f53e60030583f6b24cb7d");
+
+/***/ }),
+
+/***/ "./node_modules/boxicons/fonts/boxicons.svg":
+/*!**************************************************!*\
+  !*** ./node_modules/boxicons/fonts/boxicons.svg ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/fonts/vendor/boxicons/boxicons.svg?045b05bf2dc119267a90218b026573c9");
+
+/***/ }),
+
+/***/ "./node_modules/boxicons/fonts/boxicons.ttf":
+/*!**************************************************!*\
+  !*** ./node_modules/boxicons/fonts/boxicons.ttf ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/fonts/vendor/boxicons/boxicons.ttf?cbd149c55e2396cb52e7e9d6440a125d");
+
+/***/ }),
+
+/***/ "./node_modules/boxicons/fonts/boxicons.woff":
+/*!***************************************************!*\
+  !*** ./node_modules/boxicons/fonts/boxicons.woff ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/fonts/vendor/boxicons/boxicons.woff?0f4528cf3c75a4b361c0df7cc5007906");
+
+/***/ }),
+
+/***/ "./node_modules/boxicons/fonts/boxicons.woff2":
+/*!****************************************************!*\
+  !*** ./node_modules/boxicons/fonts/boxicons.woff2 ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/fonts/vendor/boxicons/boxicons.woff2?8d765747a5588f36ff61ff20511ff5af");
 
 /***/ }),
 
@@ -37968,6 +40193,315 @@ process.chdir = function (dir) {
 process.umask = function() { return 0; };
 
 
+/***/ }),
+
+/***/ "./node_modules/boxicons/css/boxicons.css":
+/*!************************************************!*\
+  !*** ./node_modules/boxicons/css/boxicons.css ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _css_loader_dist_cjs_js_ruleSet_1_rules_8_oneOf_1_use_1_postcss_loader_dist_cjs_js_ruleSet_1_rules_8_oneOf_1_use_2_boxicons_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../css-loader/dist/cjs.js??ruleSet[1].rules[8].oneOf[1].use[1]!../../postcss-loader/dist/cjs.js??ruleSet[1].rules[8].oneOf[1].use[2]!./boxicons.css */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[8].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[8].oneOf[1].use[2]!./node_modules/boxicons/css/boxicons.css");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_css_loader_dist_cjs_js_ruleSet_1_rules_8_oneOf_1_use_1_postcss_loader_dist_cjs_js_ruleSet_1_rules_8_oneOf_1_use_2_boxicons_css__WEBPACK_IMPORTED_MODULE_1__.default, options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_css_loader_dist_cjs_js_ruleSet_1_rules_8_oneOf_1_use_1_postcss_loader_dist_cjs_js_ruleSet_1_rules_8_oneOf_1_use_2_boxicons_css__WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js":
+/*!****************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js ***!
+  \****************************************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+var isOldIE = function isOldIE() {
+  var memo;
+  return function memorize() {
+    if (typeof memo === 'undefined') {
+      // Test for IE <= 9 as proposed by Browserhacks
+      // @see http://browserhacks.com/#hack-e71d8692f65334173fee715c222cb805
+      // Tests for existence of standard globals is to allow style-loader
+      // to operate correctly into non-standard environments
+      // @see https://github.com/webpack-contrib/style-loader/issues/177
+      memo = Boolean(window && document && document.all && !window.atob);
+    }
+
+    return memo;
+  };
+}();
+
+var getTarget = function getTarget() {
+  var memo = {};
+  return function memorize(target) {
+    if (typeof memo[target] === 'undefined') {
+      var styleTarget = document.querySelector(target); // Special case to return head of iframe instead of iframe itself
+
+      if (window.HTMLIFrameElement && styleTarget instanceof window.HTMLIFrameElement) {
+        try {
+          // This will throw an exception if access to iframe is blocked
+          // due to cross-origin restrictions
+          styleTarget = styleTarget.contentDocument.head;
+        } catch (e) {
+          // istanbul ignore next
+          styleTarget = null;
+        }
+      }
+
+      memo[target] = styleTarget;
+    }
+
+    return memo[target];
+  };
+}();
+
+var stylesInDom = [];
+
+function getIndexByIdentifier(identifier) {
+  var result = -1;
+
+  for (var i = 0; i < stylesInDom.length; i++) {
+    if (stylesInDom[i].identifier === identifier) {
+      result = i;
+      break;
+    }
+  }
+
+  return result;
+}
+
+function modulesToDom(list, options) {
+  var idCountMap = {};
+  var identifiers = [];
+
+  for (var i = 0; i < list.length; i++) {
+    var item = list[i];
+    var id = options.base ? item[0] + options.base : item[0];
+    var count = idCountMap[id] || 0;
+    var identifier = "".concat(id, " ").concat(count);
+    idCountMap[id] = count + 1;
+    var index = getIndexByIdentifier(identifier);
+    var obj = {
+      css: item[1],
+      media: item[2],
+      sourceMap: item[3]
+    };
+
+    if (index !== -1) {
+      stylesInDom[index].references++;
+      stylesInDom[index].updater(obj);
+    } else {
+      stylesInDom.push({
+        identifier: identifier,
+        updater: addStyle(obj, options),
+        references: 1
+      });
+    }
+
+    identifiers.push(identifier);
+  }
+
+  return identifiers;
+}
+
+function insertStyleElement(options) {
+  var style = document.createElement('style');
+  var attributes = options.attributes || {};
+
+  if (typeof attributes.nonce === 'undefined') {
+    var nonce =  true ? __webpack_require__.nc : 0;
+
+    if (nonce) {
+      attributes.nonce = nonce;
+    }
+  }
+
+  Object.keys(attributes).forEach(function (key) {
+    style.setAttribute(key, attributes[key]);
+  });
+
+  if (typeof options.insert === 'function') {
+    options.insert(style);
+  } else {
+    var target = getTarget(options.insert || 'head');
+
+    if (!target) {
+      throw new Error("Couldn't find a style target. This probably means that the value for the 'insert' parameter is invalid.");
+    }
+
+    target.appendChild(style);
+  }
+
+  return style;
+}
+
+function removeStyleElement(style) {
+  // istanbul ignore if
+  if (style.parentNode === null) {
+    return false;
+  }
+
+  style.parentNode.removeChild(style);
+}
+/* istanbul ignore next  */
+
+
+var replaceText = function replaceText() {
+  var textStore = [];
+  return function replace(index, replacement) {
+    textStore[index] = replacement;
+    return textStore.filter(Boolean).join('\n');
+  };
+}();
+
+function applyToSingletonTag(style, index, remove, obj) {
+  var css = remove ? '' : obj.media ? "@media ".concat(obj.media, " {").concat(obj.css, "}") : obj.css; // For old IE
+
+  /* istanbul ignore if  */
+
+  if (style.styleSheet) {
+    style.styleSheet.cssText = replaceText(index, css);
+  } else {
+    var cssNode = document.createTextNode(css);
+    var childNodes = style.childNodes;
+
+    if (childNodes[index]) {
+      style.removeChild(childNodes[index]);
+    }
+
+    if (childNodes.length) {
+      style.insertBefore(cssNode, childNodes[index]);
+    } else {
+      style.appendChild(cssNode);
+    }
+  }
+}
+
+function applyToTag(style, options, obj) {
+  var css = obj.css;
+  var media = obj.media;
+  var sourceMap = obj.sourceMap;
+
+  if (media) {
+    style.setAttribute('media', media);
+  } else {
+    style.removeAttribute('media');
+  }
+
+  if (sourceMap && typeof btoa !== 'undefined') {
+    css += "\n/*# sourceMappingURL=data:application/json;base64,".concat(btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))), " */");
+  } // For old IE
+
+  /* istanbul ignore if  */
+
+
+  if (style.styleSheet) {
+    style.styleSheet.cssText = css;
+  } else {
+    while (style.firstChild) {
+      style.removeChild(style.firstChild);
+    }
+
+    style.appendChild(document.createTextNode(css));
+  }
+}
+
+var singleton = null;
+var singletonCounter = 0;
+
+function addStyle(obj, options) {
+  var style;
+  var update;
+  var remove;
+
+  if (options.singleton) {
+    var styleIndex = singletonCounter++;
+    style = singleton || (singleton = insertStyleElement(options));
+    update = applyToSingletonTag.bind(null, style, styleIndex, false);
+    remove = applyToSingletonTag.bind(null, style, styleIndex, true);
+  } else {
+    style = insertStyleElement(options);
+    update = applyToTag.bind(null, style, options);
+
+    remove = function remove() {
+      removeStyleElement(style);
+    };
+  }
+
+  update(obj);
+  return function updateStyle(newObj) {
+    if (newObj) {
+      if (newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap) {
+        return;
+      }
+
+      update(obj = newObj);
+    } else {
+      remove();
+    }
+  };
+}
+
+module.exports = function (list, options) {
+  options = options || {}; // Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+  // tags it will allow on a page
+
+  if (!options.singleton && typeof options.singleton !== 'boolean') {
+    options.singleton = isOldIE();
+  }
+
+  list = list || [];
+  var lastIdentifiers = modulesToDom(list, options);
+  return function update(newList) {
+    newList = newList || [];
+
+    if (Object.prototype.toString.call(newList) !== '[object Array]') {
+      return;
+    }
+
+    for (var i = 0; i < lastIdentifiers.length; i++) {
+      var identifier = lastIdentifiers[i];
+      var index = getIndexByIdentifier(identifier);
+      stylesInDom[index].references--;
+    }
+
+    var newLastIdentifiers = modulesToDom(newList, options);
+
+    for (var _i = 0; _i < lastIdentifiers.length; _i++) {
+      var _identifier = lastIdentifiers[_i];
+
+      var _index = getIndexByIdentifier(_identifier);
+
+      if (stylesInDom[_index].references === 0) {
+        stylesInDom[_index].updater();
+
+        stylesInDom.splice(_index, 1);
+      }
+    }
+
+    lastIdentifiers = newLastIdentifiers;
+  };
+};
+
 /***/ })
 
 /******/ 	});
@@ -37999,6 +40533,18 @@ process.umask = function() { return 0; };
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => module['default'] :
+/******/ 				() => module;
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
@@ -38053,18 +40599,11 @@ process.umask = function() { return 0; };
 /*!**********************************!*\
   !*** ./resources/dist/js/adm.js ***!
   \**********************************/
-window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
-/**
- * We'll load the axios HTTP library which allows us to easily issue requests
- * to our Laravel back-end. This library automatically handles sending the
- * CSRF token as a header based on the value of the "XSRF" token cookie.
- */
+__webpack_require__(/*! ./adm_main */ "./resources/dist/js/adm_main.js");
 
-window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+__webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/alpine.js");
 
-__webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.js");
-
-__webpack_require__(/*! popper.js */ "./node_modules/popper.js/dist/esm/popper.js");
+__webpack_require__(/*! boxicons/css/boxicons.css */ "./node_modules/boxicons/css/boxicons.css");
 
 __webpack_require__(/*! ./perfect-scrollbar/dist/perfect-scrollbar */ "./resources/dist/js/perfect-scrollbar/dist/perfect-scrollbar.js");
 
@@ -38073,22 +40612,6 @@ __webpack_require__(/*! ./waves */ "./resources/dist/js/waves.js");
 __webpack_require__(/*! ./sidebarmenu */ "./resources/dist/js/sidebarmenu.js");
 
 __webpack_require__(/*! ./custom */ "./resources/dist/js/custom.js");
-
-window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-/**
- * Echo exposes an expressive API for subscribing to channels and listening
- * for events that are broadcast by Laravel. Echo and event broadcasting
- * allows your team to easily build robust real-time web applications.
- */
-// import Echo from 'laravel-echo';
-// window.Pusher = require('pusher-js');
-// window.Echo = new Echo({
-//     broadcaster: 'pusher',
-//     key: process.env.MIX_PUSHER_APP_KEY,
-//     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
-//     forceTLS: true
-// });
 })();
 
 /******/ })()
