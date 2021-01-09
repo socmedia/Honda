@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Modules\Setting\Repository\Model\SettingModel;
+use Modules\Setting\Repository\SettingRepositoryInterface;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -23,6 +25,6 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->app->bind(SettingRapositoryInterface);
+        $this->app->bind(SettingRepositoryInterface::class, SettingModel::class);
     }
 }

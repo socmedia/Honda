@@ -20,66 +20,47 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-12">
-            <div class="white-box">
-                <h3 class="box-title">Pengaturan Informasi</h3>
+            <h3 class="card-title mb-5">Pengaturan Informasi</h3>
 
-                {{-- <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th class="border-top-0">#</th>
-                                <th class="border-top-0">First Name</th>
-                                <th class="border-top-0">Last Name</th>
-                                <th class="border-top-0">Username</th>
-                                <th class="border-top-0">Role</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Deshmukh</td>
-                                <td>Prohaska</td>
-                                <td>@Genelia</td>
-                                <td>admin</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Deshmukh</td>
-                                <td>Gaylord</td>
-                                <td>@Ritesh</td>
-                                <td>member</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Sanghani</td>
-                                <td>Gusikowski</td>
-                                <td>@Govinda</td>
-                                <td>developer</td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Roshan</td>
-                                <td>Rogahn</td>
-                                <td>@Hritik</td>
-                                <td>supporter</td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>Joshi</td>
-                                <td>Hickle</td>
-                                <td>@Maruti</td>
-                                <td>member</td>
-                            </tr>
-                            <tr>
-                                <td>6</td>
-                                <td>Nigam</td>
-                                <td>Eichmann</td>
-                                <td>@Sonu</td>
-                                <td>supporter</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div> --}}
+            <div class="row">
+                <div class="col-12 col-lg-4">
+                    <h5 class="card-title text-uppercase"><b>Informasi Perusahaan</b></h5>
+                    <p>
+                        Perbarui informasi perusahaan dengan mengubah form disamping.
+                    </p>
+                </div>
+                <div class="col-12 col-lg-8">
+                    <div class="white-box rounded-lg">
+                        <form action="" method="POST">
+                            @csrf
+                            @method('put')
+
+                            <fieldset class="form-group row">
+                                <div class="col-12">
+                                    <textarea name="address" style="resize: none; height: 200px" class="form-control">
+                                        {{$info->address}}
+                                    </textarea>
+                                </div>
+                            </fieldset>
+                            <fieldset class="form-group row">
+                                <div class="col-12 col-md-6">
+                                    <label>Phone</label>
+                                    <input type="text" class="form-control" value="{{$info->phone}}">
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <label>Fax</label>
+                                    <input type="text" class="form-control" value="{{$info->fax}}">
+                                </div>
+                            </fieldset>
+
+                            <fieldset class="form-group text-right">
+                                <button class="btn btn-dark rounded-lg font-light">Simpan</button>
+                            </fieldset>
+
+                        </form>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>

@@ -9,7 +9,7 @@ class SettingModel implements SettingRepositoryInterface
 {
     public function getInfo()
     {
-        return Contact::all();
+        return Contact::where('id', 1)->first();
     }
     public function getSocials()
     {
@@ -32,6 +32,10 @@ class SettingModel implements SettingRepositoryInterface
         return Contact::all();
     }
     public function updateTwitter()
+    {
+        return Contact::all();
+    }
+    public function updateWhatsapp()
     {
         return Contact::all();
     }

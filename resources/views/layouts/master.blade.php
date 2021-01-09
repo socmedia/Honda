@@ -37,8 +37,8 @@
                         <b class="logo-icon">
                             <img src="https://ui-avatars.com/api/?background=0D8ABC&color=fff" alt="homepage" />
                         </b>
-                        <span class="logo-text">\
-                            <img src="https://ui-avatars.com/api/?background=0D8ABC&color=fff" alt="homepage" />
+                        <span class="logo-text">
+                            {{-- <img src="https://ui-avatars.com/api/?background=0D8ABC&color=fff" alt="homepage" /> --}}
                         </span>
                     </a>
 
@@ -70,7 +70,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="#">
+                                        <a class="dropdown-item" href="{{route('setting.index')}}">
                                             <i class="fa fa-cog mr-2"></i>Pengaturan
                                         </a>
                                     </li>
