@@ -103,6 +103,14 @@
                                 {{ __('Profile') }}
                             </x-jet-dropdown-link>
 
+                            <div class="block px-4 py-2 text-xs text-gray-400">
+                                {{ __('General Information') }}
+                            </div>
+
+                            <x-jet-dropdown-link href="{{ route('profile.show') }}">
+                                {{ __('Settings') }}
+                            </x-jet-dropdown-link>
+
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                             <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">
                                 {{ __('API Tokens') }}

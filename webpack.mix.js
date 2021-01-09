@@ -12,6 +12,8 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/dist/js/app.js', 'public/js')
+    .js('resources/dist/js/adm.js', 'public/js')
+    .sass('resources/dist/sass/adm.scss', 'public/css')
     .sass('resources/dist/sass/honda.scss', 'public/css')
     .postCss('resources/dist/css/app.css', 'public/css', [
         require('postcss-import'),

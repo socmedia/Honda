@@ -29,8 +29,45 @@
 
         <!-- Page Heading -->
         <header class="bg-white shadow">
-            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                {{ $header }}
+            <div class="max-w-8xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                <ul class="flex flex-wrap">
+                    <li class="md:w-1/4 lg:w-1/6 xl:w-1/6 px-3 mb-3">
+                        <x-anchor>
+                            @slot('icon')<i class='bx bxs-dashboard mx-2'></i>@endslot
+                            Dashboard
+                        </x-anchor>
+                    </li>
+                    <li class="md:w-1/4 lg:w-1/6 xl:w-1/6 px-3 mb-3">
+                        <x-anchor>
+                            @slot('icon')<i class='bx bxs-dashboard mx-2'></i>@endslot
+                            Dashboard
+                        </x-anchor>
+                    </li>
+                    <li class="md:w-1/4 lg:w-1/6 xl:w-1/6 px-3 mb-3">
+                        <x-anchor>
+                            @slot('icon')<i class='bx bxs-dashboard mx-2'></i>@endslot
+                            Dashboard
+                        </x-anchor>
+                    </li>
+                    <li class="md:w-1/4 lg:w-1/6 xl:w-1/6 px-3 mb-3">
+                        <x-anchor>
+                            @slot('icon')<i class='bx bxs-dashboard mx-2'></i>@endslot
+                            Dashboard
+                        </x-anchor>
+                    </li>
+                    <li class="md:w-1/4 lg:w-1/6 xl:w-1/6 px-3 mb-3">
+                        <x-anchor>
+                            @slot('icon')<i class='bx bxs-dashboard mx-2'></i>@endslot
+                            Dashboard
+                        </x-anchor>
+                    </li>
+                    <li class="md:w-1/4 lg:w-1/6 xl:w-1/6 px-3 mb-3">
+                        <x-anchor>
+                            @slot('icon')<i class='bx bxs-dashboard mx-2'></i>@endslot
+                            Dashboard
+                        </x-anchor>
+                    </li>
+                </ul>
             </div>
         </header>
 
@@ -38,33 +75,38 @@
         <main>
             <div class="flex flex-wrap overflow-hidden">
 
-                <div class="py-12 w-1/4 overflow-hidden sm:w-full md:w-1/4 lg:w-1/6 xl:w-1/6 ">
+                <div class="w-1/4 overflow-hidden sm:w-full md:w-1/4 lg:w-1/6 xl:w-1/6 hidden md:block">
 
-                    <ul>
-                        <li>
-                            <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                                {{ __('Dashboard') }}
-                            </x-jet-nav-link>
-                        </li>
-                        <li>
+                    <ul class="py-12 mx-auto sm:px-6 lg:px-6">
+                        <li class="mb-3">
                             <x-anchor>
-                                @slot('icon')
-                                <i class="w-4" data-feather="file"></i>
-                                @endslot
+                                @slot('icon')<i class='bx bxs-dashboard mx-2'></i>@endslot
+                                Dashboard
+                            </x-anchor>
+                        </li>
+                        <li class="mb-3">
+                            <x-anchor>
+                                @slot('icon')<i class='bx mx-2 bxs-donate-heart'></i>@endslot
                                 Produk
                             </x-anchor>
                         </li>
-                        <li>
-                            <x-anchor>Atur Banner</x-anchor>
+                        <li class="mb-3">
+                            <x-anchor>
+                                @slot('icon')<i class='bx bx-images mx-2'></i>@endslot
+                                Atur Banner
+                            </x-anchor>
                         </li>
-                        <li>
-                            <x-anchor>Berita</x-anchor>
+                        <li class="mb-3">
+                            <x-anchor>
+                                @slot('icon')<i class='bx bxs-news mx-2'></i>@endslot
+                                Berita
+                            </x-anchor>
                         </li>
                     </ul>
 
                 </div>
 
-                <div class="w-3/4 overflow-hidden sm:w-full md:w-3/4 lg:w-5/6 xl:w-5/6">
+                <div class="w-full overflow-hidden sm:w-full md:w-full lg:w-5/6 xl:w-5/6">
                     {{ $slot }}
                 </div>
 

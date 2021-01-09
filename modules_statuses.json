@@ -7,5 +7,6 @@
     "Product": true,
     "Apparel": true,
     "Accessories": true,
-    "HGP": true
+    "HGP": true,
+    "Setting": true
 }
