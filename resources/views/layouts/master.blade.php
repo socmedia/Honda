@@ -14,6 +14,7 @@
 
     <link href="{{asset('css/adm.css')}}" rel="stylesheet" />
 
+    @livewireStyles
     @stack('styles')
 
     <script src="{{asset('js/adm.js')}}"></script>
@@ -78,9 +79,13 @@
                                         <hr class="w-75 my-0">
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="#">
-                                            <i class='fa fa-power-off mr-2'></i>Keluar
-                                        </a>
+                                        <form method="POST" action="{{ route('logout') }}">
+                                            @csrf
+                                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                    this.closest('form').submit();">
+                                                <i class='fa fa-power-off mr-2'></i>Keluar
+                                            </a>
+                                        </form>
                                     </li>
                                 </ul>
                             </div>
@@ -160,6 +165,8 @@
     </div>
 
     @stack('scripts')
+
+    @livewireScripts
 
 </body>
 

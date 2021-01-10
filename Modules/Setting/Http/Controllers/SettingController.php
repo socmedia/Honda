@@ -5,28 +5,16 @@ namespace Modules\Setting\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Modules\Setting\Repository\SettingRepositoryInterface;
 
 class SettingController extends Controller
 {
-    private $model;
-
-    /**
-     * Class constructor.
-     */
-    public function __construct(SettingRepositoryInterface $settingRepositoryInterface)
-    {
-        $this->model = $settingRepositoryInterface;
-    }
-
     /**
      * Display a listing of the resource.
      * @return Renderable
      */
     public function index()
     {
-        $info = $this->model->getInfo();
-        return view('setting::index', compact('info'));
+        return view('setting::index');
     }
 
     /**
