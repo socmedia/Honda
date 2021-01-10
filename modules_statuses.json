@@ -8,5 +8,7 @@
     "Apparel": true,
     "Accessories": true,
     "HGP": true,
-    "Setting": true
+    "Setting": true,
+    "Profile": true,
+    "Dashboard": true
 }
