@@ -9,8 +9,11 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
-Route::prefix('banner')->group(function() {
-    Route::get('/', 'BannerController@index');
+Route::group([
+    'prefix' => 'admin/banner',
+    'as' => 'adm.banner.',
+], function () {
+    Route::get('/', 'BannerController@index')->name('index');
 });

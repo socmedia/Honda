@@ -1,9 +1,24 @@
-@extends('dashboard::layouts.master')
+@extends('layouts.master')
 
 @section('content')
-    <h1>Hello World</h1>
 
-    <p>
-        This view is loaded from module: {!! config('dashboard.name') !!}
-    </p>
+<x-bootstrap.breadcrumb>
+    <x-slot name="page">Dashboard</x-slot>
+    <li class="breadcrumb-item active">Admin</li>
+</x-bootstrap.breadcrumb>
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-12 col-md-12">
+            <h3 class="card-title mb-5"></h3>
+
+            <div class="box-white">
+                Hello from dashboard !
+            </div>
+
+        </div>
+    </div>
+
+</div>
 @endsection
