@@ -12,8 +12,8 @@
  */
 
 Route::group([
-    'prefix' => '_admin/pengaturan',
-    'as' => 'setting.',
+    'prefix' => 'admin/pengaturan',
+    'as' => 'adm.setting.',
 ], function () {
     Route::get('/', 'SettingController@index')->name('index');
 });

@@ -37,7 +37,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="{{route('setting.index')}}">
+                                <a class="dropdown-item" href="{{route('adm.setting.index')}}">
                                     <i class="fa fa-cog mr-2"></i>Pengaturan
                                 </a>
                             </li>
