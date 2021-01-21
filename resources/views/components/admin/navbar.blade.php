@@ -26,9 +26,9 @@
                     <div class="dropdown">
                         <a class="profile-pic dropdown-toggle" href="javascript:void(0)" id="dropdownMenuButton"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img src="https://ui-avatars.com/api/?format=SVG&length=2&name={{auth()->user()->name}}&rounded=true"
+                            <img src="https://ui-avatars.com/api/?format=SVG&length=2&name={{$name}}&rounded=true"
                                 alt="user-img" width="36" class="img-circle">
-                            <span class="text-white font-medium">{{auth()->user()->name}}</span>
+                            <span class="text-white font-medium">{{$name}}</span>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <li>

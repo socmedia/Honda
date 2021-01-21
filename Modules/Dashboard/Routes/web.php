@@ -14,6 +14,7 @@
 Route::group([
     'prefix' => 'admin',
     'as' => 'adm.dashboard.',
+    'middleware' => 'auth',
 ], function () {
     Route::get('/', 'DashboardController@index')->name('index');
 });

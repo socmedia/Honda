@@ -19,6 +19,14 @@
                     </a>
                 </li>
 
+                <li class="sidebar-item">
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link {{request()->routeIs('adm.product.*') ? 'active' : ''}}"
+                        href="{{route('adm.product.index')}}" aria-expanded="false">
+                        <i class="fas fa-motorcycle" aria-hidden="true"></i>
+                        <span class="hide-menu">Produk</span>
+                    </a>
+                </li>
+
             </ul>
         </nav>
     </div>

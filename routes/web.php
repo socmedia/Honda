@@ -14,10 +14,13 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::get('/', function () {
-    return view('index');
+    return view('comingsoon');
+    // return view('index');
     // return Regency::with('district', 'province')->get();
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+Route::get('/media/banner/{bannerName}', ['App\Http\Controllers\Media\MediaController', 'getBanner'])->name('get.banner');

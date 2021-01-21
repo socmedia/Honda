@@ -1,0 +1,33 @@
+html,
+body {
+    padding: 0;
+    margin: 0;
+    background: linear-gradient(to bottom, #FFF, #E3E3E3);
+    height: 100vh;
+    width: 100%;
+}
+
+.container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapper {
+    position: relative;
+    width: 90%;
+    max-width: 700px;
+    text-align: center;
+}
+
+.logo {
+    width: 50%;
+    max-width: 200px;
+    margin-bottom: 2rem;
+}
+
+.coming_soon {
+    width: 100%;
+}

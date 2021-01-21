@@ -32,7 +32,7 @@
     <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
         data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
 
-        <x-admin.navbar />
+        <x-admin.navbar :name="auth()->user()->name" />
 
         <x-admin.sidebar />
 
@@ -44,9 +44,9 @@
         </div>>
     </div>
 
-    @stack('scripts')
-
     @livewireScripts
+
+    @stack('scripts')
 
 </body>
 

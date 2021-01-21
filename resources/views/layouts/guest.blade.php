@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{{ mix('css/honda.css') }}">
 
     <!-- Scripts -->
-    <script src="{{ mix('js/app.js') }}" defer></script>
+    <script src="{{ mix('js/app.js') }}"></script>
 </head>
 
 <body>
@@ -69,7 +69,9 @@
                 </a>
             </li>
             <li class="menu">
-                <i class="bx-bxs-search"></i>
+                <button class="circle__button">
+                    <i class='bx bx-search'></i>
+                </button>
             </li>
         </ul>
     </nav>

@@ -5,6 +5,8 @@ namespace Modules\Product\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Str;
+use Modules\Product\Repository\Model\Entities\Product;
 
 class ProductController extends Controller
 {
@@ -21,9 +23,10 @@ class ProductController extends Controller
      * Show the form for creating a new resource.
      * @return Renderable
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('product::create');
+        $product = Product::where('id', $request->id)->first();
+        return view('product::create', compact('product'));
     }
 
     /**
@@ -33,7 +36,19 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $product_id = Str::uuid()->getHex();
+        $route = route('adm.product.create');
+        Product::updateOrCreate([
+            'id' => $product_id,
+            'name' => $request->name,
+            'slug_name' => Str::slug($request->name),
+            'category' => $request->category,
+            'promo_price' => $request->promo_price,
+            'price' => $request->price,
+            'is_new' => $request->new_product ? 1 : 0,
+            'is_draft' => 1,
+        ]);
+        return redirect()->to($route . '?id=' . $product_id);
     }
 
     /**
