@@ -4,8 +4,20 @@ body {
     color: $dark_company;
 }
 
+.container {
+    @include media-breakpoint-up(lg) {
+        max-width: 1180px;
+    }
+}
+
+.centered {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .header {
-    height: 150px;
+    height: 100px;
     width: 100%;
     display: block;
     overflow: hidden;
@@ -14,70 +26,149 @@ body {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    padding: 0 10%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+
+    @include media-breakpoint-up(md) {
+        height: 150px;
+    }
 }
 
-.navigation {
-    height: 80px;
-    width: 100%;
+.btn-honda {
+    color: $white;
+    background-color: $company_red;
+    border-color: $company_red;
+    opacity: .9;
+
+
+    &:hover,
+    &:active,
+    &:focus {
+        color: $white;
+        opacity: 1;
+        box-shadow: 0 0 2px $company_red_shadow;
+    }
+}
+
+.navbar {
     display: block;
-    padding: 1rem;
-    box-sizing: border-box;
+    padding: 0;
 
-    .menus {
-        display: none;
-        align-items: center;
-        justify-content: space-around;
-        width: 100%;
-        height: 100%;
-
-        @include breakpoint-up(lg) {
-            display: flex;
-        }
-
-        .menu {
-            a {
-                display: inline-flex;
-                align-items: center;
-                font-weight: 700;
-                margin: 2% 1%;
-                transition: .3s all;
-
-                span {
-                    font-size: clamp(1.5rem, 2.5vw, 2rem);
-
-                    &.text {
-                        font-size: clamp(.75rem, 2.5vw, 1rem);
-                        white-space: nowrap;
-                        text-overflow: ellipsis;
-                        margin: 0 .275rem;
-                    }
-                }
-
-                .feather {
-                    width: 1rem;
-                    height: 1rem;
-                }
-
-                &:hover {
-                    color: $company_red;
-                }
-            }
-        }
+    @include media-breakpoint-up(lg) {
+        display: block;
     }
 
     &.scrolled {
+        @include media-breakpoint-up(lg) {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            box-shadow: 0 5px 20px #00000023;
+            animation: fadeDown .5s forwards;
+            z-index: 9999;
+        }
+    }
+
+    .navbar-nav {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        background: white;
-        box-shadow: 0 5px 20px #00000023;
-        animation: fadeDown .5s forwards;
+        top: -100%;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 2rem 1rem;
+        box-sizing: border-box;
         z-index: 9999;
+        width: 90%;
+
+        @include media-breakpoint-up(lg) {
+            width: 100%;
+            display: flex;
+            position: relative;
+            top: unset;
+            align-items: center;
+            justify-content: space-evenly;
+            padding: .5rem 0;
+        }
+
+        a.nav-link {
+            display: inline-flex;
+            align-items: center;
+            font-weight: 700;
+            margin: .5rem;
+            transition: .3s all;
+            color: $dark;
+
+            @include media-breakpoint-up(lg) {
+                margin: 2% 1%;
+            }
+
+            span {
+                font-size: clamp(1.5rem, 1.2vw, 2rem);
+
+                &.text {
+                    font-size: clamp(.75rem, 1.2vw, 1rem);
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    margin: 0 .275rem;
+                }
+            }
+
+            .feather {
+                width: 1rem;
+                height: 1rem;
+            }
+
+            &:hover,
+            &:focus,
+            &:active {
+                color: $company_red;
+            }
+
+        }
+
+        .circle__button {
+            width: 24px;
+            height: 24px;
+            font-size: .75rem;
+            margin-left: .5rem;
+
+            @include media-breakpoint-up(lg) {
+                width: 28px;
+                height: 28px;
+                font-size: .9rem;
+            }
+        }
+    }
+}
+
+.navbar-collapse.collapse {
+    opacity: 0;
+
+    @include media-breakpoint-up(lg) {
+        opacity: 1;
+    }
+
+    &.show {
+        opacity: 1;
+
+        .navbar-nav {
+            background: white;
+            box-shadow: 0 0 1.5rem #00000017;
+            align-items: unset;
+            justify-content: unset;
+            animation: navbar .3s forwards;
+        }
+    }
+}
+
+.navbar-toggler {
+    position: fixed;
+    display: block;
+    top: 1rem;
+    right: 1rem;
+    z-index: 999;
+
+    @include media-breakpoint-up(lg) {
+        display: none;
     }
 }
 
@@ -90,18 +181,28 @@ body {
 }
 
 .footer {
-    height: 685px;
     width: 100%;
-    padding: 3rem 10% 1rem;
+    padding: 3rem 0 1rem;
     position: relative;
     display: block;
     background-image: url(../images/footer_bg.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    color: $white;
 
-    .honda__icon-jateng_gunungan {
-        font-size: 12rem;
+    img {
+        width: 40%;
+        max-width: 150px;
+        margin-bottom: 2.5rem;
+
+        @include media-breakpoint-up(md) {
+            width: 50%;
+        }
+    }
+
+    hr {
+        background-color: $light_gray;
     }
 }
 
@@ -113,9 +214,13 @@ h1.header__text {
     text-transform: uppercase;
     letter-spacing: 5px;
     font-weight: 300;
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     color: $company_red;
     text-align: center;
+
+    @include media-breakpoint-up(lg) {
+        font-size: 2.5rem;
+    }
 }
 
 .label {
@@ -126,8 +231,13 @@ h1.header__text {
 }
 
 .card {
-    padding: 1.875rem;
+    padding: 1.275rem;
     border-radius: 8px;
+    border: none;
+
+    @include media-breakpoint-up(lg) {
+        padding: 1.875rem;
+    }
 
     &.product__card {
         display: block;
@@ -136,8 +246,14 @@ h1.header__text {
 
         .label {
             position: absolute;
+            font-size: .875rem;
+            padding: .275rem .875rem;
             left: 1rem;
             top: .875rem;
+
+            @include media-breakpoint-up(lg) {
+                font-size: 1rem;
+            }
         }
 
         .product__image {
@@ -151,15 +267,24 @@ h1.header__text {
         }
 
         .product__name {
-            font-size: 1.875rem;
+            font-size: 1.2rem;
             font-weight: 700;
-            margin-bottom: 1.375rem;
+            margin-bottom: 1rem;
+
+            @include media-breakpoint-up(lg) {
+                font-size: 1.875rem;
+                margin-bottom: 1.375rem;
+            }
         }
 
         .product__price {
-            font-size: 1.5rem;
+            font-size: 1rem;
             font-weight: 700;
             opacity: .8;
+
+            @include media-breakpoint-up(lg) {
+                font-size: 1.5;
+            }
         }
 
         &.odd {
@@ -178,13 +303,6 @@ h1.header__text {
     }
 }
 
-.product__wrapper {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: auto;
-    grid-auto-rows: auto;
-}
-
 .text-half-opacity {
     opacity: .5;
 }
@@ -194,6 +312,9 @@ h1.header__text {
     align-items: center;
     justify-content: center;
     width: 100%;
+    padding: 0;
+    margin-left: 0;
+    margin-bottom: 2rem;
 
     .button {
         position: relative;
@@ -223,16 +344,23 @@ h1.header__text {
     }
 }
 
-
 .honda__icon-jateng_gunungan {
     &.heading_text {
-        font-size: 7rem;
+        font-size: 4rem;
+
+        @include media-breakpoint-up(md) {
+            font-size: 7rem;
+        }
     }
 }
 
 .honda__icon-jateng {
     &.heading_text {
-        font-size: 4rem;
+        font-size: 2rem;
+
+        @include media-breakpoint-up(md) {
+            font-size: 4rem;
+        }
     }
 }
 
@@ -253,5 +381,233 @@ h1.header__text {
     &:focus {
         outline: none;
         background-color: $company_red;
+    }
+}
+
+.heading {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: auto;
+    background: $company_red;
+    color: $white;
+    padding: .5rem 0;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-weight: 300;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+
+    @include media-breakpoint-up(lg) {
+        font-size: 2.5rem;
+    }
+
+    &.left {
+        text-align: left;
+
+        &:before {
+            content: '';
+            position: absolute;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            background: $company_red;
+        }
+
+        &:after {
+            content: '';
+            position: absolute;
+            right: -57px;
+            width: 100px;
+            height: 100%;
+            top: -15px;
+            transform: rotate(-115deg);
+            background: $white;
+        }
+
+    }
+
+    &.right {
+        text-align: right;
+
+        &:before {
+            content: '';
+            position: absolute;
+            right: -100%;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            background: $company_red;
+        }
+
+        &:after {
+            content: '';
+            position: absolute;
+            left: -53px;
+            width: 105px;
+            height: 61%;
+            top: 15px;
+            transform: rotate(-115deg);
+            background: $white;
+        }
+    }
+}
+
+.footer__list {
+    margin: 0;
+    padding: .75rem;
+    list-style: none;
+    border-radius: 0 0 8px 8px;
+    background-color: $dark_gray;
+
+    li {
+        padding: .375rem .5rem;
+
+        &:not(:last-child) {
+            border-bottom: 1px solid $light_gray;
+        }
+
+        a {
+            color: $white;
+            display: inline-block;
+            width: 100%;
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+.list__heading {
+    background: $company_red;
+    width: 100%;
+    padding: 1rem .75rem;
+    font-weight: 700;
+    color: white;
+    border-radius: 8px 8px 0 0;
+    font-size: clamp(1rem, 1vw, 1.3rem);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    span {
+        font-size: 2rem;
+    }
+}
+
+.socials {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+
+    @include media-breakpoint-up(lg) {
+        justify-content: flex-start;
+    }
+
+    li {
+        width: 40px;
+        height: 40px;
+        background-color: $dark_gray;
+        opacity: .5;
+        transition: .3s all;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.3rem;
+
+        &:not(:last-child) {
+            margin-right: .5rem;
+
+        }
+
+        a {
+            line-height: 1;
+            color: $white;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        svg {
+            height: 1.2rem;
+            transform: translateY(-2px);
+        }
+
+        &:hover {
+            opacity: 1;
+        }
+
+    }
+}
+
+.dropdown:hover>.dropdown-menu {
+    display: block;
+    animation: dropdown .3s ease-in forwards;
+}
+
+.dropdown-menu {
+    border: none;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
+    padding: .5rem 1.5rem;
+
+    .dropdown-item {
+        padding: .75rem 0;
+        color: $dark;
+        opacity: .7;
+
+        &:not(:last-child) {
+            border-bottom: 1px solid #F3F3F3;
+        }
+
+        &:hover {
+            background: none;
+            opacity: 1;
+        }
+    }
+}
+
+.float__wa {
+    position: fixed;
+    bottom: 1rem;
+    right: 1.75rem;
+    background: linear-gradient(45deg, #29B53F, #55CF61);
+    padding: .25rem .75rem;
+    font-size: 1.7rem;
+    border-radius: 15px 4px 15px 15px;
+    color: $white;
+    box-shadow: 0 0 1rem #00000017;
+    z-index: 999;
+
+    &:hover {
+        color: $white;
+        background: linear-gradient(45deg, #26a93a, #3bc149);
+    }
+
+    &:after {
+        content: 'Hubungi kami disini';
+        padding: .3rem .5rem;
+        background: $white;
+        box-shadow: 0 0 1rem #00000017;
+        position: fixed;
+        bottom: 4.5rem;
+        right: 1.75rem;
+        color: $dark;
+        border-radius: .25rem;
+        font-size: .75rem;
+    }
+
+    &:before {
+        content: '';
+        padding: .5rem;
+        background: $white;
+        right: 2.75rem;
+        bottom: 4.5rem;
+        transform: rotate(45deg);
+        position: fixed;
     }
 }

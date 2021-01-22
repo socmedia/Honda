@@ -5,9 +5,9 @@
 
         <div class="col-12 d-flex justify-content-between mb-1">
             <h5 class="card-title text-uppercase"><b>Informasi Umum</b></h5>
-            <button class="btn btn-sm btn-light rounded" type="button" wire:click="$toggle('showInfo')">
-                <i class="fas fa-{{$showInfo === true ? 'compress' : 'expand'}}"></i>
-                {{$showInfo === true ? 'Minimize' : 'Maximize'}}
+            <button class="btn btn-sm btn-light rounded" type="button" data-toggle="info">
+                <i class="fas fa-expand mr-1"></i>
+                Maximize
             </button>
         </div>
 
@@ -17,7 +17,7 @@
             </p>
         </div>
 
-        <div class="col-12 col-md-6 col-lg-8 {{$showInfo === true ? '' : 'd-none'}}">
+        <div class="col-12 col-md-6 col-lg-8" data-target="info">
 
             <div class="white-box shadow-sm rounded-lg">
                 <fieldset class="form-group row">
@@ -84,15 +84,14 @@
     </div>
 </form>
 
-@if ($product !== null)
-
 {{-- Banner --}}
 <div class="row mb-1">
     <div class="col-12 d-flex justify-content-between mb-1">
         <h5 class="card-title text-uppercase"><b>Banner Produk</b></h5>
-        <button class="btn btn-sm btn-light rounded" type="button" wire:click="$toggle('showBanner')">
-            <i class="fas fa-{{$showBanner === true ? 'compress' : 'expand'}}"></i>
-            {{$showBanner === true ? 'Minimize' : 'Maximize'}}
+        <button class="btn btn-sm btn-light rounded" type="button" data-toggle="banner"
+            {{($product === null) ? 'disabled' : ''}}>
+            <i class="fas fa-expand mr-1"></i>
+            Maximize
         </button>
     </div>
 
@@ -101,7 +100,7 @@
             Banner seputar produk yang bisa menarik perhatian calon pembeli.
         </p>
     </div>
-    <div class="col-12 col-md-6 col-lg-8 {{$showBanner === false ? 'd-none' : ''}}">
+    <div class="col-12 col-md-6 col-lg-8 d-none" data-target="banner">
 
         <div class="white-box shadow-sm rounded-lg">
 
@@ -158,9 +157,9 @@
 
     <div class="col-12 d-flex justify-content-between mb-1">
         <h5 class="card-title text-uppercase"><b>Varian Produk</b></h5>
-        <button class="btn btn-sm btn-light rounded" type="button" wire:click="$toggle('showVarian')">
-            <i class="fas fa-{{$showVarian === true ? 'compress' : 'expand'}}"></i>
-            {{$showVarian === true ? 'Minimize' : 'Maximize'}}
+        <button class="btn btn-sm btn-light rounded" type="button" data-toggle="varian">
+            <i class="fas fa-expand mr-1"></i>
+            Maximize
         </button>
     </div>
 
@@ -170,7 +169,7 @@
         </p>
     </div>
 
-    <div class="col-12 col-md-6 col-lg-8 {{$showVarian === true ? '' : 'd-none'}}">
+    <div class="col-12 col-md-6 col-lg-8 d-none" data-target="varian">
 
         <div class="white-box shadow-sm rounded-lg">
 
@@ -224,81 +223,110 @@
 </div>
 
 {{-- Feature --}}
-<div class="row mb-1">
+<form wire:submit.prevent="saveFeature" enctype="multipart/form-data">
+    <div class="row mb-1">
 
-    <div class="col-12 d-flex justify-content-between mb-1">
-        <h5 class="card-title text-uppercase"><b>Fitur Produk</b></h5>
-        <button class="btn btn-sm btn-light rounded" type="button" wire:click="$toggle('showFeature')">
-            <i class="fas fa-{{$showFeature === true ? 'compress' : 'expand'}}"></i>
-            {{$showFeature === true ? 'Minimize' : 'Maximize'}}
-        </button>
-    </div>
+        <div class="col-12 d-flex justify-content-between mb-1">
+            <h5 class="card-title text-uppercase"><b>Fitur Produk</b></h5>
+            <button class="btn btn-sm btn-light rounded" type="button" data-toggle="feature">
+                <i class="fas fa-expand mr-1"></i>
+                Maximize
+            </button>
+        </div>
 
-    <div class="col-12 col-md-6 col-lg-4">
-        <p>
-            Tambahkan fitur produk yang menggambarkan keunggulan produk tersebut.
-        </p>
-    </div>
-    <div class="col-12 col-md-6 col-lg-8 {{$showFeature === true ? '' : 'd-none'}}">
+        <div class="col-12 col-md-6 col-lg-4">
+            <p>
+                Tambahkan fitur produk yang menggambarkan keunggulan produk tersebut.
+            </p>
+        </div>
+        <div class="col-12 col-md-6 col-lg d-none" data-target="feature">
+            <div class="white-box shadow-sm rounded-lg" data-clone-box="feature">
 
-        <div class="white-box shadow-sm rounded-lg">
+                <fieldset class="form-group row bg-ligh" x-data="{ isUploading: false, progress: 0 }"
+                    x-on:livewire-upload-start="isUploading = true" x-on:livewire-upload-finish="isUploading = false"
+                    x-on:livewire-upload-error="isUploading = false"
+                    x-on:livewire-upload-progress="progress = $event.detail.progress" data-clone-target="feature">
 
-            <fieldset class="form-group" x-data="{ isUploading: false, progress: 0 }"
-                x-on:livewire-upload-start="isUploading = true" x-on:livewire-upload-finish="isUploading = false"
-                x-on:livewire-upload-error="isUploading = false"
-                x-on:livewire-upload-progress="progress = $event.detail.progress">
-                <label for="feature">Pilih Fitur <sub class="text-muted">(Harus diisi)</sub></label> <br>
+                    <div class="col-12 col-md-6 mb-3 mb-lg-0">
+                        <label for="feature">Pilih Gambar <sub class="text-muted">(Harus diisi)</sub></label> <br>
+                        <div class="dropzone-wrapper">
+                            <div class="dropzone-desc">
+                                <a class="btn btn-dark btn-sm rounded-circle shadow-sm text-center {{!empty($feature) ? '' : 'd-none'}}"
+                                    style="height: 25px; width: 25px; line-height:1; position: absolute; top: .5rem; right:.5rem; z-index: 99;"
+                                    wire:click="$emitUp('resetFeature')">
+                                    x
+                                </a>
 
-                <div class="dropzone-wrapper">
-                    <div class="dropzone-desc">
-                        <a class="btn btn-dark btn-sm rounded-circle shadow-sm text-center {{!empty($feature) ? '' : 'd-none'}}"
-                            style="height: 25px; width: 25px; line-height:1; position: absolute; top: .5rem; right:.5rem; z-index: 99;"
-                            wire:click="$emitUp('resetFeature')">
-                            x
-                        </a>
-
-                        <p class="text">
-                            Pilih Gambar atau Letakkan Gambar Disini.<br>
-                            <small class="text-muted">Format gambar: jpg, jpeg, png, webp</small>
-                        </p>
-                        <div class="preview-zone">
-                            <div class="box box-solid">
-                                <div class="box-body">
-                                    @if (!empty($feature))
-                                    <img class="img-thumbnail temp_img" src="{{$feature->temporaryUrl()}}" />
-                                    @endif
+                                <p class="text">
+                                    Pilih Gambar atau Letakkan Gambar Disini.<br>
+                                    <small class="text-muted">Format gambar: jpg, jpeg, png, webp</small>
+                                </p>
+                                <div class="preview-zone">
+                                    <div class="box box-solid">
+                                        <div class="box-body">
+                                            @if (!empty($feature))
+                                            <img class="img-thumbnail temp_img" src="{{$feature->temporaryUrl()}}" />
+                                            @endif
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+                            <input type="file" name="feature_images[]" wire:model="feature_images" accept="image/*"
+                                class="dropzone" multiple style="position: absolute; z-index:3; top:0">
+
+                            <div x-show="isUploading">
+                                <progress max="100" x-bind:value="progress"></progress>
+                            </div>
                         </div>
+                        @error('feature_images')
+                        <small class="text-danger">{{$message}}</small>
+                        @enderror
                     </div>
-                    <input type="file" name="feature[]" wire:model="feature" accept="image/*" class="dropzone"
-                        style="position: absolute; z-index:3; top:0">
 
-                    <div x-show="isUploading">
-                        <progress max="100" x-bind:value="progress"></progress>
+                    <div class="col-12 col-md-6">
+
+                        <fieldset class="form-group">
+                            <label for="feature_name">
+                                Nama Fitur <sub class="text-muted">(Harus diisi)</sub>
+                            </label>
+                            <input type="text" class="form-control" name="feature_name" wire:model="feature_name">
+                            @error('feature_name')
+                            <small class="text-danger">{{$message}}</small>
+                            @enderror
+                        </fieldset>
+
+                        <fieldset class="form-group">
+                            <label for="feature_description">
+                                Deskripsi Fitur <sub class="text-muted">(Harus diisi)</sub>
+                            </label>
+                            <textarea class="form-control" name="feature_description" style="resize: none; height:100px"
+                                wire:model="feature_description"></textarea>
+                            @error('feature_description')
+                            <small class="text-danger">{{$message}}</small>
+                            @enderror
+                        </fieldset>
+
                     </div>
-                </div>
 
-                <div class="dropzone_box_clone"></div>
+                    <button class="btn-sm btn-primary btn" type="button" data-action="clone">
+                        + Baris
+                    </button>
 
-                @error('image')
-                <small class="text-danger">{{$message}}</small>
-                @enderror
+                </fieldset>
 
-            </fieldset>
-
+            </div>
         </div>
     </div>
-</div>
+</form>
 
 {{-- Spesification --}}
 <div class="row mb-1">
 
     <div class="col-12 d-flex justify-content-between mb-1">
         <h5 class="card-title text-uppercase"><b>Spesifikasi Produk</b></h5>
-        <button class="btn btn-sm btn-light rounded" type="button" wire:click="$toggle('showSpesification')">
-            <i class="fas fa-{{$showSpesification === true ? 'compress' : 'expand'}}"></i>
-            {{$showSpesification === true ? 'Minimize' : 'Maximize'}}
+        <button class="btn btn-sm btn-light rounded" type="button" data-toggle="spesification">
+            <i class="fas fa-expand mr-1"></i>
+            Maximize
         </button>
     </div>
 
@@ -307,12 +335,12 @@
             Atur spesifikasi produk dengan format yang sudah ditentukan.
         </p>
     </div>
-    <div class="col-12 col-md-6 col-lg-8 {{$showSpesification === true ? '' : 'd-none'}}">
+    <div class="col-12 col-md-6 col-lg-8 d-none" data-target="spesification">
 
         <div class="white-box shadow-sm rounded-lg">
 
             <fieldset class="form-group">
-                <label for="feature">Pilih feature <sub class="text-muted">(Harus diisi)</sub></label> <br>
+                <label for="feature">Pilih gambar <sub class="text-muted">(Harus diisi)</sub></label> <br>
 
                 <textarea id="editor" name="engine" wire:ignore wire:model="engine">
                         {{$engine}}
@@ -325,14 +353,12 @@
             </fieldset>
 
             <fieldset class="form-group text-right">
-                <button class="btn btn-dark rounded-lg" wire:click="$toggle('showBanner')">Simpan</button>
+                <button class="btn btn-dark rounded-lg">Simpan</button>
             </fieldset>
 
         </div>
     </div>
 </div>
-
-@endif
 
 @push('scripts')
 <script>
@@ -340,6 +366,25 @@
         setTimeout(() => {
             ClassicEditor.create(document.querySelector('#editor'))
         }, 5000);
+
+        function changeTargetState(target){
+            const minimize = '<i class="fas fa-compress mr-1"></i>Minimize',
+            maximize = '<i class="fas fa-expand mr-1"></i>Maximize';
+            $(`[data-target="${target}"]`).hasClass('d-none') === true ? $(this).html(minimize) : $(this).html(maximize);
+            $(`[data-target="${target}"]`).toggleClass('d-none');
+        }
+
+        $('[data-toggle="info"]').click(() => changeTargetState('info'));
+        $('[data-toggle="banner"]').click(() => changeTargetState('banner'));
+        $('[data-toggle="varian"]').click(() => changeTargetState('varian'));
+        $('[data-toggle="feature"]').click(() => changeTargetState('feature'));
+        $('[data-toggle="spesification"]').click(() => changeTargetState('spesification'));
+
+        function cloneBox(){
+            $('[data-clone-target="feature"]').clone().appendTo('[data-clone-box="feature"]')
+        }
+
+        $('[data-action="clone"]').click(() => cloneBox())
     })
 </script>
 @endpush

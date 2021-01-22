@@ -16,7 +16,7 @@ class Create extends Component
 
     public $product = null;
 
-    public $name, $category, $is_new, $promo_price, $price, $frame_n_feet, $banner,
+    public $name, $category, $is_new, $promo_price, $price, $frame_n_feet, $banner, $feature_images, $feature_name, $feature_description,
     $dimensions_and_weight, $capacity, $electricity, $is_draft, $brochure;
 
     public $engine = "<table><tbody><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr></tbody></table>";
@@ -71,6 +71,11 @@ class Create extends Component
     public function saveBanner()
     {
         $this->showVarian = true;
+    }
+
+    public function saveFeature()
+    {
+        dd($this->feature_images);
     }
 
     public function checkBanner()

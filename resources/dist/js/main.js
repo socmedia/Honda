@@ -1,7 +1,7 @@
 const tabsButton = document.querySelectorAll('.button');
 
 window.addEventListener('scroll', e => {
-    const nav = document.querySelector('.navigation'),
+    const nav = document.querySelector('.navbar'),
         Y = window.pageYOffset;
     (Y >= 210) ?
     nav.classList.add('scrolled'): nav.classList.remove('scrolled');

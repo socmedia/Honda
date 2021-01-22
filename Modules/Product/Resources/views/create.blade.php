@@ -64,16 +64,6 @@
     transform: translate(-50%, -50%)
 }
 
-.dropzone-desc {
-    margin: 0 auto;
-    left: 0;
-    right: 0;
-    text-align: center;
-    width: 100%;
-    top: 50px;
-    font-size: 16px;
-}
-
 .dropzone,
 .dropzone:focus {
     position: absolute;
@@ -120,11 +110,6 @@ $(document).ready(function() {
         e.stopPropagation();
         $(this).removeClass('dragover');
     });
-
-    $('.dropzone').change(function() {
-        $('.dropzone-wrapper').clone().appendTo('.dropzone_box_clone');
-    })
-
 })
 </script>
 @endpush

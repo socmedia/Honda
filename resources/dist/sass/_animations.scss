@@ -1,6 +1,6 @@
 @keyframes fadeDown {
     from {
-        top: -50%
+        top: -20%
     }
 
     to {
@@ -10,10 +10,32 @@
 
 @keyframes fadeTop {
     from {
-        bottom: -50%
+        bottom: -20%
     }
 
     to {
         bottom: 0;
+    }
+}
+
+@keyframes dropdown {
+    from {
+        top: 80%;
+    }
+
+    to {
+        top: 90%;
+    }
+}
+
+@keyframes navbar {
+    from {
+        top: 0;
+        opacity: 0;
+    }
+
+    to {
+        top: 2rem;
+        opacity: 1;
     }
 }

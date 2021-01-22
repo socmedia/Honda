@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::get('/', function () {
-    return view('comingsoon');
-    // return view('index');
+    // return view('comingsoon');
+    return view('index');
     // return Regency::with('district', 'province')->get();
 });
 

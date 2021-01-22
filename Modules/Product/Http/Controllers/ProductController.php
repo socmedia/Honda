@@ -6,6 +6,7 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Str;
+use Modules\Product\Http\Requests\ProductInformationRequest;
 use Modules\Product\Repository\Model\Entities\Product;
 
 class ProductController extends Controller
@@ -34,20 +35,22 @@ class ProductController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function store(ProductInformationRequest $request)
     {
         $product_id = Str::uuid()->getHex();
         $route = route('adm.product.create');
+
         Product::updateOrCreate([
             'id' => $product_id,
             'name' => $request->name,
             'slug_name' => Str::slug($request->name),
             'category' => $request->category,
-            'promo_price' => $request->promo_price,
+            'promo_price' => $request->promo_price === null ? 0 : $request->promo_price,
             'price' => $request->price,
             'is_new' => $request->new_product ? 1 : 0,
             'is_draft' => 1,
         ]);
+
         return redirect()->to($route . '?id=' . $product_id);
     }
 
