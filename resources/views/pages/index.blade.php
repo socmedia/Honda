@@ -7,7 +7,7 @@
     <main>
         <h1 class="header__text">semua produk</h1>
 
-        <nav class="py-3 mb-9">
+        <nav class="navigation__wrapper d-flex justify-content-center">
             <ul class="navigation__tabs">
                 <li class="button active">
                     <a>

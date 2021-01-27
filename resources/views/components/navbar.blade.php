@@ -7,7 +7,7 @@
         <line x1="3" y1="18" x2="21" y2="18"></line>
     </svg>
 </button>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-white">
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item active">
@@ -75,7 +75,7 @@
                 </div>
             </li>
             <li class="nav-item">
-                <button class="circle__button">
+                <button class="circle__button" type="button" data-toggle="modal" data-target="#search-modal">
                     <i class='bx bx-search'></i>
                 </button>
             </li>

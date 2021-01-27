@@ -1,8 +1,4 @@
 require('./bootstrap');
-require('alpinejs');
 require('boxicons/css/boxicons.css');
-const feather = require('feather-icons');
+require('swiper/swiper-bundle.css');
 require('./main')
-
-
-feather.replace()

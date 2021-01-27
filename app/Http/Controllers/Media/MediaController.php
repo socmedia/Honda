@@ -20,4 +20,16 @@ class MediaController extends Controller
         $response->header("Content-Type", 'image');
         return $response;
     }
+    public function getProductImage($productImage)
+    {
+        $path = storage_path('app/public/images/products/' . $productImage);
+        // if (!File::exists($path)) {
+        //     abort(404);
+        // }
+
+        $file = File::get($path);
+        $response = Response::make($file, 200);
+        $response->header("Content-Type", 'image');
+        return $response;
+    }
 }

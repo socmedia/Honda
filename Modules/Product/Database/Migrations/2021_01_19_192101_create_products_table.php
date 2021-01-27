@@ -17,6 +17,7 @@ class CreateProductsTable extends Migration
             $table->uuid('id')->primary();
             $table->string('name')->unique();
             $table->string('slug_name');
+            $table->string('thumbnail');
             $table->string('category');
             $table->boolean('is_new');
             $table->unsignedBigInteger('promo_price');

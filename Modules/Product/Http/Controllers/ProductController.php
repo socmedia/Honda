@@ -8,16 +8,28 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Str;
 use Modules\Product\Http\Requests\ProductInformationRequest;
 use Modules\Product\Repository\Model\Entities\Product;
+use Modules\Product\Repository\ProductRepositoryInterface;
 
 class ProductController extends Controller
 {
+    private $model;
+
+    /**
+     * Class constructor.
+     */
+    public function __construct(ProductRepositoryInterface $productRepositoryInterface)
+    {
+        $this->model = $productRepositoryInterface;
+    }
+
     /**
      * Display a listing of the resource.
      * @return Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('product::index');
+        $products = $this->model->getAll($request);
+        return view('product::index', compact('products'));
     }
 
     /**
@@ -26,7 +38,10 @@ class ProductController extends Controller
      */
     public function create(Request $request)
     {
-        $product = Product::where('id', $request->id)->first();
+        $product = '';
+        if ($request->id) {
+            $product = $this->model->findById($request->id);
+        }
         return view('product::create', compact('product'));
     }
 
@@ -38,18 +53,10 @@ class ProductController extends Controller
     public function store(ProductInformationRequest $request)
     {
         $product_id = Str::uuid()->getHex();
+        $request->product_id = $product_id;
         $route = route('adm.product.create');
 
-        Product::updateOrCreate([
-            'id' => $product_id,
-            'name' => $request->name,
-            'slug_name' => Str::slug($request->name),
-            'category' => $request->category,
-            'promo_price' => $request->promo_price === null ? 0 : $request->promo_price,
-            'price' => $request->price,
-            'is_new' => $request->new_product ? 1 : 0,
-            'is_draft' => 1,
-        ]);
+        $this->model->create($request);
 
         return redirect()->to($route . '?id=' . $product_id);
     }
@@ -82,7 +89,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->model->update($request, $id);
     }
 
     /**

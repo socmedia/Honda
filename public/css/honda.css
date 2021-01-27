@@ -10095,6 +10095,52 @@ h3 {
     opacity: 1;
   }
 }
+@-webkit-keyframes transformFromTop {
+  from {
+    transform: translateY(-20px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes transformFromTop {
+  from {
+    transform: translateY(-20px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(1.75rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(1.75rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@-webkit-keyframes linksBg {
+  from {
+    height: 0;
+  }
+}
+@keyframes linksBg {
+  from {
+    height: 0;
+  }
+}
 html,
 body {
   font-family: "Open Sans", sans-serif;
@@ -10140,6 +10186,24 @@ body {
   color: #FFF;
   opacity: 1;
   box-shadow: 0 0 2px #d63e50;
+}
+.btn-honda.dark_honda {
+  background-color: #CB1F1F;
+  border: 1px solid #C82127;
+}
+.btn-honda.dark_honda:hover, .btn-honda.dark_honda:active, .btn-honda.dark_honda:focus {
+  opacity: 1;
+  box-shadow: none;
+}
+.btn-honda.icon {
+  font-size: 1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+.btn-honda.icon svg {
+  height: 1rem;
+  margin-right: 0.25rem;
 }
 
 .navbar {
@@ -10388,30 +10452,42 @@ h1.header__text {
   opacity: 0.5;
 }
 
-.navigation__tabs {
-  display: flex;
+.navigation__wrapper {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  overflow-x: scroll;
+}
+@media (min-width: 768px) {
+  .navigation__wrapper {
+    display: flex;
+    justify-content: center;
+  }
+}
+.navigation__wrapper .navigation__tabs {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
   padding: 0;
   margin-left: 0;
-  margin-bottom: 2rem;
 }
-.navigation__tabs .button {
+.navigation__wrapper .navigation__tabs .button {
   position: relative;
   display: block;
   opacity: 0.8;
   padding: 0 0.875rem;
   transition: 0.3s all;
   cursor: pointer;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
 }
-.navigation__tabs .button.active {
+.navigation__wrapper .navigation__tabs .button.active {
   opacity: 1;
 }
-.navigation__tabs .button.active a {
+.navigation__wrapper .navigation__tabs .button.active a {
   font-weight: 700;
 }
-.navigation__tabs .button.active:after {
+.navigation__wrapper .navigation__tabs .button.active:after {
   content: "";
   position: absolute;
   left: 0.875rem;
@@ -10419,6 +10495,36 @@ h1.header__text {
   height: 3px;
   width: 30%;
   background-color: #2B2B2B;
+}
+
+.navigation__wrapper::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #F5F5F5;
+}
+@media (min-width: 768px) {
+  .navigation__wrapper::-webkit-scrollbar-track {
+    background: none;
+  }
+}
+
+.navigation__wrapper::-webkit-scrollbar {
+  height: 3px;
+  background-color: #F5F5F5;
+}
+@media (min-width: 768px) {
+  .navigation__wrapper::-webkit-scrollbar {
+    background: none;
+    height: 0;
+  }
+}
+
+.navigation__wrapper::-webkit-scrollbar-thumb {
+  background-color: #414141;
+}
+@media (min-width: 768px) {
+  .navigation__wrapper::-webkit-scrollbar-thumb {
+    background: none;
+  }
 }
 
 .honda__icon-jateng_gunungan.heading_text {
@@ -10660,4 +10766,148 @@ h1.header__text {
   bottom: 4.5rem;
   transform: rotate(45deg);
   position: fixed;
+}
+
+.honda__wrapper {
+  padding: 2rem 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 4rem 0;
+  flex-flow: column;
+}
+@media (min-width: 768px) {
+  .honda__wrapper {
+    flex-flow: row;
+  }
+}
+.honda__wrapper .btn {
+  width: 80%;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .honda__wrapper .btn {
+    width: auto;
+    margin-bottom: 0;
+  }
+}
+
+.honda__bg {
+  background: #E61B33;
+}
+
+.breadcrumb__wrapper {
+  background: #F3F3F3;
+}
+.breadcrumb__wrapper .breadcrumb {
+  margin: 0;
+  background: none;
+  border-radius: 0;
+}
+.breadcrumb__wrapper .breadcrumb .breadcrumb-item a {
+  font-size: 0.9rem;
+  color: #808080;
+}
+.breadcrumb__wrapper .breadcrumb .breadcrumb-item.active {
+  font-weight: 700;
+  color: #E61B33;
+}
+.breadcrumb__wrapper .breadcrumb .breadcrumb-item.active:before {
+  font-weight: 500;
+}
+
+.transformFromTop {
+  -webkit-animation: transformFromTop 0.3s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          animation: transformFromTop 0.3s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#search-modal .modal-content {
+  border-radius: 3rem;
+}
+#search-modal .modal-content a {
+  display: flex;
+  align-items: center;
+  font-size: 1.3rem;
+  border: none;
+  opacity: 0.5;
+}
+#search-modal .modal-content a:hover {
+  transition: 0.3s all;
+  opacity: 1;
+}
+#search-modal .modal-content .search {
+  padding-left: 1rem;
+}
+#search-modal .modal-content .input-group select,
+#search-modal .modal-content .input-group input {
+  border-width: 0;
+}
+#search-modal .modal-content .input-group select:hover, #search-modal .modal-content .input-group select:active, #search-modal .modal-content .input-group select:focus,
+#search-modal .modal-content .input-group input:hover,
+#search-modal .modal-content .input-group input:active,
+#search-modal .modal-content .input-group input:focus {
+  box-shadow: none;
+}
+#search-modal .modal-content .input-group .input-group-prepend {
+  border-right: 1px solid #00000072 !important;
+}
+
+.swiper-slide.not-full img {
+  width: 80%;
+}
+@media (min-width: 768px) {
+  .swiper-slide.not-full img {
+    width: 40%;
+  }
+}
+
+.swiper-container-horizontal > .swiper-pagination-bullets.swiper-pagination-bullets-dynamic .swiper-pagination-bullet {
+  background-color: #E61B33 !important;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  color: #FFF !important;
+  background-color: #E61B33;
+  width: 2rem !important;
+  height: 2rem !important;
+  border-radius: 50%;
+}
+.swiper-button-prev:after,
+.swiper-button-next:after {
+  font-size: 0.75rem !important;
+}
+
+.tab-content > .active {
+  -webkit-animation: fadeIn 0.5s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          animation: fadeIn 0.5s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.nav_tabs .nav-item {
+  padding: 0.5rem 1rem;
+}
+.nav_tabs .nav-link {
+  position: relative;
+  color: #343a40;
+  opacity: 0.5;
+  padding: 0;
+  font-weight: 600;
+}
+.nav_tabs .nav-link.active {
+  transition: 0.5s all;
+  opacity: 1;
+  font-weight: 700;
+}
+.nav_tabs .nav-link.active:after {
+  content: "";
+  position: absolute;
+  left: -3px;
+  right: -3px;
+  bottom: 2px;
+  height: 10px;
+  background: #e61b332a;
+  -webkit-animation: linksBg 0.5s ease;
+          animation: linksBg 0.5s ease;
 }

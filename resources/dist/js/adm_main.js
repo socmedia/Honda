@@ -11,6 +11,7 @@ try {
     window.$ = window.jQuery = require("jquery");
     require('bootstrap');
     window.ClassicEditor = require('@ckeditor/ckeditor5-build-classic');
+    window.repeater = require('jquery.repeater');
 } catch (e) {}
 
 window.axios = require('axios');

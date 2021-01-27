@@ -10,13 +10,7 @@
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
-
-    <!-- Styles -->
-    {{-- <link rel="stylesheet" href="{{ mix('css/app.css') }}"> --}}
     <link rel="stylesheet" href="{{ mix('css/honda.css') }}">
-
-    <!-- Scripts -->
-    <script src="{{ mix('js/app.js') }}"></script>
 </head>
 
 <body>
@@ -37,7 +31,12 @@
         <i class='bx bxl-whatsapp'></i>
     </a>
 
+    <x-search-modal />
+
     <x-footer />
+
+    <!-- Scripts -->
+    <script src="{{ mix('js/app.js') }}"></script>
 </body>
 
 </html>

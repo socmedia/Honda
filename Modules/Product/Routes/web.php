@@ -19,5 +19,8 @@ Route::group([
     Route::get('/', 'ProductController@index')->name('index');
     Route::get('/tambah', 'ProductController@create')->name('create');
     Route::post('/tambah', 'ProductController@store')->name('store');
+    Route::get('/{id}/preview', 'ProductController@show')->name('show');
     Route::get('/{id}/edit', 'ProductController@edit')->name('edit');
+    Route::put('/{id}', 'ProductController@update')->name('update');
+    Route::delete('/{id}', 'ProductController@destroy')->name('destroy');
 });

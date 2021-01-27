@@ -39,3 +39,31 @@
         opacity: 1;
     }
 }
+
+@keyframes transformFromTop {
+    from {
+        transform: translateY(-20px);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(1.75rem);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes linksBg {
+    from {
+        height: 0;
+    }
+}

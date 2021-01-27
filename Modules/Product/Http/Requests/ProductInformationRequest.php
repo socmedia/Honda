@@ -14,8 +14,9 @@ class ProductInformationRequest extends FormRequest
     public function rules()
     {
         return [
+            'thumbnail' => 'required|mimes:png,jpg,jpeg,webp|max:512',
             'name' => 'required',
-            'category' => 'required|in:matic,cub.sport,big-bike',
+            'category' => 'required|in:matic,cub,sport,big-bike',
             'price' => 'required|numeric',
             'promo_price' => 'nullable|numeric',
             'is_new' => 'nullable|boolean',

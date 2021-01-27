@@ -20,7 +20,7 @@
     </div>
 
     <div class="col-12">
-        {{-- @livewire('product.table') --}}
+        @livewire('product.table', ['products' => $products])
     </div>
 
 </div>

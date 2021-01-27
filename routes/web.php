@@ -14,9 +14,19 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::get('/', function () {
-    // return view('comingsoon');
-    return view('index');
+    return view('comingsoon');
+    // return view('pages/index');
     // return Regency::with('district', 'province')->get();
+});
+
+Route::group(['prefix' => 'produk'], function () {
+    Route::get('/', function () {
+        return view('pages.product.index');
+    });
+    Route::get('/detail', function () {
+        return view('pages.product.detail.index');
+    });
+
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
@@ -24,3 +34,4 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::get('/media/banner/{bannerName}', ['App\Http\Controllers\Media\MediaController', 'getBanner'])->name('get.banner');
+Route::get('/media/product/{productName}', ['App\Http\Controllers\Media\MediaController', 'getProductImage'])->name('get.product');
