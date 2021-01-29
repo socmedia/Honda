@@ -1,0 +1,13 @@
+{
+    "name": "Ahass",
+    "alias": "ahass",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Ahass\\Providers\\AhassServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

@@ -12,6 +12,7 @@ try {
     require('bootstrap');
     window.ClassicEditor = require('@ckeditor/ckeditor5-build-classic');
     window.repeater = require('jquery.repeater');
+    window.mask = require('jquery-mask-plugin');
 } catch (e) {}
 
 window.axios = require('axios');

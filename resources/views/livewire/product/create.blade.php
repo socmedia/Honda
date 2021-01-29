@@ -21,8 +21,6 @@
 
             <div class="white-box shadow-sm rounded-lg">
 
-                @dump(old('thumbnail'))
-
                 <fieldset class="form-group">
                     <label for="thumbnail">Pilih thumbnail <sub class="text-muted">(Harus diisi)</sub></label> <br>
 
@@ -456,7 +454,7 @@
 
 @push('scripts')
 <script>
-    $(document).ready(function() {
+$(document).ready(function() {
 
     const editor = document.querySelectorAll('#editor');
     editor.forEach(el => {

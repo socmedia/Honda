@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Modules\Ahass\Repository\AhassRepositoryInterface;
+use Modules\Ahass\Repository\Model\AhassModel;
 use Modules\Banner\Repository\BannerRepositoryInterface;
 use Modules\Banner\Repository\Model\BannerModel;
 use Modules\Product\Repository\Model\ProductModel;
@@ -32,5 +34,6 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(SettingRepositoryInterface::class, SettingModel::class);
         $this->app->bind(BannerRepositoryInterface::class, BannerModel::class);
         $this->app->bind(ProductRepositoryInterface::class, ProductModel::class);
+        $this->app->bind(AhassRepositoryInterface::class, AhassModel::class);
     }
 }
