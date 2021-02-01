@@ -18,8 +18,7 @@ class CreateAhassTable extends Migration
             $table->string('name');
             $table->string('address');
             $table->char('regency_id', 4);
-            $table->string('phone_1')->nullable();
-            $table->string('phone_2')->nullable();
+            $table->string('contacts')->nullable();
             $table->timestamps();
         });
     }

@@ -5,42 +5,43 @@ namespace Modules\Ahass\Repository;
 interface AhassRepositoryInterface
 {
     /**
-     * Undocumented function
+     * Get datas from resource
      *
-     * @param [type] $request
+     *
+     * @param \Illuminate\Http\Request $request
      * @return void
      */
     public function getAll($request);
 
     /**
-     * Undocumented function
+     * Find ahass by passing id
      *
-     * @param [type] $id
+     * @param int $id
      * @return void
      */
     public function findById($id);
 
     /**
-     * Undocumented function
+     * Store ahass to resource
      *
-     * @param [type] $request
+     * @param \Illuminate\Http\Request $request
      * @return void
      */
     public function create($request);
 
     /**
-     * Undocumented function
+     * Update ahass from resource
      *
-     * @param [type] $request
-     * @param [type] $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return void
      */
     public function update($request, $id);
 
     /**
-     * Undocumented function
+     * Delete ahass from resource
      *
-     * @param [type] $id
+     * @param int $id
      * @return void
      */
     public function delete($id);
