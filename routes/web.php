@@ -29,9 +29,5 @@ Route::group(['prefix' => 'produk'], function () {
 
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
-
 Route::get('/media/banner/{bannerName}', ['App\Http\Controllers\Media\MediaController', 'getBanner'])->name('get.banner');
 Route::get('/media/product/{productName}', ['App\Http\Controllers\Media\MediaController', 'getProductImage'])->name('get.product');
