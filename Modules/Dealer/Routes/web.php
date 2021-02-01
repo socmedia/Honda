@@ -23,4 +23,5 @@ Route::group([
     Route::get('/{id}/edit', 'DealerController@edit')->name('edit');
     Route::put('/{id}', 'DealerController@update')->name('update');
     Route::delete('/{id}', 'DealerController@destroy')->name('destroy');
+    Route::get('/export/excel', 'DealerController@exportAsExcel')->name('export.excel');
 });

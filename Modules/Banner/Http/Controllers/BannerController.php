@@ -37,6 +37,11 @@ class BannerController extends Controller
         return view('banner::edit');
     }
 
+    /**
+     * Export resource become excel
+     *
+     * @return excel
+     */
     public function exportAsExcel()
     {
         return Excel::download(new BannerExport, 'banner.xlsx');

@@ -23,4 +23,5 @@ Route::group([
     Route::get('/{id}/edit', 'AhassController@edit')->name('edit');
     Route::put('/{id}', 'AhassController@update')->name('update');
     Route::delete('/{id}', 'AhassController@destroy')->name('destroy');
+    Route::get('/export/excel', 'AhassController@exportAsExcel')->name('export.excel');
 });

@@ -17,7 +17,7 @@
             <div class="card-header py-3">
                 <fieldset class="row justify-content-end">
 
-                    <div class="col-12 col-md-2">
+                    <div class="col-12 col-md-2 mb-3">
                         <select name="kota" class="form-control select_searchable" wire:model="city">
                             <option value="" selected>Pilih kota</option>
                             @foreach ($cities as $city)
@@ -41,7 +41,7 @@
                             <table class="table table-hover">
                                 <thead class="bg-light">
                                     <tr class="text-center">
-                                        <th>Nama Ahass</th>
+                                        <th>Nama Dealer</th>
                                         <th>Alamat</th>
                                         <th>Kota</th>
                                         <th>Telp.</th>
@@ -70,12 +70,12 @@
                                         </td>
                                         <td class="text-center">
                                             <div class="btn-group shadow-sm rounded-lg" role="group">
-                                                <a href="{{route('adm.ahass.edit', $data->id)}}"
+                                                <a href="{{route('adm.dealer.edit', $data->id)}}"
                                                     class="btn btn-light btn-sm shadow-none" title="Ubah Data">
                                                     <i class="fas fa-pencil-alt"></i>
                                                 </a>
                                                 <button class="btn btn-light btn-sm shadow-none" title="Hapus Data"
-                                                    data-url="{{route('adm.ahass.destroy', $data->id)}}"
+                                                    data-url="{{route('adm.dealer.destroy', $data->id)}}"
                                                     onclick="$('#delete-confirmation').modal('show'); $('#delete-confirmation').find('form').attr('action', $(this).data('url'))">
                                                     <i class="fas fa-trash"></i>
                                                 </button>

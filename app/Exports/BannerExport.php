@@ -18,7 +18,6 @@ class BannerExport implements FromCollection, WithHeadings, WithMapping
         return Banner::all([
             'id', 'title', 'image_name', 'page_target', 'alt', 'description', 'is_active', 'active_until', 'created_at',
         ]);
-
     }
 
     public function map($banner): array

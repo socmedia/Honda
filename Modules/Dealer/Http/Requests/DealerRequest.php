@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\Ahass\Http\Requests;
+namespace Modules\Dealer\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AhassRequest extends FormRequest
+class DealerRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -17,8 +17,8 @@ class AhassRequest extends FormRequest
 
         return [
             'name' => 'required|max:191',
-            'city' => 'required|in:' . $city,
             'address' => 'required|max:191',
+            'city' => 'required|in:' . $city,
             'contacts.*.contact' => 'nullable|regex:/^[0-9 +-]*$/|min:6|max:15',
         ];
     }

@@ -4,10 +4,10 @@
 
 
 <x-bootstrap.breadcrumb>
-    <x-slot name="page">Ahass</x-slot>
+    <x-slot name="page">Dealer</x-slot>
     <li class="breadcrumb-item"> <a href="{{route('adm.dashboard.index')}}">Admin</a></li>
-    <li class="breadcrumb-item"> <a href="{{route('adm.ahass.index')}}">Ahass</a></li>
-    <li class="breadcrumb-item active">Edit</li>
+    <li class="breadcrumb-item"> <a href="{{route('adm.dealer.index')}}">Dealer</a></li>
+    <li class="breadcrumb-item active">Tambah</li>
 </x-bootstrap.breadcrumb>
 
 <div class="container-fluid">
@@ -26,23 +26,22 @@
             @endif
 
             <div class="col-12 col-lg-4">
-                <h5 class="card-title text-uppercase"><b>Tambahkan Ahass</b></h5>
+                <h5 class="card-title text-uppercase"><b>Tambahkan Dealer</b></h5>
                 <p>
-                    Anda bisa melakukan penambahan data Ahass dengan mengisikan form disamping.
+                    Anda bisa melakukan penambahan data Dealer dengan mengisikan form disamping.
                 </p>
             </div>
 
             <div class="col-12 col-lg-8">
 
-                <form action="{{route('adm.ahass.update', $ahass->id)}}" method="POST">
+                <form action="{{route('adm.dealer.store')}}" method="POST">
                     @csrf
-                    @method('put')
 
                     <div class="white-box rounded-lg shadow-sm repeater">
 
                         <fieldset class="form-group">
-                            <label for="name">Nama Ahass <sub class="text-muted">(Harus diisi)</sub></label>
-                            <input type="text" name="name" class="form-control" value="{{$ahass->name}}">
+                            <label for="name">Nama Dealer <sub class="text-muted">(Harus diisi)</sub></label>
+                            <input type="text" name="name" class="form-control" value="{{old('name')}}">
                             @error('name')
                             <small class="text-danger">{{$message}}</small>
                             @enderror
@@ -52,7 +51,7 @@
                             <label for="address">Alamat lengkap <sub class="text-muted">(Harus
                                     diisi)</sub></label>
                             <textarea name="address" style="resize: none; height:80px;"
-                                class="form-control">{{$ahass->address}}</textarea>
+                                class="form-control">{{old('address')}}</textarea>
                             @error('address')
                             <small class="text-danger">{{$message}}</small>
                             @enderror
@@ -64,7 +63,7 @@
                             <select name="city" class="form-control select_searchable">
                                 <option value="" disabled selected>Pilih kota</option>
                                 @foreach ($regencies as $city)
-                                @if ($city->id == $ahass->regency_id)
+                                @if ($city->id == old('city'))
                                 <option value="{{$city->id}}" selected>{{$city->name}}</option>
                                 @else
                                 <option value="{{$city->id}}">{{$city->name}}</option>
@@ -74,16 +73,19 @@
                                     @error('city')
                                     <small class="text-danger">{{$message}}</small>
                                     @enderror
+
                         </fieldset>
 
                         <fieldset class="form-group row " data-repeater-list="contacts">
 
-                            @foreach (explode(', ', $ahass->contacts) as $i => $contact)
+                            @if (old('contacts'))
+                            @foreach (old('contacts') as $i => $contact)
                             <div class="col-12 col-md-6 mb-3 mb-md-0" data-repeater-item>
                                 <label for="contacts">No. Telp.</label>
                                 <div class="input-group">
                                     <input type="text" name="contact" maxlength="15" minlength="6"
-                                        class="form-control numeric" placeholder="00000000000000" value="{{$contact}}">
+                                        class="form-control numeric" placeholder="00000000000000"
+                                        value="{{$contact['contact']}}">
 
                                     <div class="input-group-append">
                                         <button data-repeater-delete
@@ -92,13 +94,28 @@
                                         </button>
                                     </div>
                                 </div>
-
-                                <small class="text-muted">Panjang Telp. antara 6-15 karakter</small> <br>
+                                <small class="text-muted">Panjang Telp. antara 6-15 karakter</small><br>
                                 @error('contacts.' . $i . '.contact')
                                 <small class="text-danger">{{$message}}</small>
                                 @enderror
                             </div>
                             @endforeach
+                            @else
+                            <div class="col-12 col-md-6 mb-3 mb-md-0" data-repeater-item>
+                                <label for="contacts">No. Telp.</label>
+                                <div class="input-group">
+                                    <input type="text" name="contact" maxlength="15" minlength="6"
+                                        class="form-control numeric" placeholder="00000000000000" value="">
+
+                                    <div class="input-group-append">
+                                        <button data-repeater-delete
+                                            class="btn btn-danger btn-sm rounded-right shadow-lg px-3" type="button">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <small class="text-muted">Panjang Telp. antara 6-15 karakter</small>
+                                @endif
 
                         </fieldset>
 
@@ -124,7 +141,7 @@
 
 @push('scripts')
 <script>
-    $(document).ready(function() {
+$(document).ready(function() {
     $('.select_searchable').selectpicker({
         placeholder: 'Pilih kota',
         liveSearch: true

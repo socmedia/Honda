@@ -2,12 +2,30 @@
 
 namespace Modules\Dealer\Http\Controllers;
 
+use App\Exports\DealerExport;
+use App\Models\Indonesia\Regency;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Maatwebsite\Excel\Facades\Excel;
+use Modules\Dealer\Http\Requests\DealerRequest;
+use Modules\Dealer\Repository\DealerRepositoryInterface;
 
 class DealerController extends Controller
 {
+    private $model;
+
+    private $regencies;
+
+    /**
+     * Class constructor.
+     */
+    public function __construct(DealerRepositoryInterface $dealerRepositoryInterface)
+    {
+        $this->model = $dealerRepositoryInterface;
+        $this->regencies = Regency::orderBy('name', 'asc')->get();
+    }
+
     /**
      * Display a listing of the resource.
      * @return Renderable
@@ -23,7 +41,8 @@ class DealerController extends Controller
      */
     public function create()
     {
-        return view('dealer::create');
+        $regencies = $this->regencies;
+        return view('dealer::create', compact('regencies'));
     }
 
     /**
@@ -31,19 +50,10 @@ class DealerController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function store(DealerRequest $request)
     {
-        //
-    }
-
-    /**
-     * Show the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function show($id)
-    {
-        return view('dealer::show');
+        $this->model->create($request);
+        return redirect()->route('adm.dealer.index')->with('success', 'Dealer berhasil ditambahkan.');
     }
 
     /**
@@ -53,7 +63,9 @@ class DealerController extends Controller
      */
     public function edit($id)
     {
-        return view('dealer::edit');
+        $dealer = $this->model->findById($id);
+        $regencies = $this->regencies;
+        return view('dealer::edit', compact('dealer', 'regencies'));
     }
 
     /**
@@ -62,9 +74,10 @@ class DealerController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update(DealerRequest $request, $id)
     {
-        //
+        $this->model->update($request, $id);
+        return redirect()->route('adm.dealer.index')->with('success', 'Dealer berhasil diperbarui.');
     }
 
     /**
@@ -74,6 +87,17 @@ class DealerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->model->delete($id);
+        return redirect()->route('adm.dealer.index')->with('success', 'Dealer berhasil dihapus.');
+    }
+
+    /**
+     * Export resource become excel
+     *
+     * @return excel
+     */
+    public function exportAsExcel()
+    {
+        return Excel::download(new DealerExport, 'dealer_' . now()->format('dmYHis') . '.xlsx');
     }
 }

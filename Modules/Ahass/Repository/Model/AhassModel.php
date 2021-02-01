@@ -19,23 +19,31 @@ class AhassModel implements AhassRepositoryInterface
 
     public function create($request)
     {
+        $contacts = [];
+        foreach ($request->contacts as $contact) {
+            array_push($contacts, $contact['contact']);
+        }
+
         $ahass = new Ahass();
         $ahass->name = $request->name;
-        $ahass->regency_id = $request->city;
         $ahass->address = $request->address;
-        $ahass->phone_1 = $request->phone_1;
-        $ahass->phone_2 = $request->phone_2;
+        $ahass->regency_id = $request->city;
+        $ahass->contacts = implode(', ', $contacts);
         return $ahass->save();
     }
 
     public function update($request, $id)
     {
+        $contacts = [];
+        foreach ($request->contacts as $contact) {
+            array_push($contacts, $contact['contact']);
+        }
+
         $ahass = $this->findById($id);
         $ahass->name = $request->name;
-        $ahass->regency_id = $request->city;
         $ahass->address = $request->address;
-        $ahass->phone_1 = $request->phone_1;
-        $ahass->phone_2 = $request->phone_2;
+        $ahass->regency_id = $request->city;
+        $ahass->contacts = implode(', ', $contacts);
         return $ahass->save();
     }
 

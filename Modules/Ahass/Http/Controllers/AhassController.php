@@ -2,10 +2,12 @@
 
 namespace Modules\Ahass\Http\Controllers;
 
+use App\Exports\AhassExport;
 use App\Models\Indonesia\Regency;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 use Modules\Ahass\Http\Requests\AhassRequest;
 use Modules\Ahass\Repository\AhassRepositoryInterface;
 
@@ -13,12 +15,15 @@ class AhassController extends Controller
 {
     private $model;
 
+    private $regencies;
+
     /**
      * Class constructor.
      */
     public function __construct(AhassRepositoryInterface $ahassRepositoryInterface)
     {
         $this->model = $ahassRepositoryInterface;
+        $this->regencies = Regency::where('province_id', 33)->get();
     }
     /**
      * Display a listing of the resource.
@@ -35,7 +40,7 @@ class AhassController extends Controller
      */
     public function create()
     {
-        $regencies = Regency::where('province_id', 33)->get();
+        $regencies = $this->regencies;
         return view('ahass::create', compact('regencies'));
     }
 
@@ -58,7 +63,8 @@ class AhassController extends Controller
     public function edit($id)
     {
         $ahass = $this->model->findById($id);
-        return view('ahass::edit', compact('ahass'));
+        $regencies = $this->regencies;
+        return view('ahass::edit', compact('ahass', 'regencies'));
     }
 
     /**
@@ -67,9 +73,10 @@ class AhassController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update(AhassRequest $request, $id)
     {
-        //
+        $this->model->update($request, $id);
+        return redirect()->route('adm.ahass.index')->with('success', 'Ahass berhasil diupdate.');
     }
 
     /**
@@ -79,6 +86,17 @@ class AhassController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->model->delete($id);
+        return redirect()->route('adm.ahass.index')->with('success', 'Ahass berhasil dihapus.');
+    }
+
+    /**
+     * Export resource become excel
+     *
+     * @return excel
+     */
+    public function exportAsExcel()
+    {
+        return Excel::download(new AhassExport, 'ahass_' . now()->format('dmYHis') . '.xlsx');
     }
 }

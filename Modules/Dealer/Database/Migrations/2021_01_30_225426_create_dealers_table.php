@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAhassTable extends Migration
+class CreateDealersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,15 @@ class CreateAhassTable extends Migration
      */
     public function up()
     {
-        Schema::create('ahass', function (Blueprint $table) {
+        Schema::create('dealers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('address');
             $table->char('regency_id', 4);
-            $table->string('phone_1')->nullable();
-            $table->string('phone_2')->nullable();
+            $table->string('contacts')->nullable();
             $table->timestamps();
+
+            $table->foreign('regency_id')->references('id')->on('regencies')->nullOnDelete();
         });
     }
 
@@ -31,6 +32,6 @@ class CreateAhassTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ahass');
+        Schema::dropIfExists('dealers');
     }
 }

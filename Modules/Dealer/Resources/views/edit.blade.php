@@ -4,9 +4,9 @@
 
 
 <x-bootstrap.breadcrumb>
-    <x-slot name="page">Ahass</x-slot>
+    <x-slot name="page">Dealer</x-slot>
     <li class="breadcrumb-item"> <a href="{{route('adm.dashboard.index')}}">Admin</a></li>
-    <li class="breadcrumb-item"> <a href="{{route('adm.ahass.index')}}">Ahass</a></li>
+    <li class="breadcrumb-item"> <a href="{{route('adm.dealer.index')}}">Dealer</a></li>
     <li class="breadcrumb-item active">Edit</li>
 </x-bootstrap.breadcrumb>
 
@@ -26,23 +26,23 @@
             @endif
 
             <div class="col-12 col-lg-4">
-                <h5 class="card-title text-uppercase"><b>Tambahkan Ahass</b></h5>
+                <h5 class="card-title text-uppercase"><b>Tambahkan Dealer</b></h5>
                 <p>
-                    Anda bisa melakukan penambahan data Ahass dengan mengisikan form disamping.
+                    Anda bisa melakukan penambahan data Dealer dengan mengisikan form disamping.
                 </p>
             </div>
 
             <div class="col-12 col-lg-8">
 
-                <form action="{{route('adm.ahass.update', $ahass->id)}}" method="POST">
+                <form action="{{route('adm.dealer.update', $dealer->id)}}" method="POST">
                     @csrf
                     @method('put')
 
                     <div class="white-box rounded-lg shadow-sm repeater">
 
                         <fieldset class="form-group">
-                            <label for="name">Nama Ahass <sub class="text-muted">(Harus diisi)</sub></label>
-                            <input type="text" name="name" class="form-control" value="{{$ahass->name}}">
+                            <label for="name">Nama Dealer <sub class="text-muted">(Harus diisi)</sub></label>
+                            <input type="text" name="name" class="form-control" value="{{$dealer->name}}">
                             @error('name')
                             <small class="text-danger">{{$message}}</small>
                             @enderror
@@ -52,7 +52,7 @@
                             <label for="address">Alamat lengkap <sub class="text-muted">(Harus
                                     diisi)</sub></label>
                             <textarea name="address" style="resize: none; height:80px;"
-                                class="form-control">{{$ahass->address}}</textarea>
+                                class="form-control">{{$dealer->address}}</textarea>
                             @error('address')
                             <small class="text-danger">{{$message}}</small>
                             @enderror
@@ -64,7 +64,7 @@
                             <select name="city" class="form-control select_searchable">
                                 <option value="" disabled selected>Pilih kota</option>
                                 @foreach ($regencies as $city)
-                                @if ($city->id == $ahass->regency_id)
+                                @if ($city->id == $dealer->regency_id)
                                 <option value="{{$city->id}}" selected>{{$city->name}}</option>
                                 @else
                                 <option value="{{$city->id}}">{{$city->name}}</option>
@@ -78,7 +78,7 @@
 
                         <fieldset class="form-group row " data-repeater-list="contacts">
 
-                            @foreach (explode(', ', $ahass->contacts) as $i => $contact)
+                            @foreach (explode(', ', $dealer->contacts) as $i => $contact)
                             <div class="col-12 col-md-6 mb-3 mb-md-0" data-repeater-item>
                                 <label for="contacts">No. Telp.</label>
                                 <div class="input-group">
@@ -124,31 +124,33 @@
 
 @push('scripts')
 <script>
+$(document).ready(function() {
     $(document).ready(function() {
-    $('.select_searchable').selectpicker({
-        placeholder: 'Pilih kota',
-        liveSearch: true
-    });
-
-    $('.select').selectpicker();
-
-    $(".repeater").repeater({
-        show: function() {
-            $(this).slideDown()
-            initNuericElement();
-        },
-        hide: function(e) {
-            confirm("Anda yakin akan menghapus elemen ini ?") && $(this).slideUp(e)
-        }
-    })
-
-    function initNuericElement() {
-        $('.numeric').on('input', function(event) {
-            this.value = this.value.replace(/[^0-9+]/g, '');
+        $('.select_searchable').selectpicker({
+            placeholder: 'Pilih kota',
+            liveSearch: true
         });
-    }
 
-    initNuericElement();
+        $('.select').selectpicker();
+
+        $(".repeater").repeater({
+            show: function() {
+                $(this).slideDown()
+                initNuericElement();
+            },
+            hide: function(e) {
+                confirm("Anda yakin akan menghapus elemen ini ?") && $(this).slideUp(e)
+            }
+        })
+
+        function initNuericElement() {
+            $('.numeric').on('input', function(event) {
+                this.value = this.value.replace(/[^0-9+]/g, '');
+            });
+        }
+
+        initNuericElement();
+    })
 })
 </script>
 @endpush

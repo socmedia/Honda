@@ -5,8 +5,9 @@
 
 <x-bootstrap.breadcrumb>
     <x-slot name="page">Ahass</x-slot>
-    <li class="breadcrumb-item"> <a href="">Admin</a></li>
-    <li class="breadcrumb-item active">Ahass</li>
+    <li class="breadcrumb-item"> <a href="{{route('adm.dashboard.index')}}">Admin</a></li>
+    <li class="breadcrumb-item"> <a href="{{route('adm.ahass.index')}}">Ahass</a></li>
+    <li class="breadcrumb-item active">Tambah</li>
 </x-bootstrap.breadcrumb>
 
 <div class="container-fluid">
@@ -36,7 +37,7 @@
                 <form action="{{route('adm.ahass.store')}}" method="POST">
                     @csrf
 
-                    <div class="white-box rounded-lg shadow-sm">
+                    <div class="white-box rounded-lg shadow-sm repeater">
 
 
                         <fieldset class="form-group">
@@ -75,48 +76,55 @@
                                     @enderror
                         </fieldset>
 
-                        <fieldset class="form-group row">
+                        <fieldset class="form-group row " data-repeater-list="contacts">
 
-                            <div class="col-12 col-md-6 mb-3 mb-md-0">
-                                <label for="">No. Telp. 1 <sub class="text-muted">(Harus diisi)</sub></label>
+                            @if (old('contacts'))
+                            @foreach (old('contacts') as $i => $contact)
+                            <div class="col-12 col-md-6 mb-3 mb-md-0" data-repeater-item>
+                                <label for="contacts">No. Telp.</label>
                                 <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <select name="" class="form-control select">
-                                            <option value="" disabled selected>Jenis Telp</option>
-                                            <option value="mobilephone">Mobile Phone</option>
-                                            <option value="phone">Telpon</option>
-                                        </select>
+                                    <input type="text" name="contact" maxlength="15" minlength="6"
+                                        class="form-control numeric" placeholder="00000000000000"
+                                        value="{{$contact['contact']}}">
+
+                                    <div class="input-group-append">
+                                        <button data-repeater-delete
+                                            class="btn btn-danger btn-sm rounded-right shadow-lg px-3" type="button">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
                                     </div>
-                                    <input type="text" name="phone_1" class="form-control" value="{{old('phone_1')}}"
-                                        data-input="" readonly>
                                 </div>
-                                @error('phone_1')
+                                <small class="text-muted">Panjang Telp. antara 6-15 karakter</small><br>
+                                @error('contacts.' . $i . '.contact')
                                 <small class="text-danger">{{$message}}</small>
                                 @enderror
                             </div>
-
-                            <div class="col-12 col-md-6 mb-3 mb-md-0">
-                                <label for="">No. Telp. 2</label>
+                            @endforeach
+                            @else
+                            <div class="col-12 col-md-6 mb-3 mb-md-0" data-repeater-item>
+                                <label for="contacts">No. Telp.</label>
                                 <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <select name="" class="form-control select">
-                                            <option value="" disabled selected>Jenis Telp</option>
-                                            <option value="mobilephone">Mobile Phone</option>
-                                            <option value="phone">Telpon</option>
-                                        </select>
+                                    <input type="text" name="contact" maxlength="15" minlength="6"
+                                        class="form-control numeric" placeholder="00000000000000" value="">
+
+                                    <div class="input-group-append">
+                                        <button data-repeater-delete
+                                            class="btn btn-danger btn-sm rounded-right shadow-lg px-3" type="button">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
                                     </div>
-                                    <input type="text" name="phone_2" class="form-control" value="{{old('phone_2')}}"
-                                        data-input="" readonly>
                                 </div>
-                                @error('phone_2')
-                                <small class="text-danger">{{$message}}</small>
-                                @enderror
-                            </div>
+                                <small class="text-muted">Panjang Telp. antara 6-15 karakter</small>
+                                @endif
 
                         </fieldset>
 
                         <div class="row">
-                            <div class="col-12 text-right">
+                            <div class="col-6 mb-3">
+                                <input data-repeater-create class="btn btn-primary rounded-lg shadow-lg" type="button"
+                                    value="+ Telp" />
+                            </div>
+                            <div class="col-6 text-right">
                                 <button type="submit" class="btn btn-dark rounded-lg font-light"
                                     data-action="save">Simpan</button>
                             </div>
@@ -132,37 +140,32 @@
 @endsection
 
 @push('scripts')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.6.0/cleave.min.js"
-    integrity="sha512-KaIyHb30iXTXfGyI9cyKFUIRSSuekJt6/vqXtyQKhQP6ozZEGY8nOtRS6fExqE4+RbYHus2yGyYg1BrqxzV6YA=="
-    crossorigin="anonymous"></script>
 <script>
-    $(document).ready(function () {
-        $('.select_searchable').selectpicker({
-            placeholder: 'Pilih kota',
-            liveSearch: true
-        });
+$(document).ready(function() {
+    $('.select_searchable').selectpicker({
+        placeholder: 'Pilih kota',
+        liveSearch: true
+    });
 
-        $('.select').selectpicker();
+    $('.select').selectpicker();
 
-
-        function initMasking(){
-            $('[data-input="phone"]').mask('00000000000');
-            $('[data-input="mobilephone"]').mask('(62) 0000-0000-0000');
+    $(".repeater").repeater({
+        show: function() {
+            $(this).slideDown()
+            initNuericElement();
+        },
+        hide: function(e) {
+            confirm("Anda yakin akan menghapus elemen ini ?") && $(this).slideUp(e)
         }
-
-        $('.select').change(function () {
-            $(this).parents('.input-group').find('[data-input]').val('');
-            $(this).prop('readonly', true)
-            $(this).parent().find('button').prop('readonly', true)
-            $(this).parents('.input-group').find('[data-input]').removeAttr('readonly')
-            if($(this).val() === 'mobilephone'){
-                $(this).parents('.input-group').find('[data-input]').attr('data-input', 'mobilephone')
-            }
-            if($(this).val() === 'phone'){
-                $(this).parents('.input-group').find('[data-input]').attr('data-input', 'phone')
-            }
-            initMasking();
-        })
     })
+
+    function initNuericElement() {
+        $('.numeric').on('input', function(event) {
+            this.value = this.value.replace(/[^0-9+]/g, '');
+        });
+    }
+
+    initNuericElement();
+})
 </script>
 @endpush
