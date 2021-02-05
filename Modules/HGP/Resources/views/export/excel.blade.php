@@ -14,13 +14,13 @@
     <tbody>
         @foreach ($hgp as $hgp)
         <tr>
-            <td>{{$loop->iteration}}</td>
-            <td>{{$hgp->name}}</td>
-            <td>{{$hgp->description}}</td>
-            <td>{{$hgp->description_image}}</td>
-            <td>{{$hgp->function}}</td>
-            <td>{{$hgp->function_image}}</td>
-            <td>
+            <td style="vertical-align: top; word-wrap: break-word;" width="4">{{$loop->iteration}}</td>
+            <td style="vertical-align: top; word-wrap: break-word;" width="28">{{$hgp->name}}</td>
+            <td style="vertical-align: top; word-wrap: break-word;" width="30">{{$hgp->description}}</td>
+            <td style="vertical-align: top; word-wrap: break-word;" width="30">{{$hgp->description_image}}</td>
+            <td style="vertical-align: top; word-wrap: break-word;" width="30">{{$hgp->function}}</td>
+            <td style="vertical-align: top; word-wrap: break-word;" width="30">{{$hgp->function_image}}</td>
+            <td style="vertical-align: top; word-wrap: break-word;" width="30">
                 @foreach($hgp->advantages as $advantage)
                 <p>
                     {{$loop->iteration}}.
@@ -29,7 +29,9 @@
                 <p>{{$advantage->description}}</p>
                 @endforeach
             </td>
-            <td>{{$hgp->created_at->toDayDateTimeString()}}</td>
+            <td style="vertical-align: top; word-wrap: break-word;" width="30">
+                {{$hgp->created_at->toDayDateTimeString()}}
+            </td>
         </tr>
         @endforeach
     </tbody>
