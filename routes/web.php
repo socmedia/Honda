@@ -31,3 +31,4 @@ Route::group(['prefix' => 'produk'], function () {
 
 Route::get('/media/banner/{bannerName}', ['App\Http\Controllers\Media\MediaController', 'getBanner'])->name('get.banner');
 Route::get('/media/product/{productName}', ['App\Http\Controllers\Media\MediaController', 'getProductImage'])->name('get.product');
+Route::get('/media/honda/genuine_parts/{imageName}', ['App\Http\Controllers\Media\MediaController', 'getGenuinePartImage'])->name('get.genuine_part');

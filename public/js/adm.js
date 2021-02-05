@@ -45078,6 +45078,16 @@ __webpack_require__(/*! ./custom */ "./resources/dist/js/custom.js");
 __webpack_require__(/*! ./bs-select/js/bootstrap-select */ "./resources/dist/js/bs-select/js/bootstrap-select.js");
 
 __webpack_require__(/*! ./bs-select/css/bootstrap-select.css */ "./resources/dist/js/bs-select/css/bootstrap-select.css");
+
+ClassicEditor.defaultConfig = {
+  toolbar: {
+    items: ['heading', '|', 'bold', 'italic', '|', 'bulletedList', 'numberedList', '|', 'insertTable', '|', 'undo', 'redo']
+  },
+  table: {
+    contentToolbar: ['tableColumn', 'tableRow', 'mergeTableCells']
+  },
+  language: 'en'
+};
 })();
 
 /******/ })()

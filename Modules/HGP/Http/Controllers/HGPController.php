@@ -2,12 +2,27 @@
 
 namespace Modules\HGP\Http\Controllers;
 
+use App\Exports\GenuinePartExport;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Maatwebsite\Excel\Facades\Excel;
+use Modules\HGP\Http\Requests\AdvantageRequest;
+use Modules\HGP\Http\Requests\GenuinePartRequest;
+use Modules\HGP\Repository\GenuinePartRepositoryInterface;
 
 class HGPController extends Controller
 {
+    private $model;
+
+    /**
+     * Class constructor.
+     */
+    public function __construct(GenuinePartRepositoryInterface $genuinePartRepositoryInterface)
+    {
+        $this->model = $genuinePartRepositoryInterface;
+    }
+
     /**
      * Display a listing of the resource.
      * @return Renderable
@@ -31,9 +46,21 @@ class HGPController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function store(GenuinePartRequest $request)
     {
-        //
+        $this->model->create($request);
+        return redirect()->route('adm.hgp.index')->with('success', 'Genuine Part berhasil ditambahkan.');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     * @param Request $request
+     * @return Renderable
+     */
+    public function storeAdvantage(AdvantageRequest $request, $id)
+    {
+        $this->model->createAdvantage($request, $id);
+        return redirect()->route('adm.hgp.index')->with('success', 'Genuine Part berhasil ditambahkan.');
     }
 
     /**
@@ -43,7 +70,8 @@ class HGPController extends Controller
      */
     public function show($id)
     {
-        return view('hgp::show');
+        $hgp = $this->model->findById($id);
+        return view('hgp::show', compact('hgp'));
     }
 
     /**
@@ -53,7 +81,19 @@ class HGPController extends Controller
      */
     public function edit($id)
     {
-        return view('hgp::edit');
+        $hgp = $this->model->findById($id);
+        return view('hgp::edit', compact('hgp'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     * @param int $id
+     * @return Renderable
+     */
+    public function editAdvantage($id)
+    {
+        $hgp = $this->model->findById($id);
+        return view('hgp::edit-advantage', compact('hgp'));
     }
 
     /**
@@ -64,7 +104,21 @@ class HGPController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->model->update($request, $id);
+        return redirect()->route('adm.hgp.index')->with('success', 'Genuine Part berhasil diperbarui.');
+    }
+
+    /**
+     * Update the specified resource in storage.
+     * @param Request $request
+     * @param int $id
+     * @param int $advantageId
+     * @return Renderable
+     */
+    public function updateAdvantage(AdvantageRequest $request, $id, $advantageId)
+    {
+        $this->model->updateAdvantage($request, $advantageId);
+        return redirect()->back()->with('success', 'Genuine Part berhasil diperbarui.');
     }
 
     /**
@@ -74,6 +128,28 @@ class HGPController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->model->delete($id);
+        return redirect()->back()->with('success', 'Genuine Part berhasil dihapus.');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     * @param int $id
+     * @return Renderable
+     */
+    public function destroyAdvantage($id, $advantageId)
+    {
+        $this->model->deleteAdvantage($advantageId);
+        return redirect()->back()->with('success', 'Genuine Part berhasil dihapus.');
+    }
+
+    /**
+     * Export resource become excel
+     *
+     * @return excel
+     */
+    public function exportAsExcel()
+    {
+        return Excel::download(new GenuinePartExport, 'genuine_part_' . now()->format('dmYHis') . '.xlsx');
     }
 }

@@ -16196,3 +16196,11 @@ progress {
 .btn.dropdown-toggle.btn-light.bs-placeholder {
   box-shadow: none !important;
 }
+
+.ck-editor__editable {
+  min-height: 100px;
+}
+
+.sidebar-nav ul .sidebar-item .sidebar-link.active {
+  background: #f7f7f7;
+}

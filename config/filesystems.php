@@ -49,6 +49,27 @@ return [
             'visibility' => 'public',
         ],
 
+        'genuine_parts' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/images/honda/genuine_parts'),
+            'url' => env('APP_URL') . '/storage',
+            'visibility' => 'public',
+        ],
+
+        'apparels' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/images/honda/apparels'),
+            'url' => env('APP_URL') . '/storage',
+            'visibility' => 'public',
+        ],
+
+        'accessories' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/images/honda/accessories'),
+            'url' => env('APP_URL') . '/storage',
+            'visibility' => 'public',
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

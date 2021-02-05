@@ -12,7 +12,6 @@
 
 
     <div class="col-12 mb-3">
-        {{-- <div class="white-box rounded-lg shadow-sm"> --}}
         <div class="card border shadow-sm rounded-lg">
 
             <div class="card-header py-3">

@@ -9,6 +9,8 @@ use Modules\Banner\Repository\BannerRepositoryInterface;
 use Modules\Banner\Repository\Model\BannerModel;
 use Modules\Dealer\Repository\DealerRepositoryInterface;
 use Modules\Dealer\Repository\Model\DealerModel;
+use Modules\HGP\Repository\GenuinePartRepositoryInterface;
+use Modules\HGP\Repository\Model\GenuinePartModel;
 use Modules\Product\Repository\Model\ProductModel;
 use Modules\Product\Repository\ProductRepositoryInterface;
 use Modules\Setting\Repository\Model\SettingModel;
@@ -38,5 +40,6 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(ProductRepositoryInterface::class, ProductModel::class);
         $this->app->bind(AhassRepositoryInterface::class, AhassModel::class);
         $this->app->bind(DealerRepositoryInterface::class, DealerModel::class);
+        $this->app->bind(GenuinePartRepositoryInterface::class, GenuinePartModel::class);
     }
 }
