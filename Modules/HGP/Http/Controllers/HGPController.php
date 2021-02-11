@@ -60,7 +60,7 @@ class HGPController extends Controller
     public function storeAdvantage(AdvantageRequest $request, $id)
     {
         $this->model->createAdvantage($request, $id);
-        return redirect()->route('adm.hgp.index')->with('success', 'Genuine Part berhasil ditambahkan.');
+        return redirect()->back()->with('success', 'Keunggulan genuine part berhasil ditambahkan.');
     }
 
     /**
@@ -115,10 +115,10 @@ class HGPController extends Controller
      * @param int $advantageId
      * @return Renderable
      */
-    public function updateAdvantage(AdvantageRequest $request, $id, $advantageId)
+    public function updateAdvantage(AdvantageRequest $request, $id)
     {
-        $this->model->updateAdvantage($request, $advantageId);
-        return redirect()->back()->with('success', 'Genuine Part berhasil diperbarui.');
+        $this->model->updateAdvantage($request, $id);
+        return redirect()->back()->with('success', 'Keunggulan genuine part berhasil diperbarui.');
     }
 
     /**
@@ -137,10 +137,10 @@ class HGPController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function destroyAdvantage($id, $advantageId)
+    public function destroyAdvantage($id)
     {
-        $this->model->deleteAdvantage($advantageId);
-        return redirect()->back()->with('success', 'Genuine Part berhasil dihapus.');
+        $this->model->deleteAdvantage($id);
+        return redirect()->back()->with('success', 'Keunggulan genuine part berhasil dihapus.');
     }
 
     /**

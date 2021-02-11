@@ -7,7 +7,7 @@
     <x-slot name="page">Genuine Parts</x-slot>
     <li class="breadcrumb-item"> <a href="{{route('adm.dashboard.index')}}">Admin</a></li>
     <li class="breadcrumb-item"> <a href="{{route('adm.hgp.index')}}">Genuine Parts</a></li>
-    <li class="breadcrumb-item active">Edit</li>
+    <li class="breadcrumb-item active">Edit Keunggulan</li>
 </x-bootstrap.breadcrumb>
 
 <div class="container-fluid">
@@ -82,7 +82,7 @@
             @foreach ($hgp->advantages as $i => $advantage)
             <div class="white-box shadow-sm rounded-lg">
 
-                <form action="{{route('adm.hgp.update.advantage', [$hgp->id, $advantage->id])}}" method="POST">
+                <form action="{{route('adm.hgp.update.advantage', $advantage->id)}}" method="POST">
                     @csrf
                     @method('put')
 
@@ -109,7 +109,7 @@
                     <fieldset class="form-group">
                         <div class="text-right">
                             <button type="button" class="btn btn-danger rounded-lg"
-                                data-url="{{route('adm.hgp.destroy.advantage', [$hgp->id, $advantage->id])}}"
+                                data-url="{{route('adm.hgp.destroy.advantage', $advantage->id)}}"
                                 onclick="$('#delete-confirmation').modal('show'); $('#delete-confirmation').find('form').attr('action', $(this).data('url'))">Hapus</button>
                             <button class="btn btn-dark rounded-lg">Simpan</button>
                         </div>
@@ -150,34 +150,3 @@
     </div>
 </div>
 @endsection
-
-@push('scripts')
-<script>
-    $(document).ready(function() {
-
-    $(".repeater").repeater({
-        show: function() {
-            $(this).slideDown()
-        },
-        hide: function(e) {
-            confirm("Anda yakin akan menghapus elemen ini ?") && $(this).slideUp(e)
-        }
-    })
-
-})
-
-function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-
-        reader.onload = function(e) {
-            console.log(input)
-            $(input).parents('.dropzone-wrapper').find('img').attr('src', e.target.result)
-            // $('input[type="file"]').attr('src', e.target.result);
-        }
-
-        reader.readAsDataURL(input.files[0]); // convert to base64 string
-    }
-}
-</script>
-@endpush

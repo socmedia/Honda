@@ -54,30 +54,6 @@ class GenuinePartModel implements GenuinePartRepositoryInterface
         return;
     }
 
-    public function update($request, $id)
-    {
-        $hgp = $this->findById($id);
-        $hgp->name = $request->name;
-        $hgp->slug_name = Str::slug($request->name);
-
-        if ($request->file('thumbnail')) {
-            $hgp->thumbnail = $this->uploadImage($request->file('thumbnail'));
-        }
-
-        if ($request->file('description_image')) {
-            $hgp->description_image = $this->uploadImage($request->file('description_image'));
-        }
-
-        $hgp->description = $request->description;
-
-        if ($request->file('function_image')) {
-            $hgp->function_image = $this->uploadImage($request->file('function_image'));
-        }
-
-        $hgp->function = $request->function;
-        return $hgp->save();
-    }
-
     public function createAdvantage($request, $id)
     {
         $advantage = new GenuinePartHasAdvantage();
@@ -85,6 +61,33 @@ class GenuinePartModel implements GenuinePartRepositoryInterface
         $advantage->title = $request->c_advantage_name;
         $advantage->description = $request->c_advantage_description;
         return $advantage->save();
+    }
+
+    public function update($request, $id)
+    {
+        $hgp = $this->findById($id);
+        $hgp->name = $request->name;
+        $hgp->slug_name = Str::slug($request->name);
+
+        if ($request->file('thumbnail')) {
+            $this->deleteImage($hgp->thumbnail);
+            $hgp->thumbnail = $this->uploadImage($request->file('thumbnail'));
+        }
+
+        if ($request->file('description_image')) {
+            $this->deleteImage($hgp->description_image);
+            $hgp->description_image = $this->uploadImage($request->file('description_image'));
+        }
+
+        $hgp->description = $request->description;
+
+        if ($request->file('function_image')) {
+            $this->deleteImage($hgp->function_image);
+            $hgp->function_image = $this->uploadImage($request->file('function_image'));
+        }
+
+        $hgp->function = $request->function;
+        return $hgp->save();
     }
 
     public function updateAdvantage($request, $advantageId)

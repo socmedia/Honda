@@ -23,9 +23,11 @@ Route::group([
     Route::get('/{id}/edit', 'HGPController@edit')->name('edit');
     Route::put('/{id}', 'HGPController@update')->name('update');
     Route::delete('/{id}', 'HGPController@destroy')->name('destroy');
-    Route::get('/{id}/edit/keunggulan', 'HGPController@editAdvantage')->name('edit.advantage');
-    Route::post('/{id}/edit/keunggulan/tambah', 'HGPController@storeAdvantage')->name('store.advantage');
-    Route::put('/{id}/edit/keunggulan/{advantageId}', 'HGPController@updateAdvantage')->name('update.advantage');
-    Route::delete('/{id}/edit/keunggulan/{advantageId}', 'HGPController@destroyAdvantage')->name('destroy.advantage');
+
+    Route::get('/{id}/edit-keunggulan', 'HGPController@editAdvantage')->name('edit.advantage');
+    Route::post('/{id}/tambah-keunggulan/', 'HGPController@storeAdvantage')->name('store.advantage');
+    Route::put('/{id}/edit-keunggulan', 'HGPController@updateAdvantage')->name('update.advantage');
+    Route::delete('/{id}/edit-keunggulan', 'HGPController@destroyAdvantage')->name('destroy.advantage');
+
     Route::get('/export/excel', 'HGPController@exportAsExcel')->name('export.excel');
 });

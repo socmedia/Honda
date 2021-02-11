@@ -140,7 +140,7 @@
                         <div class="white-box shadow-sm rounded-lg">
 
                             <fieldset class="form-group">
-                                <label for="function">Fungsi Produk <sub class="text-muted">(Harus
+                                <label for="function">Kegunaan Produk <sub class="text-muted">(Harus
                                         diisi)</sub></label>
                                 <textarea class="form-control" name="function" id="editor"
                                     style="resize: none;">{{$hgp->function}}</textarea>
@@ -150,7 +150,7 @@
                             </fieldset>
 
                             <fieldset class="form-group">
-                                <label for="function_image">Pilih gambar deskripsi </label> <br>
+                                <label for="function_image">Pilih Gambar Kegunaan </label> <br>
 
                                 <div class="dropzone-wrapper">
                                     <div class="dropzone-desc">
@@ -198,44 +198,6 @@
 
 @push('scripts')
 <script>
-    $(document).ready(function() {
-
-    const editor = document.querySelectorAll('#editor');
-    editor.forEach(el => {
-        ClassicEditor.create(el)
-    })
-
-    function changeTargetState(target) {
-        const minimize = '<i class="fas fa-compress mr-1"></i>Minimize',
-            maximize = '<i class="fas fa-expand mr-1"></i>Maximize';
-        $(`[data-target="${target}"]`).hasClass('d-none') === true ? $(this).html(minimize) : $(this).html(
-            maximize);
-        $(`[data-target="${target}"]`).toggleClass('d-none');
-    }
-
-    $('[data-toggle="info"]').click(() => changeTargetState('info'));
-    $('[data-toggle="banner"]').click(() => changeTargetState('banner'));
-    $('[data-toggle="varian"]').click(() => changeTargetState('varian'));
-    $('[data-toggle="feature"]').click(() => changeTargetState('feature'));
-    $('[data-toggle="spesification"]').click(() => changeTargetState('spesification'));
-
-    function cloneBox() {
-        $('[data-clone-target="feature"]').clone().appendTo('[data-clone-box="feature"]')
-    }
-
-    $('[data-action="clone"]').click(() => cloneBox())
-
-    $(".repeater").repeater({
-        show: function() {
-            $(this).slideDown()
-        },
-        hide: function(e) {
-            confirm("Anda yakin akan menghapus elemen ini ?") && $(this).slideUp(e)
-        }
-    })
-
-})
-
 function readURL(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();

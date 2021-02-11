@@ -29,6 +29,7 @@
                 </div>
                 @endif
 
+                {{-- Genuine Part --}}
                 <div class="col-12 col-lg-4">
                     <h5 class="card-title text-uppercase"><b>Tambahkan Genuine Parts</b></h5>
                     <p>
@@ -62,7 +63,7 @@
                                     <div class="preview-zone">
                                         <div class="box box-solid">
                                             <div class="box-body">
-                                                <img src="" class="img-fluid">
+                                                <img src="" class="w-50">
                                             </div>
                                         </div>
                                     </div>
@@ -99,7 +100,7 @@
                                     <div class="preview-zone">
                                         <div class="box box-solid">
                                             <div class="box-body">
-                                                <img src="" class="img-fluid">
+                                                <img src="" class="w-50">
                                             </div>
                                         </div>
                                     </div>
@@ -118,10 +119,11 @@
 
                 </div>
 
+                {{-- Kegunaan Produk --}}
                 <div class="col-12 col-lg-4">
-                    <h5 class="card-title text-uppercase"><b>Tambahkan Keunggulan Produk</b></h5>
+                    <h5 class="card-title text-uppercase"><b>Tambahkan Kegunaan Produk</b></h5>
                     <p>
-                        Tambahkan keunggulan produk untuk menujukkan produk ini berbeda dengan produk yang beredar pada
+                        Tambahkan kegunaan produk untuk menujukkan produk ini berbeda dengan produk yang beredar pada
                         pasaran.
                     </p>
                 </div>
@@ -131,7 +133,7 @@
                     <div class="white-box shadow-sm rounded-lg">
 
                         <fieldset class="form-group">
-                            <label for="function">Fungsi Produk <sub class="text-muted">(Harus
+                            <label for="function">Kegunaan Produk <sub class="text-muted">(Harus
                                     diisi)</sub></label>
                             <textarea class="form-control" name="function" id="editor"
                                 style="resize: none;">{{old('function')}}</textarea>
@@ -141,7 +143,7 @@
                         </fieldset>
 
                         <fieldset class="form-group">
-                            <label for="function_image">Pilih gambar deskripsi </label> <br>
+                            <label for="function_image">Pilih gambar kegunaan </label> <br>
 
                             <div class="dropzone-wrapper">
                                 <div class="dropzone-desc">
@@ -152,7 +154,7 @@
                                     <div class="preview-zone">
                                         <div class="box box-solid">
                                             <div class="box-body">
-                                                <img src="" class="img-fluid">
+                                                <img src="" class="w-50">
                                             </div>
                                         </div>
                                     </div>
@@ -171,6 +173,7 @@
 
                 </div>
 
+                {{-- Keunggulan produk --}}
                 <div class="col-12 col-lg-4">
                     <h5 class="card-title text-uppercase"><b>Tambahkan Keunggulan Produk</b></h5>
                     <p>
@@ -255,54 +258,29 @@
 <script>
     $(document).ready(function() {
 
-    const editor = document.querySelectorAll('#editor');
-    editor.forEach(el => {
-        ClassicEditor.create(el)
+        $(".repeater").repeater({
+            show: function() {
+                $(this).slideDown()
+            },
+            hide: function(e) {
+                confirm("Anda yakin akan menghapus elemen ini ?") && $(this).slideUp(e)
+            }
+        })
+
     })
 
-    function changeTargetState(target) {
-        const minimize = '<i class="fas fa-compress mr-1"></i>Minimize',
-            maximize = '<i class="fas fa-expand mr-1"></i>Maximize';
-        $(`[data-target="${target}"]`).hasClass('d-none') === true ? $(this).html(minimize) : $(this).html(
-            maximize);
-        $(`[data-target="${target}"]`).toggleClass('d-none');
-    }
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
 
-    $('[data-toggle="info"]').click(() => changeTargetState('info'));
-    $('[data-toggle="banner"]').click(() => changeTargetState('banner'));
-    $('[data-toggle="varian"]').click(() => changeTargetState('varian'));
-    $('[data-toggle="feature"]').click(() => changeTargetState('feature'));
-    $('[data-toggle="spesification"]').click(() => changeTargetState('spesification'));
+            reader.onload = function(e) {
+                console.log(input)
+                $(input).parents('.dropzone-wrapper').find('img').attr('src', e.target.result)
+                // $('input[type="file"]').attr('src', e.target.result);
+            }
 
-    function cloneBox() {
-        $('[data-clone-target="feature"]').clone().appendTo('[data-clone-box="feature"]')
-    }
-
-    $('[data-action="clone"]').click(() => cloneBox())
-
-    $(".repeater").repeater({
-        show: function() {
-            $(this).slideDown()
-        },
-        hide: function(e) {
-            confirm("Anda yakin akan menghapus elemen ini ?") && $(this).slideUp(e)
+            reader.readAsDataURL(input.files[0]); // convert to base64 string
         }
-    })
-
-})
-
-function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-
-        reader.onload = function(e) {
-            console.log(input)
-            $(input).parents('.dropzone-wrapper').find('img').attr('src', e.target.result)
-            // $('input[type="file"]').attr('src', e.target.result);
-        }
-
-        reader.readAsDataURL(input.files[0]); // convert to base64 string
     }
-}
 </script>
 @endpush
