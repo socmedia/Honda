@@ -14,6 +14,7 @@ try {
     window.repeater = require('jquery.repeater');
     window.mask = require('jquery-mask-plugin');
     window.Tagify = require('@yaireo/tagify');
+    window.Swiper = require('swiper/swiper-bundle');
 } catch (e) {}
 
 window.axios = require('axios');

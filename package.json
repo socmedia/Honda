@@ -26,6 +26,7 @@
     },
     "dependencies": {
         "@ckeditor/ckeditor5-build-classic": "^24.0.0",
+        "@yaireo/tagify": "^3.22.1",
         "animejs": "^3.2.1",
         "bootstrap": "^4.5.3",
         "bootstrap-select": "^1.13.18",
