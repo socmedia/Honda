@@ -13,6 +13,7 @@ try {
     window.ClassicEditor = require('@ckeditor/ckeditor5-build-classic');
     window.repeater = require('jquery.repeater');
     window.mask = require('jquery-mask-plugin');
+    window.Tagify = require('@yaireo/tagify');
 } catch (e) {}
 
 window.axios = require('axios');

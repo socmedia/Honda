@@ -184,17 +184,75 @@ body {
     }
 }
 
-.navbar-toggler {
+
+.toggler_menu__wrapper {
     position: fixed;
     display: block;
-    top: 1rem;
-    right: 1rem;
-    z-index: 999;
+    z-index: 999999;
+    top: 5rem;
+    right: 0;
+    background: white;
+    box-shadow: -5px 5px 20px #0000001f;
+    border-radius: 1.5rem 0 0 1.5rem;
+    padding: .75rem .5rem 0.75rem 1rem;
+
+    .navbar-toggler {
+        outline: none;
+        padding: 0;
+        transition: .5s cubic-bezier(0.19, 1, 0.22, 1);
+
+    }
 
     @include media-breakpoint-up(lg) {
         display: none;
     }
 }
+
+.navbar-toggler {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    padding: 0;
+    outline: none;
+
+    .line {
+        fill: none;
+        stroke: #0f117a;
+        stroke-width: 6;
+        transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1), stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+
+        &.line1 {
+            stroke-dasharray: 60 207;
+        }
+
+        &.line2 {
+            stroke-dasharray: 60 60;
+        }
+
+        &.line3 {
+            stroke-dasharray: 60 207;
+        }
+    }
+
+    &.collapsed {
+        .line1 {
+            stroke-dasharray: 90 207;
+            stroke-dashoffset: -134;
+        }
+
+        .line2 {
+            stroke-dasharray: 1 60;
+            stroke-dashoffset: -30;
+        }
+
+        .line3 {
+            stroke-dasharray: 90 207;
+            stroke-dashoffset: -134;
+        }
+    }
+}
+
 
 .banner {
     transition: .3s all;
@@ -255,7 +313,7 @@ h1.header__text {
 }
 
 .card {
-    padding: 1.275rem;
+    padding: 1rem;
     border-radius: 8px;
     border: none;
 
@@ -270,23 +328,29 @@ h1.header__text {
 
         .label {
             position: absolute;
-            font-size: .875rem;
-            padding: .275rem .875rem;
+            font-size: .75rem;
+            padding: .2rem .75rem;
             left: 1rem;
             top: .875rem;
 
             @include media-breakpoint-up(lg) {
-                font-size: 1rem;
+                font-size: .875rem;
             }
         }
 
         .product__image {
             margin-bottom: .2rem;
+            text-align: center;
 
             img {
-                width: 80%;
+                width: 100%;
                 transition: .3s all;
-                margin: auto;
+                margin: 1rem 0;
+
+                @include media-breakpoint-up(md) {
+                    width: 80%;
+                    margin: auto;
+                }
             }
         }
 
@@ -335,7 +399,7 @@ h1.header__text {
 .navigation__wrapper {
     margin-top: 2rem;
     margin-bottom: 2rem;
-    overflow-x: scroll;
+    // overflow-x: scroll;
 
     @include media-breakpoint-up(md) {
         display: flex;
@@ -453,15 +517,15 @@ h1.header__text {
     height: auto;
     background: $company_red;
     color: $white;
-    padding: .5rem 0;
+    padding: 1rem 0;
     text-transform: uppercase;
     letter-spacing: 5px;
     font-weight: 300;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     margin-bottom: 2rem;
 
     @include media-breakpoint-up(lg) {
-        font-size: 2.5rem;
+        font-size: 1.75rem;
     }
 
     &.left {
@@ -616,6 +680,7 @@ h1.header__text {
     border: none;
     box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
     padding: .5rem 1.5rem;
+    margin-bottom: 1rem;
 
     .dropdown-item {
         padding: .75rem 0;

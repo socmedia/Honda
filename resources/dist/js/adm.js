@@ -6,6 +6,7 @@ require('./sidebarmenu');
 require('./custom')
 require('./bs-select/js/bootstrap-select');
 require('./bs-select/css/bootstrap-select.css');
+require('@yaireo/tagify/dist/tagify.css')
 
 ClassicEditor.defaultConfig = {
     toolbar: {

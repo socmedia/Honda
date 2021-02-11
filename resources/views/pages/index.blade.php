@@ -38,7 +38,7 @@
         </nav>
 
         <div class="row p-0 m-0">
-            <div class="col-12 col-md-6 col-lg-3 p-0 m-0">
+            <div class="col-6 col-md-4 col-lg-3 m-0 p-0">
                 <div class="card product__card odd">
                     <div class="product__image">
                         <img src="{{asset('images/genio.png')}}" alt="">
@@ -51,7 +51,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-md-6 col-lg-3 p-0 m-0">
+            <div class="col-6 col-md-4 col-lg-3 m-0 p-0">
                 <div class="card product__card even">
                     <div class="product__image">
                         <img src="{{asset('images/genio.png')}}" alt="">
@@ -64,7 +64,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-md-6 col-lg-3 p-0 m-0">
+            <div class="col-6 col-md-4 col-lg-3 m-0 p-0">
                 <div class="card product__card odd">
                     <div class="product__image">
                         <img src="{{asset('images/genio.png')}}" alt="">
@@ -77,7 +77,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-md-6 col-lg-3 p-0 m-0">
+            <div class="col-6 col-md-4 col-lg-3 m-0 p-0">
                 <div class="card product__card even">
                     <div class="product__image">
                         <img src="{{asset('images/genio.png')}}" alt="">
@@ -90,7 +90,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-md-6 col-lg-3 p-0 m-0">
+            <div class="col-6 col-md-4 col-lg-3 m-0 p-0">
                 <div class="card product__card odd">
                     <div class="product__image">
                         <img src="{{asset('images/genio.png')}}" alt="">
@@ -113,7 +113,7 @@
     <main style="overflow-x: hidden;">
         <div class="container">
             <div class="row">
-                <div class="col-12 col-md-6 col-lg-8 mb-5 mb-lg-0">
+                <div class="col-12 col-md-4 col-lg-8 mb-5 mb-lg-0">
                     <h2 class="heading left">Simulasi Kredit</h2>
 
                     <form action="" method="POST">
@@ -167,8 +167,7 @@
                         </fieldset>
 
                         <fieldset class="form-group">
-                            <button class="btn btn-dark btn-block text-uppercase py-2"
-                                style="letter-spacing: 5px; font-size:1.2rem;">
+                            <button class="btn btn-dark btn-block text-capitalize py-2" style="letter-spacing: 2px;">
                                 Cari dealer
                             </button>
                         </fieldset>
@@ -177,7 +176,6 @@
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
                     <h2 class="heading right">Promo</h2>
-
                 </div>
             </div>
         </div>

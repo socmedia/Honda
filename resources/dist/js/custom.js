@@ -30,7 +30,19 @@ $(function () {
         }
     };
     $(window).ready(setsidebartype);
+
     $(window).on("resize", setsidebartype);
+
     $('[title]').tooltip()
+
+    const editor = document.querySelectorAll('#editor');
+    editor.forEach(el => {
+        ClassicEditor.create(el)
+    })
+
+    $('.select_searchable').selectpicker({
+        placeholder: 'Pilih kota',
+        liveSearch: true
+    });
 
 });
