@@ -19,7 +19,7 @@
 
                     <div class="col-12 col-md-3">
                         <select name="" class="form-control select_searchable" wire:model="category">
-                            <option value="all" selected>Semua Kategori</option>
+                            <option value="" selected>Semua Kategori</option>
                             @foreach ($categories as $category)
                             <option value="{{$category['slug_name']}}">{{$category['name']}}</option>
                             @endforeach
