@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::get('/', function () {
-    return view('comingsoon');
-    // return view('pages/index');
+    // return view('comingsoon');
+    return view('pages/index');
     // return Regency::with('district', 'province')->get();
 });
 
@@ -32,3 +32,4 @@ Route::group(['prefix' => 'produk'], function () {
 Route::get('/media/banner/{bannerName}', ['App\Http\Controllers\Media\MediaController', 'getBanner'])->name('get.banner');
 Route::get('/media/product/{productName}', ['App\Http\Controllers\Media\MediaController', 'getProductImage'])->name('get.product');
 Route::get('/media/honda/genuine_parts/{imageName}', ['App\Http\Controllers\Media\MediaController', 'getGenuinePartImage'])->name('get.genuine_part');
+Route::get('/media/honda/apparels/{imageName}', ['App\Http\Controllers\Media\MediaController', 'getApparelImage'])->name('get.apparel');
