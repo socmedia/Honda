@@ -14,6 +14,14 @@ interface ProductRepositoryInterface
     public function getAll($request);
 
     /**
+     * Get datas from resource
+     *
+     *
+     * @return void
+     */
+    public function getOnlyIdNName();
+
+    /**
      * Store product to resource
      *
      * @param \Illuminate\Http\Request $request

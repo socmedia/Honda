@@ -55,9 +55,9 @@
                         </div>
                     </div>
                     @empty
-                    <tr>
-                        <td class="text-center" colspan="6"><b>Data tidak ditemukan</b></td>
-                    </tr>
+                    <div class="col-12">
+                        <p class="text-center mb-0">Data tidak ditemukan</p>
+                    </div>
                     @endforelse
                     <div class="col-12">
                         {{$datas->links('livewire::simple-bootstrap')}}

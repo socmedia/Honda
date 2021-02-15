@@ -12,7 +12,7 @@
  */
 
 Route::group([
-    'prefix' => 'admin/accessories',
+    'prefix' => 'admin/aksesoris',
     'as' => 'adm.accessories.',
     'middleware' => 'auth',
 ], function () {

@@ -13,7 +13,6 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <link href="{{asset('css/adm.css')}}" rel="stylesheet" />
-
     @livewireStyles
     @stack('styles')
 
@@ -41,11 +40,10 @@
             @yield('content')
 
             <x-admin.footer />
-        </div>>
+        </div>
     </div>
 
     @livewireScripts
-
     @stack('scripts')
 
 </body>

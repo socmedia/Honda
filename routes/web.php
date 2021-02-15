@@ -33,3 +33,4 @@ Route::get('/media/banner/{bannerName}', ['App\Http\Controllers\Media\MediaContr
 Route::get('/media/product/{productName}', ['App\Http\Controllers\Media\MediaController', 'getProductImage'])->name('get.product');
 Route::get('/media/honda/genuine_parts/{imageName}', ['App\Http\Controllers\Media\MediaController', 'getGenuinePartImage'])->name('get.genuine_part');
 Route::get('/media/honda/apparels/{imageName}', ['App\Http\Controllers\Media\MediaController', 'getApparelImage'])->name('get.apparel');
+Route::get('/media/honda/accessories/{imageName}', ['App\Http\Controllers\Media\MediaController', 'getAccessoryImage'])->name('get.accessory');

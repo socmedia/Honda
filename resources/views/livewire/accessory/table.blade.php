@@ -18,10 +18,10 @@
                 <fieldset class="row justify-content-end">
 
                     <div class="col-12 col-md-3 mb-3 mb-md-0">
-                        <select name="" class="form-control select_searchable" wire:model="category">
-                            <option value="" selected>Semua Kategori</option>
-                            @foreach ($categories as $category)
-                            <option value="{{$category['slug_name']}}">{{$category['name']}}</option>
+                        <select name="" class="form-control select_searchable" wire:model="product">
+                            <option value="" selected>Semua Produk</option>
+                            @foreach ($products as $product)
+                            <option value="{{$product->id}}">{{$product->name}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -41,29 +41,29 @@
                         <div class="card border rounded-lg">
                             <div class="position-absolute w-100">
                                 <div class="btn-group float-right shadow-sm rounded-lg" role="group">
-                                    <a href="{{route('adm.apparel.show', $data->id)}}"
+                                    <a href="{{route('adm.accessories.show', $data->id)}}"
                                         class="btn btn-light btn-sm shadow-none" title="Lihat Produk">
                                         <i class="fas fa-eye"></i>
                                     </a>
-                                    <a href="{{route('adm.apparel.edit', $data->id)}}"
+                                    <a href="{{route('adm.accessories.edit', $data->id)}}"
                                         class="btn btn-light btn-sm shadow-none" title="Ubah Produk">
                                         <i class="fas fa-pencil-alt"></i>
                                     </a>
                                     <button class="btn btn-light btn-sm shadow-none" title="Hapus Produk"
-                                        data-url="{{route('adm.apparel.destroy', $data->id)}}"
+                                        data-url="{{route('adm.accessories.destroy', $data->id)}}"
                                         onclick="$('#delete-confirmation').modal('show'); $('#delete-confirmation').find('form').attr('action', $(this).data('url'))">
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </div>
                             </div>
-                            <img class="w-75 m-auto" src="{{route('get.apparel', $data->thumbnail)}}"
+                            <img class="w-75 m-auto" src="{{route('get.accessory', $data->image)}}"
                                 alt="{{$data->name}}">
                             <div class="card-body bg-danger text-white rounded-bottom p-2">
 
                                 <div class="row mb-2">
                                     <div class="col-6 align-self-center">
                                         <span class="badge badge-light text-uppercase">
-                                            <b>{{$data->category}}</b>
+                                            <b>{{$data->product->name}}</b>
                                         </span>
                                     </div>
                                     <div class="col-6 align-self-center">
@@ -91,8 +91,3 @@
 
 
 </div>
-@push('scripts')
-<script>
-//
-</script>
-@endpush

@@ -16247,3 +16247,29 @@ progress {
 .swiper-button-next:after {
   font-size: 1.2rem !important;
 }
+
+.color-picker {
+  width: 100%;
+}
+
+.color-picker .clone-box {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.color-picker .color-picker-display {
+  width: 2rem;
+  height: 2rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.102);
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+}
+
+.color-picker .color-picker-display input[type=color] {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}

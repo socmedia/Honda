@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Modules\Accessories\Repository\AccessoryRepositoryInterface;
+use Modules\Accessories\Repository\Model\AccessoryModel;
 use Modules\Ahass\Repository\AhassRepositoryInterface;
 use Modules\Ahass\Repository\Model\AhassModel;
 use Modules\Apparel\Repository\ApparelRepositoryInterface;
@@ -44,5 +46,6 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(DealerRepositoryInterface::class, DealerModel::class);
         $this->app->bind(GenuinePartRepositoryInterface::class, GenuinePartModel::class);
         $this->app->bind(ApparelRepositoryInterface::class, ApparelModel::class);
+        $this->app->bind(AccessoryRepositoryInterface::class, AccessoryModel::class);
     }
 }

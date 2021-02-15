@@ -5,14 +5,32 @@ namespace Modules\Accessories\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Accessories\Http\Requests\AccessoriesRequest;
+use Modules\Accessories\Repository\AccessoryRepositoryInterface;
+use Modules\Product\Repository\ProductRepositoryInterface;
 
 class AccessoriesController extends Controller
 {
+    private $product;
+
+    private $model;
+
+    /**
+     * Class constructor.
+     */
+    public function __construct(
+        ProductRepositoryInterface $productRepositoryInterface,
+        AccessoryRepositoryInterface $accessoryRepositoryInterface
+    ) {
+        $this->product = $productRepositoryInterface;
+        $this->model = $accessoryRepositoryInterface;
+    }
+
     /**
      * Display a listing of the resource.
      * @return Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
         return view('accessories::index');
     }
@@ -23,7 +41,8 @@ class AccessoriesController extends Controller
      */
     public function create()
     {
-        return view('accessories::create');
+        $products = $this->product->getOnlyIdNName();
+        return view('accessories::create', compact('products'));
     }
 
     /**
@@ -31,9 +50,10 @@ class AccessoriesController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function store(AccessoriesRequest $request)
     {
-        //
+        $this->model->create($request);
+        return redirect()->route('adm.accessories.index')->with('success', 'Aksesoris berhasil ditambahkan.');
     }
 
     /**
@@ -43,7 +63,8 @@ class AccessoriesController extends Controller
      */
     public function show($id)
     {
-        return view('accessories::show');
+        $accessory = $this->model->findById($id);
+        return view('accessories::show', compact('accessory'));
     }
 
     /**
@@ -53,7 +74,9 @@ class AccessoriesController extends Controller
      */
     public function edit($id)
     {
-        return view('accessories::edit');
+        $products = $this->product->getOnlyIdNName();
+        $accessory = $this->model->findById($id);
+        return view('accessories::edit', compact('products', 'accessory'));
     }
 
     /**
@@ -62,9 +85,10 @@ class AccessoriesController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update(AccessoriesRequest $request, $id)
     {
-        //
+        $this->model->update($request, $id);
+        return redirect()->route('adm.accessories.index')->with('success', 'Aksesoris berhasil diperbarui.');
     }
 
     /**
@@ -74,6 +98,7 @@ class AccessoriesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->model->delete($id);
+        return redirect()->route('adm.accessories.index')->with('success', 'Aksesoris berhasil dihapus.');
     }
 }

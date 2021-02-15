@@ -16,6 +16,12 @@ class ProductModel implements ProductRepositoryInterface
         // if($request->)
     }
 
+    public function getOnlyIdNName()
+    {
+        $product = Product::orderBy('name', 'asc');
+        return $product->get(['id', 'name']);
+    }
+
     public function create($request)
     {
         $product = new Product();

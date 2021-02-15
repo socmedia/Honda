@@ -48,7 +48,7 @@
                 </li>
 
                 <li class="nav-small-cap pl-4">
-                    <span class="hide-menu">Suku Cadang</span>
+                    <span class="hide-menu">Purna Jual</span>
                 </li>
 
                 <li class="sidebar-item">
@@ -73,7 +73,7 @@
                 </li>
 
                 <li class="sidebar-item">
-                    <a class="sidebar-link waves-effect waves-dark sidebar-link {{request()->routeIs('adm.accesorries.*') ? 'active' : ''}}"
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link {{request()->routeIs('adm.accessories.*') ? 'active' : ''}}"
                         href="{{route('adm.accessories.index')}}" aria-expanded="false">
                         <svg width="18" height="18" viewBox="0 0 18 18" fill="none" class="mx-2"
                             xmlns="http://www.w3.org/2000/svg">
