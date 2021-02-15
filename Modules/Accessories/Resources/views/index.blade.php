@@ -23,9 +23,9 @@
                         Export
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        {{-- <a class="dropdown-item" href="{{route('adm.accessories.export.excel')}}" target="_blank">
-                        <i class="fa fa-file-excel mr-3"></i> Excell
-                        </a> --}}
+                        <a class="dropdown-item" href="{{route('adm.accessories.export.excel')}}" target="_blank">
+                            <i class="fa fa-file-excel mr-3"></i> Excell
+                        </a>
                     </div>
                 </div>
                 <a href="{{route('adm.accessories.create')}}" class="btn btn-primary">+ Aksesoris</a>

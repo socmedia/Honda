@@ -2,9 +2,11 @@
 
 namespace Modules\Accessories\Http\Controllers;
 
+use App\Exports\AccessoriesExport;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 use Modules\Accessories\Http\Requests\AccessoriesRequest;
 use Modules\Accessories\Repository\AccessoryRepositoryInterface;
 use Modules\Product\Repository\ProductRepositoryInterface;
@@ -100,5 +102,15 @@ class AccessoriesController extends Controller
     {
         $this->model->delete($id);
         return redirect()->route('adm.accessories.index')->with('success', 'Aksesoris berhasil dihapus.');
+    }
+
+    /**
+     * Export resource become excel
+     *
+     * @return excel
+     */
+    public function exportAsExcel()
+    {
+        return Excel::download(new AccessoriesExport, 'accessories_' . now()->format('dmYHis') . '.xlsx');
     }
 }
