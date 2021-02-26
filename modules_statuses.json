@@ -12,5 +12,9 @@
     "Profile": true,
     "Dashboard": true,
     "Dealer": true,
-    "Ahass": true
+    "Ahass": true,
+    "Lead": true,
+    "Create": true,
+    "Leads": true,
+    "Table": true
 }

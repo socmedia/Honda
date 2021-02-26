@@ -1,0 +1,28 @@
+<table>
+    <thead>
+        <tr>
+            <td>No</td>
+            <td>Nama</td>
+            <td>Kota</td>
+            <td>Motor</td>
+            <td>No. Telp.</td>
+            <td>Tanggal Submit</td>
+        </tr>
+    </thead>
+    <tbody>
+        @forelse ($leads as $lead)
+        <tr>
+            <td width="10">{{$loop->iteration}}</td>
+            <td width="30" style="text-transform: capitalize;">{{$lead->name}}</td>
+            <td width="30" style="text-transform: capitalize;">{{$lead->regency->name}}</td>
+            <td width="30" style="text-transform: capitalize;">{{$lead->product->name}}</td>
+            <td width="30">{{$lead->phone}}</td>
+            <td width="30">{{$lead->created_at->toDayDateTimeString()}}</td>
+        </tr>
+        @empty
+        <tr>
+            <td colspan="6" style="text-align: center;">Data tidak ditemukan</td>
+        </tr>
+        @endforelse
+    </tbody>
+</table>

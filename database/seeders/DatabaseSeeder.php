@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
-        $this->call(ContactSeeder::class);
+        // $this->call(ContactSeeder::class);
+        // \Modules\Lead\Repository\Model\Entities\Lead::factory(60)->create();
     }
 }

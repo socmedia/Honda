@@ -47,6 +47,14 @@
                     </a>
                 </li>
 
+                <li class="sidebar-item">
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link {{request()->routeIs('adm.lead.*') ? 'active' : ''}}"
+                        href="{{route('adm.lead.index')}}" aria-expanded="false">
+                        <i class="fas fa-file-alt"></i>
+                        <span class="hide-menu">Lead</span>
+                    </a>
+                </li>
+
                 <li class="nav-small-cap pl-4">
                     <span class="hide-menu">Purna Jual</span>
                 </li>

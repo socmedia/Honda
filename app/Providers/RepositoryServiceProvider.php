@@ -15,6 +15,8 @@ use Modules\Dealer\Repository\DealerRepositoryInterface;
 use Modules\Dealer\Repository\Model\DealerModel;
 use Modules\HGP\Repository\GenuinePartRepositoryInterface;
 use Modules\HGP\Repository\Model\GenuinePartModel;
+use Modules\Lead\Repository\LeadRepositoryInterface;
+use Modules\Lead\Repository\Model\LeadModel;
 use Modules\Product\Repository\Model\ProductModel;
 use Modules\Product\Repository\ProductRepositoryInterface;
 use Modules\Setting\Repository\Model\SettingModel;
@@ -47,5 +49,6 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(GenuinePartRepositoryInterface::class, GenuinePartModel::class);
         $this->app->bind(ApparelRepositoryInterface::class, ApparelModel::class);
         $this->app->bind(AccessoryRepositoryInterface::class, AccessoryModel::class);
+        $this->app->bind(LeadRepositoryInterface::class, LeadModel::class);
     }
 }

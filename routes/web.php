@@ -23,10 +23,15 @@ Route::group(['prefix' => 'produk'], function () {
     Route::get('/', function () {
         return view('pages.product.index');
     });
+
     Route::get('/detail', function () {
         return view('pages.product.detail.index');
     });
 
+});
+
+Route::get('/cek-ketersediaan', function () {
+    return view('pages.lead');
 });
 
 Route::get('/media/banner/{bannerName}', ['App\Http\Controllers\Media\MediaController', 'getBanner'])->name('get.banner');

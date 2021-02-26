@@ -10757,27 +10757,27 @@ h1.header__text {
   opacity: 1;
 }
 
-.dropdown:hover > .dropdown-menu {
+.nav-item.dropdown:hover > .dropdown-menu {
   display: block;
   -webkit-animation: dropdown 0.3s ease-in forwards;
           animation: dropdown 0.3s ease-in forwards;
 }
 
-.dropdown-menu {
+.nav-item.dropdown-menu {
   border: none;
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
   padding: 0.5rem 1.5rem;
   margin-bottom: 1rem;
 }
-.dropdown-menu .dropdown-item {
+.nav-item.dropdown-menu .dropdown-item {
   padding: 0.75rem 0;
   color: #343a40;
   opacity: 0.7;
 }
-.dropdown-menu .dropdown-item:not(:last-child) {
+.nav-item.dropdown-menu .dropdown-item:not(:last-child) {
   border-bottom: 1px solid #F3F3F3;
 }
-.dropdown-menu .dropdown-item:hover {
+.nav-item.dropdown-menu .dropdown-item:hover {
   background: none;
   opacity: 1;
 }
@@ -10962,4 +10962,60 @@ h1.header__text {
   background: #e61b332a;
   -webkit-animation: linksBg 0.5s ease;
           animation: linksBg 0.5s ease;
+}
+
+.form-control {
+  border: 2px solid #F6F6F6;
+  border-radius: 0.25rem;
+  transition: 0.5s all;
+  font-size: 1rem;
+  height: unset;
+  padding: 0.5rem 0.75rem;
+}
+.form-control:focus {
+  box-shadow: none;
+  border-color: #808080;
+}
+.form-control::-moz-placeholder {
+  color: #c7c7c7;
+}
+.form-control:-ms-input-placeholder {
+  color: #c7c7c7;
+}
+.form-control::placeholder {
+  color: #c7c7c7;
+}
+
+textarea.form-control {
+  resize: none;
+  height: 150px;
+}
+
+.bootstrap-select .dropdown-menu li.active a {
+  background: #E61B33 !important;
+}
+
+.bootstrap-select .dropdown-menu li a:hover,
+.bootstrap-select .dropdown-menu li a:active,
+.bootstrap-select .dropdown-menu li a:focus {
+  background: #E61B33 !important;
+  color: #FFF;
+}
+
+.bootstrap-select > .btn-light {
+  background: #FFF !important;
+  border: 2px solid #F6F6F6 !important;
+  padding: 0.5rem 0.75rem;
+}
+.bootstrap-select > .btn-light:focus {
+  box-shadow: none !important;
+}
+
+.alert-success {
+  color: #FFF;
+  background-color: #19B297;
+  border-color: none;
+}
+.alert-success .close {
+  color: white;
 }

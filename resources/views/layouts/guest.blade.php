@@ -11,6 +11,9 @@
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
     <link rel="stylesheet" href="{{ mix('css/honda.css') }}">
+    @stack('styles')
+    <!-- Scripts -->
+    <script src="{{ mix('js/app.js') }}" defer></script>
 </head>
 
 <body>
@@ -24,7 +27,7 @@
     <x-navbar />
 
     <main class="p-0">
-        {{ $slot }}
+        @yield('content')
     </main>
 
     <a class="float__wa" href="http://" target="_blank" rel="noopener noreferrer">
@@ -35,8 +38,8 @@
 
     <x-footer />
 
-    <!-- Scripts -->
-    <script src="{{ mix('js/app.js') }}"></script>
+    @stack('scripts')
+    @livewireScripts
 </body>
 
 </html>

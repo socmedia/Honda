@@ -43,7 +43,6 @@
         "jquery-mask-plugin": "^1.14.16",
         "jquery.repeater": "^1.2.1",
         "popper.js": "^1.16.1",
-        "select2-bootstrap-theme": "^0.1.0-beta.10",
         "swiper": "^6.4.8",
         "turbolinks": "^5.2.0"
     }

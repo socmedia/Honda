@@ -18,3 +18,13 @@
 
 // Globals
 @import 'globals';
+
+.alert-success {
+    color: $white;
+    background-color: #19B297;
+    border-color: none;
+
+    .close {
+        color: white;
+    }
+}

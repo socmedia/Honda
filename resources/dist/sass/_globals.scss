@@ -671,12 +671,12 @@ h1.header__text {
     }
 }
 
-.dropdown:hover>.dropdown-menu {
+.nav-item.dropdown:hover>.dropdown-menu {
     display: block;
     animation: dropdown .3s ease-in forwards;
 }
 
-.dropdown-menu {
+.nav-item.dropdown-menu {
     border: none;
     box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
     padding: .5rem 1.5rem;
@@ -903,5 +903,49 @@ h1.header__text {
                 animation: linksBg 0.5s ease;
             }
         }
+    }
+}
+
+.form-control {
+    border: 2px solid $gray-100;
+    border-radius: .25rem;
+    transition: .5s all;
+    font-size: 1rem;
+    height: unset;
+    padding: 0.5rem 0.75rem;
+
+    &:focus {
+        box-shadow: none;
+        border-color: $light_gray;
+    }
+
+    &::placeholder {
+        color: #c7c7c7;
+    }
+}
+
+textarea.form-control {
+    resize: none;
+    height: 150px;
+}
+
+.bootstrap-select .dropdown-menu li.active a {
+    background: $company_red !important;
+}
+
+.bootstrap-select .dropdown-menu li a:hover,
+.bootstrap-select .dropdown-menu li a:active,
+.bootstrap-select .dropdown-menu li a:focus {
+    background: $company_red !important;
+    color: $white;
+}
+
+.bootstrap-select>.btn-light {
+    background: $white !important;
+    border: 2px solid $gray-100 !important;
+    padding: 0.5rem 0.75rem;
+
+    &:focus {
+        box-shadow: none !important;
     }
 }
