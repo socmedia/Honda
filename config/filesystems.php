@@ -70,6 +70,20 @@ return [
             'visibility' => 'public',
         ],
 
+        'articles' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/articles'),
+            'url' => env('APP_URL') . '/storage',
+            'visibility' => 'public',
+        ],
+
+        'promo' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/images/promo'),
+            'url' => env('APP_URL') . '/storage',
+            'visibility' => 'public',
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

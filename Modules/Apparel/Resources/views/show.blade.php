@@ -14,12 +14,6 @@
     {{-- <div class="white-box shadow-sm rounded-lg"> --}}
 
     <div class="card mb-5">
-        <div class="card-header py-4">
-            <h2 class="h3 font-bold text-danger mb-0">
-                {{$apparel->name}}
-            </h2>
-        </div>
-
         <div class="card-body">
             <div class="row">
 
@@ -56,6 +50,9 @@
                 </div>
 
                 <div class="col-12 col-md-7">
+
+                    <h2 class="h3 font-bold mb-3">{{$apparel->name}}</h2>
+
                     <div class="list-group">
 
                         <div class="list-group-item list-group-item-action flex-column align-items-start">

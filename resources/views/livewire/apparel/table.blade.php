@@ -42,14 +42,14 @@
                             <div class="position-absolute w-100">
                                 <div class="btn-group float-right shadow-sm rounded-lg" role="group">
                                     <a href="{{route('adm.apparel.show', $data->id)}}"
-                                        class="btn btn-light btn-sm shadow-none" title="Lihat Produk">
+                                        class="btn btn-light btn-sm shadow-none" title="Lihat Data">
                                         <i class="fas fa-eye"></i>
                                     </a>
                                     <a href="{{route('adm.apparel.edit', $data->id)}}"
-                                        class="btn btn-light btn-sm shadow-none" title="Ubah Produk">
+                                        class="btn btn-light btn-sm shadow-none" title="Ubah Data">
                                         <i class="fas fa-pencil-alt"></i>
                                     </a>
-                                    <button class="btn btn-light btn-sm shadow-none" title="Hapus Produk"
+                                    <button class="btn btn-light btn-sm shadow-none" title="Hapus Data"
                                         data-url="{{route('adm.apparel.destroy', $data->id)}}"
                                         onclick="$('#delete-confirmation').modal('show'); $('#delete-confirmation').find('form').attr('action', $(this).data('url'))">
                                         <i class="fas fa-trash"></i>

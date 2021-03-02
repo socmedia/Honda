@@ -46,7 +46,7 @@
                                         <th>Nama Lengkap</th>
                                         <th>Telp.</th>
                                         {{-- <th>Kota</th> --}}
-                                        <th>Produk</th>
+                                        <th>Data</th>
                                         <th>Status</th>
                                         <th>Tanggal Submit</th>
                                     </tr>

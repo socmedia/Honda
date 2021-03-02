@@ -2,12 +2,25 @@
 
 namespace Modules\Promo\Http\Controllers;
 
+use App\Constants\BlogType;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Article\Http\Requests\PromoRequest;
+use Modules\Promo\Repository\PromoRepositoryInterface;
 
 class PromoController extends Controller
 {
+    private $model;
+
+    /**
+     * Class constructor.
+     */
+    public function __construct(PromoRepositoryInterface $promoRepositoryInterface)
+    {
+        $this->model = $promoRepositoryInterface;
+    }
+
     /**
      * Display a listing of the resource.
      * @return Renderable
@@ -23,7 +36,8 @@ class PromoController extends Controller
      */
     public function create()
     {
-        return view('promo::create');
+        $types = new BlogType();
+        return view('promo::create', ['types' => $types->getAll()]);
     }
 
     /**
@@ -31,9 +45,10 @@ class PromoController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function store(PromoRequest $request)
     {
-        //
+        $this->model->create($request);
+        return redirect()->route('adm.promo.index')->with('success', 'Promo/Event berhasil ditambahkan.');
     }
 
     /**
@@ -41,9 +56,12 @@ class PromoController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function show($id)
+    public function show($slug)
     {
-        return view('promo::show');
+        $promo = $this->model->findBySlug($slug);
+        return view('promo::show', [
+            'promo' => $promo,
+        ]);
     }
 
     /**
@@ -51,9 +69,14 @@ class PromoController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function edit($id)
+    public function edit($slug)
     {
-        return view('promo::edit');
+        $types = new BlogType();
+        $promo = $this->model->findBySlug($slug);
+        return view('promo::edit', [
+            'types' => $types->getAll(),
+            'promo' => $promo,
+        ]);
     }
 
     /**
@@ -62,9 +85,10 @@ class PromoController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update(PromoRequest $request, $id)
     {
-        //
+        $this->model->update($request, $id);
+        return redirect()->route('adm.promo.index')->with('success', 'Promo/Event berhasil diperbarui.');
     }
 
     /**
@@ -74,6 +98,7 @@ class PromoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->model->delete($id);
+        return redirect()->route('adm.promo.index')->with('success', 'Promo/Event berhasil dihapus.');
     }
 }

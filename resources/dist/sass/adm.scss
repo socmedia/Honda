@@ -1,4 +1,6 @@
 @import '../css/style.css';
+@import '../css/components.css';
+@import 'breakpoints';
 
 .pagination {
     justify-content: flex-end;
@@ -159,4 +161,84 @@ progress {
     width: 100%;
     height: 100%;
     opacity: 0;
+}
+
+.article {
+    .article-label {
+        background-color: #f7fafc;
+        border-radius: 5px;
+        padding: .35rem .875rem;
+        display: inline-block;
+        position: absolute;
+        right: .5rem;
+        top: .5rem;
+        z-index: 2;
+        text-transform: capitalize;
+        font-size: .75rem;
+        font-weight: 700;
+    }
+}
+
+.article.preview {
+    box-shadow: none !important;
+
+    .article-header.custom {
+        height: unset !important;
+        position: relative;
+
+        .article-title {
+            width: 100%;
+            margin-bottom: 1rem;
+            position: relative;
+            bottom: unset;
+            left: unset;
+            background: none;
+
+            @include breakpoint-up(md) {
+                width: 55%;
+                position: absolute;
+                top: 20%;
+                right: 0;
+                z-index: 2;
+                bottom: unset;
+                left: unset;
+                background: linear-gradient(to right, rgba(255, 255, 255, 0.705), transparent);
+                padding: 1rem;
+            }
+
+            h2 {
+                font-size: 1.15rem;
+
+                @include breakpoint-up(md) {
+                    font-size: 1.5rem;
+                }
+
+                @include breakpoint-up(lg) {
+                    font-size: clamp(1.4rem, 2vw, 1.8rem);
+                }
+            }
+        }
+
+        .article-category {
+            text-align: right;
+            font-size: .8rem;
+
+            @include breakpoint-up(md) {
+                text-align: left;
+                font-size: 1rem;
+            }
+        }
+
+        .article-thumbnail {
+            width: 100%;
+
+            @include breakpoint-up(md) {
+                width: 55%;
+            }
+        }
+    }
+}
+
+.article.draft {
+    filter: blur(.5px) grayscale(1);
 }

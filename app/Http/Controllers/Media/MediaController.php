@@ -72,4 +72,30 @@ class MediaController extends Controller
         $response->header("Content-Type", 'image');
         return $response;
     }
+
+    public function getArticleImage($date, $imageName)
+    {
+        $path = storage_path('app/public/articles/' . $date . '/' . $imageName);
+        if (!File::exists($path)) {
+            abort(404);
+        }
+
+        $file = File::get($path);
+        $response = Response::make($file, 200);
+        $response->header("Content-Type", 'image');
+        return $response;
+    }
+
+    public function getPromoImage($date, $imageName)
+    {
+        $path = storage_path('app/public/promo/' . $date . '/' . $imageName);
+        if (!File::exists($path)) {
+            abort(404);
+        }
+
+        $file = File::get($path);
+        $response = Response::make($file, 200);
+        $response->header("Content-Type", 'image');
+        return $response;
+    }
 }
