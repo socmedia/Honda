@@ -20,17 +20,19 @@ class LeadForm extends Component
         'city' => 'required',
         'phone' => 'required|regex:/^[0-9 +-]*$/|min:6|max:15',
         'motor' => 'required',
-        'message' => 'nullable|min:5',
+        'message' => 'required|min:10',
     ];
 
     protected $messages = [
         'fullName.required' => 'Nama tidak boleh kosong.',
         'city.required' => 'Kota tidak boleh kosong.',
+        'motor.required' => 'Motor yang dipilih tidak boleh kosong.',
         'phone.required' => 'No. Handphone tidak boleh kosong.',
+        'message.required' => 'Pesan tidak boleh kosong.',
 
         'fullName.min' => 'Nama minimal 3 karakter.',
         'phone.min' => 'No. Handphone minimal 6 karakter.',
-        'message.min' => 'Pesan minimal 5 karakter.',
+        'message.min' => 'Pesan minimal 10 karakter.',
 
         'fullName.max' => 'Nama maksimal 191 karakter.',
         'phone.max' => 'No. Handphone maksimal 15 karakter.',

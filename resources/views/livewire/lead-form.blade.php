@@ -34,7 +34,7 @@
             <div class="form-group row">
                 <label for="city" class="col-12 col-md-2 col-form-label">Kota<sup>*</sup> </label>
                 <div class="col-12 col-md-10">
-                    <select name="city" id="city" class="form-control text-capitalize select_searchable"
+                    <select name="city" id="city" class="custom-select text-capitalize select_searchable"
                         wire:model.defer="city">
                         <option value="" disabled selected>Pilih kota</option>
                         @foreach ($cities as $city)
@@ -49,7 +49,7 @@
             <div class="form-group row">
                 <label for="fullname" class="col-12 col-md-2 col-form-label">Motor Honda<sup>*</sup> </label>
                 <div class="col-12 col-md-10">
-                    <select name="motor" id="motor" class="form-control text-capitalize select_searchable"
+                    <select name="motor" id="motor" class="custom-select text-capitalize select_searchable"
                         wire:model.defer="motor">
                         <option value="" disabled selected>Pilih motor</option>
                         @foreach ($motors as $motor)
