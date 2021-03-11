@@ -31,6 +31,15 @@ class ProductController extends Controller
     }
 
     /**
+     * Show the form for creating a new resource.
+     * @return Renderable
+     */
+    public function create()
+    {
+        return view('product::create');
+    }
+
+    /**
      * Show the specified resource.
      * @param int $id
      * @return Renderable
