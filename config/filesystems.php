@@ -42,9 +42,37 @@ return [
             'visibility' => 'public',
         ],
 
-        'productImages' => [
+        'productThumbnail' => [
             'driver' => 'local',
-            'root' => storage_path('app/public/images/product'),
+            'root' => storage_path('app/public/images/products/thumbnail'),
+            'url' => env('APP_URL') . '/storage',
+            'visibility' => 'public',
+        ],
+
+        'productBanner' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/images/products/banner'),
+            'url' => env('APP_URL') . '/storage',
+            'visibility' => 'public',
+        ],
+
+        'productFeature' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/images/products/feature'),
+            'url' => env('APP_URL') . '/storage',
+            'visibility' => 'public',
+        ],
+
+        'productVarian' => [
+            'driver' => 'local',
+            'root' => storage_path('app/publicimages/products/varian'),
+            'url' => env('APP_URL') . '/storage',
+            'visibility' => 'public',
+        ],
+
+        'productBrochure' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/files/products/brochure'),
             'url' => env('APP_URL') . '/storage',
             'visibility' => 'public',
         ],

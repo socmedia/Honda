@@ -6,7 +6,6 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Str;
-use Modules\Product\Http\Requests\ProductInformationRequest;
 use Modules\Product\Repository\Model\Entities\Product;
 use Modules\Product\Repository\ProductRepositoryInterface;
 
@@ -28,37 +27,7 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        $products = $this->model->getAll($request);
-        return view('product::index', compact('products'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     * @return Renderable
-     */
-    public function create(Request $request)
-    {
-        $product = '';
-        if ($request->id) {
-            $product = $this->model->findById($request->id);
-        }
-        return view('product::create', compact('product'));
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     * @param Request $request
-     * @return Renderable
-     */
-    public function store(ProductInformationRequest $request)
-    {
-        $product_id = Str::uuid()->getHex();
-        $request->product_id = $product_id;
-        $route = route('adm.product.create');
-
-        $this->model->create($request);
-
-        return redirect()->to($route . '?id=' . $product_id);
+        return view('product::index');
     }
 
     /**
@@ -68,7 +37,13 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        return view('product::show');
+        $product = $this->model->findById($id);
+        $engine = $product->engine;
+        $frame = $product->frame_n_feet;
+        $dimension = $product->dimensions_and_weight;
+        $electricity = $product->electricity;
+        $capacity = $product->capacity;
+        return view('product::show', compact('product', 'engine', 'frame', 'dimension', 'electricity', 'capacity'));
     }
 
     /**
@@ -78,18 +53,8 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        return view('product::edit');
-    }
-
-    /**
-     * Update the specified resource in storage.
-     * @param Request $request
-     * @param int $id
-     * @return Renderable
-     */
-    public function update(Request $request, $id)
-    {
-        $this->model->update($request, $id);
+        $product = $this->model->findById($id);
+        return view('product::edit', compact('product'));
     }
 
     /**
@@ -99,6 +64,7 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->model->destroy($id);
+        return redirect()->route('adm.product.index')->with('success', 'Produk berhasil dihapus');
     }
 }

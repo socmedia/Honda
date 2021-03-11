@@ -21,9 +21,9 @@ class MediaController extends Controller
         return $response;
     }
 
-    public function getProductImage($productImage)
+    public function getProductImage($type, $productImage)
     {
-        $path = storage_path('app/public/images/products/' . $productImage);
+        $path = storage_path('app/public/images/products/' . $type . '/' . $productImage);
         if (!File::exists($path)) {
             abort(404);
         }
@@ -31,6 +31,19 @@ class MediaController extends Controller
         $file = File::get($path);
         $response = Response::make($file, 200);
         $response->header("Content-Type", 'image');
+        return $response;
+    }
+
+    public function getProductBrochure($brochureName)
+    {
+        $path = storage_path('app/public/files/products/brochure/' . $brochureName);
+        if (!File::exists($path)) {
+            abort(404);
+        }
+
+        $file = File::get($path);
+        $response = Response::make($file, 200);
+        $response->header("Content-Type", 'application/pdf');
         return $response;
     }
 

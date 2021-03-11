@@ -15,16 +15,16 @@ class Product extends Model
 
     public function banners()
     {
-        return $this->hasMany(ProductBanner::class, 'id', 'product_id');
+        return $this->hasMany(ProductBanner::class, 'products_id', 'id')->select(['products_id', 'banner_name']);
     }
 
     public function features()
     {
-        return $this->hasMany(ProductFeature::class, 'id', 'product_id');
+        return $this->hasMany(ProductFeature::class, 'products_id', 'id')->select(['products_id', 'image_name', 'title', 'description']);
     }
 
     public function varians()
     {
-        return $this->hasMany(ProductVarian::class, 'id', 'product_id');
+        return $this->hasMany(ProductVarian::class, 'products_id', 'id')->select(['products_id', 'image_name']);
     }
 }

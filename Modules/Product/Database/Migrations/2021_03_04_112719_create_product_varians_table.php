@@ -15,7 +15,7 @@ class CreateProductVariansTable extends Migration
     {
         Schema::create('product_varians', function (Blueprint $table) {
             $table->id();
-            $table->string('products_id');
+            $table->uuid('products_id');
             $table->string('image_name');
             $table->boolean('is_active');
             $table->timestamps();

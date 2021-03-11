@@ -8,26 +8,9 @@ interface ProductRepositoryInterface
      * Get datas from resource
      *
      *
-     * @param \Illuminate\Http\Request $request
-     * @return void
-     */
-    public function getAll($request);
-
-    /**
-     * Get datas from resource
-     *
-     *
      * @return void
      */
     public function getOnlyIdNName();
-
-    /**
-     * Store product to resource
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return void
-     */
-    public function create($request);
 
     /**
      * Find product by passing id
@@ -36,15 +19,6 @@ interface ProductRepositoryInterface
      * @return void
      */
     public function findById($id);
-
-    /**
-     * Update product from resource
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param string $id
-     * @return void
-     */
-    public function update($request, $id);
 
     /**
      * Delete product from resource

@@ -24,6 +24,10 @@ class CreateLeadsTable extends Migration
             $table->boolean('is_readed')->default(0);
             $table->timestamps();
         });
+
+        Schema::table('leads', function ($table) {
+            $table->foreign('product_id')->references('id')->on('products');
+        });
     }
 
     /**

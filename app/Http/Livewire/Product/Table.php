@@ -10,37 +10,41 @@ class Table extends Component
 {
     use WithPagination;
 
-    // protected $datas;
-
     public $search = '';
 
-    public $perPage = 5;
+    public $perPage = 10;
 
-    public $status = '';
+    public $status = null;
 
     public $category = '';
-
-    public function mount()
-    {
-        // $this->datas = ;
-    }
 
     public function getAll($search, $status, $category)
     {
         $products = Product::orderBy('name', 'asc');
 
-        if ($search !== '') {
-            $products->where('name', 'like', '%' . $search . '%');
-            $products->orWhere('category', 'like', '%' . $search . '%');
-            $products->orWhere('price', 'like', '%' . $search . '%');
-        }
-
-        if ($status !== '') {
-            $products->where('is_draft', $status);
-        }
-
+        # Category Query
         if ($category !== '') {
-            $products->where('category', $category);
+            $products->where(function ($q) use ($category) {
+                $q->where('category', $category);
+            });
+        }
+
+        # Search Query
+        if ($search !== '') {
+            $products->where(function ($q) use ($search) {
+                $q->where('name', 'like', '%' . $search . '%')
+                    ->orWhere('category', 'like', '%' . $search . '%')
+                    ->orWhere('price', 'like', '%' . $search . '%');
+
+            });
+        }
+
+        # Filter Publish or Draft Article
+        if ($status) {
+            $products->where(function ($q) use ($status) {
+                $q->where('is_draft', $status);
+
+            });
         }
 
         return $products->simplePaginate($this->perPage);

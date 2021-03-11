@@ -35,7 +35,8 @@ Route::get('/cek-ketersediaan', function () {
 });
 
 Route::get('/media/banner/{bannerName}', ['App\Http\Controllers\Media\MediaController', 'getBanner'])->name('get.banner');
-Route::get('/media/product/{productName}', ['App\Http\Controllers\Media\MediaController', 'getProductImage'])->name('get.product');
+Route::get('/media/product/{type}/{productName}', ['App\Http\Controllers\Media\MediaController', 'getProductImage'])->name('get.product');
+Route::get('/media/brochure/{brochureName}', ['App\Http\Controllers\Media\MediaController', 'getProductBrochure'])->name('get.product.brochure');
 Route::get('/media/honda/genuine_parts/{imageName}', ['App\Http\Controllers\Media\MediaController', 'getGenuinePartImage'])->name('get.genuine_part');
 Route::get('/media/honda/apparels/{imageName}', ['App\Http\Controllers\Media\MediaController', 'getApparelImage'])->name('get.apparel');
 Route::get('/media/honda/accessories/{imageName}', ['App\Http\Controllers\Media\MediaController', 'getAccessoryImage'])->name('get.accessory');

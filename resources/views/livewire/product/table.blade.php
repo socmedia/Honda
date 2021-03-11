@@ -1,8 +1,9 @@
 <div class="row">
-    @if (session()->has('success'))
+    @if (session()->has('success') || request()->m === 'success')
     <div class="col-12 mb-3">
         <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>Hebat ! </strong> {!!session()->get('success')!!}
+            <strong>Hebat ! </strong>
+            {{ session()->get('success') ? session()->get('success') : 'Produk berhasil ditambahkan.'}}
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -18,7 +19,7 @@
                 <fieldset class="row justify-content-end">
 
                     <div class="col-12 col-md-2">
-                        <select name="category" class="form-control" wire:model="category">
+                        <select name="category" class="form-control select_searchable" wire:model="category">
                             <option value="" selected>Pilih kategori</option>
                             <option value="matic">Matic</option>
                             <option value="cub">Cub</option>
@@ -28,7 +29,7 @@
                     </div>
 
                     <div class="col-12 col-md-2">
-                        <select name="status" class="form-control" wire:model="status">
+                        <select name="status" class="form-control select_searchable" wire:model="status">
                             <option value="" selected>Pilih status</option>
                             <option value="1">Draft</option>
                             <option value="0">Publish</option>
@@ -62,8 +63,8 @@
                                     @forelse ($datas as $data)
                                     <tr>
                                         <td class="text-center">
-                                            <img src="{{route('get.product', $data->thumbnail ? $data->thumbnail : '')}}"
-                                                alt="{{$data->name}}" width="150">
+                                            <img src="{{route('get.product', [explode('/', $data->thumbnail)[2], explode('/', $data->thumbnail)[3]])}}"
+                                                alt="{{$data->name}}" width="100">
                                         </td>
                                         <td>
                                             {{$data->name}}
@@ -72,7 +73,7 @@
                                             {{$data->category}}
                                         </td>
                                         <td class="text-right">
-                                            Rp. {{number_format($data->price,2,".",",")}}
+                                            Rp. {{$data->price}}
                                         </td>
                                         <td class="text-center">
                                             <span
@@ -90,7 +91,9 @@
                                                     class="btn btn-light btn-sm shadow-none" title="Ubah Produk">
                                                     <i class="fas fa-pencil-alt"></i>
                                                 </a>
-                                                <button class="btn btn-light btn-sm shadow-none" title="Hapus Produk">
+                                                <button class="btn btn-light btn-sm shadow-none" title="Hapus Produk"
+                                                    data-url="{{route('adm.product.destroy', $data->id)}}"
+                                                    onclick="$('#delete-confirmation').modal('show'); $('#delete-confirmation').find('form').attr('action', $(this).data('url'))">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
                                             </div>
@@ -114,5 +117,10 @@
         </div>
     </div>
 
+    <style>
+    table tbody td {
+        vertical-align: middle !important;
+    }
+    </style>
 
 </div>

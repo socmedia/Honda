@@ -17,18 +17,18 @@ class CreateProductsTable extends Migration
             $table->uuid('id')->primary();
             $table->string('name')->unique();
             $table->string('slug_name');
-            $table->string('thumbnail');
             $table->string('category');
-            $table->boolean('is_new');
-            $table->unsignedBigInteger('promo_price');
-            $table->unsignedBigInteger('price');
+            $table->string('thumbnail');
+            $table->string('brochure');
+            $table->string('price');
+            $table->string('promo_price')->nullable();
             $table->text('engine')->nullable();
             $table->text('frame_n_feet')->nullable();
             $table->text('dimensions_and_weight')->nullable();
             $table->text('capacity')->nullable();
             $table->text('electricity')->nullable();
             $table->boolean('is_draft')->nullable();
-            $table->string('brochure');
+            $table->boolean('is_new')->default(0);
             $table->timestamps();
         });
     }
